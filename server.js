@@ -5,6 +5,7 @@ const app = require(`${__dirname}/app`);
 
 // DB Connection
 const DB = process.env.DATABASE.replace("<password>", process.env.DATABASE_PASSWORD);
+mongoose.set('strictQuery', true); // for suppressing the deprecation warning
 mongoose.connect(DB).then(() => {
     console.log("DB has been successfully connected");
 });

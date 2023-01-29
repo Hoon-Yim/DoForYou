@@ -9,5 +9,7 @@ if (process.env.NODE_DEV == "development") {
 app.use(express.json());
 
 // Routes
+const userRouter = require("./routes/userRoutes");
+app.use("/api/users", userRouter);
 
 module.exports = app;

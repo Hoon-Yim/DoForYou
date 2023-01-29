@@ -18,7 +18,7 @@ const userSchema = mongoose.Schema({
         minlength: 8,
         required: [true, "Password is required"]
     },
-    fisrtname: {
+    firstname: {
         type: String,
         required: [true, "First name is required"]
     },

@@ -57,6 +57,10 @@ const userSchema = mongoose.Schema({
             enum: ["Point"]
         },
         coordinates: [Number],
+        zipcode: {
+            type: String,
+            required: [true, "ZipCode is required"]
+        },
         address: {
             type: String,
             required: [true, "Address is required"]

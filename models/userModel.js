@@ -18,10 +18,6 @@ const userSchema = mongoose.Schema({
         minlength: 8,
         required: [true, "Password is required"]
     },
-    username: {
-        type: String,
-        required: [true, "Username is required"]
-    },
     fisrtname: {
         type: String,
         required: [true, "First name is required"]
@@ -30,18 +26,18 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true, "Last name is required"]
     },
-    age: {
-        type: Number,
-        validate: {
-            validator: Number.isInteger,
-            message: "Age cannot consist of letters or decimal point numbers"
-        },
-        required: [true, "Age is required"],
-    },
-    sex: {
-        type: String,
-        enum: ["Male", "Female", "Other"]
-    },
+    // age: {
+    //     type: Number,
+    //     validate: {
+    //         validator: Number.isInteger,
+    //         message: "Age cannot consist of letters or decimal point numbers"
+    //     },
+    //     required: [true, "Age is required"],
+    // },
+    // sex: {
+    //     type: String,
+    //     enum: ["Male", "Female", "Other"]
+    // },
     phone: {
         type: String,
 
@@ -50,7 +46,63 @@ const userSchema = mongoose.Schema({
         type: String,
         lowercase: true,
         enum: ["customer", "performer"],
-        default: "customer"
+        default: "customer", 
+        required: [true, "Role is required"]
+    },
+    location: {
+        // GeoJSON
+        type: {
+            type: String,
+            default: "Point",
+            enum: ["Point"]
+        },
+        coordinates: [Number],
+        address: {
+            type: String,
+            required: [true, "Address is required"]
+        },
+        city: {
+            type: String,
+            required: [true, "City is required"]
+        },
+        province: {
+            type: String,
+            enum: [
+                "Alberta",
+                "British Colombia",
+                "Manitoba",
+                "New Brunswick",
+                "Newfoundland",
+                "Nova Scotia",
+                "Ontario",
+                "Prince Edward Island",
+                "Quebec",
+                "Saskatchewan"
+            ],
+            required: [true, "Province is required"]
+        },
+    },
+    // interesting categories as a performer
+    categories: {
+        type: String,
+        enum: [
+            "Courier Service",
+            "Repair of Digital Devices",
+            "Design",
+            "Event and Promotions",
+            "Software Development",
+            "Installation and Repair of Equipment",
+            "Cargo Transportation",
+            "Cleaning and Household Help",
+            "Transport Repair",
+            "Photo, Video and Audio",
+            "Repair and Construction",
+            "Computer Help",
+            "Virtual Assistant",
+            "Financial Advisor",
+            "Beauty and Health",
+            "Tutors and Training"
+        ]
     },
     birthdate: Date
 });

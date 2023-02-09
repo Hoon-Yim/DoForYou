@@ -47,7 +47,7 @@ const taskSchema = mongoose.Schema({
             required: [true, "Province is required"]
         },
     },
-    categories: {
+    categy: {
         type: String,
         enum: [
             "Courier Service",
@@ -66,7 +66,8 @@ const taskSchema = mongoose.Schema({
             "Financial Advisor",
             "Beauty and Health",
             "Tutors and Training"
-        ]
+        ],
+        required: [true, "Category is required"]
     },
     startDate: {
         type: Date,
@@ -87,7 +88,7 @@ const taskSchema = mongoose.Schema({
             "Credit Card",
             "PayPal"
         ],
-        required: [true, "Choose a payment method"]
+        required: [true, "Payment method is required"]
     },
     details: {
         type: String,

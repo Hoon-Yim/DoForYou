@@ -1,14 +1,40 @@
 const mongoose = require("mongoose");
 
 const taskSchema = mongoose.Schema({
-    createdAt: {
-        type: Date,
-        default: Date.now()
+    title: {
+        type: String,
+        required: [true, "Title is required"],
+        trim: true,
     },
-    amount: {
-        type: Number,
-        required: [true, "Amount is required"],
-        unique: true
+    category: {
+        type: String,
+        enum: [
+            "Courier Service",
+            "Repair of Digital Devices",
+            "Design",
+            "Event and Promotions",
+            "Software Development",
+            "Installation and Repair of Equipment",
+            "Cargo Transportation",
+            "Cleaning and Household Help",
+            "Transport Repair",
+            "Photo, Video and Audio",
+            "Repair and Construction",
+            "Computer Help",
+            "Virtual Assistant",
+            "Financial Advisor",
+            "Beauty and Health",
+            "Tutors and Training"
+        ],
+        required: [true, "Category is required"]
+    },
+    remote: {
+        type: String,
+        enum: [
+            "Can be done remotely",
+            "Need to be done in person"
+        ],
+        required: [true, "Option is required"]
     },
     address: {
         // GeoJSON
@@ -20,7 +46,7 @@ const taskSchema = mongoose.Schema({
         coordinates: [Number],
         zipcode: {
             type: String,
-            required: [true, "ZipCode is required"]
+            required: [true, "Postal is required"]
         },
         address: {
             type: String,
@@ -47,27 +73,10 @@ const taskSchema = mongoose.Schema({
             required: [true, "Province is required"]
         },
     },
-    categy: {
-        type: String,
-        enum: [
-            "Courier Service",
-            "Repair of Digital Devices",
-            "Design",
-            "Event and Promotions",
-            "Software Development",
-            "Installation and Repair of Equipment",
-            "Cargo Transportation",
-            "Cleaning and Household Help",
-            "Transport Repair",
-            "Photo, Video and Audio",
-            "Repair and Construction",
-            "Computer Help",
-            "Virtual Assistant",
-            "Financial Advisor",
-            "Beauty and Health",
-            "Tutors and Training"
-        ],
-        required: [true, "Category is required"]
+    amount: {
+        type: Number,
+        required: [true, "Amount is required"],
+        unique: true
     },
     startDate: {
         type: Date,
@@ -82,18 +91,44 @@ const taskSchema = mongoose.Schema({
     paymentMethod: {
         type: String,
         enum: [
-            "E-Transfer",
-            "Wire Transfer",
-            "Cash",
-            "Credit Card",
-            "PayPal"
+            "Directly pay in person",
+            "by Bank e-transfer"
         ],
         required: [true, "Payment method is required"]
     },
     details: {
         type: String,
         required: [true, "Please enter the details of task"]
-    }
+    },
+    budget: {
+        type: Number,
+        required: [true, "Amount is required"],
+        validate(value) {
+            if (value < 0.0) {
+                throw new Error("Negative amount is not allowed")
+            }
+        }
+
+    },
+    phone: {
+        type: String,
+        required: [true, "Phone number is required"],
+        match: /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
+        validate: {
+            validator: function (num) {
+                return /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/.test(num);
+            },
+            message: '{VALUE} is not a valid phone number!'
+        }
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now()
+    },
+    updatedAt: {
+        type: Date,
+        default: Date.now()
+    },
 })
 
 module.exports = mongoose.model("Task", taskSchema);

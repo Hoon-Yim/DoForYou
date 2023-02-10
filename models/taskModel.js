@@ -73,20 +73,13 @@ const taskSchema = mongoose.Schema({
             required: [true, "Province is required"]
         },
     },
-    amount: {
-        type: Number,
-        required: [true, "Amount is required"],
-        unique: true
-    },
     startDate: {
         type: Date,
         default: Date.now(),
-        required: [true, "Start date is required"]
     },
     endDate: {
         type: Date,
         default: Date.now(),
-        required: [true, "End date is required"]
     },
     paymentMethod: {
         type: String,
@@ -108,7 +101,6 @@ const taskSchema = mongoose.Schema({
                 throw new Error("Negative amount is not allowed")
             }
         }
-
     },
     phone: {
         type: String,

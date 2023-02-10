@@ -12,6 +12,10 @@ app.use(express.json());
 const userRouter = require("./routes/userRoutes");
 app.use("/api/users", userRouter);
 
+const taskRouter = require("./routes/taskRoutes");
+app.use("/api/tasks", taskRouter);
+
+
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
 

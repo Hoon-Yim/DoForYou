@@ -7,7 +7,7 @@ const catchAsync = require("../utils/catchAsync");
 exports.getAllTasks = catchAsync(async (req, res) => {
     const tasks = await Task.find();
 
-    res.status(500).json({
+    res.status(200).json({
         status: "success",
         results: tasks.length,
         tasks
@@ -17,10 +17,9 @@ exports.getAllTasks = catchAsync(async (req, res) => {
 
 // Create new task
 exports.createTask = catchAsync(async (req, res) => {
-    const task = new Task(req.body);
-    await task.save();
+    const task = await Task.create(req.body);
 
-    res.status(500).json({
+    res.status(201).json({
         status: "success",
         results: task.length,
         task
@@ -32,7 +31,7 @@ exports.getTaskById = catchAsync(async (req, res) => {
     const taskId = req.params.tid
     const task = await Task.find({ _id: taskId })
 
-    res.status(500).json({
+    res.status(200).json({
         status: "success",
         results: task.length,
         task

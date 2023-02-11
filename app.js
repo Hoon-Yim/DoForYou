@@ -1,18 +1,19 @@
+const cors = require("cors");
 const express = require("express");
 const morgan = require("morgan"); // for logging purpose
 const app = express();
 
 // Middlewares
 if (process.env.NODE_DEV == "development") {
-    app.use(morgan("dev"));
+    app.use(morgan("dev")); // for logging purpose
 }
+app.use(cors({ credentials: true, origin: "*" }));
 app.use(express.json());
 
 // Routes
 const userRouter = require("./routes/userRoutes");
-app.use("/api/users", userRouter);
-
 const taskRouter = require("./routes/taskRoutes");
+app.use("/api/users", userRouter);
 app.use("/api/tasks", taskRouter);
 
 

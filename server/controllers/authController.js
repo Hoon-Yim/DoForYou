@@ -93,7 +93,6 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     }
 
     user.password = req.body.password;
-    user.passwordConfirm = req.body.passwordConfirm;
     user.passwordResetToken = undefined;
     user.passwordResetExpires = undefined;
 
@@ -102,5 +101,9 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     await user.save();
 
     // Log the user in, send JWT
-    createAndSendToken(user, 200, res);
+    const token = signToken(user._id);
+    res.status(201).json({
+        status: "success",
+        token
+    });
 });

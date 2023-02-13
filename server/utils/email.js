@@ -1,26 +1,40 @@
 const nodemailer = require("nodemailer");
+const nodemailerSendgrid = require("nodemailer-sendgrid");
 
 const sendEmail = async options => {
-    // 1) Create a transporter
+    // Create a transporter
+    // const transporter = nodemailer.createTransport({
+    //     host: process.env.EMAIL_HOST,
+    //     port: process.env.EMAIL_PORT,
+    //     secure: false,
+    //     auth: {
+    //         user: process.env.EMAIL_USERNAME,
+    //         pass: process.env.EMAIL_PASSWORD
+    //     }
+    // });
     const transporter = nodemailer.createTransport({
-        host: process.env.EMAIL_HOST,
-        port: process.env.EMAIL_PORT,
-        secure: false,
+        service: "SendGrid",
         auth: {
-            user: process.env.EMAIL_USERNAME,
-            pass: process.env.EMAIL_PASSWORD
+            user: process.env.SENDGRID_USERNAME,
+            pass: process.env.SENDGRID_PASSWORD
         }
     });
 
-    // 2) Define the email options
+    // const transporter = nodemailer.createTransport(
+    //     nodemailerSendgrid({
+    //         apikey: process.env.SENDGRID_PASSWORD
+    //     })
+    // );
+
+    // Define the email options
     const mailOptions = {
-        from: "Seunghun Yim <yimsh4507@gmail.com>",
+        from: "yimsh4507@gmail.com",
         to: options.email,
         subject: options.subject,
         text: options.message
     }
 
-    // 3) Actually send the email
+    // Actually send the email
     await transporter.sendMail(mailOptions);
 }
 

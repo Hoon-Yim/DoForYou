@@ -253,6 +253,11 @@
     border: 1px solid var(--primary-yellow);
 }
 
+.new-task-submit {
+    text-decoration: none;
+    color: var(--text-main);
+}
+
 @media screen and (max-height: 960px) {
     .create-new-task {
     }

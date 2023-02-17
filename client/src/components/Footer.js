@@ -6,16 +6,16 @@ function Footer() {
     return (
         <div className="footer">
             <div className="footer-container">
-                <div class="footer-links">
+                <div className="footer-links">
                     <div className="footer-link-wrapper">
                         <div className="footer-link-items">
-                            <div class="footer-link-left">
+                            <div className="footer-link-left">
                                 <h1 className="logo">DoForYou</h1>
                                 <h6 className="footer-text">
                                     Let us free you from worries
                                 </h6>
                             </div>
-                            <div class="footer-link-center">
+                            <div className="footer-link-center">
                                 <Link to="/create-new-task">
                                     Create New Task
                                 </Link>
@@ -25,7 +25,7 @@ function Footer() {
                                 </Link>
                                 <Link to="/">FAQ</Link>
                             </div>
-                            <div class="footer-link-right">
+                            <div className="footer-link-right">
                                 <Link to="/" className="chat">
                                     <h4 className="footer-text">Let's Chat!</h4>
                                 </Link>
@@ -35,38 +35,38 @@ function Footer() {
                                 <h5 className="footer-text">
                                     +1 (123) 456 7890
                                 </h5>
-                                <div class="social-icons">
+                                <div className="social-icons">
                                     <Link
-                                        class="social-icon-link instagram"
+                                        className="social-icon-link instagram"
                                         to="/"
                                         target="_blank"
                                         aria-label="Instagram"
                                     >
-                                        <i class="fab fa-instagram" />
+                                        <i className="fab fa-instagram" />
                                     </Link>
                                     <Link
-                                        class="social-icon-link telegram"
+                                        className="social-icon-link telegram"
                                         to="/"
                                         target="_blank"
                                         aria-label="Youtube"
                                     >
-                                        <i class="fab fa-telegram" />
+                                        <i className="fab fa-telegram" />
                                     </Link>
                                     <Link
-                                        class="social-icon-link facebook"
+                                        className="social-icon-link facebook"
                                         to="/"
                                         target="_blank"
                                         aria-label="Facebook"
                                     >
-                                        <i class="fab fa-facebook-f" />
+                                        <i className="fab fa-facebook-f" />
                                     </Link>
                                     <Link
-                                        class="social-icon-link twitter"
+                                        className="social-icon-link twitter"
                                         to="/"
                                         target="_blank"
                                         aria-label="Twitter"
                                     >
-                                        <i class="fab fa-twitter" />
+                                        <i className="fab fa-twitter" />
                                     </Link>
                                 </div>
                             </div>

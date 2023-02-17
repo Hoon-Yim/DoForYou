@@ -40,7 +40,7 @@ function Main() {
                         buttonStyle="btn--outline"
                         buttonSize="btn--large"
                     >
-                        CONTACT US{" "}
+                        CONTACT US
                         <i className="fa-solid fa-comments chat-icon" />
                     </Button>
                 </div>

@@ -90,18 +90,34 @@ function Navbar(props) {
                     <div>
                         {props.isLogin ? (
                             <>
-                                <Button
-                                    buttonStyle="btn--white"
-                                    buttonSize="btn--medium-bold"
-                                    onClick={() => {
-                                        cookies.set("jwt", "logout");
-                                        window.location.reload();
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        alignItems: "center",
                                     }}
                                 >
-                                    <div className="login-btn-link">
-                                        Log out
+                                    <div
+                                        style={{
+                                            color: "#fff",
+                                            marginRight: 20,
+                                            fontWeight: 300,
+                                        }}
+                                    >
+                                        username
                                     </div>
-                                </Button>
+                                    <Button
+                                        buttonStyle="btn--white"
+                                        buttonSize="btn--medium-bold"
+                                        onClick={() => {
+                                            cookies.set("jwt", "logout");
+                                            window.location.reload();
+                                        }}
+                                    >
+                                        <div className="login-btn-link">
+                                            Log out
+                                        </div>
+                                    </Button>
+                                </div>
                             </>
                         ) : (
                             <Button

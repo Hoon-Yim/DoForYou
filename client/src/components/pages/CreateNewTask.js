@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../App.css";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import "./CreateNewTask.css";
@@ -550,7 +550,12 @@ function CreateNewTask() {
                                                                 type="submit"
                                                                 className="btn-new-task"
                                                             >
-                                                                SUBMIT
+                                                                <Link
+                                                                    to="/find-tasks"
+                                                                    className="new-task-submit"
+                                                                >
+                                                                    SUBMIT
+                                                                </Link>
                                                             </button>
                                                         </div>
                                                     </div>

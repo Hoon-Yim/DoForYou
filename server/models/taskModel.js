@@ -16,11 +16,11 @@ const taskSchema = mongoose.Schema({
             "Software Development",
             "Installation and Repair of Equipment",
             "Cargo Transportation",
-            "Cleaning and Household Help",
+            "Cleaning and Household",
             "Transport Repair",
             "Photo, Video and Audio",
             "Repair and Construction",
-            "Computer Help",
+            "Computer",
             "Virtual Assistant",
             "Financial Advisor",
             "Beauty and Health",
@@ -29,7 +29,8 @@ const taskSchema = mongoose.Schema({
         required: [true, "Category is required"]
     },
     remote: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     location: {
         // GeoJSON
@@ -39,18 +40,9 @@ const taskSchema = mongoose.Schema({
             enum: ["Point"]
         },
         coordinates: [Number],
-        zipcode: {
-            type: String,
-            required: [true, "Postal is required"]
-        },
-        address: {
-            type: String,
-            required: [true, "Address is required"]
-        },
-        city: {
-            type: String,
-            required: [true, "City is required"]
-        },
+        zipcode: { type: String },
+        address: { type: String },
+        city: { type: String },
         province: {
             type: String,
             enum: [
@@ -64,8 +56,7 @@ const taskSchema = mongoose.Schema({
                 "Prince Edward Island",
                 "Quebec",
                 "Saskatchewan"
-            ],
-            required: [true, "Province is required"]
+            ]
         },
     },
     startDate: {

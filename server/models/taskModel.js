@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const taskSchema = mongoose.Schema({
     title: {
         type: String,
-        required: [true, "Title is required"],
         trim: true,
+        required: [true, "Title is required"],
     },
     category: {
         type: String,
@@ -29,12 +29,7 @@ const taskSchema = mongoose.Schema({
         required: [true, "Category is required"]
     },
     remote: {
-        type: String,
-        enum: [
-            "Can be done remotely",
-            "Need to be done in person"
-        ],
-        required: [true, "Option is required"]
+        type: Boolean
     },
     address: {
         // GeoJSON
@@ -60,7 +55,7 @@ const taskSchema = mongoose.Schema({
             type: String,
             enum: [
                 "Alberta",
-                "British Colombia",
+                "British Columbia",
                 "Manitoba",
                 "New Brunswick",
                 "Newfoundland",
@@ -84,8 +79,8 @@ const taskSchema = mongoose.Schema({
     paymentMethod: {
         type: String,
         enum: [
-            "Directly pay in person",
-            "by Bank e-transfer"
+            "in-person",
+            "e-transfer"
         ],
         required: [true, "Payment method is required"]
     },

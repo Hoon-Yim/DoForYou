@@ -76,7 +76,7 @@ const userSchema = mongoose.Schema({
             type: String,
             enum: [
                 "Alberta",
-                "British Colombia",
+                "British Columbia",
                 "Manitoba",
                 "New Brunswick",
                 "Newfoundland",

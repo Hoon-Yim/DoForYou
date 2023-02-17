@@ -1,0 +1,108 @@
+.register {
+    background-color: #f0f0f0;
+}
+
+.register-container {
+    display: flex;
+    height: 95vh;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.register-wrapper {
+    display: flex;
+    margin: auto 0;
+    width: 1000px;
+    flex-direction: column;
+}
+
+.register-title {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.register-title > h1 {
+    color: var(--text-main);
+    font-size: 30px;
+    text-align: center;
+}
+
+.register-outline-box {
+    width: 570px;
+    background-color: #fff;
+}
+
+.register-inline-box {
+    border: 2px solid #dadada;
+    margin: 15px;
+}
+
+.register-form {
+    width: 375px;
+    margin: 0 auto;
+}
+
+.register-input-label {
+    font-size: 12px;
+    font-weight: 300;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+}
+
+.register-input-field input,
+select {
+    width: 100%;
+    height: 35px;
+    margin-bottom: 2rem;
+    background-color: #f0f0f0;
+    padding-left: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid;
+    font-size: 16px;
+}
+
+.name-combine,
+.address-combine {
+    display: flex;
+}
+
+.name-combine-left,
+.address-combine-left {
+    margin-right: 1rem;
+}
+
+.name-combine-left,
+.name-combine-right,
+.address-combine-left,
+.address-combine-right {
+    width: 50%;
+}
+
+.register-submit {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-register {
+    margin: 0 auto;
+    height: 40px;
+    width: 375px;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: var(--primary-blue);
+    color: #fff;
+    border: 1px solid var(--primary-blue);
+}
+
+@media screen and (max-height: 960px) {
+    .register-container {
+        display: flex;
+        height: 110vh;
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+}

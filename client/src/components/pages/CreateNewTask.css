@@ -1,0 +1,259 @@
+.create-new-task {
+}
+
+.create-new-task-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.create-new-task-wrapper {
+    display: flex;
+    width: 1200px;
+    background-color: #fff;
+    padding: 7rem 0;
+}
+
+.create-new-task-wrapper-left {
+    width: 55%;
+    background-color: var(--secondary-very-light);
+    border-radius: 25px;
+}
+
+.create-new-task-wrapper-left-text {
+    height: 600px;
+    padding: 5rem 0;
+    color: var(--text-default);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* center? */
+}
+
+.create-new-task-wrapper-left-text-main {
+    font-size: 22px;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.create-new-task-wrapper-left-text-sub {
+    margin-top: 0.3rem;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.create-new-task-image {
+    height: 400px;
+    padding: 1rem;
+}
+
+.create-new-task-image-box {
+    height: 100%;
+    width: 90%;
+    display: flex;
+    align-items: flex-end;
+    margin: 0 auto;
+}
+.create-new-task-image-png {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.create-new-task-wrapper-right {
+    width: 45%;
+    height: 100%;
+    margin: 1rem 2rem;
+}
+
+.create-new-task-wrapper-outline {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-new-task-content {
+    margin: auto 0;
+}
+
+.create-new-task-title {
+    width: 320px;
+    /*margin: 0 auto 3rem;*/
+    margin-bottom: 2rem;
+}
+
+.create-new-task-title > h1 {
+    color: var(--text-main);
+    font-size: 30px;
+    text-align: left;
+}
+
+.create-new-task-form {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.create-new-task-input-label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 0.7rem;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    color: var(--secondary-medium);
+}
+
+.create-new-task-input-sub-label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 0.7rem;
+    margin-bottom: 0.4rem;
+    color: var(--secondary-medium);
+}
+
+.create-new-task-radio-combine {
+    display: flex;
+    margin: 1rem 0;
+    align-items: center;
+}
+.create-new-task-radio-combine-left,
+.create-new-task-radio-combine-right {
+    display: flex;
+    margin: 10px;
+}
+
+.create-new-task-radio {
+    width: 20px;
+}
+
+.radio-combine-label {
+    margin-left: 10px;
+    color: var(--text-default);
+}
+
+.create-new-task-input-field-input,
+.create-new-task-input-field-sub-input,
+.create-new-task-input-select,
+.create-new-task-input-sub-select {
+    width: 100%;
+    height: 36px;
+    padding-left: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid;
+    font-size: 16px;
+}
+
+.create-new-task-input-field-input,
+.create-new-task-input-select {
+    margin-bottom: 2rem;
+}
+
+.create-new-task-input-sub-select {
+    margin-bottom: 0.6rem;
+}
+
+.create-new-task-input-field-sub-input {
+    margin-bottom: 0.6rem;
+}
+
+.create-new-task-input-select {
+    height: 36px;
+    width: 100%;
+}
+
+/* ----- */
+.date-and-time-combine {
+    display: flex;
+}
+
+.date-and-time-combine-left {
+    margin-right: 1rem;
+}
+
+.date-and-time-combine-left,
+.date-and-time-combine-right {
+    width: 50%;
+}
+/* ------ */
+
+.info-combine,
+.email-phone-combine,
+.address-combine {
+    display: flex;
+}
+
+.info-combine-left,
+.email-phone-combine-left {
+    margin-right: 1rem;
+}
+
+.email-phone-combine-left,
+.address-combine-left,
+.email-phone-combine-right .address-combine-right {
+    width: 50%;
+}
+
+.info-combine-left,
+.info-combine-center {
+    width: 35%;
+}
+
+.info-combine-right {
+    width: 30%;
+}
+
+.create-new-task-label-combine {
+    display: flex;
+    justify-content: space-between;
+}
+
+.create-new-task-submit {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-new-task-input-sub-label {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-disabled);
+}
+
+.new-task-bottom {
+    display: flex;
+    width: 100%;
+}
+
+.new-task-cancel {
+    width: 30%;
+}
+
+.new-task-submit {
+    width: 68%;
+}
+
+.btn-cancel {
+    height: 40px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: var(--cancel);
+    color: var(--text-main);
+    border: 1px solid var(--cancel);
+}
+
+.btn-new-task {
+    margin-left: 3%;
+    height: 40px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: var(--primary-yellow);
+    color: var(--text-main);
+    border: 1px solid var(--primary-yellow);
+}
+
+@media screen and (max-height: 960px) {
+    .create-new-task {
+    }
+}

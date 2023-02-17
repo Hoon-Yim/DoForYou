@@ -1,0 +1,149 @@
+/* ----- Share with Register and Become Performer page ----- */
+.nav-small {
+    height: 5vh;
+    padding: 4rem 3rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-small-left {
+    display: flex;
+    align-items: center;
+}
+
+.back-to-main,
+.go-to-another-step {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 14px;
+}
+
+#btn-register {
+    margin-left: 1rem;
+}
+/* ------------------------------------ */
+
+.login {
+    background-color: #f0f0f0;
+}
+
+.login-container {
+    display: flex;
+    height: 95vh;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.login-wrapper {
+    display: flex;
+    margin: auto 0;
+    height: 500px;
+    width: 1000px;
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 2px 4px 24px 0 rgb(0, 0, 0, 0.1);
+}
+
+.login-wrapper-left {
+    width: 55%;
+    background-color: var(--secondary-light);
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.login-image {
+    height: 100%;
+    margin: 1rem;
+}
+
+.login-image-box {
+    width: 450px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+.login-image-png {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.login-wrapper-right {
+    width: 45%;
+    height: 100%;
+}
+
+.login-wrapper-outline {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-content {
+    margin: auto 0;
+}
+
+.login-title {
+    width: 320px;
+    margin: 0 auto 3rem;
+}
+
+.login-title > h1 {
+    color: var(--text-main);
+    font-size: 30px;
+    text-align: left;
+}
+
+.login-form {
+    width: 320px;
+    margin: 0 auto;
+}
+
+.login-input-label {
+    font-size: 12px;
+    font-weight: 300;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+}
+
+.login-input-field input {
+    width: 320px;
+    height: 35px;
+    margin-bottom: 2rem;
+    padding-left: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid;
+    font-size: 16px;
+}
+
+.login-submit,
+.login-bottom {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-login {
+    margin: 0 auto;
+    height: 40px;
+    width: 140px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 25px;
+    background-color: var(--primary-yellow);
+    color: var(--text-main);
+    border: 1px solid var(--primary-yellow);
+}
+
+.login-bottom {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.login-bottom-link {
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}

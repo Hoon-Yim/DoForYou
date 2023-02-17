@@ -31,7 +31,7 @@ const taskSchema = mongoose.Schema({
     remote: {
         type: Boolean
     },
-    address: {
+    location: {
         // GeoJSON
         type: {
             type: String,

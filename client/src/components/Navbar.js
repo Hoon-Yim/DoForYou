@@ -9,6 +9,15 @@ function Navbar(props) {
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
 
+    const [isLogin, setIsLogin] = useState(false);
+    useEffect(() => {
+        if (cookies.get("jwt") === "logout") {
+            setIsLogin(false);
+        } else {
+            setIsLogin(true);
+        }
+    }, []);
+
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
 
@@ -88,7 +97,7 @@ function Navbar(props) {
                         </li>
                     </ul>
                     <div>
-                        {props.isLogin ? (
+                        {isLogin ? (
                             <>
                                 <div
                                     style={{

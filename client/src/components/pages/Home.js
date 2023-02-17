@@ -9,19 +9,9 @@ import Reviews from "../Reviews";
 import Cookies from "universal-cookie";
 
 function Home() {
-    const cookies = new Cookies();
-    const [isLogin, setIsLogin] = useState(false);
-    useEffect(() => {
-        if (cookies.get("jwt") === "logout") {
-            setIsLogin(false);
-        } else {
-            setIsLogin(true);
-        }
-    }, []);
-
     return (
         <>
-            <Navbar isLogin={isLogin} />
+            <Navbar />
 
             <Main />
             <Process />

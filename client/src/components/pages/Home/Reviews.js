@@ -1,8 +1,8 @@
 import React from "react";
-import { Button } from "./Button";
+import { Button } from "../../Button";
 import "./Reviews.css";
 // import ReviewsItem from "./ReviewsItem";
-import Carousel from "react-multi-carousel";
+// import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 const responsive = {

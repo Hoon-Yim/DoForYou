@@ -1,16 +1,17 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import CreateNewTask from "./components/pages/CreateNewTask";
-import FindTasks from "./components/pages/FindTasks";
-import MyTasks from "./components/pages/MyTasks";
-import Home from "./components/pages/Home";
-import LogIn from "./components/pages/LogIn";
-import About from "./components/pages/About";
-import BecomePerformer from "./components/pages/BecomePerformer";
-import Register from "./components/pages/Register";
-import ForgotPassword from "./components/pages/ForgotPassword";
-import ForgotPasswordAlert from "./components/pages/ForgotPasswordAlert";
+import CreateNewTask from "./components/pages/NewTask/CreateNewTask";
+import FindTasks from "./components/pages/FindTasks/FindTasks";
+import MyTasks from "./components/pages/MyTasks/MyTasks";
+import Home from "./components/pages/Home/Home";
+import LogIn from "./components/pages/LogIn/LogIn";
+import ContactUs from "./components/pages/ContactUs/ContactUs";
+import Register from "./components/pages/Register/Register";
+import BecomePerformer from "./components/pages/BecomePerformer/BecomePerformer";
+import ForgotPassword from "./components/pages/ForgotPassword/ForgotPassword";
+import ForgotPasswordAlert from "./components/pages/ForgotPassword/ForgotPasswordAlert";
+import TaskDetail from "./components/pages/TaskDetail";
 
 function App() {
     return (
@@ -24,8 +25,8 @@ function App() {
                     />
                     <Route path="/find-tasks" element={<FindTasks />} />
                     <Route path="/my-tasks" element={<MyTasks />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/log-in" element={<LogIn />} />
+                    <Route path="/contact-us" element={<ContactUs />} />
+                    <Route path="/login" element={<LogIn />} />
                     <Route path="/register" element={<Register />} />
                     <Route
                         path="/become-performer"
@@ -39,6 +40,8 @@ function App() {
                         path="/password-alert"
                         element={<ForgotPasswordAlert />}
                     />
+                    <Route path="/my-tasks" element={<MyTasks />} />
+                    <Route path="/task-detail" element={<TaskDetail />} />
                 </Routes>
             </Router>
         </>

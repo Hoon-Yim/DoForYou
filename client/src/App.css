@@ -57,15 +57,11 @@ h6 {
 }
 
 .home,
-.my-tasks,
 .about {
     display: flex;
     height: 70vh;
     align-items: center;
     justify-content: center;
-}
-.my-tasks {
-    font-size: 100px;
 }
 .about {
     font-size: 100px;

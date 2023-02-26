@@ -1,6 +1,6 @@
 /* -------------------- Search bar -------------------- */
 .find-tasks-search-container .search-input {
-    border: 2px solid var(--secondary-dark);
+    border: 1px solid var(--secondary-medium);
 }
 .find-tasks-search-wrap {
     width: 800px;
@@ -103,60 +103,61 @@
     width: 100%;
     padding: 2rem 3rem;
     border-radius: 15px;
-    box-shadow: 6px 6px 14px 0 rgb(0, 0, 0, 0.2);
-    margin-bottom: 2rem;
+    border: 1px solid var(--secondary-light);
+    /*box-shadow: 6px 6px 14px 0 rgb(0, 0, 0, 0.2);*/
+    margin-bottom: 1rem;
 }
 
-.list-item-top {
+.find-task-list-item-top {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
 
-.list-item-title {
+.find-task-list-item-title {
     font-size: 22px;
 }
 
-.list-item-price {
+.find-task-list-item-price {
     display: flex;
     align-items: center;
     font-size: 20px;
 }
 
-.price-tag {
+.find-task-price-tag {
     font-weight: 700;
 }
-.price-number {
+.find-task-price-number {
     margin-left: 10px;
     font-weight: 300;
 }
 
-.list-item-bottom {
+.find-task-list-item-bottom {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     margin-top: 2rem;
 }
 
-.list-item-desc-address {
+.find-task-list-item-desc-address {
     font-weight: 300;
 }
 
-.list-item-desc-when {
+.find-task-list-item-desc-when {
     display: flex;
     margin-top: 12px;
 }
 
-.list-item-desc-date-title {
+.find-task-list-item-desc-date-title {
     font-weight: 500;
 }
 
-.list-item-desc-date-time {
+.find-task-list-item-desc-date-time {
     margin-left: 10px;
     font-weight: 300;
 }
 
-.list-item-uploader {
+.find-task-list-item-uploader {
     font-size: 18px;
     font-weight: 300;
 }

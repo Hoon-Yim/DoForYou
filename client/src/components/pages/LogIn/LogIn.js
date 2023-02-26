@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import "../../App.css";
-import "./Login.css";
+import "./LogIn.css";
 import Cookies from "universal-cookie";
 
 function LogIn() {

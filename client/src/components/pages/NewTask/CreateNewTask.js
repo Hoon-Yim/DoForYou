@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "../../App.css";
-import Footer from "../Footer";
-import Navbar from "../Navbar";
+import "../../../App.css";
+import Footer from "../../Footer";
+import Navbar from "../../Navbar";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
@@ -41,7 +41,7 @@ function CreateNewTask() {
             .then((data) => {
                 cookies.set("jwt", data.data.token);
                 console.log(data.data);
-                // navigate("/");
+                navigate("/find-tasks");
             })
             .catch((error) => {
                 console.log(error);
@@ -550,12 +550,7 @@ function CreateNewTask() {
                                                                 type="submit"
                                                                 className="btn-new-task"
                                                             >
-                                                                <Link
-                                                                    to="/find-tasks"
-                                                                    className="new-task-submit"
-                                                                >
-                                                                    SUBMIT
-                                                                </Link>
+                                                                SUBMIT
                                                             </button>
                                                         </div>
                                                     </div>

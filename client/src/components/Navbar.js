@@ -79,11 +79,11 @@ function Navbar(props) {
                         </li>
                         <li className="nav-item">
                             <Link
-                                to="/about"
+                                to="/contact-us"
                                 className="nav-links"
                                 onClick={closeMobileMenu}
                             >
-                                About
+                                Contact Us
                             </Link>
                         </li>
                         <li className="nav-item">

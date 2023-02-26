@@ -1,0 +1,162 @@
+/* -------------------- Search bar -------------------- */
+.find-tasks-search-container .search-input {
+    border: 2px solid var(--secondary-dark);
+}
+.find-tasks-search-wrap {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.find-tasks-search-wrap .search-box {
+    position: relative;
+    width: 800px;
+    height: 60px;
+}
+
+.find-tasks-search-wrap .search-box .search-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px 30px;
+}
+
+.find-tasks-search-wrap .search-box .button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 100%;
+    background-color: var(--secondary-dark);
+    z-index: 1;
+}
+
+.find-tasks-search-wrap .search-box .search-input {
+    border-radius: 30px;
+}
+
+.find-tasks-search-wrap .search-box .button {
+    width: 150px;
+    height: 46px;
+    margin: 7px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+}
+
+/* -------------------- Filtering -------------------- */
+.find-tasks-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.find-tasks-wrapper {
+    padding: 5rem 0;
+}
+
+.find-tasks-title {
+    width: 100%;
+    text-align: center;
+}
+
+.find-tasks-title-main {
+    font-size: 45px;
+}
+
+.find-tasks-title-sub {
+    margin: 0.3rem 0 2rem;
+}
+
+.find-tasks-content {
+    margin-top: 3.5rem;
+    width: 100%;
+    display: flex;
+}
+
+.find-tasks-filter {
+    width: 25%;
+}
+
+.find-tasks-list {
+    /*border: 1px solid #000;*/
+    width: 75%;
+}
+
+.find-tasks-filter-list-row {
+    display: flex;
+    padding: 7px;
+}
+
+.filter-checkbox {
+    margin-right: 8px;
+}
+
+.filter-label {
+    font-weight: 300;
+}
+
+.find-task-list-item {
+    width: 100%;
+    padding: 2rem 3rem;
+    border-radius: 15px;
+    box-shadow: 6px 6px 14px 0 rgb(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+}
+
+.list-item-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.list-item-title {
+    font-size: 22px;
+}
+
+.list-item-price {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.price-tag {
+    font-weight: 700;
+}
+.price-number {
+    margin-left: 10px;
+    font-weight: 300;
+}
+
+.list-item-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 2rem;
+}
+
+.list-item-desc-address {
+    font-weight: 300;
+}
+
+.list-item-desc-when {
+    display: flex;
+    margin-top: 12px;
+}
+
+.list-item-desc-date-title {
+    font-weight: 500;
+}
+
+.list-item-desc-date-time {
+    margin-left: 10px;
+    font-weight: 300;
+}
+
+.list-item-uploader {
+    font-size: 18px;
+    font-weight: 300;
+}

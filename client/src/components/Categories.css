@@ -1,0 +1,42 @@
+.categories-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.categories-wrapper {
+    padding: 5rem 0;
+}
+
+.categories-title {
+    width: 100%;
+    text-align: center;
+}
+
+.title-main {
+    font-size: 45px;
+}
+
+.title-sub {
+    margin-top: 15px;
+}
+
+.cate-icon {
+    color: var(--secondary-medium);
+    margin-right: 7px;
+}
+.categories-list {
+    margin-top: 3rem;
+}
+
+.categories-list-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.categories-list-row .btn {
+    margin: 5px;
+}

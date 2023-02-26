@@ -1,0 +1,113 @@
+.reviews {
+    background-color: #f0f0f0;
+}
+
+.reviews-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.reviews-wrapper {
+    padding: 5rem 0;
+}
+
+.reviews-title {
+    width: 100%;
+    text-align: center;
+}
+
+.reviews-title > h1 {
+    font-size: 45px;
+}
+
+.reviews-title > h5 {
+    margin-top: 15px;
+}
+/*
+.react-multi-carousel-list {
+    display: flex;
+    justify-content: center;
+}
+*/
+.reviews-content {
+    margin-top: 30px;
+    display: flex;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    width: 350px;
+    text-align: left;
+    background: #fff;
+    border-radius: 20px;
+    margin: 20px 10px;
+}
+
+.card .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+    z-index: 100;
+}
+
+.testimonial-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.testimonial-price {
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.testimonial-desc {
+    height: 140px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    line-height: 20px;
+}
+
+.performer-info {
+    display: flex;
+}
+
+.card .performer-pic {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.card .performer-pic img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.performer-details {
+    margin: auto 0;
+}
+
+.user-name,
+.user-rating {
+    margin-bottom: 7px;
+}
+
+.user-name {
+    font-size: 18px;
+}
+
+.user-rating {
+    font-weight: 300;
+}
+
+.user-completed {
+    font-weight: 300;
+}

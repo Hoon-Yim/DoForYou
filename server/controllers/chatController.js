@@ -1,21 +1,24 @@
-const socket = require("socket.io");
+const catchAsync = require("../utils/catchAsync");
 
-const receiveMessage = socket => {
-    socket.emit("receive_message", `${socket.id} has been connected`);
-}
+// const Message = require("../models/messageModel");
+const Room = require("../models/roomModel");
 
-const sendReceivedMessage = socket => {
-    socket.on("message", data => {
-        console.log(socket.id, data);
+exports.getAllChatRooms = catchAsync(async (req, res, next) => {
+    const rooms = await Room.find();
 
-        socket.emit("message", `${data.firstname}: ${data.message}`);
-        socket.broadcast.emit("message", `${data.firstname}: ${data.message}`);
+    res.status(200).json({
+        status: "success",
+        results: rooms.length,
+        rooms
     });
-}
+}); 
 
-exports.connection = socket => {
-    console.log(socket.id, "Connected");
+exports.createChatRoom = catchAsync(async (req, res, next) => {
+    const room = await Room.create(req.body);
+    console.log(room);
 
-    receiveMessage(socket);
-    sendReceivedMessage(socket);
-}
+    res.status(201).json({
+        status: "success",
+        room
+    });
+});

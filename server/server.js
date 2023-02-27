@@ -1,3 +1,4 @@
+const socket = require("socket.io");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv")
 dotenv.config({ path: `${__dirname}/config.env` });
@@ -11,7 +12,18 @@ mongoose.connect(DB).then(() => {
 });
 
 // Request listening
-const port = process.env.PORT || 8000;
-app.listen(port, () => {
-    console.log(`App running on port ${port}..`);
+const PORT = process.env.PORT || 8000;
+const server = app.listen(PORT, () => {
+    console.log(`App running on port ${PORT}..`);
 });
+
+const io = socket(server, {
+    cors: {
+        origin: '*',
+        methods: ["GET", "POST"]
+    }
+});
+
+const chatController = require("./controllers/chatController");
+
+io.on("connection", chatController.connection);

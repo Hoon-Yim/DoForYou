@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const messageSchema = mongoose.Schema({
+const roomSchema = mongoose.Schema({
     title: {
         type: String,
         default: "Chat Room"
@@ -20,4 +20,4 @@ const messageSchema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("Message", messageSchema);
+module.exports = mongoose.model("Room", roomSchema);

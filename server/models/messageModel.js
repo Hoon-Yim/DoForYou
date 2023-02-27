@@ -8,8 +8,17 @@ const messageSchema = mongoose.Schema({
     sender: {
         type: mongoose.Schema.ObjectId,
         ref: "User",
-        required: [true, "A message must belong to a user"]
+        required: [true, "A message must belong to a sender(user)"]
     },
+    room: {
+        type: mongoose.Schema.ObjectId,
+        ref: "Room",
+        required: [true, "A message must belong to a room"]
+    },
+    sentAt: {
+        type: Date,
+        default: Date.now()
+    }
 });
 
 module.exports = mongoose.model("Message", messageSchema);

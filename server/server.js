@@ -24,6 +24,6 @@ const io = socket(server, {
     }
 });
 
-const chatController = require("./controllers/chatController");
+const chatController = require("./controllers/socketController");
 
 io.on("connection", chatController.connection);

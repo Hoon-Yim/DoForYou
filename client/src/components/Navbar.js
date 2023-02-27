@@ -8,12 +8,15 @@ function Navbar(props) {
     const cookies = new Cookies();
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
+    const [firstname, setFirstname] = useState("");
 
     const [isLogin, setIsLogin] = useState(false);
     useEffect(() => {
         if (cookies.get("jwt") === "logout") {
             setIsLogin(false);
+            setFirstname("");
         } else {
+            setFirstname(cookies.get("firstname"));
             setIsLogin(true);
         }
     }, []);
@@ -112,13 +115,14 @@ function Navbar(props) {
                                             fontWeight: 300,
                                         }}
                                     >
-                                        username
+                                        {firstname}
                                     </div>
                                     <Button
                                         buttonStyle="btn--white"
                                         buttonSize="btn--medium-bold"
                                         onClick={() => {
-                                            cookies.set("jwt", "logout");
+                                            cookies.set("jwt", "logout", { path: '/' });
+                                            cookies.remove("firstname", { path: '/' });
                                             window.location.reload();
                                         }}
                                     >
@@ -133,7 +137,7 @@ function Navbar(props) {
                                 buttonStyle="btn--white"
                                 buttonSize="btn--medium-bold"
                             >
-                                <Link to="/log-in" className="login-btn-link">
+                                <Link to="/login" className="login-btn-link">
                                     Log in
                                 </Link>
                             </Button>

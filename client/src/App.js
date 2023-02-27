@@ -13,6 +13,8 @@ import ForgotPassword from "./components/pages/ForgotPassword/ForgotPassword";
 import ForgotPasswordAlert from "./components/pages/ForgotPassword/ForgotPasswordAlert";
 import TaskDetail from "./components/pages/TaskDetail";
 
+import Chat from "./Chat";
+
 function App() {
     return (
         <>
@@ -40,6 +42,7 @@ function App() {
                         path="/password-alert"
                         element={<ForgotPasswordAlert />}
                     />
+                    <Route path="/chat" element={<Chat />} />
                     <Route path="/my-tasks" element={<MyTasks />} />
                     <Route path="/task-detail" element={<TaskDetail />} />
                 </Routes>

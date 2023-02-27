@@ -8,8 +8,8 @@ const sendReceivedMessage = socket => {
     socket.on("message", data => {
         console.log(socket.id, data);
 
-        socket.emit("message", `Server: ${data}`);
-        socket.broadcast.emit("message", `Server: ${data}`);
+        socket.emit("message", `${data.firstname}: ${data.message}`);
+        socket.broadcast.emit("message", `${data.firstname}: ${data.message}`);
     });
 }
 

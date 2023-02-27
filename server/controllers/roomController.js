@@ -3,7 +3,7 @@ const catchAsync = require("../utils/catchAsync");
 // const Message = require("../models/messageModel");
 const Room = require("../models/roomModel");
 
-exports.getAllChatRooms = catchAsync(async (req, res, next) => {
+exports.getAllRooms = catchAsync(async (req, res, next) => {
     const rooms = await Room.find();
 
     res.status(200).json({
@@ -13,7 +13,7 @@ exports.getAllChatRooms = catchAsync(async (req, res, next) => {
     });
 }); 
 
-exports.createChatRoom = catchAsync(async (req, res, next) => {
+exports.createRoom = catchAsync(async (req, res, next) => {
     const room = await Room.create(req.body);
     console.log(room);
 

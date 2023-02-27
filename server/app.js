@@ -13,10 +13,10 @@ app.use(express.json());
 // Routes
 const userRouter = require("./routes/userRoutes");
 const taskRouter = require("./routes/taskRoutes");
-const chatRouter = require("./routes/chatRoutes");
+const roomRouter = require("./routes/roomRoutes");
 app.use("/api/users", userRouter);
 app.use("/api/tasks", taskRouter);
-app.use("/api/chats", chatRouter);
+app.use("/api/chat/rooms", roomRouter);
 
 
 const AppError = require("./utils/appError");

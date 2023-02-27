@@ -19,6 +19,7 @@ function LogIn() {
             })
             .then((data) => {
                 cookies.set("jwt", data.data.token, { path: "/" });
+                cookies.set("firstname", data.data.user.firstname, { path: "/" });
                 navigate("/");
             })
             .catch((error) => {

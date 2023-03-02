@@ -13,3 +13,9 @@ exports.insertMessageIntoDB = async data => {
         message: data.message
     });
 };
+
+exports.retrieveMessages = async roomId => {
+    const messages = 
+        await Message.find({ room: roomId }).populate("sender");
+    return messages;
+}

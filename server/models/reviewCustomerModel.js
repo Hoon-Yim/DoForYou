@@ -1,16 +1,8 @@
 const mongoose = require("mongoose");
 
 const reviewCustomerSchema = mongoose.Schema({
-    customer: {
-        id: {
-            type: String
-        },
-        firstname: {
-            type: String
-        },
-        lastname: {
-            type: String
-        }
+    customerId: {
+        type: String
     },
     likes: {
         count: {

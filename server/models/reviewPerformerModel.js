@@ -1,18 +1,10 @@
 const mongoose = require("mongoose");
 
 const reviewPerformerSchema = mongoose.Schema({
-    performer:{
-        id:{
-            type: String
-        },
-        firstname: {
-            type: String
-        },
-        lastname: {
-            type: String
-        }
+    performerId: {
+        type: String
     },
-    rating:{
+    rating: {
         type: Number,
         validate(value) {
             if (value < 0.0 && value > 5.0) {
@@ -20,10 +12,10 @@ const reviewPerformerSchema = mongoose.Schema({
             }
         }
     },
-    totalRating:{
+    totalRating: {
         type: Number
     },
-    review:{
+    review: {
         type: String
     }
 });

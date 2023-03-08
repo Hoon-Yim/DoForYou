@@ -14,9 +14,11 @@ app.use(express.json());
 const userRouter = require("./routes/userRoutes");
 const taskRouter = require("./routes/taskRoutes");
 const roomRouter = require("./routes/roomRoutes");
+const reviewRouter = require("./routes/reviewRoutes");
 app.use("/api/users", userRouter);
 app.use("/api/tasks", taskRouter);
 app.use("/api/chat/rooms", roomRouter);
+app.use("/api/reviews", reviewRouter);
 
 
 const AppError = require("./utils/appError");

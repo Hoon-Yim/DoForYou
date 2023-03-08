@@ -7,6 +7,7 @@ const reviewCustomerSchema = mongoose.Schema({
     likes: {
         count: {
             type: Number,
+            default: 0
         },
         tags: {
             selectedTag: {
@@ -21,28 +22,35 @@ const reviewCustomerSchema = mongoose.Schema({
                 ]
             },
             countTag1: {
-                type: Number
+                type: Number,
+                default: 0
             },
             countTag2: {
-                type: Number
+                type: Number,
+                default: 0
             },
             countTag3: {
-                type: Number
+                type: Number,
+                default: 0
             },
             countTag4: {
-                type: Number
+                type: Number,
+                default: 0
             },
             countTag5: {
-                type: Number
+                type: Number,
+                default: 0
             },
             countTag6: {
-                type: Number
+                type: Number,
+                default: 0
             }
         }
     },
     dislikes: {
         count: {
-            type: Number
+            type: Number,
+            default: 0
         },
         tags: {
             selectedTag: {
@@ -57,22 +65,28 @@ const reviewCustomerSchema = mongoose.Schema({
                 ]
             },
             countTag1: {
-                type: Number
+                type: Number,
+                default: 0
             },
             countTag2: {
-                type: Number
+                type: Number,
+                default: 0
             },
             countTag3: {
-                type: Number
+                type: Number,
+                default: 0
             },
             countTag4: {
-                type: Number
+                type: Number,
+                default: 0
             },
             countTag5: {
-                type: Number
+                type: Number,
+                default: 0
             },
             countTag6: {
-                type: Number
+                type: Number,
+                default: 0
             }
         }
     }

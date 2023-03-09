@@ -12,9 +12,6 @@ const reviewPerformerSchema = mongoose.Schema({
             }
         }
     },
-    totalRating: {
-        type: Number
-    },
     review: {
         type: String
     }

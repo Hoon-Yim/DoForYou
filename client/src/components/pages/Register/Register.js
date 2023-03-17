@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import "./Register.css";
+import { Button } from "../../Button";
 
 function Register() {
     const cookies = new Cookies();
@@ -41,7 +42,9 @@ function Register() {
         <div className="register">
             <div className="nav-small">
                 <div className="nav-small-left">
-                    <i className="fa-solid fa-arrow-left fa-2x" />
+                    <Link to="/" className="back-arrow">
+                        <i className="fa-solid fa-arrow-left fa-2x" />
+                    </Link>
                     <Link to="/" className="back-to-main" id="btn-register">
                         BACK
                     </Link>
@@ -215,12 +218,13 @@ function Register() {
                                 </div>
 
                                 <div className="register-submit">
-                                    <button
+                                    <Button
+                                        buttonStyle="btn--primary-blue"
+                                        buttonSize="btn--wide"
                                         type="submit"
-                                        className="btn-register"
                                     >
                                         SIGN UP
-                                    </button>
+                                    </Button>
                                 </div>
                             </form>
                         </div>

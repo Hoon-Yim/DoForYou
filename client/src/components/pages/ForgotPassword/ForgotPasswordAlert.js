@@ -6,7 +6,9 @@ export default function ForgotPasswordAlert() {
         <div className="forgot-password">
             <div className="nav-small">
                 <div className="nav-small-left">
-                    <i className="fa-solid fa-arrow-left fa-2x" />
+                    <Link to="/" className="back-arrow">
+                        <i className="fa-solid fa-arrow-left fa-2x" />
+                    </Link>
                     <Link to="/" className="back-to-main" id="btn-register">
                         BACK
                     </Link>
@@ -34,7 +36,7 @@ export default function ForgotPasswordAlert() {
                                 type="submit"
                                 className="btn-forgot-password"
                             >
-                                <Link to="/log-in" className="btn-send-email">
+                                <Link to="/login" className="btn-send-email">
                                     DONE
                                 </Link>
                             </button>

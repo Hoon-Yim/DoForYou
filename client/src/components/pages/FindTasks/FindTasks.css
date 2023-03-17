@@ -1,6 +1,29 @@
+.find-tasks-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.find-tasks-wrapper {
+    padding: 5rem 0;
+}
+
+.find-tasks-title {
+    width: 100%;
+    text-align: center;
+}
+
+.find-tasks-title-main {
+    font-size: 45px;
+}
+
+.find-tasks-title-sub {
+    margin: 0.3rem 0 2rem;
+}
+
 /* -------------------- Search bar -------------------- */
 .find-tasks-search-container .search-input {
-    border: 1px solid var(--secondary-medium);
+    border: 2px solid var(--secondary-medium);
 }
 .find-tasks-search-wrap {
     width: 800px;
@@ -47,36 +70,13 @@
     border-radius: 25px;
 }
 
-/* -------------------- Filtering -------------------- */
-.find-tasks-container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.find-tasks-wrapper {
-    padding: 5rem 0;
-}
-
-.find-tasks-title {
-    width: 100%;
-    text-align: center;
-}
-
-.find-tasks-title-main {
-    font-size: 45px;
-}
-
-.find-tasks-title-sub {
-    margin: 0.3rem 0 2rem;
-}
-
 .find-tasks-content {
     margin-top: 3.5rem;
     width: 100%;
     display: flex;
 }
 
+/* -------------------- Filtering -------------------- */
 .find-tasks-filter {
     width: 25%;
 }
@@ -116,6 +116,32 @@
 
 .find-task-list-item-title {
     font-size: 22px;
+}
+
+.find-task-list-item-title-link {
+    position: relative;
+    text-decoration: none;
+    color: var(--secondary-dark);
+    font-weight: 700;
+}
+
+.find-task-list-item-title-link::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 4px;
+    background-color: var(--secondary-dark);
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.find-task-list-item-title-link:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
 }
 
 .find-task-list-item-price {

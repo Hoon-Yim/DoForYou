@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import "./CreateNewTask.css";
+import { Button } from "../../Button";
 
 function CreateNewTask() {
     const cookies = new Cookies();
@@ -24,6 +25,10 @@ function CreateNewTask() {
     const [budget, setBudget] = useState("");
     const [paymentMethod, setPaymentMethod] = useState("");
     const [phone, setPhone] = useState("");
+
+    const backToMain = () => {
+        navigate("/");
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -159,7 +164,7 @@ function CreateNewTask() {
                                                                     className="create-new-task-radio"
                                                                     type="radio"
                                                                     value={true}
-                                                                    name=""
+                                                                    name="service"
                                                                     onChange={(
                                                                         e
                                                                     ) =>
@@ -182,7 +187,7 @@ function CreateNewTask() {
                                                                     value={
                                                                         false
                                                                     }
-                                                                    name=""
+                                                                    name="service"
                                                                     onChange={(
                                                                         e
                                                                     ) =>
@@ -441,9 +446,9 @@ function CreateNewTask() {
                                                         <div className="create-new-task-input-label">
                                                             Details of work
                                                         </div>
-                                                        <input
-                                                            type="textarea"
-                                                            className="create-new-task-input-field-input"
+                                                        <textarea
+                                                            className="create-new-task-input-field-textarea"
+                                                            rows={5}
                                                             placeholder="Details"
                                                             onChange={(e) =>
                                                                 setDetails(
@@ -458,17 +463,22 @@ function CreateNewTask() {
                                                             What budget are you
                                                             looking for?
                                                         </div>
-                                                        <input
-                                                            type="number"
-                                                            className="create-new-task-input-field-input"
-                                                            placeholder="$ 0"
-                                                            onChange={(e) =>
-                                                                setBudget(
-                                                                    e.target
-                                                                        .value
-                                                                )
-                                                            }
-                                                        />
+                                                        <div className="create-new-task-input-budget-section">
+                                                            <div className="create-new-task-input-dollar">
+                                                                $
+                                                            </div>
+                                                            <input
+                                                                type="number"
+                                                                className="create-new-task-input-field-input"
+                                                                placeholder="0.00"
+                                                                onChange={(e) =>
+                                                                    setBudget(
+                                                                        e.target
+                                                                            .value
+                                                                    )
+                                                                }
+                                                            />
+                                                        </div>
                                                     </div>
                                                     <div className="create-new-task-input-field">
                                                         <div className="create-new-task-input-label">
@@ -480,7 +490,7 @@ function CreateNewTask() {
                                                                     className="create-new-task-radio"
                                                                     type="radio"
                                                                     value="in-person"
-                                                                    name=""
+                                                                    name="payment"
                                                                     onChange={(
                                                                         e
                                                                     ) =>
@@ -501,7 +511,7 @@ function CreateNewTask() {
                                                                     className="create-new-task-radio"
                                                                     type="radio"
                                                                     value="e-transfer"
-                                                                    name=""
+                                                                    name="payment"
                                                                     onChange={(
                                                                         e
                                                                     ) =>
@@ -537,21 +547,25 @@ function CreateNewTask() {
                                                     </div>
                                                     <div className="new-task-bottom">
                                                         <div className="new-task-cancel">
-                                                            <button
-                                                                type="submit"
-                                                                className="btn-cancel"
+                                                            <Button
+                                                                buttonStyle="btn--cancel"
+                                                                buttonSize="btn--wide-bold"
+                                                                onClick={
+                                                                    backToMain
+                                                                }
                                                             >
                                                                 CANCEL
-                                                            </button>
+                                                            </Button>
                                                         </div>
 
                                                         <div className="new-task-submit">
-                                                            <button
+                                                            <Button
+                                                                buttonStyle="btn--primary-blue"
+                                                                buttonSize="btn--wide-bold"
                                                                 type="submit"
-                                                                className="btn-new-task"
                                                             >
                                                                 SUBMIT
-                                                            </button>
+                                                            </Button>
                                                         </div>
                                                     </div>
                                                 </form>

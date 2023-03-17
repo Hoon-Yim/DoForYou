@@ -16,17 +16,14 @@ function Footer() {
                                 </h6>
                             </div>
                             <div className="footer-link-center">
-                                <Link to="/create-new-task">
-                                    Create New Task
-                                </Link>
-                                <Link to="/find-tasks">Find Tasks</Link>
                                 <Link to="/become-performer">
                                     Do you wanna be Performer?
                                 </Link>
                                 <Link to="/">FAQ</Link>
+                                <Link to="/about-us">About Us</Link>
                             </div>
                             <div className="footer-link-right">
-                                <Link to="/" className="chat">
+                                <Link to="/contact-us" className="chat">
                                     <h4 className="footer-text">Let's Chat!</h4>
                                 </Link>
                                 <h5 className="footer-text">

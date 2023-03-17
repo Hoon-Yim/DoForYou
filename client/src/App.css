@@ -11,6 +11,8 @@ font-family: 'Nunito', sans-serif;
     margin: 0;
     padding: 0;
     font-family: "Archivo", sans-serif;
+    letter-spacing: -0.04rem;
+    color: var(--text-main);
 }
 h2,
 h3,
@@ -47,7 +49,9 @@ h6 {
     --primary-dark-yellow: #c2964c;
     --cancel: #dadada;
     --secondary-dark: #1e1e1e;
+    --secondary-medium-dark: #4c4c4d;
     --secondary-medium: #7a7a7a;
+    --secondary-medium-light: #979797;
     --secondary-light: #dadada;
     --secondary-very-light: #ebebeb;
     --text-main: #1c1c1c;

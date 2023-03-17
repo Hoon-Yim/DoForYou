@@ -1,0 +1,257 @@
+.my-reviews-container {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.my-reviews-wrapper {
+    display: flex;
+    width: 1000px;
+    background-color: #fff;
+    padding: 9rem 0;
+}
+
+.my-reviews-wrapper-left {
+    width: 80%;
+    padding: 0 2rem;
+}
+
+.my-reviews-wrapper-left-section-title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 40px;
+}
+
+.my-reviews-wrapper-left-section-profile a {
+    color: var(--secondary-light);
+}
+
+.my-reviews-wrapper-left-section-reviews a {
+    font-weight: 700;
+}
+
+.my-reviews-wrapper-left-section-profile a,
+.my-reviews-wrapper-left-section-reviews a {
+    text-decoration: none;
+}
+
+/* Review as a customer */
+
+.my-reviews-as-customer {
+    width: 100%;
+    margin: 2.5rem auto 0;
+}
+
+.my-reviews-as-customer-title,
+.my-reviews-as-performer-title {
+    font-size: 20px;
+    margin-bottom: 1.5rem;
+}
+
+.my-reviews-as-customer-evaluation {
+    display: flex;
+    width: 100%;
+}
+.my-reviews-as-customer-evaluation-good-section,
+.my-reviews-as-customer-evaluation-bad-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+.my-reviews-as-customer-evaluation-good-section {
+    border-right: 1px solid var(--secondary-light);
+    padding: 1rem;
+}
+
+.my-reviews-as-customer-evaluation-good-thumbs-section,
+.my-reviews-as-customer-evaluation-bad-thumbs-section {
+    display: flex;
+    align-items: center;
+}
+
+.my-reviews-as-customer-evaluation-good-thumbs-section {
+    justify-content: right;
+}
+
+.my-reviews-thumbs-up,
+.my-reviews-thumbs-down {
+    color: var(--secondary-dark);
+}
+
+.my-reviews-as-customer-evaluation-good-number {
+    margin-right: 0.5rem;
+}
+
+.my-reviews-as-customer-evaluation-good-keywords {
+    margin-top: 2.5rem;
+}
+
+.evaluation-good {
+    display: flex;
+    justify-content: right;
+    margin-bottom: 0.5rem;
+}
+
+.evaluation-good-keyword {
+    display: flex;
+    border: 2px solid var(--secondary-medium-light);
+    background-color: var(--secondary-very-light);
+    padding: 8px 20px;
+    border-radius: 20px;
+}
+
+.evaluation-good-keyword-punctual-payment {
+    border-right: 1px solid var(--secondary-medium);
+    padding-right: 0.6rem;
+}
+
+.evaluation-good-keyword-number {
+    color: var(--secondary-medium);
+    padding-left: 0.6rem;
+}
+
+.my-reviews-as-customer-evaluation-bad-number {
+    margin-left: 0.5rem;
+}
+
+.my-reviews-as-customer-evaluation-bad-keywords {
+    margin-top: 2.5rem;
+}
+
+.evaluation-bad {
+    display: flex;
+    margin-bottom: 0.5rem;
+}
+
+.evaluation-bad-keyword {
+    display: flex;
+    border: 2px solid var(--secondary-medium-light);
+    background-color: var(--secondary-very-light);
+    padding: 8px 20px;
+    border-radius: 20px;
+}
+
+.evaluation-bad-keyword-punctual-payment {
+    padding-left: 0.6rem;
+}
+
+.evaluation-bad-keyword-number {
+    padding-right: 0.6rem;
+    border-right: 1px solid var(--secondary-medium);
+    color: var(--secondary-medium);
+}
+
+.my-reviews-as-customer-evaluation-bad-number {
+    margin-left: 0.5rem;
+}
+
+/* Review as a performer */
+.my-reviews-as-performer {
+    width: 100%;
+}
+
+.my-reviews-as-performer-reviews {
+    display: flex;
+    flex-direction: column;
+}
+
+.my-reviews-as-performer-review-box {
+    display: flex;
+    border: 2px solid var(--secondary-light);
+    margin-bottom: 1rem;
+}
+
+.my-reviews-as-performer-review-left,
+.my-reviews-as-performer-review-right {
+    margin: 1rem;
+}
+
+.my-reviews-as-performer-review-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.my-reviews-as-performer-review-stars {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.review-stars {
+    background-color: var(--secondary-light);
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    padding: 8px 20px;
+    border-radius: 20px;
+}
+
+.star-icon,
+.star-end-icon {
+    color: var(--secondary-medium-dark);
+}
+
+.star-icon {
+    margin-right: 5px;
+}
+
+.reviews-numbers {
+    display: flex;
+    align-items: end;
+    width: 44px;
+    margin-left: 0.5rem;
+}
+
+.reviews-num {
+    font-size: 18px;
+}
+
+.reviews-out-of-num {
+    margin-left: 4px;
+    color: var(--secondary-medium-light);
+}
+.my-reviews-as-performer-review-writer {
+    display: flex;
+    justify-content: right;
+    margin-top: 1rem;
+    font-size: 14px;
+}
+
+.my-reviews-as-performer-review-date {
+    display: flex;
+    justify-content: right;
+    margin-top: 3px;
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--secondary-medium);
+}
+
+.my-reviews-as-performer-review-title {
+    font-size: 20px;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.my-reviews-as-performer-review-desc {
+    font-weight: 300;
+}
+
+/* Right section - profile photo / save button */
+
+.my-reviews-wrapper-right {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.my-reviews-wrapper-right-profile-photo-image {
+    margin-top: 5rem;
+}
+
+.my-reviews-wrapper-right-profile-photo-image img {
+    width: 100%;
+}

@@ -1,6 +1,4 @@
 .btn {
-    padding: 8px 20px;
-    border-radius: 2px;
     outline: none;
     border: none;
     cursor: pointer;
@@ -40,26 +38,23 @@
     background-color: transparent;
     color: var(--text-main);
     padding: 8px 20px;
-    border: 2px solid var(--secondary-dark);
-    transition: all 0.3s ease-out;
+    border: 2px solid var(--secondary-medium);
 }
 
 .btn--category {
     height: 50px;
     padding: 12px 26px;
     font-size: 16px;
-    border-radius: 25px;
     background-color: var(--secondary-light);
     color: var(--text-main);
     padding: 8px 20px;
     border: 2px solid var(--secondary-medium);
-    transition: all 0.3s ease-out;
 }
 
-.btn--small {
+.btn--small,
+.btn--small-bold {
     padding: 8px 15px;
     font-size: 14px;
-    border-radius: 17.5px;
 }
 
 .btn--medium,
@@ -68,18 +63,35 @@
     height: 40px;
     padding: 8px 20px;
     font-size: 16px;
-    border-radius: 20px;
 }
 
-.btn--medium-bold {
+.btn--small-bold,
+.btn--medium-bold,
+.btn--large-bold,
+.btn--wide-bold {
     font-weight: 700;
 }
 
-.btn--large {
+.btn--large,
+.btn--large-bold {
     height: 50px;
     padding: 12px 26px;
     font-size: 16px;
+}
+
+.btn--wide,
+.btn--wide-bold {
+    height: 40px;
+    width: 100%;
+    font-size: 18px;
+}
+
+.btn--rounded {
     border-radius: 25px;
+}
+
+.btn--half-rounded {
+    border-radius: 10px;
 }
 /*
 .btn--medium:hover,

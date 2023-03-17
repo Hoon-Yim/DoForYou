@@ -7,7 +7,9 @@ function ForgotPassword() {
         <div className="forgot-password">
             <div className="nav-small">
                 <div className="nav-small-left">
-                    <i className="fa-solid fa-arrow-left fa-2x" />
+                    <Link to="/" className="back-arrow">
+                        <i className="fa-solid fa-arrow-left fa-2x" />
+                    </Link>
                     <Link to="/" className="back-to-main" id="btn-register">
                         BACK
                     </Link>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "../Button";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 import "./TaskDetail.css";
@@ -88,9 +89,14 @@ function TaskDetail() {
                                     </div>
                                 </div>
                                 <div className="task-detail-btn-interest">
-                                    <button className="btn-interest">
-                                        I'm interested
-                                    </button>
+                                    <Button
+                                        buttonStyle="btn--primary-yellow"
+                                        buttonSize="btn--large-bold"
+                                        buttonRadius="btn--half-rounded"
+                                        type="submit"
+                                    >
+                                        I'M INTERESTED
+                                    </Button>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +112,7 @@ function TaskDetail() {
                             </div>
                             <div className="task-detail-user-reviews">
                                 Reviews:
-                                <i className="fa-solid fa-thumbs-up"></i>
+                                <i className="fa-solid fa-thumbs-up task-detail-thumbs-up"></i>
                                 <div className="task-detail-user-reviews-number">
                                     21
                                 </div>

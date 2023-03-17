@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "../../Button";
 import "../../../App.css";
 import "./Main.css";
+import { Link } from "react-router-dom";
 
 function Main() {
     return (
@@ -21,7 +22,12 @@ function Main() {
                         <div className="deco-cursor-line">
                             <div className="deco-cursor-text">
                                 <div className="deco-cursor-text-block">
-                                    How?
+                                    <Link
+                                        className="link-to-about-us"
+                                        to="/about-us"
+                                    >
+                                        How?
+                                    </Link>
                                 </div>
                             </div>
                         </div>

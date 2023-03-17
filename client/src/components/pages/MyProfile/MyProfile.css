@@ -1,0 +1,115 @@
+.my-profile-container {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.my-profile-wrapper {
+    display: flex;
+    width: 1000px;
+    background-color: #fff;
+    padding: 9rem 0;
+}
+
+.my-profile-wrapper-left {
+    width: 80%;
+    padding: 0 2rem;
+}
+
+.my-profile-wrapper-left-section-title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 40px;
+}
+
+.my-profile-wrapper-left-section-profile a {
+    font-weight: 700;
+}
+
+.my-profile-wrapper-left-section-reviews a {
+    color: var(--secondary-light);
+}
+
+.my-profile-wrapper-left-section-profile a,
+.my-profile-wrapper-left-section-reviews a {
+    text-decoration: none;
+}
+
+.my-profile-wrapper-left-profile-form {
+    width: 100%;
+    margin: 2.5rem auto 0;
+}
+
+.my-profile-wrapper-left-profile-title {
+    font-size: 20px;
+    margin-bottom: 1.5rem;
+}
+
+.my-profile-name-combine-left,
+.my-profile-name-combine-right,
+.my-profile-address-combine-left,
+.my-profile-address-combine-right {
+    width: 100%;
+}
+
+.my-profile-name-combine-right,
+.my-profile-address-combine-right {
+    margin-left: 1rem;
+}
+
+.my-profile-name-combine,
+.my-profile-address-combine {
+    display: flex;
+}
+
+.my-profile-input-field input,
+.my-profile-input-field select,
+.my-profile-input-field textarea {
+    width: 100%;
+    padding: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid;
+    font-size: 16px;
+    margin-bottom: 2rem;
+}
+
+.my-profile-input-label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    color: var(--secondary-medium);
+}
+
+/* Right section - profile photo / save button */
+
+.my-profile-wrapper-right {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.my-profile-wrapper-right-profile-photo-image {
+    margin-top: 5rem;
+}
+
+.my-profile-wrapper-right-profile-photo-image img {
+    width: 100%;
+}
+
+.my-profile-wrapper-right-profile-btns {
+    display: flex;
+    justify-content: center;
+}
+
+.my-profile-wrapper-right-profile-btns button {
+    margin: 1rem 0.2rem;
+}
+
+.my-profile-wrapper-right-bottom {
+    margin-bottom: 2rem;
+}

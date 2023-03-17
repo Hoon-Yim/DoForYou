@@ -1,0 +1,216 @@
+/* -------------------- Role filter -------------------- */
+.role-filter {
+    border: 2px solid var(--secondary-dark);
+    border-radius: 30px;
+}
+.tasks-performer-role-wrap {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.tasks-performer-role-box {
+    position: relative;
+    width: 500px;
+    height: 50px;
+}
+
+.role-filter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px 30px;
+}
+
+.tasks-performer-role-customer-button,
+.tasks-performer-role-performer-button {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 40px;
+    margin: 3px;
+    cursor: pointer;
+}
+
+.tasks-performer-role-customer-button {
+    top: 0;
+    left: 0;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+}
+
+.tasks-performer-role-performer-button {
+    top: 0;
+    right: 0;
+    color: #fff;
+    border-radius: 25px;
+    font-size: 16px;
+    background-color: var(--secondary-dark);
+    border: none;
+}
+
+/* -------------------- Filtering -------------------- */
+.tasks-performer-filter {
+    width: 25%;
+}
+
+.tasks-performer-list {
+    /*border: 1px solid #000;*/
+    width: 75%;
+}
+
+.tasks-performer-filter-list-row {
+    display: flex;
+    padding: 7px;
+}
+
+.filter-checkbox {
+    margin-right: 8px;
+}
+
+.filter-label {
+    font-weight: 300;
+}
+
+/* -------------------- Content -------------------- */
+.tasks-performer-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tasks-performer-wrapper {
+    padding: 5rem 0;
+}
+
+.tasks-performer-title {
+    width: 100%;
+    text-align: center;
+}
+
+.tasks-performer-title-main {
+    font-size: 45px;
+    margin: 0.3rem 0 2rem;
+}
+
+.tasks-performer-content {
+    margin-top: 3.5rem;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    display: flex;
+}
+
+.tasks-performer-left-content {
+    width: 50%;
+    border-right: 1px solid var(--secondary-light);
+    top: 0;
+    bottom: 0;
+}
+.tasks-performer-right-content {
+    width: 50%;
+}
+
+/*  */
+
+.tasks-performer-left-content-title,
+.tasks-performer-right-content-title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 26px;
+    margin-bottom: 1.5rem;
+}
+
+.tasks-performer-left-list-item,
+.tasks-performer-right-list-item {
+    padding: 1.5rem 2.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--secondary-light);
+    /*box-shadow: 6px 6px 14px 0 rgb(0, 0, 0, 0.2);*/
+    margin: 1rem 1rem;
+}
+
+.tasks-performer-right-list-item {
+    background-color: var(--secondary-light);
+    color: var(--secondary-medium);
+}
+
+.tasks-performer-left-list-item-top,
+.tasks-performer-right-list-item-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.tasks-performer-left-list-item-title,
+.tasks-performer-right-list-item-title {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.tasks-performer-left-list-item-price,
+.tasks-performer-right-list-item-price {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.tasks-performer-left-price-tag,
+.tasks-performer-right-price-tag {
+    font-weight: 700;
+}
+.tasks-performer-left-price-number,
+.tasks-performer-right-price-number {
+    margin-left: 10px;
+    font-weight: 300;
+}
+
+.tasks-performer-left-list-item-bottom,
+.tasks-performer-right-list-item-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 2rem;
+}
+
+.tasks-performer-left-list-item-desc-address,
+.tasks-performer-right-list-item-desc-address {
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.tasks-performer-left-list-item-desc-when,
+.tasks-performer-right-list-item-desc-when {
+    display: flex;
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.tasks-performer-left-list-item-desc-date-title,
+.tasks-performer-right-list-item-desc-date-title {
+    font-weight: 500;
+}
+
+.tasks-performer-left-list-item-desc-date-time,
+.tasks-performer-right-list-item-desc-date-time {
+    margin-left: 10px;
+    font-weight: 300;
+}
+
+.tasks-performer-right-list-item-performer {
+    text-align: right;
+}
+
+.tasks-performer-right-list-done-by {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.tasks-performer-right-list-item-performer-name {
+    font-size: 16px;
+    font-weight: 500;
+}

@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./LogIn.css";
 import Cookies from "universal-cookie";
+import { Button } from "../../Button";
 
 function LogIn() {
     const navigate = useNavigate();
@@ -19,7 +20,9 @@ function LogIn() {
             })
             .then((data) => {
                 cookies.set("jwt", data.data.token, { path: "/" });
-                cookies.set("firstname", data.data.user.firstname, { path: "/" });
+                cookies.set("firstname", data.data.user.firstname, {
+                    path: "/",
+                });
                 navigate("/");
             })
             .catch((error) => {
@@ -31,7 +34,9 @@ function LogIn() {
         <div className="login">
             <div className="nav-small">
                 <div className="nav-small-left">
-                    <i className="fa-solid fa-arrow-left fa-2x" />
+                    <Link to="/" className="back-arrow">
+                        <i className="fa-solid fa-arrow-left fa-2x" />
+                    </Link>
                     <Link to="/" className="back-to-main" id="btn-register">
                         BACK
                     </Link>
@@ -96,12 +101,13 @@ function LogIn() {
                                             />
                                         </div>
                                         <div className="login-submit">
-                                            <button
+                                            <Button
+                                                buttonStyle="btn--primary-yellow"
+                                                buttonSize="btn--medium-bold"
                                                 type="submit"
-                                                className="btn-login"
                                             >
                                                 LOG IN
-                                            </button>
+                                            </Button>
                                         </div>
                                     </form>
                                     <div className="login-bottom">

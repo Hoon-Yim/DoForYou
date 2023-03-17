@@ -24,10 +24,12 @@ function Process() {
                                     alt="main"
                                 ></img>
                             </div>
-                            <div>
-                                <Link to="/">
-                                    <div>Learn more about us</div>
-                                    <div className="link-line"></div>
+                            <div className="process-list-link-box">
+                                <Link
+                                    to="/about-us"
+                                    className="process-list-link"
+                                >
+                                    Learn more about us
                                 </Link>
                             </div>
                         </div>

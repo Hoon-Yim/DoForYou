@@ -12,6 +12,11 @@
     align-items: center;
 }
 
+.back-arrow {
+    text-decoration: none;
+    color: var(--text-main);
+}
+
 .back-to-main,
 .go-to-another-step {
     text-decoration: none;
@@ -123,24 +128,11 @@
 .login-submit,
 .login-bottom {
     display: flex;
-    flex-direction: column;
-}
-
-.btn-login {
-    margin: 0 auto;
-    height: 40px;
-    width: 140px;
-    font-size: 18px;
-    font-weight: 700;
-    border-radius: 25px;
-    background-color: var(--primary-yellow);
-    color: var(--text-main);
-    border: 1px solid var(--primary-yellow);
+    justify-content: center;
 }
 
 .login-bottom {
     margin-top: 1rem;
-    text-align: center;
 }
 
 .login-bottom-link {

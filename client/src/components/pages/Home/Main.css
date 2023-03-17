@@ -78,6 +78,11 @@
     font-weight: 500;
 }
 
+.link-to-about-us {
+    text-decoration: none;
+    color: #fff;
+}
+
 .main-image {
     position: absolute;
     left: calc(38rem);

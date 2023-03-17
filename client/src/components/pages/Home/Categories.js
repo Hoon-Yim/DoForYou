@@ -19,6 +19,7 @@ function Categrories() {
                                 className="btn"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
+                                buttonRadius="btn--rounded"
                             >
                                 <i className="fa-solid fa-box cate-icon" />
                                 Courier Services
@@ -27,6 +28,7 @@ function Categrories() {
                                 className="btn"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
+                                buttonRadius="btn--rounded"
                             >
                                 <i className="fa-solid fa-truck cate-icon" />
                                 Cargo Transportation
@@ -35,6 +37,7 @@ function Categrories() {
                                 className="btn"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
+                                buttonRadius="btn--rounded"
                             >
                                 <i className="fa-solid fa-car-side cate-icon" />
                                 Transport Repair
@@ -43,6 +46,7 @@ function Categrories() {
                                 className="btn"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
+                                buttonRadius="btn--rounded"
                             >
                                 <i className="fa-solid fa-star cate-icon" />
                                 Event and Promotions
@@ -53,6 +57,7 @@ function Categrories() {
                                 className="btn"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
+                                buttonRadius="btn--rounded"
                             >
                                 <i className="fa-solid fa-desktop cate-icon" />
                                 Computer
@@ -61,6 +66,7 @@ function Categrories() {
                                 className="btn"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
+                                buttonRadius="btn--rounded"
                             >
                                 <i className="fa-solid fa-laptop-code cate-icon" />
                                 Software Development
@@ -69,6 +75,7 @@ function Categrories() {
                                 className="btn"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
+                                buttonRadius="btn--rounded"
                             >
                                 <i className="fa-solid fa-pen-fancy cate-icon" />
                                 Design
@@ -77,6 +84,7 @@ function Categrories() {
                                 className="btn"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
+                                buttonRadius="btn--rounded"
                             >
                                 <i className="fa-solid fa-camera-retro cate-icon" />
                                 Photo, Video and Audio
@@ -87,6 +95,7 @@ function Categrories() {
                                 className="btn"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
+                                buttonRadius="btn--rounded"
                             >
                                 <i className="fa-solid fa-hammer cate-icon" />
                                 Repair and Construction
@@ -95,6 +104,7 @@ function Categrories() {
                                 className="btn"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
+                                buttonRadius="btn--rounded"
                             >
                                 <i className="fa-solid fa-broom cate-icon" />
                                 Cleaning and Household
@@ -103,6 +113,7 @@ function Categrories() {
                                 className="btn"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
+                                buttonRadius="btn--rounded"
                             >
                                 <i className="fa-solid fa-plug cate-icon" />
                                 Installation
@@ -111,6 +122,7 @@ function Categrories() {
                                 className="btn"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
+                                buttonRadius="btn--rounded"
                             >
                                 <i className="fa-solid fa-laptop cate-icon" />
                                 Repair of Digital Equipment
@@ -121,6 +133,7 @@ function Categrories() {
                                 className="btn"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
+                                buttonRadius="btn--rounded"
                             >
                                 <i className="fa-solid fa-headset cate-icon" />
                                 Virtual Assistant
@@ -129,6 +142,7 @@ function Categrories() {
                                 className="btn"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
+                                buttonRadius="btn--rounded"
                             >
                                 <i className="fa-solid fa-face-smile-beam cate-icon" />
                                 Beauty and Health
@@ -137,6 +151,7 @@ function Categrories() {
                                 className="btn"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
+                                buttonRadius="btn--rounded"
                             >
                                 <i className="fa-solid fa-book cate-icon" />
                                 Tutors and Training

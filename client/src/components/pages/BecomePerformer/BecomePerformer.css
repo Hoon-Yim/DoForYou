@@ -116,6 +116,18 @@
     font-size: 16px;
 }
 
+.performer-input-field textarea {
+    background-color: #fafafa;
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid;
+    font-size: 16px;
+}
+
 .performer-categories-list-row {
     display: flex;
     justify-content: center;
@@ -131,6 +143,7 @@
     padding: 10px 20px;
     margin: 0 5px;
     border-radius: 25px;
+    background-color: var(--secondary-light);
     border: 2px solid var(--secondary-medium);
 }
 
@@ -182,18 +195,15 @@
 
 .performer-submit {
     display: flex;
-    flex-direction: column;
 }
 
-.btn-submit {
-    margin: 0 auto;
-    height: 40px;
-    width: 320px;
-    font-size: 18px;
-    font-weight: 700;
-    background-color: var(--primary-yellow);
-    color: var(--text-main);
-    border: 1px solid var(--primary-yellow);
+.performer-btn-cancel {
+    width: 30%;
+}
+
+.performer-btn-submit {
+    margin-left: 1rem;
+    width: 70%;
 }
 
 @media screen and (max-height: 960px) {

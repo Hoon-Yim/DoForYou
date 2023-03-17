@@ -13,7 +13,18 @@ const STYLES = [
     "btn--category",
 ];
 
-const SIZES = ["btn--medium-bold", "btn--small", "btn--medium", "btn--large"];
+const SIZES = [
+    "btn--small",
+    "btn--small-bold",
+    "btn--medium",
+    "btn--medium-bold",
+    "btn--large",
+    "btn--large-bold",
+    "btn--wide",
+    "btn--wide-bold",
+];
+
+const RADIUS = ["btn--square", "btn--half-rounded", "btn--rounded"];
 
 export const Button = ({
     children,
@@ -21,22 +32,23 @@ export const Button = ({
     onClick,
     buttonStyle,
     buttonSize,
+    buttonRadius,
 }) => {
     const checkButtonStyle = STYLES.includes(buttonStyle)
         ? buttonStyle
         : STYLES[0];
-
     const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
+    const checkButtonRadius = RADIUS.includes(buttonRadius)
+        ? buttonRadius
+        : RADIUS[0];
 
     return (
-        <Link /*to="/"*/>
-            <button
-                className={`btn ${checkButtonStyle} ${checkButtonSize}`}
-                onClick={onClick}
-                type={type}
-            >
-                {children}
-            </button>
-        </Link>
+        <button
+            className={`btn ${checkButtonStyle} ${checkButtonSize} ${checkButtonRadius}`}
+            onClick={onClick}
+            type={type}
+        >
+            {children}
+        </button>
     );
 };

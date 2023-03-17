@@ -1,14 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../../App.css";
+import { Button } from "../../Button";
 import "./BecomePerformer.css";
 
 function BecomePerformer() {
+    const navigate = useNavigate();
+    const backToMain = () => {
+        navigate("/");
+    };
+
     return (
         <div className="performer">
             <div className="nav-small">
                 <div className="nav-small-left">
-                    <i className="fa-solid fa-arrow-left fa-2x" />
+                    <Link to="/" className="back-arrow">
+                        <i className="fa-solid fa-arrow-left fa-2x" />
+                    </Link>
                     <Link to="/" className="back-to-main" id="btn-register">
                         BACK
                     </Link>
@@ -277,16 +285,28 @@ function BecomePerformer() {
                                                 </div>
                                             </div>
 
-                                            <input type="textarea" />
+                                            <textarea rows={5} />
                                         </div>
 
                                         <div className="performer-submit">
-                                            <button
-                                                type="submit"
-                                                className="btn-submit"
-                                            >
-                                                SUBMIT
-                                            </button>
+                                            <div className="performer-btn-cancel">
+                                                <Button
+                                                    buttonStyle="btn--cancel"
+                                                    buttonSize="btn--wide-bold"
+                                                    onClick={backToMain}
+                                                >
+                                                    CANCEL
+                                                </Button>
+                                            </div>
+                                            <div className="performer-btn-submit">
+                                                <Button
+                                                    buttonStyle="btn--primary-yellow"
+                                                    buttonSize="btn--wide-bold"
+                                                    type="submit"
+                                                >
+                                                    SUBMIT
+                                                </Button>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>

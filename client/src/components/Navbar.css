@@ -1,5 +1,6 @@
 .navbar {
-    background-color: var(--secondary-dark);
+    /*background-color: var(--secondary-dark);*/
+    /*background-color: #fff;*/
     height: 80px;
     display: flex;
     justify-content: center;
@@ -8,19 +9,21 @@
     position: sticky;
     top: 0;
     z-index: 999;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px);
 }
 
 .navbar-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 80px;
-    max-width: 1500px;
+    width: 1200px;
 }
 
 .navbar-logo {
-    color: #fff;
-    justify-self: start;
+    /*color: #fff;*/
+    color: var(--secondary-dark);
     cursor: pointer;
     text-decoration: none;
     font-size: 2.5rem;
@@ -37,33 +40,100 @@
 }
 
 .nav-menu {
-    display: grid;
-    grid-template-columns: repeat(4, auto);
+    display: flex;
+    justify-content: center;
     list-style: none;
     text-align: center;
-    width: 35vw;
-    justify-content: center;
     margin-right: 2rem;
 }
 
 .login-btn-link {
     text-decoration: none;
-    color: var(--text-main);
+    /*color: var(--text-main);*/
+    color: #fff;
 }
 
 .nav-links {
-    color: #fff;
+    /*color: #fff;*/
+    color: var(--text-main);
     display: flex;
     align-items: center;
     text-decoration: none;
     padding: 0.5rem 1rem;
     height: 100%;
 }
-
+/*
 .nav-links:hover {
     border-bottom: 4px solid #fff;
     transition: all 0.2s ease-out;
 }
+*/
+
+.navbar-profile-box {
+    display: flex;
+    align-items: center;
+}
+
+.fa-user {
+    /*color: #fff;*/
+    color: var(--text-main);
+    margin-right: 1rem;
+}
+
+.navbar-profile {
+    /*color: #fff;*/
+    color: var(--text-main);
+    margin-right: 2rem;
+    font-size: 16px;
+    font-weight: 300;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar-profile:hover {
+    /*color: var(--secondary-light);*/
+    color: var(--secondary-medium);
+    transition: all 0.2s ease-out;
+}
+
+.navbar-profile-dropdown {
+    position: absolute;
+    margin-top: 17rem;
+    margin-left: -1.4rem;
+    width: 150px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: var(--secondary-very-light);
+}
+
+.navbar-profile-dropdown::before {
+    content: "";
+    position: absolute;
+    transform: rotate(45deg);
+    background-color: var(--secondary-very-light);
+    width: 20px;
+    height: 20px;
+    top: -0.4rem;
+    margin-left: 0.3rem;
+}
+
+.profile-menu-list {
+    list-style: none;
+}
+
+.profile-menu-list-item {
+    /*text-align: center;*/
+    margin: 1rem 0;
+    padding: 0 10px;
+}
+
+.profile-menu-list-item a {
+    text-decoration: none;
+    color: var(--text-main);
+}
+
+/* Mobile */
 
 .fa-bars {
     color: #fff;
@@ -79,7 +149,6 @@
 
 @media screen and (max-height: 960px) {
     .nav-menu {
-        width: 65vw;
     }
 }
 /*

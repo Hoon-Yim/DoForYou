@@ -3,12 +3,12 @@
     border: 2px solid var(--secondary-dark);
     border-radius: 30px;
 }
-.my-tasks-role-wrap {
+.tasks-customer-role-wrap {
     width: 500px;
     margin: 0 auto;
 }
 
-.my-tasks-role-box {
+.tasks-customer-role-box {
     position: relative;
     width: 500px;
     height: 50px;
@@ -23,8 +23,8 @@
     padding: 10px 30px;
 }
 
-.role-customer-button,
-.role-performer-button {
+.tasks-customer-role-customer-button,
+.tasks-customer-role-performer-button {
     position: absolute;
     display: flex;
     align-items: center;
@@ -35,7 +35,7 @@
     cursor: pointer;
 }
 
-.role-customer-button {
+.tasks-customer-role-customer-button {
     top: 0;
     left: 0;
     color: #fff;
@@ -45,7 +45,7 @@
     border: none;
 }
 
-.role-performer-button {
+.tasks-customer-role-performer-button {
     top: 0;
     right: 0;
     border: none;
@@ -53,28 +53,51 @@
     font-size: 16px;
 }
 
+/* -------------------- Filtering -------------------- */
+.tasks-customer-filter {
+    width: 25%;
+}
+
+.tasks-customer-list {
+    /*border: 1px solid #000;*/
+    width: 75%;
+}
+
+.tasks-customer-filter-list-row {
+    display: flex;
+    padding: 7px;
+}
+
+.filter-checkbox {
+    margin-right: 8px;
+}
+
+.filter-label {
+    font-weight: 300;
+}
+
 /* -------------------- Content -------------------- */
-.my-tasks-container {
+.tasks-customer-container {
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-.my-tasks-wrapper {
+.tasks-customer-wrapper {
     padding: 5rem 0;
 }
 
-.my-tasks-title {
+.tasks-customer-title {
     width: 100%;
     text-align: center;
 }
 
-.my-tasks-title-main {
+.tasks-customer-title-main {
     font-size: 45px;
     margin: 0.3rem 0 2rem;
 }
 
-.my-tasks-content {
+.tasks-customer-content {
     margin-top: 3.5rem;
     width: 100%;
     height: 100%;
@@ -82,28 +105,28 @@
     display: flex;
 }
 
-.my-tasks-left-content {
+.tasks-customer-left-content {
     width: 50%;
     border-right: 1px solid var(--secondary-light);
     top: 0;
     bottom: 0;
 }
-.my-tasks-right-content {
+.tasks-customer-right-content {
     width: 50%;
 }
 
 /*  */
 
-.my-tasks-left-content-title,
-.my-tasks-right-content-title {
+.tasks-customer-left-content-title,
+.tasks-customer-right-content-title {
     text-align: center;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 26px;
     margin-bottom: 1.5rem;
 }
 
-.my-tasks-left-list-item,
-.my-tasks-right-list-item {
+.tasks-customer-left-list-item,
+.tasks-customer-right-list-item {
     padding: 1.5rem 2.5rem;
     border-radius: 10px;
     border: 1px solid var(--secondary-light);
@@ -111,82 +134,82 @@
     margin: 1rem 1rem;
 }
 
-.my-tasks-right-list-item {
+.tasks-customer-right-list-item {
     background-color: var(--secondary-light);
     color: var(--secondary-medium);
 }
 
-.my-tasks-left-list-item-top,
-.my-tasks-right-list-item-top {
+.tasks-customer-left-list-item-top,
+.tasks-customer-right-list-item-top {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
 
-.my-tasks-left-list-item-title,
-.my-tasks-right-list-item-title {
+.tasks-customer-left-list-item-title,
+.tasks-customer-right-list-item-title {
     font-size: 22px;
+    font-weight: 700;
 }
 
-.my-tasks-left-list-item-price,
-.my-tasks-right-list-item-price {
+.tasks-customer-left-list-item-price,
+.tasks-customer-right-list-item-price {
     display: flex;
     align-items: center;
     font-size: 20px;
 }
 
-.my-tasks-left-price-tag,
-.my-tasks-right-price-tag {
+.tasks-customer-left-price-tag,
+.tasks-customer-right-price-tag {
     font-weight: 700;
 }
-.my-tasks-left-price-number,
-.my-tasks-right-price-number {
+.tasks-customer-left-price-number,
+.tasks-customer-right-price-number {
     margin-left: 10px;
     font-weight: 300;
 }
 
-.my-tasks-left-list-item-bottom,
-.my-tasks-right-list-item-bottom {
+.tasks-customer-left-list-item-bottom,
+.tasks-customer-right-list-item-bottom {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     margin-top: 2rem;
 }
 
-.my-tasks-left-list-item-desc-address,
-.my-tasks-right-list-item-desc-address {
+.tasks-customer-left-list-item-desc-address,
+.tasks-customer-right-list-item-desc-address {
     font-weight: 300;
-    font-size: 14px;
+    font-size: 16px;
 }
 
-.my-tasks-left-list-item-desc-when,
-.my-tasks-right-list-item-desc-when {
+.tasks-customer-left-list-item-desc-when,
+.tasks-customer-right-list-item-desc-when {
     display: flex;
     margin-top: 12px;
-    font-size: 14px;
+    font-size: 16px;
 }
-
-.my-tasks-left-list-item-desc-date-title,
-.my-tasks-right-list-item-desc-date-title {
+.tasks-customer-left-list-item-desc-date-title,
+.tasks-customer-right-list-item-desc-date-title {
     font-weight: 500;
 }
 
-.my-tasks-left-list-item-desc-date-time,
-.my-tasks-right-list-item-desc-date-time {
+.tasks-customer-left-list-item-desc-date-time,
+.tasks-customer-right-list-item-desc-date-time {
     margin-left: 10px;
     font-weight: 300;
 }
 
-.my-tasks-right-list-item-performer {
+.tasks-customer-right-list-item-performer {
     text-align: right;
 }
 
-.my-tasks-right-list-done-by {
+.tasks-customer-right-list-done-by {
     font-size: 14px;
     font-weight: 300;
 }
 
-.my-tasks-right-list-item-performer-name {
+.tasks-customer-right-list-item-performer-name {
     font-size: 16px;
     font-weight: 500;
 }

@@ -1,11 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function FindTasksItem(props) {
     return (
         <div className="find-task-list-item">
             <div className="find-task-list-item-top">
                 <div className="find-task-list-item-title">
-                    {props.task.title}
+                    <Link
+                        className="find-task-list-item-title-link"
+                        to="/task-detail"
+                    >
+                        {props.task.title}
+                    </Link>
                 </div>
                 <div className="find-task-list-item-price">
                     <div className="find-task-price-tag">$</div>

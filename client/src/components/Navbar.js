@@ -10,7 +10,7 @@ function Navbar(props) {
     const ref = useRef();
 
     const [click, setClick] = useState(false);
-    const [button, setButton] = useState(true);
+    const [navbarRight, setNavbarRight] = useState(true);
     const [firstname, setFirstname] = useState("");
 
     // Login
@@ -45,10 +45,10 @@ function Navbar(props) {
     const closeMobileMenu = () => setClick(false);
 
     const showButton = () => {
-        if (window.innerWidth <= 960) {
-            setButton(false);
+        if (window.innerWidth <= 768) {
+            setNavbarRight(false);
         } else {
-            setButton(true);
+            setNavbarRight(true);
         }
     };
 
@@ -75,7 +75,9 @@ function Navbar(props) {
                         <div className="menu-icon" onClick={handleClick}>
                             <i
                                 className={
-                                    click ? "fas fa-times" : "fas fa-bars"
+                                    click
+                                        ? "fa-solid fa-xmark"
+                                        : "fa-solid fa-bars"
                                 }
                             />
                         </div>
@@ -108,35 +110,50 @@ function Navbar(props) {
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link
-                                    to="/log-in"
-                                    className="nav-links-mobile"
-                                    onClick={closeMobileMenu}
-                                >
-                                    Log in
-                                </Link>
+                                {isLogin ? (
+                                    <div className="nav-menu-active-after-login">
+                                        <hr />
+                                        <div className="nav-menu-active-user">
+                                            <div className="nav-menu-active-user-greet">
+                                                Hello,
+                                            </div>
+                                            <div className="nav-menu-active-user-name">
+                                                {firstname}
+                                            </div>
+                                        </div>
+                                        <div className="nav-menu-active-user-menu">
+                                            <ul className="nav-menu-active-user-menu-list">
+                                                <li className="nav-menu-active-user-menu-list-item">
+                                                    <Link to="/my-tasks-customer">
+                                                        My Tasks
+                                                    </Link>
+                                                </li>
+                                                <li className="nav-menu-active-user-menu-list-item">
+                                                    <Link to="/my-account">
+                                                        My Account
+                                                    </Link>
+                                                </li>
+                                                <li className="nav-menu-active-user-menu-list-item">
+                                                    <Link to="/my-reviews">
+                                                        My Reviews
+                                                    </Link>
+                                                </li>
+                                                <div className="nav-menu-active-user-menu-horizontal-line" />
+                                                <li className="nav-menu-active-user-menu-list-item">
+                                                    <Link to="/chat">Chat</Link>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <></>
+                                )}
                             </li>
-                        </ul>
-                    </div>
-                    <div className="navbar-menu-right" ref={ref}>
-                        {isLogin ? (
-                            <>
-                                <div className="navbar-profile-box">
-                                    <i class="fa-solid fa-user"></i>
-                                    <button
-                                        className="navbar-profile"
-                                        onClick={() =>
-                                            setOpenProfile((prev) => !prev)
-                                        }
-                                    >
-                                        {firstname}
-                                    </button>
-                                    {openProfile && <DropdownProfile />}
-                                    <Button
-                                        /*buttonStyle="btn--white"*/
-                                        buttonStyle="btn--secondary-dark"
-                                        buttonSize="btn--medium-bold"
-                                        buttonRadius="btn--rounded"
+                            <li className="nav-item">
+                                {isLogin ? (
+                                    <Link
+                                        to="/login"
+                                        className="nav-links-mobile"
                                         onClick={() => {
                                             cookies.set("jwt", "logout", {
                                                 path: "/",
@@ -148,22 +165,53 @@ function Navbar(props) {
                                         }}
                                     >
                                         Log out
-                                    </Button>
-                                </div>
-                            </>
-                        ) : (
-                            <Button
-                                /*buttonStyle="btn--white"*/
-                                buttonStyle="btn--secondary-dark"
-                                buttonSize="btn--medium-bold"
-                                buttonRadius="btn--rounded"
-                            >
-                                <Link to="/login" className="login-btn-link">
-                                    Log in
-                                </Link>
-                            </Button>
-                        )}
+                                    </Link>
+                                ) : (
+                                    <Link
+                                        to="/login"
+                                        className="nav-links-mobile"
+                                        onClick={closeMobileMenu}
+                                    >
+                                        Log in
+                                    </Link>
+                                )}
+                            </li>
+                        </ul>
                     </div>
+                    {navbarRight && (
+                        <div className="navbar-menu-right" ref={ref}>
+                            {isLogin ? (
+                                <>
+                                    <div className="navbar-profile-box">
+                                        <i class="fa-solid fa-user"></i>
+                                        <button
+                                            className="navbar-profile"
+                                            onClick={() =>
+                                                setOpenProfile((prev) => !prev)
+                                            }
+                                        >
+                                            {firstname}
+                                        </button>
+                                        {openProfile && <DropdownProfile />}
+                                    </div>
+                                </>
+                            ) : (
+                                <Button
+                                    /*buttonStyle="btn--white"*/
+                                    buttonStyle="btn--secondary-dark"
+                                    buttonSize="btn--medium-bold"
+                                    buttonRadius="btn--rounded"
+                                >
+                                    <Link
+                                        to="/login"
+                                        className="login-btn-link"
+                                    >
+                                        Log in
+                                    </Link>
+                                </Button>
+                            )}
+                        </div>
+                    )}
                 </div>
             </nav>
         </>

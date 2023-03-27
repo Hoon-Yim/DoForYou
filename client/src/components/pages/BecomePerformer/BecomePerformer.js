@@ -31,33 +31,35 @@ function BecomePerformer() {
             <div className="performer-container">
                 <div className="performer-wrapper">
                     <div className="performer-wrapper-left">
-                        <div className="performer-wrapper-left-text">
-                            <div className="performer-wrapper-left-text-box">
-                                <div className="performer-wrapper-left-text-main">
-                                    3234 Tasks are waiting for performers!
-                                </div>
-                                <div className="performer-wrapper-left-text-sub">
-                                    Please answer all questions in the form.
-                                </div>
-                                <div className="performer-wrapper-left-text-sub">
-                                    to help others with your own skills.
-                                </div>
-                                <div className="performer-wrapper-left-text-sub">
-                                    It will take less than 5 minutes.
+                        <div className="performer-wrapper-left-box">
+                            <div className="performer-wrapper-left-text">
+                                <div className="performer-wrapper-left-text-box">
+                                    <div className="performer-wrapper-left-text-main">
+                                        3234 Tasks are waiting for performers!
+                                    </div>
+                                    <div className="performer-wrapper-left-text-sub">
+                                        Please answer all questions in the form.
+                                    </div>
+                                    <div className="performer-wrapper-left-text-sub">
+                                        to help others with your own skills.
+                                    </div>
+                                    <div className="performer-wrapper-left-text-sub">
+                                        It will take less than 5 minutes.
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="performer-image">
-                            <div className="performer-image-box">
-                                <img
-                                    className="performer-image-png"
-                                    src={
-                                        process.env.PUBLIC_URL +
-                                        "images/become-performer.png"
-                                    }
-                                    alt="become-performer"
-                                />
+                            <div className="performer-image">
+                                <div className="performer-image-box">
+                                    <img
+                                        className="performer-image-png"
+                                        src={
+                                            process.env.PUBLIC_URL +
+                                            "images/become-performer.png"
+                                        }
+                                        alt="become-performer"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -69,8 +71,8 @@ function BecomePerformer() {
                                 </div>
                                 <div className="performer-form">
                                     <form /*onSubmit={handleSubmit}*/>
-                                        <div className="info-combine">
-                                            <div className="info-combine-left">
+                                        <div className="performer-info-combine">
+                                            <div className="performer-info-combine-left">
                                                 <div className="performer-input-field">
                                                     <div className="performer-input-label">
                                                         First Name
@@ -78,7 +80,7 @@ function BecomePerformer() {
                                                     <input type="text" />
                                                 </div>
                                             </div>
-                                            <div className="info-combine-center">
+                                            <div className="performer-info-combine-center">
                                                 <div className="performer-input-field">
                                                     <div className="performer-input-label">
                                                         Last Name
@@ -86,7 +88,7 @@ function BecomePerformer() {
                                                     <input type="text" />
                                                 </div>
                                             </div>
-                                            <div className="info-combine-right">
+                                            <div className="performer-info-combine-right">
                                                 <div className="performer-input-field">
                                                     <div className="performer-input-label">
                                                         Date of Birth
@@ -95,8 +97,8 @@ function BecomePerformer() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="email-phone-combine">
-                                            <div className="email-phone-combine-left">
+                                        <div className="performer-email-phone-combine">
+                                            <div className="performer-email-phone-combine-left">
                                                 <div className="performer-input-field">
                                                     <div className="performer-input-label">
                                                         Email
@@ -104,7 +106,7 @@ function BecomePerformer() {
                                                     <input type="text" />
                                                 </div>
                                             </div>
-                                            <div className="email-phone-combine-right">
+                                            <div className="performer-email-phone-combine-right">
                                                 <div className="performer-input-field">
                                                     <div className="performer-input-label">
                                                         Phone
@@ -120,8 +122,8 @@ function BecomePerformer() {
                                                     Categories
                                                 </div>
                                                 <div className="performer-input-sub-label">
-                                                    Select categories you're
-                                                    interested in
+                                                    Select categories interested
+                                                    in
                                                 </div>
                                             </div>
                                             <div className="categories-field">
@@ -315,6 +317,7 @@ function BecomePerformer() {
                     </div>
                 </div>
             </div>
+            <div className="performer-container-bottom"></div>
         </div>
     );
 }

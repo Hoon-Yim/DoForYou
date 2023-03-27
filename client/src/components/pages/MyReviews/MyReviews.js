@@ -15,7 +15,7 @@ function MyReviews() {
                         <div className="my-reviews-wrapper-left">
                             <div className="my-reviews-wrapper-left-section-title">
                                 <div className="my-reviews-wrapper-left-section-profile">
-                                    <Link to="/my-profile">Profile</Link>
+                                    <Link to="/my-account">Profile</Link>
                                 </div>
                                 <div className="my-reviews-wrapper-left-section-reviews">
                                     <Link to="/my-reviews">Reviews</Link>

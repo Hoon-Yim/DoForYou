@@ -39,14 +39,21 @@ function Main() {
                         buttonStyle="btn--secondary-dark"
                         buttonSize="btn--large"
                     >
-                        GET STARTED
+                        <Link to="/login" className="main-btn-link-login">
+                            GET STARTED
+                        </Link>
                     </Button>
                     <Button
                         className="btn"
                         buttonStyle="btn--outline"
                         buttonSize="btn--large"
                     >
-                        CONTACT US
+                        <Link
+                            to="/contact-us"
+                            className="main-btn-link-contact"
+                        >
+                            CONTACT US
+                        </Link>
                         <i className="fa-solid fa-comments chat-icon" />
                     </Button>
                 </div>

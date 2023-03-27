@@ -1,11 +1,15 @@
+.find-tasks {
+    height: 100%;
+    flex-grow: 1;
+}
 .find-tasks-container {
     width: 100%;
-    max-width: 1000px;
+    max-width: 1150px;
     margin: 0 auto;
 }
 
 .find-tasks-wrapper {
-    padding: 5rem 0;
+    padding: 5rem 1rem;
 }
 
 .find-tasks-title {
@@ -26,13 +30,12 @@
     border: 2px solid var(--secondary-medium);
 }
 .find-tasks-search-wrap {
-    width: 800px;
+    width: 100%;
     margin: 0 auto;
 }
 
 .find-tasks-search-wrap .search-box {
     position: relative;
-    width: 800px;
     height: 60px;
 }
 
@@ -81,9 +84,8 @@
     width: 25%;
 }
 
-.find-tasks-list {
-    /*border: 1px solid #000;*/
-    width: 75%;
+.find-tasks-filter-list {
+    margin-right: 1rem;
 }
 
 .find-tasks-filter-list-row {
@@ -99,6 +101,11 @@
     font-weight: 300;
 }
 
+.find-tasks-list {
+    /*border: 1px solid #000;*/
+    width: 75%;
+}
+
 .find-task-list-item {
     width: 100%;
     padding: 2rem 3rem;
@@ -111,7 +118,7 @@
 .find-task-list-item-top {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: flex-end;
 }
 
 .find-task-list-item-title {
@@ -179,11 +186,138 @@
 }
 
 .find-task-list-item-desc-date-time {
+    display: flex;
     margin-left: 10px;
     font-weight: 300;
 }
 
+.find-task-list-item-desc-date-end {
+    margin-left: 4px;
+}
 .find-task-list-item-uploader {
     font-size: 18px;
     font-weight: 300;
+}
+
+/* 13 inch MacBook */
+@media only screen and (max-width: 1400px) {
+    .find-tasks-wrapper {
+        margin: 0 2rem;
+    }
+}
+
+/* Large screen */
+@media only screen and (max-width: 1200px) {
+    .find-tasks-wrapper {
+        margin: 0 1rem;
+    }
+}
+
+/* Small screen */
+@media only screen and (max-width: 992px) {
+    .find-tasks-title-main {
+        font-size: 35px;
+    }
+    .find-tasks-title-sub {
+        font-size: 16px;
+    }
+    .find-tasks-search-wrap .search-box {
+        height: 50px;
+    }
+    .find-tasks-search-wrap .search-box .button {
+        height: 40px;
+        margin: 5px;
+    }
+}
+
+/* Tablet => Tasks list filter */
+@media only screen and (max-width: 768px) {
+    .find-tasks-wrapper {
+        margin: 0 0.5rem;
+    }
+    .find-tasks-title-main {
+        font-size: 30px;
+    }
+    .find-tasks-title-sub {
+        font-size: 16px;
+    }
+    .find-tasks-content {
+        margin-top: 2rem;
+    }
+    .find-tasks-filter {
+        display: none;
+    }
+    .find-tasks-list {
+        width: 100%;
+    }
+    .find-task-list-item {
+        padding: 1rem 1.5rem 1.5rem;
+        border-bottom: 1px solid var(--secondary-medium-light);
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-radius: 0;
+    }
+    .find-task-list-item-title {
+        font-size: 20px;
+    }
+    .find-task-list-item-price {
+        font-size: 18px;
+    }
+    .find-task-list-item-desc-address {
+        font-size: 14px;
+    }
+    .find-task-list-item-desc-when {
+        font-size: 14px;
+        margin-top: 8px;
+    }
+    .find-task-list-item-uploader {
+        font-size: 16px;
+    }
+}
+
+/* Mobile */
+@media only screen and (max-width: 480px) {
+    .find-tasks-wrapper {
+        margin: 0;
+    }
+    .find-tasks-title-sub {
+        font-size: 14px;
+    }
+
+    .find-tasks-search-wrap .search-box {
+        height: 40px;
+    }
+    .find-tasks-search-wrap .search-box .button {
+        width: 120px;
+        height: 32px;
+        margin: 4px;
+        font-size: 14px;
+    }
+
+    .find-tasks-content {
+        margin-top: 1rem;
+    }
+    .find-task-list-item {
+        padding: 1rem 1rem;
+    }
+    .find-task-list-item-title {
+        font-size: 18px;
+    }
+    .find-task-list-item-desc-date-time {
+        flex-direction: column;
+    }
+    .find-task-list-item-price {
+        font-size: 16px;
+    }
+    .find-task-list-item-desc-address {
+        font-size: 14px;
+    }
+    .find-task-list-item-desc-when {
+        font-size: 12px;
+        margin-top: 6px;
+    }
+    .find-task-list-item-uploader {
+        font-size: 14px;
+    }
 }

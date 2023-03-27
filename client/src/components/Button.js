@@ -20,7 +20,9 @@ const SIZES = [
     "btn--medium-bold",
     "btn--large",
     "btn--large-bold",
+    "btn--small-wide",
     "btn--wide",
+    "btn--small-wide-bold",
     "btn--wide-bold",
 ];
 

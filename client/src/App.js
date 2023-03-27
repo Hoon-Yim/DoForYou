@@ -4,7 +4,7 @@ import "./App.css";
 import CreateNewTask from "./components/pages/NewTask/CreateNewTask";
 import FindTasks from "./components/pages/FindTasks/FindTasks";
 import Home from "./components/pages/Home/Home";
-import LogIn from "./components/pages/LogIn/LogIn";
+import Login from "./components/pages/Login/Login";
 import ContactUs from "./components/pages/ContactUs/ContactUs";
 import Register from "./components/pages/Register/Register";
 import BecomePerformer from "./components/pages/BecomePerformer/BecomePerformer";
@@ -16,9 +16,8 @@ import Chat from "./Chat";
 import TasksAsCustomer from "./components/pages/MyTasks/TasksAsCustomer";
 import TasksAsPerformer from "./components/pages/MyTasks/TasksAsPerformer";
 import AboutUs from "./components/pages/AboutUs/AboutUs";
-import MyProfile from "./components/pages/MyProfile/MyProfile";
+import MyAccount from "./components/pages/MyAccount/MyAccount";
 import MyReviews from "./components/pages/MyReviews/MyReviews";
-import Settings from "./components/pages/Settings/Settings";
 
 function App() {
     return (
@@ -32,7 +31,7 @@ function App() {
                     />
                     <Route path="/find-tasks" element={<FindTasks />} />
                     <Route path="/contact-us" element={<ContactUs />} />
-                    <Route path="/login" element={<LogIn />} />
+                    <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route
                         path="/become-performer"
@@ -57,9 +56,8 @@ function App() {
                     />
                     <Route path="/task-detail" element={<TaskDetail />} />
                     <Route path="/about-us" element={<AboutUs />} />
-                    <Route path="/my-profile" element={<MyProfile />} />
+                    <Route path="/my-account" element={<MyAccount />} />
                     <Route path="/my-reviews" element={<MyReviews />} />
-                    <Route path="/settings" element={<Settings />} />
                 </Routes>
             </Router>
         </>

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import "./LogIn.css";
+import "./Login.css";
 import Cookies from "universal-cookie";
 import { Button } from "../../Button";
 
-function LogIn() {
+function Login() {
     const navigate = useNavigate();
     const cookies = new Cookies();
     const [email, setEmail] = useState("");
@@ -55,6 +55,13 @@ function LogIn() {
             <div className="login-container">
                 <div className="login-wrapper">
                     <div className="login-wrapper-left">
+                        <div className="login-text">
+                            <h2 className="login-text-main">Hello Again!</h2>
+                            <h5 className="login-text-sub">Welcome back :)</h5>
+                            <h5 className="login-text-sub">
+                                you've been missed!
+                            </h5>
+                        </div>
                         <div className="login-image">
                             <div className="login-image-box">
                                 <img
@@ -72,7 +79,7 @@ function LogIn() {
                         <div className="login-wrapper-outline">
                             <div className="login-content">
                                 <div className="login-title">
-                                    <h1>Log in</h1>
+                                    <h1 className="login-title-main">Log in</h1>
                                 </div>
                                 <div className="login-form">
                                     <form onSubmit={handleSubmit}>
@@ -124,7 +131,8 @@ function LogIn() {
                     </div>
                 </div>
             </div>
+            <div className="login-container-bottom"></div>
         </div>
     );
 }
-export default LogIn;
+export default Login;

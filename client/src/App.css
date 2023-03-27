@@ -59,14 +59,13 @@ h6 {
     --text-unselected: #878787;
     --text-disabled: #a9a9a9;
 }
-
-.home,
-.about {
-    display: flex;
-    height: 70vh;
-    align-items: center;
-    justify-content: center;
+#root {
+    height: 100%;
+    min-height: 100vh;
 }
-.about {
-    font-size: 100px;
+
+#container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }

@@ -103,10 +103,7 @@ function ContactUs() {
                                             <div className="contact-input-label">
                                                 Subject
                                             </div>
-                                            <input
-                                                type="text"
-                                                placeholder="name@example.com"
-                                            />
+                                            <input type="text" placeholder="" />
                                         </div>
 
                                         <div className="contact-input-field">

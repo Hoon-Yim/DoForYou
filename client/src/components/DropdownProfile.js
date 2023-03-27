@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button } from "./Button";
+import Cookies from "universal-cookie";
 
 function DropdownProfile() {
+    const cookies = new Cookies();
     return (
         <div className="navbar-profile-dropdown">
             <ul className="profile-menu-list">
@@ -9,17 +12,31 @@ function DropdownProfile() {
                     <Link to="/my-tasks-customer">My Tasks</Link>
                 </li>
                 <li className="profile-menu-list-item">
-                    <Link to="/my-profile">My Profile</Link>
+                    <Link to="/my-account">My Account</Link>
                 </li>
                 <li className="profile-menu-list-item">
-                    <Link to="/">My Reviews</Link>
+                    <Link to="/my-reviews">My Reviews</Link>
                 </li>
                 <hr />
                 <li className="profile-menu-list-item">
                     <Link to="/chat">Chat</Link>
                 </li>
-                <li className="profile-menu-list-item">
-                    <Link to="/settings">Settings</Link>
+                <li className="profile-menu-list-item-logout">
+                    <Button
+                        buttonStyle="btn--secondary-dark"
+                        buttonSize="btn--small-wide-bold"
+                        onClick={() => {
+                            cookies.set("jwt", "logout", {
+                                path: "/",
+                            });
+                            cookies.remove("firstname", {
+                                path: "/",
+                            });
+                            window.location.reload();
+                        }}
+                    >
+                        Log out
+                    </Button>
                 </li>
             </ul>
         </div>

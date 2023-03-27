@@ -82,8 +82,10 @@ function Reviews() {
             <div className="reviews-container">
                 <div className="reviews-wrapper">
                     <div className="reviews-title">
-                        <h1>Reviews</h1>
-                        <h5>What customers say about our performers?</h5>
+                        <h1 className="title-main">Reviews</h1>
+                        <h5 className="title-sub">
+                            What customers say about our performers?
+                        </h5>
                     </div>
                     <div className="reviews-content">
                         {/*<Carousel responsive={responsive}>*/}

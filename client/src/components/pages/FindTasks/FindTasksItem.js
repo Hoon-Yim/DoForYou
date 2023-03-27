@@ -33,7 +33,12 @@ export default function FindTasksItem(props) {
                         </div>
                         <div className="find-task-list-item-desc-date-time">
                             {/* change later */}
-                            Jan 4, 2023 12:00 - Jan 10, 2023 23:59
+                            <div className="find-task-list-item-desc-date-start">
+                                Jan 4, 2023 12:00
+                            </div>
+                            <div className="find-task-list-item-desc-date-end">
+                                - Jan 10, 2023 23:59
+                            </div>
                         </div>
                     </div>
                 </div>

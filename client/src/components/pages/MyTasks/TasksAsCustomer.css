@@ -1,3 +1,7 @@
+.tasks-customer {
+    height: 100%;
+    flex-grow: 1;
+}
 /* -------------------- Role filter -------------------- */
 .role-filter {
     border: 2px solid var(--secondary-dark);
@@ -79,12 +83,12 @@
 /* -------------------- Content -------------------- */
 .tasks-customer-container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1150px;
     margin: 0 auto;
 }
 
 .tasks-customer-wrapper {
-    padding: 5rem 0;
+    padding: 5rem 1rem;
 }
 
 .tasks-customer-title {

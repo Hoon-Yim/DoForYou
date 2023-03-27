@@ -34,9 +34,43 @@
 .categories-list-row {
     display: flex;
     justify-content: center;
-    margin-top: 12px;
+    margin: 10px 0;
 }
 
 .categories-list-row .btn {
-    margin: 5px;
+    margin: 0 5px;
+}
+
+/* Large screen */
+@media only screen and (max-width: 1200px) {
+}
+
+/* Small screen */
+@media only screen and (max-width: 992px) {
+    .categories-list-row {
+        flex-direction: column;
+        margin: 0px;
+    }
+
+    .categories-list-row .btn {
+        margin-top: 1rem;
+    }
+}
+
+/* Tablet */
+@media only screen and (max-width: 768px) {
+}
+
+/* Mobile */
+@media only screen and (max-width: 480px) {
+    .categories-title .title-main {
+        font-size: 30px;
+    }
+    .categories-title .title-sub {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+    .categories-list {
+        margin: 3rem 2rem;
+    }
 }

@@ -1,3 +1,7 @@
+.tasks-performer {
+    height: 100%;
+    flex-grow: 1;
+}
 /* -------------------- Role filter -------------------- */
 .role-filter {
     border: 2px solid var(--secondary-dark);

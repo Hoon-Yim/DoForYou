@@ -16,7 +16,7 @@ function Categrories() {
                     <div className="categories-list">
                         <div className="categories-list-row">
                             <Button
-                                className="btn"
+                                className="category"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
                                 buttonRadius="btn--rounded"
@@ -25,7 +25,7 @@ function Categrories() {
                                 Courier Services
                             </Button>
                             <Button
-                                className="btn"
+                                className="category"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
                                 buttonRadius="btn--rounded"
@@ -34,7 +34,7 @@ function Categrories() {
                                 Cargo Transportation
                             </Button>
                             <Button
-                                className="btn"
+                                className="category"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
                                 buttonRadius="btn--rounded"
@@ -43,7 +43,7 @@ function Categrories() {
                                 Transport Repair
                             </Button>
                             <Button
-                                className="btn"
+                                className="category"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
                                 buttonRadius="btn--rounded"
@@ -54,7 +54,7 @@ function Categrories() {
                         </div>
                         <div className="categories-list-row">
                             <Button
-                                className="btn"
+                                className="category"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
                                 buttonRadius="btn--rounded"
@@ -63,7 +63,7 @@ function Categrories() {
                                 Computer
                             </Button>
                             <Button
-                                className="btn"
+                                className="category"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
                                 buttonRadius="btn--rounded"
@@ -72,7 +72,7 @@ function Categrories() {
                                 Software Development
                             </Button>
                             <Button
-                                className="btn"
+                                className="category"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
                                 buttonRadius="btn--rounded"
@@ -81,7 +81,7 @@ function Categrories() {
                                 Design
                             </Button>
                             <Button
-                                className="btn"
+                                className="category"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
                                 buttonRadius="btn--rounded"
@@ -92,7 +92,7 @@ function Categrories() {
                         </div>
                         <div className="categories-list-row">
                             <Button
-                                className="btn"
+                                className="category"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
                                 buttonRadius="btn--rounded"
@@ -101,7 +101,7 @@ function Categrories() {
                                 Repair and Construction
                             </Button>
                             <Button
-                                className="btn"
+                                className="category"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
                                 buttonRadius="btn--rounded"
@@ -110,7 +110,7 @@ function Categrories() {
                                 Cleaning and Household
                             </Button>
                             <Button
-                                className="btn"
+                                className="category"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
                                 buttonRadius="btn--rounded"
@@ -119,7 +119,7 @@ function Categrories() {
                                 Installation
                             </Button>
                             <Button
-                                className="btn"
+                                className="category"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
                                 buttonRadius="btn--rounded"
@@ -130,7 +130,7 @@ function Categrories() {
                         </div>
                         <div className="categories-list-row">
                             <Button
-                                className="btn"
+                                className="category"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
                                 buttonRadius="btn--rounded"
@@ -139,7 +139,7 @@ function Categrories() {
                                 Virtual Assistant
                             </Button>
                             <Button
-                                className="btn"
+                                className="category"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
                                 buttonRadius="btn--rounded"
@@ -148,7 +148,7 @@ function Categrories() {
                                 Beauty and Health
                             </Button>
                             <Button
-                                className="btn"
+                                className="category"
                                 buttonStyle="btn--category"
                                 buttonSize="btn--large"
                                 buttonRadius="btn--rounded"

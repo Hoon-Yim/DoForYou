@@ -14,7 +14,7 @@ function Process() {
                     </div>
                     <div className="process-list">
                         <div className="process-list-start">
-                            <div>
+                            <div className="process-list-image-box">
                                 <img
                                     className="process-list-image"
                                     src={

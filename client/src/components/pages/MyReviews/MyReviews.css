@@ -163,9 +163,11 @@
     margin-bottom: 1rem;
 }
 
-.my-reviews-as-performer-review-left,
+.my-reviews-as-performer-review-left {
+    margin: 2rem 0.75rem 2rem 2rem;
+}
 .my-reviews-as-performer-review-right {
-    margin: 1rem;
+    margin: 2rem 2rem 2rem 0.75rem;
 }
 
 .my-reviews-as-performer-review-left {

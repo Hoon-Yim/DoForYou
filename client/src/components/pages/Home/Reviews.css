@@ -19,11 +19,11 @@
     text-align: center;
 }
 
-.reviews-title > h1 {
+.reviews-title .title-main {
     font-size: 45px;
 }
 
-.reviews-title > h5 {
+.reviews-title .title-sub {
     margin-top: 15px;
 }
 /*
@@ -110,4 +110,28 @@
 
 .user-completed {
     font-weight: 300;
+}
+
+/* Large screen */
+@media only screen and (max-width: 1200px) {
+}
+
+/* Small screen */
+@media only screen and (max-width: 992px) {
+}
+
+/* Tablet */
+@media only screen and (max-width: 768px) {
+}
+
+/* Mobile */
+@media only screen and (max-width: 480px) {
+    .reviews-title .title-main {
+        font-size: 30px;
+    }
+
+    .reviews-title .title-sub {
+        margin-top: 10px;
+        font-size: 14px;
+    }
 }

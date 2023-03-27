@@ -125,6 +125,14 @@ function Login() {
                                             Forgot password?
                                         </Link>
                                     </div>
+                                    <div className="login-bottom">
+                                        <Link
+                                            to="/forgot-password"
+                                            className="login-bottom-link"
+                                        >
+                                            Forgot password?
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>

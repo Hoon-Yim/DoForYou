@@ -50,7 +50,7 @@ function Register() {
                     </Link>
                 </div>
                 <div className="nav-small-right">
-                    <Link to="/log-in" className="go-to-another-step">
+                    <Link to="/login" className="go-to-another-step">
                         LOG IN
                     </Link>
                 </div>
@@ -231,6 +231,7 @@ function Register() {
                     </div>
                 </div>
             </div>
+            <div className="register-container-bottom"></div>
         </div>
     );
 }

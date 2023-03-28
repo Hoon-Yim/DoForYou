@@ -1,20 +1,23 @@
+.my-reviews {
+    height: 100%;
+    flex-grow: 1;
+}
 .my-reviews-container {
-    display: flex;
     width: 100%;
-    max-width: 1000px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
 .my-reviews-wrapper {
-    display: flex;
-    width: 1000px;
-    background-color: #fff;
-    padding: 9rem 0;
+    padding: 9rem 1rem;
 }
 
+.my-reviews-wrapper-bottom {
+    display: flex;
+    margin-top: 50px;
+}
 .my-reviews-wrapper-left {
-    width: 80%;
-    padding: 0 2rem;
+    width: 75%;
 }
 
 .my-reviews-wrapper-left-section-title {
@@ -40,7 +43,7 @@
 
 .my-reviews-as-customer {
     width: 100%;
-    margin: 2.5rem auto 0;
+    margin-top: 2.5rem;
 }
 
 .my-reviews-as-customer-title,
@@ -150,6 +153,7 @@
 /* Review as a performer */
 .my-reviews-as-performer {
     width: 100%;
+    margin-top: 1rem;
 }
 
 .my-reviews-as-performer-reviews {
@@ -186,18 +190,13 @@
     background-color: var(--secondary-light);
     display: flex;
     justify-content: center;
-    width: 150px;
     padding: 8px 20px;
     border-radius: 20px;
 }
 
-.star-icon,
-.star-end-icon {
+.review-stars i {
     color: var(--secondary-medium-dark);
-}
-
-.star-icon {
-    margin-right: 5px;
+    margin: 0 2.5px;
 }
 
 .reviews-numbers {
@@ -244,7 +243,8 @@
 /* Right section - profile photo / save button */
 
 .my-reviews-wrapper-right {
-    width: 20%;
+    width: 25%;
+    padding-left: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -256,4 +256,150 @@
 
 .my-reviews-wrapper-right-profile-photo-image img {
     width: 100%;
+}
+
+/* 13 inch MacBook */
+@media only screen and (max-width: 1440px) {
+    .my-reviews-wrapper {
+        padding: 6.5rem 1rem;
+    }
+}
+
+/* Large screen */
+@media only screen and (max-width: 1200px) {
+    .my-reviews-wrapper {
+        padding: 4rem 1rem;
+    }
+    .my-reviews-wrapper-left-section-title {
+        font-size: 36px;
+    }
+    .my-reviews-as-customer-title,
+    .my-reviews-as-performer-title {
+        font-size: 18px;
+    }
+}
+
+/* Small screen */
+@media only screen and (max-width: 992px) {
+    .my-reviews-wrapper {
+        padding: 2rem 1rem;
+    }
+    .my-reviews-wrapper-left-section-title {
+        font-size: 32px;
+    }
+}
+
+/* Tablet */
+@media only screen and (max-width: 768px) {
+    .my-reviews-wrapper {
+        padding: 1rem 1rem;
+    }
+    .my-reviews-wrapper-left-section-title {
+        font-size: 28px;
+    }
+    .my-reviews-wrapper-left {
+        width: 100%;
+    }
+    .my-reviews-as-customer {
+        margin-top: 1.5rem;
+    }
+    .my-reviews-as-customer-title,
+    .my-reviews-as-performer-title {
+        margin-bottom: 0.5rem;
+    }
+    .my-reviews-as-customer-evaluation-good-section {
+        padding: 0.5rem 0.75rem 0.5rem 0.5rem;
+    }
+    .my-reviews-as-customer-evaluation-bad-section {
+        padding: 0.5rem 0.5rem 0.5rem 0.75rem;
+    }
+    .evaluation-good-keyword-punctual-payment,
+    .evaluation-good-keyword-number,
+    .evaluation-bad-keyword-number,
+    .evaluation-bad-keyword-punctual-payment {
+        font-size: 14px;
+    }
+    .evaluation-good-keyword-punctual-payment,
+    .evaluation-bad-keyword-number {
+        padding-right: 0.4rem;
+    }
+    .evaluation-good-keyword-number,
+    .evaluation-bad-keyword-punctual-payment {
+        padding-left: 0.4rem;
+    }
+    .my-reviews-as-performer {
+        margin-top: 0.5rem;
+    }
+
+    .my-reviews-as-performer-review-box {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    .my-reviews-as-performer-review-left {
+        margin: 0;
+    }
+    .my-reviews-as-performer-review-bottom {
+        margin-left: 0.5rem;
+    }
+    .my-reviews-as-performer-review-stars,
+    .my-reviews-as-performer-review-writer,
+    .my-reviews-as-performer-review-date {
+        justify-content: left;
+    }
+    .my-reviews-as-performer-review-writer {
+        margin-top: 0.5rem;
+    }
+    .my-reviews-as-performer-review-right {
+        margin: 0;
+        padding-top: 1rem;
+    }
+    .my-reviews-as-performer-review-title {
+        margin-bottom: 0.5rem;
+        font-size: 18px;
+    }
+
+    .my-reviews-wrapper-right {
+        display: none;
+    }
+}
+
+/* Mobile */
+@media only screen and (max-width: 480px) {
+    .my-reviews-wrapper-left-section-title {
+        font-size: 24px;
+    }
+
+    .my-reviews-as-customer-title,
+    .my-reviews-as-performer-title {
+        font-size: 16px;
+    }
+    .my-reviews-as-customer-evaluation {
+        flex-direction: column;
+    }
+    .my-reviews-as-customer-evaluation-good-section,
+    .my-reviews-as-customer-evaluation-bad-section {
+        width: 100%;
+        padding: 1rem 0.5rem 0.5rem;
+    }
+    .my-reviews-as-customer-evaluation-good-section {
+        border-right: none;
+        border-bottom: 1px solid var(--secondary-light);
+    }
+    .my-reviews-as-customer-evaluation-good-keywords,
+    .my-reviews-as-customer-evaluation-bad-keywords {
+        margin-top: 1rem;
+    }
+    .review-stars {
+        font-size: 14px;
+    }
+    .my-reviews-as-performer-review-writer,
+    .my-reviews-as-performer-review-date {
+        font-size: 12px;
+    }
+    .my-reviews-as-performer-review-title {
+        font-size: 16px;
+    }
+    .my-reviews-as-performer-review-desc {
+        font-size: 14px;
+    }
 }

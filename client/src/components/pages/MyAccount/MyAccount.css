@@ -1,26 +1,26 @@
+.my-profile {
+    height: 100%;
+    flex-grow: 1;
+}
 .my-profile-container {
-    display: flex;
-    flex-direction: column;
     width: 100%;
-    max-width: 1000px;
+    max-width: 900px;
     margin: 0 auto;
+}
+.responsive-profile-photo-box {
+    display: none;
 }
 
 .my-profile-wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 1000px;
-    padding: 9rem 0;
+    padding: 9rem 1rem;
 }
 
 .my-profile-wrapper-top {
     display: flex;
-    width: 1000px;
 }
 
 .my-profile-wrapper-left {
-    width: 80%;
-    padding: 0 2rem;
+    width: 75%;
 }
 
 .my-profile-wrapper-left-section-title {
@@ -44,7 +44,7 @@
 
 .my-profile-wrapper-left-profile-form {
     width: 100%;
-    margin: 2.5rem auto 0;
+    margin-top: 2.5rem;
 }
 
 .my-profile-wrapper-left-profile-title {
@@ -94,6 +94,9 @@
     display: flex;
     margin-top: 2rem;
 }
+.responsive-profile-bottom-box {
+    display: none;
+}
 
 .my-profile-wrapper-left-password-title {
     font-size: 40px;
@@ -120,7 +123,8 @@
 /* Right section - profile photo / save button */
 
 .my-profile-wrapper-right {
-    width: 20%;
+    width: 25%;
+    padding-left: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -147,10 +151,173 @@
     margin-bottom: 2rem;
 }
 
+.my-profile-wrapper-right-bottom-manage-btn {
+    margin-bottom: 0.5rem;
+}
+
 .my-profile-wrapper-right-password {
-    width: 20%;
+    width: 25%;
+    padding-left: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     margin-bottom: 2rem;
+}
+
+/* 13 inch MacBook */
+@media only screen and (max-width: 1440px) {
+    .my-profile-wrapper {
+        padding: 6.5rem 1rem;
+    }
+}
+
+/* Large screen */
+@media only screen and (max-width: 1200px) {
+    .my-profile-wrapper {
+        padding: 4rem 1rem;
+    }
+    .my-profile-wrapper-left-section-title,
+    .my-profile-wrapper-left-password-title {
+        font-size: 36px;
+    }
+    .my-profile-wrapper-left-profile-title {
+        font-size: 18px;
+    }
+}
+
+/* Small screen */
+@media only screen and (max-width: 992px) {
+    .my-profile-wrapper {
+        padding: 2rem 1rem;
+    }
+    .my-profile-wrapper-left-section-title,
+    .my-profile-wrapper-left-password-title {
+        font-size: 32px;
+    }
+
+    .my-profile-wrapper-right-bottom-manage-btn .btn--square,
+    .my-profile-wrapper-right-bottom-save-btn .btn--square {
+        font-size: 16px;
+    }
+}
+
+/* Tablet */
+@media only screen and (max-width: 768px) {
+    .my-profile-wrapper {
+        padding: 1rem 1rem;
+    }
+
+    .responsive-profile-photo-box {
+        display: block;
+        margin-bottom: 10px;
+    }
+    .responsive-profile-photo {
+        margin-bottom: 5px;
+    }
+    .responsive-profile-photo-image,
+    .responsive-profile-photo-btns {
+        display: flex;
+        justify-content: center;
+    }
+
+    .responsive-profile-photo-image img {
+        width: 180px;
+    }
+
+    .responsive-profile-photo-btns .btn--small {
+        margin: 0 4px;
+        width: 90px;
+    }
+
+    .my-profile-wrapper-left {
+        width: 100%;
+    }
+    .my-profile-wrapper-left-section-title,
+    .my-profile-wrapper-left-password-title {
+        font-size: 28px;
+    }
+    .my-profile-wrapper-left-profile-form {
+        margin-top: 1.75rem;
+    }
+    .my-profile-wrapper-right {
+        display: none;
+    }
+    .my-profile-wrapper-right-profile-btns {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    .my-profile-wrapper-right-profile-btns button {
+        margin: 4px 0.2rem;
+    }
+    .my-profile-wrapper-right-bottom-manage-btn .btn--square,
+    .my-profile-wrapper-right-bottom-save-btn .btn--square {
+        font-size: 16px;
+    }
+
+    .responsive-profile-bottom-box {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .responsive-profile-bottom-manage-btn,
+    .responsive-profile-bottom-save-btn {
+        width: 100%;
+    }
+
+    .responsive-profile-bottom-save-btn {
+        margin-left: 0.5rem;
+    }
+
+    .responsive-profile-bottom-manage-btn .btn--square,
+    .responsive-profile-bottom-save-btn .btn--square {
+        font-size: 16px;
+    }
+
+    .my-profile-wrapper-bottom {
+        flex-direction: column;
+        margin-top: 3rem;
+    }
+    .my-profile-wrapper-right-password {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+/* Mobile */
+@media only screen and (max-width: 480px) {
+    .my-profile-wrapper-left-section-title,
+    .my-profile-wrapper-left-password-title {
+        font-size: 24px;
+    }
+    .my-profile-wrapper-left-profile-form {
+        margin-top: 1rem;
+    }
+    .my-profile-wrapper-left-profile-title {
+        font-size: 16px;
+    }
+    .my-profile-input-label {
+        font-size: 12px;
+    }
+    .my-profile-input-field input,
+    .my-profile-input-field select,
+    .my-profile-input-field textarea {
+        font-size: 14px;
+    }
+
+    .my-profile-wrapper-right-bottom .btn--square,
+    .my-profile-wrapper-right-bottom-save-btn .btn--square {
+        font-size: 14px;
+    }
+
+    .responsive-profile-bottom-save-btn .btn--square,
+    .responsive-profile-bottom-manage-btn .btn--square {
+        font-size: 14px;
+    }
+
+    .my-profile-wrapper-left-password-sub-title {
+        font-size: 16px;
+    }
+    .my-profile-wrapper-left-password-desc-list {
+        font-size: 14px;
+    }
 }

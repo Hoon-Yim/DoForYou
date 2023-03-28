@@ -1,13 +1,16 @@
 .register {
+    min-height: 100vh;
     background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
 }
 
 .register-container {
+    height: 100%;
     display: flex;
-    height: 95vh;
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
 }
 
 .register-wrapper {
@@ -95,6 +98,11 @@
     background-color: var(--primary-blue);
     color: #fff;
     border: 1px solid var(--primary-blue);
+}
+
+.register-container-bottom {
+    margin-top: 33px;
+    box-sizing: border-box;
 }
 
 @media screen and (max-height: 960px) {

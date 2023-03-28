@@ -8,211 +8,347 @@ import "./MyAccount.css";
 function MyProfile() {
     return (
         <>
-            <Navbar />
-            <div className="my-profile">
-                <div className="my-profile-container">
-                    <div className="my-profile-wrapper">
-                        <div className="my-profile-wrapper-top">
-                            <div className="my-profile-wrapper-left">
-                                <div className="my-profile-wrapper-left-section-title">
-                                    <div className="my-profile-wrapper-left-section-profile">
-                                        <Link to="/my-account">Profile</Link>
-                                    </div>
-                                    <div className="my-profile-wrapper-left-section-reviews">
-                                        <Link to="/my-reviews">Reviews</Link>
+            <div id="container">
+                <Navbar />
+                <div className="my-profile">
+                    <div className="my-profile-container">
+                        <div className="my-profile-wrapper">
+                            <div className="responsive-profile-photo-box">
+                                <div className="responsive-profile-photo">
+                                    <div className="responsive-profile-photo-image">
+                                        <img
+                                            src="images/profile/SY.png"
+                                            alt="profile"
+                                        />
                                     </div>
                                 </div>
-                                <div className="my-profile-wrapper-left-profile-form">
-                                    <form /*onSubmit={handleSubmit}*/>
-                                        <div className="my-profile-wrapper-left-profile-title">
-                                            Personal Information
+                                <div className="responsive-profile-photo-btns">
+                                    <Button
+                                        buttonStyle="btn--outline"
+                                        buttonSize="btn--small"
+                                        buttonRadius="btn--rounded"
+                                        type="submit"
+                                    >
+                                        Edit
+                                    </Button>
+                                    <Button
+                                        buttonStyle="btn--outline"
+                                        buttonSize="btn--small"
+                                        buttonRadius="btn--rounded"
+                                        type="submit"
+                                    >
+                                        Remove
+                                    </Button>
+                                </div>
+                            </div>
+                            <div className="my-profile-wrapper-top">
+                                <div className="my-profile-wrapper-left">
+                                    <div className="my-profile-wrapper-left-section-title">
+                                        <div className="my-profile-wrapper-left-section-profile">
+                                            <Link to="/my-account">
+                                                Profile
+                                            </Link>
                                         </div>
-                                        <div className="my-profile-name-combine">
-                                            <div className="my-profile-name-combine-left">
-                                                <div className="my-profile-input-field">
-                                                    <div className="my-profile-input-label">
-                                                        First Name
-                                                    </div>
-                                                    <input
-                                                        type="text"
-                                                        placeholder="First Name"
-                                                        /*onChange={(e) =>
+                                        <div className="my-profile-wrapper-left-section-reviews">
+                                            <Link to="/my-reviews">
+                                                Reviews
+                                            </Link>
+                                        </div>
+                                    </div>
+                                    <div className="my-profile-wrapper-left-profile-form">
+                                        <form
+                                            /*onSubmit={handleSubmit}*/ id="my-profile-action"
+                                        >
+                                            <div className="my-profile-wrapper-left-profile-title">
+                                                Personal Information
+                                            </div>
+                                            <div className="my-profile-name-combine">
+                                                <div className="my-profile-name-combine-left">
+                                                    <div className="my-profile-input-field">
+                                                        <div className="my-profile-input-label">
+                                                            First Name
+                                                        </div>
+                                                        <input
+                                                            type="text"
+                                                            placeholder="First Name"
+                                                            /*onChange={(e) =>
                                                         setFirstName(
                                                             e.target.value
                                                         )
                                                     }*/
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="my-profile-name-combine-right">
-                                                <div className="my-profile-input-field">
-                                                    <div className="my-profile-input-label">
-                                                        Last Name
+                                                        />
                                                     </div>
-                                                    <input
-                                                        type="text"
-                                                        placeholder="Last Name"
-                                                        /*onChange={(e) =>
+                                                </div>
+                                                <div className="my-profile-name-combine-right">
+                                                    <div className="my-profile-input-field">
+                                                        <div className="my-profile-input-label">
+                                                            Last Name
+                                                        </div>
+                                                        <input
+                                                            type="text"
+                                                            placeholder="Last Name"
+                                                            /*onChange={(e) =>
                                                         setLastName(
                                                             e.target.value
                                                         )
                                                     }*/
-                                                    />
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="my-profile-input-field">
-                                            <div className="my-profile-input-label">
-                                                Phone
-                                            </div>
-                                            <input
-                                                type="text"
-                                                placeholder="123-456-7890"
-                                                /*onChange={(e) =>
+                                            <div className="my-profile-input-field">
+                                                <div className="my-profile-input-label">
+                                                    Phone
+                                                </div>
+                                                <input
+                                                    type="text"
+                                                    placeholder="123-456-7890"
+                                                    /*onChange={(e) =>
                                                 setPhone(e.target.value)
                                             }*/
-                                            />
-                                        </div>
-                                        <div className="my-profile-input-field">
-                                            <div className="my-profile-input-label">
-                                                Address
+                                                />
                                             </div>
-                                            <input
-                                                type="text"
-                                                placeholder="Address"
-                                                /*onChange={(e) =>
+                                            <div className="my-profile-input-field">
+                                                <div className="my-profile-input-label">
+                                                    Address
+                                                </div>
+                                                <input
+                                                    type="text"
+                                                    placeholder="Address"
+                                                    /*onChange={(e) =>
                                                 setAddress(e.target.value)
                                             }*/
-                                            />
-                                            <div className="my-profile-address-combine">
-                                                <div className="my-profile-address-combine-left">
-                                                    <div className="my-profile-input-label">
-                                                        City
-                                                    </div>
-                                                    <input
-                                                        type="text"
-                                                        placeholder="City"
-                                                        /*onChange={(e) =>
+                                                />
+                                                <div className="my-profile-address-combine">
+                                                    <div className="my-profile-address-combine-left">
+                                                        <div className="my-profile-input-label">
+                                                            City
+                                                        </div>
+                                                        <input
+                                                            type="text"
+                                                            placeholder="City"
+                                                            /*onChange={(e) =>
                                                         setCity(e.target.value)
                                                     }*/
-                                                    />
-                                                </div>
-                                                <div className="my-profile-address-combine-right">
-                                                    <div className="my-profile-input-label">
-                                                        Province
+                                                        />
                                                     </div>
-                                                    <select
-                                                        name=""
-                                                        id=""
-                                                        /*onChange={(e) =>
+                                                    <div className="my-profile-address-combine-right">
+                                                        <div className="my-profile-input-label">
+                                                            Province
+                                                        </div>
+                                                        <select
+                                                            name=""
+                                                            id=""
+                                                            /*onChange={(e) =>
                                                         setProvince(
                                                             e.target.value
                                                         )
                                                     }*/
-                                                    >
-                                                        <option
-                                                            value=""
-                                                            selected
-                                                            disabled
                                                         >
-                                                            Select
-                                                        </option>
-                                                        <option value="Alberta">
-                                                            Alberta
-                                                        </option>
-                                                        <option value="British Columbia">
-                                                            British Columbia
-                                                        </option>
-                                                        <option value="Manitoba">
-                                                            Manitoba
-                                                        </option>
-                                                        <option value="New Brunswick">
-                                                            New Brunswick
-                                                        </option>
-                                                        <option value="Newfoundland">
-                                                            Newfoundland
-                                                        </option>
-                                                        <option value="Nova Scotia">
-                                                            Nova Scotia
-                                                        </option>
-                                                        <option value="Ontario">
-                                                            Ontario
-                                                        </option>
-                                                        <option value="Prince Edward Island">
-                                                            Prince Edward Island
-                                                        </option>
-                                                        <option value="Quebec">
-                                                            Quebec
-                                                        </option>
-                                                        <option value="Saskatchewan">
-                                                            Saskatchewan
-                                                        </option>
-                                                    </select>
+                                                            <option
+                                                                value=""
+                                                                selected
+                                                                disabled
+                                                            >
+                                                                Select
+                                                            </option>
+                                                            <option value="Alberta">
+                                                                Alberta
+                                                            </option>
+                                                            <option value="British Columbia">
+                                                                British Columbia
+                                                            </option>
+                                                            <option value="Manitoba">
+                                                                Manitoba
+                                                            </option>
+                                                            <option value="New Brunswick">
+                                                                New Brunswick
+                                                            </option>
+                                                            <option value="Newfoundland">
+                                                                Newfoundland
+                                                            </option>
+                                                            <option value="Nova Scotia">
+                                                                Nova Scotia
+                                                            </option>
+                                                            <option value="Ontario">
+                                                                Ontario
+                                                            </option>
+                                                            <option value="Prince Edward Island">
+                                                                Prince Edward
+                                                                Island
+                                                            </option>
+                                                            <option value="Quebec">
+                                                                Quebec
+                                                            </option>
+                                                            <option value="Saskatchewan">
+                                                                Saskatchewan
+                                                            </option>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div className="my-profile-input-label">
-                                                Postal Code
-                                            </div>
-                                            <input
-                                                type="text"
-                                                placeholder="A1B2C3"
-                                                /*onChange={(e) =>
+                                                <div className="my-profile-input-label">
+                                                    Postal Code
+                                                </div>
+                                                <input
+                                                    type="text"
+                                                    placeholder="A1B2C3"
+                                                    /*onChange={(e) =>
                                                 setPostalCode(e.target.value)
                                             }*/
-                                            />
-                                        </div>
-                                        <div className="my-profile-input-field">
-                                            <div className="my-profile-wrapper-left-profile-title">
-                                                BIO
+                                                />
                                             </div>
-                                            <textarea
-                                                className="my-profile-input-field-textarea"
-                                                rows={5}
-                                                placeholder=""
-                                                /*onChange={(e) =>
+                                            <div className="my-profile-input-field">
+                                                <div className="my-profile-wrapper-left-profile-title">
+                                                    BIO
+                                                </div>
+                                                <textarea
+                                                    className="my-profile-input-field-textarea"
+                                                    rows={5}
+                                                    placeholder=""
+                                                    /*onChange={(e) =>
                                                     setDetails(e.target.value)
                                                 }*/
-                                            />
+                                                />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div className="my-profile-wrapper-right">
+                                    <div className="my-profile-wrapper-right-profile-box">
+                                        <div className="my-profile-wrapper-right-profile-photo">
+                                            <div className="my-profile-wrapper-right-profile-photo-image">
+                                                <img
+                                                    src="images/profile/SY.png"
+                                                    alt="profile"
+                                                />
+                                            </div>
                                         </div>
-                                    </form>
+                                        <div className="my-profile-wrapper-right-profile-btns">
+                                            <Button
+                                                buttonStyle="btn--outline"
+                                                buttonSize="btn--small"
+                                                buttonRadius="btn--rounded"
+                                                type="submit"
+                                            >
+                                                Edit
+                                            </Button>
+                                            <Button
+                                                buttonStyle="btn--outline"
+                                                buttonSize="btn--small"
+                                                buttonRadius="btn--rounded"
+                                                type="submit"
+                                            >
+                                                Remove
+                                            </Button>
+                                        </div>
+                                    </div>
+                                    <div className="my-profile-wrapper-right-bottom">
+                                        <div className="my-profile-wrapper-right-bottom-manage-btn">
+                                            <Button
+                                                buttonStyle="btn--cancel"
+                                                buttonSize="btn--wide-bold"
+                                                type="reset"
+                                                form="my-profile-action"
+                                            >
+                                                RESET
+                                            </Button>
+                                        </div>
+                                        <div className="my-profile-wrapper-right-bottom-save-btn">
+                                            <Button
+                                                buttonStyle="btn--primary-blue"
+                                                buttonSize="btn--wide-bold"
+                                                type="submit"
+                                                form="my-profile-action"
+                                            >
+                                                SAVE
+                                            </Button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="my-profile-wrapper-right">
-                                <div className="my-profile-wrapper-right-profile-box">
-                                    <div className="my-profile-wrapper-right-profile-photo">
-                                        <div className="my-profile-wrapper-right-profile-photo-image">
-                                            <img
-                                                src="images/profile/SY.png"
-                                                alt="profile"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="my-profile-wrapper-right-profile-btns">
-                                        <Button
-                                            buttonStyle="btn--outline"
-                                            buttonSize="btn--small"
-                                            buttonRadius="btn--rounded"
-                                            type="submit"
+                            <div className="responsive-profile-bottom-box">
+                                <div className="responsive-profile-bottom-manage-btn">
+                                    <Button
+                                        buttonStyle="btn--cancel"
+                                        buttonSize="btn--wide-bold"
+                                        type="reset"
+                                        form="my-profile-action"
+                                    >
+                                        RESET
+                                    </Button>
+                                </div>
+                                <div className="responsive-profile-bottom-save-btn">
+                                    <Button
+                                        buttonStyle="btn--primary-blue"
+                                        buttonSize="btn--wide-bold"
+                                        type="submit"
+                                        form="my-profile-action"
+                                    >
+                                        SAVE
+                                    </Button>
+                                </div>
+                            </div>
+                            <div className="my-profile-wrapper-bottom">
+                                <div className="my-profile-wrapper-left">
+                                    <div className="my-profile-wrapper-left-password-form">
+                                        <form
+                                            /*onSubmit={handleSubmit}*/ id="my-password-action"
                                         >
-                                            Edit
-                                        </Button>
-                                        <Button
-                                            buttonStyle="btn--outline"
-                                            buttonSize="btn--small"
-                                            buttonRadius="btn--rounded"
-                                            type="submit"
-                                        >
-                                            Remove
-                                        </Button>
+                                            <div className="my-profile-wrapper-left-password-title">
+                                                Change Password
+                                            </div>
+                                            <div className="my-profile-wrapper-left-password-sub-title">
+                                                Create a new password with the
+                                                following requirements:
+                                            </div>
+                                            <div className="my-profile-wrapper-left-password-desc">
+                                                <ul className="my-profile-wrapper-left-password-desc-list">
+                                                    <li>
+                                                        length - at least 8
+                                                        characters
+                                                    </li>
+                                                    <li>lower case</li>
+                                                    <li>
+                                                        numbers or special
+                                                        characters: !, @, # and
+                                                        others
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div className="my-profile-input-field">
+                                                <div className="my-profile-input-label">
+                                                    New Password
+                                                </div>
+                                                <input
+                                                    type="password"
+                                                    placeholder="•••••••••••"
+                                                    /*onChange={(e) =>
+                                                setPhone(e.target.value)
+                                            }*/
+                                                />
+                                            </div>
+                                            <div className="my-profile-input-field">
+                                                <div className="my-profile-input-label">
+                                                    Confirm Password
+                                                </div>
+                                                <input
+                                                    type="password"
+                                                    placeholder="•••••••••••"
+                                                    /*onChange={(e) =>
+                                                setPhone(e.target.value)
+                                            }*/
+                                                />
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                                <div className="my-profile-wrapper-right-bottom">
-                                    <div className="my-profile-wrapper-right-bottom-manage-btn"></div>
+                                <div className="my-profile-wrapper-right-password">
                                     <div className="my-profile-wrapper-right-bottom-save-btn">
                                         <Button
                                             buttonStyle="btn--primary-blue"
                                             buttonSize="btn--wide-bold"
                                             type="submit"
+                                            form="my-password-action"
                                         >
                                             SAVE
                                         </Button>
@@ -220,74 +356,10 @@ function MyProfile() {
                                 </div>
                             </div>
                         </div>
-                        <div className="my-profile-wrapper-bottom">
-                            <div className="my-profile-wrapper-left">
-                                <div className="my-profile-wrapper-left-password-form">
-                                    <form /*onSubmit={handleSubmit}*/>
-                                        <div className="my-profile-wrapper-left-password-title">
-                                            Change Password
-                                        </div>
-                                        <div className="my-profile-wrapper-left-password-sub-title">
-                                            Create a new password with the
-                                            following requirements:
-                                        </div>
-                                        <div className="my-profile-wrapper-left-password-desc">
-                                            <ul className="my-profile-wrapper-left-password-desc-list">
-                                                <li>
-                                                    length - at least 8
-                                                    characters
-                                                </li>
-                                                <li>lower case</li>
-                                                <li>
-                                                    numbers or special
-                                                    characters: !, @, # and
-                                                    others
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div className="my-profile-input-field">
-                                            <div className="my-profile-input-label">
-                                                New Password
-                                            </div>
-                                            <input
-                                                type="password"
-                                                placeholder="•••••••••••"
-                                                /*onChange={(e) =>
-                                                setPhone(e.target.value)
-                                            }*/
-                                            />
-                                        </div>
-                                        <div className="my-profile-input-field">
-                                            <div className="my-profile-input-label">
-                                                Confirm Password
-                                            </div>
-                                            <input
-                                                type="password"
-                                                placeholder="•••••••••••"
-                                                /*onChange={(e) =>
-                                                setPhone(e.target.value)
-                                            }*/
-                                            />
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div className="my-profile-wrapper-right-password">
-                                <div className="my-profile-wrapper-right-bottom-save-btn">
-                                    <Button
-                                        buttonStyle="btn--primary-blue"
-                                        buttonSize="btn--wide-bold"
-                                        type="submit"
-                                    >
-                                        SAVE
-                                    </Button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
+                <Footer />
             </div>
-            <Footer />
         </>
     );
 }

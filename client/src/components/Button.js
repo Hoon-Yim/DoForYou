@@ -31,6 +31,7 @@ const RADIUS = ["btn--square", "btn--half-rounded", "btn--rounded"];
 export const Button = ({
     children,
     type,
+    form,
     onClick,
     buttonStyle,
     buttonSize,
@@ -49,6 +50,7 @@ export const Button = ({
             className={`btn ${checkButtonStyle} ${checkButtonSize} ${checkButtonRadius}`}
             onClick={onClick}
             type={type}
+            form={form}
         >
             {children}
         </button>

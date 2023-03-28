@@ -16,11 +16,19 @@ function Footer() {
                                 </h6>
                             </div>
                             <div className="footer-link-center">
-                                <Link to="/become-performer">
-                                    Do you wanna be Performer?
-                                </Link>
-                                <Link to="/">FAQ</Link>
-                                <Link to="/about-us">About Us</Link>
+                                <div className="footer-link-links">
+                                    <div className="footer-link-link">
+                                        <Link to="/become-performer">
+                                            Do you wanna be Performer?
+                                        </Link>
+                                    </div>
+                                    <div className="footer-link-link">
+                                        <Link to="/">FAQ</Link>
+                                    </div>
+                                    <div className="footer-link-link">
+                                        <Link to="/about-us">About Us</Link>
+                                    </div>
+                                </div>
                             </div>
                             <div className="footer-link-right">
                                 <Link to="/contact-us" className="chat">

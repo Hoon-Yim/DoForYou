@@ -18,22 +18,29 @@ function TasksAsCustomer() {
                                 <h1 className="tasks-customer-title-main">
                                     My tasks
                                 </h1>
+                                <h5 className="tasks-customer-title-sub">
+                                    <div className="tasks-customer-title-sub-text-upper">
+                                        Check the tasks what you've created
+                                    </div>
+                                    <div className="tasks-customer-title-sub-text-lower">
+                                        and review the performers after the task
+                                        is completed
+                                    </div>
+                                </h5>
                             </div>
                             <div className="tasks-customer-role-container">
-                                <div className="tasks-customer-role-wrap">
-                                    <div className="tasks-customer-role-box">
-                                        <div className="role-filter">
-                                            <Link to="/my-tasks-customer">
-                                                <button className="tasks-customer-role-customer-button">
-                                                    As a customer
-                                                </button>
-                                            </Link>
-                                            <Link to="/my-tasks-performer">
-                                                <button className="tasks-customer-role-performer-button">
-                                                    As a performer
-                                                </button>
-                                            </Link>
-                                        </div>
+                                <div className="tasks-customer-role-box">
+                                    <div className="role-filter">
+                                        <Link to="/my-tasks-customer">
+                                            <button className="tasks-customer-role-customer-button">
+                                                As a customer
+                                            </button>
+                                        </Link>
+                                        <Link to="/my-tasks-performer">
+                                            <button className="tasks-customer-role-performer-button">
+                                                As a performer
+                                            </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

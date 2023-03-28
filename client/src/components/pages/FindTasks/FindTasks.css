@@ -200,43 +200,57 @@
 }
 
 /* 13 inch MacBook */
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1440px) {
     .find-tasks-wrapper {
-        margin: 0 2rem;
+        padding: 4rem 1rem;
     }
 }
 
 /* Large screen */
 @media only screen and (max-width: 1200px) {
     .find-tasks-wrapper {
-        margin: 0 1rem;
+        padding: 3rem 1rem;
+    }
+
+    .find-tasks-search-wrap .search-box {
+        height: 54px;
+    }
+    .find-tasks-search-wrap .search-box .button {
+        height: 44px;
+        margin: 5px;
     }
 }
 
 /* Small screen */
 @media only screen and (max-width: 992px) {
+    .find-tasks-wrapper {
+        padding: 2rem 1rem;
+    }
     .find-tasks-title-main {
-        font-size: 35px;
+        font-size: 38px;
     }
     .find-tasks-title-sub {
         font-size: 16px;
     }
+
     .find-tasks-search-wrap .search-box {
-        height: 50px;
+        height: 48px;
     }
     .find-tasks-search-wrap .search-box .button {
-        height: 40px;
+        width: 140px;
+        height: 38px;
         margin: 5px;
+        font-size: 14px;
     }
 }
 
 /* Tablet => Tasks list filter */
 @media only screen and (max-width: 768px) {
     .find-tasks-wrapper {
-        margin: 0 0.5rem;
+        padding: 1rem 1rem;
     }
     .find-tasks-title-main {
-        font-size: 30px;
+        font-size: 34px;
     }
     .find-tasks-title-sub {
         font-size: 16px;
@@ -274,25 +288,34 @@
     .find-task-list-item-uploader {
         font-size: 16px;
     }
+
+    .find-tasks-search-wrap .search-box {
+        height: 48px;
+    }
+    .find-tasks-search-wrap .search-box .button {
+        width: 130px;
+        height: 38px;
+        margin: 5px;
+        font-size: 14px;
+    }
 }
 
 /* Mobile */
 @media only screen and (max-width: 480px) {
-    .find-tasks-wrapper {
-        margin: 0;
+    .find-tasks-title-main {
+        font-size: 30px;
     }
     .find-tasks-title-sub {
         font-size: 14px;
     }
 
     .find-tasks-search-wrap .search-box {
-        height: 40px;
+        height: 44px;
     }
     .find-tasks-search-wrap .search-box .button {
         width: 120px;
-        height: 32px;
+        height: 36px;
         margin: 4px;
-        font-size: 14px;
     }
 
     .find-tasks-content {

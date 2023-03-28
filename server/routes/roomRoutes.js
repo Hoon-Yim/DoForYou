@@ -8,4 +8,6 @@ router
     .get(roomController.getAllRooms)
     .post(roomController.createRoom);
 
+router.get("/:firstname", roomController.getUnreadNotification);
+
 module.exports = router;

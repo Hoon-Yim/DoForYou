@@ -14,7 +14,6 @@
 
 .my-reviews-wrapper-bottom {
     display: flex;
-    margin-top: 50px;
 }
 .my-reviews-wrapper-left {
     width: 75%;
@@ -293,6 +292,9 @@
 @media only screen and (max-width: 768px) {
     .my-reviews-wrapper {
         padding: 1rem 1rem;
+    }
+    .my-reviews-wrapper-bottom {
+        margin-top: 50px;
     }
     .my-reviews-wrapper-left-section-title {
         font-size: 28px;

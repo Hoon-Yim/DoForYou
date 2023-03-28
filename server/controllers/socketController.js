@@ -1,16 +1,28 @@
 const socket = require("socket.io");
 
 const messageController = require("../controllers/messageController");
+const roomController = require("../controllers/roomController");
+
+let chatInfo = {}
 
 const joinRoom = socket => {
-    socket.on("join_room", roomId => {
-        socket.join(roomId);
-        
+    socket.on("join_room", data => {
+        socket.join(data.roomId);
+
+        const [socketId, roomId] = socket.rooms;
+        chatInfo[socketId] = {
+            roomId,
+            firstname: data.firstname
+        }
+
+        console.log(chatInfo);
+
+        roomController.joinRoom(data.roomId, data.firstname);
+
         messageController
-            .retrieveMessages(roomId)
+            .retrieveMessages(data.roomId)
             .then(messages => {
-            console.log(messages)
-            socket.emit("send_previous_messages", messages);
+                socket.emit("send_previous_messages", messages);
             });
     });
 }
@@ -27,8 +39,20 @@ const sendReceivedMessage = socket => {
     });
 }
 
+const handleDisconnection = socket => {
+    socket.on("disconnect", () => {
+        if (socket.id in chatInfo) {
+            delete chatInfo[socket.id];
+            console.log(socket.id, "disconnected");
+            console.log(chatInfo);
+        }
+    });
+}
+
 exports.connection = socket => {
     joinRoom(socket);
 
     sendReceivedMessage(socket);
+
+    handleDisconnection(socket);
 }

@@ -23,14 +23,19 @@ function Chat() {
             .then(data => {
                 setRooms(data.data.rooms);
             });
+
+        axios.get(`http://localhost:8000/api/chat/rooms/${cookies.get("firstname")}`)
+            .then(data => {
+                console.log(data.data);
+            });
     }, []);
 
     useEffect(() => {
         socket.on("send_previous_messages", messages => {
             setMessages(messages.map(message => {
-                return `${message.sender.firstname}: ${message.message}`
-            }))
-        })
+                return `${message.sender.firstname}: ${message.message}`;
+            }));
+        });
     }, [isJoined]);
 
     // getting messages sent by other users
@@ -73,7 +78,7 @@ function Chat() {
                     }
                     <form onSubmit={e => {
                         e.preventDefault();
-                        socket.emit("join_room", room);
+                        socket.emit("join_room", { roomId: room, firstname });
                         setIsJoined(true);
                     }}>
                         <input type="text" onChange={e => {

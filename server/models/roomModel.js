@@ -7,8 +7,14 @@ const roomSchema = mongoose.Schema({
     },
     participants: [
         {
-            type: mongoose.Schema.ObjectId,
-            ref: "User"
+            user: {
+                type: mongoose.Schema.ObjectId,
+                ref: "User",
+            },
+            disconnectedAt: {
+                type: Date,
+                default: Date.now()
+            }
         }
     ],
     createdAt: {
@@ -19,5 +25,15 @@ const roomSchema = mongoose.Schema({
         type: Date
     }
 });
+
+roomSchema.methods.isInParticipants = function(user) {
+    for (const participant of this.participants) {
+        if (participant.user.equals(user._id)) {
+            return true;
+        }
+    }
+
+    return false;
+}
 
 module.exports = mongoose.model("Room", roomSchema);

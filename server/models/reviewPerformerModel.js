@@ -4,13 +4,16 @@ const reviewPerformerSchema = mongoose.Schema({
     performerId: {
         type: String
     },
+    customerId: {
+        type: String
+    },
     rating: {
         type: Number,
-        validate(value) {
-            if (value < 0.0 && value > 5.0) {
-                throw new Error("Rating can be only from 0 to 5")
-            }
-        }
+        default: 0
+    },
+    average_rating: {
+        type: Number,
+        default: 0
     },
     review: {
         type: String

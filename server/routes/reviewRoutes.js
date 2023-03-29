@@ -1,11 +1,17 @@
 const express = require("express");
 const router = express.Router();
 
-const reviewController = require("../controllers/reviewController")
+const reviewCustomerController = require("../controllers/reviewCustomerController")
+const reviewPerformerController = require("../controllers/reviewPerformerController")
 
-router.post("/reviewCustomer/:uid", reviewController.createCustomerReview);
-router.post("/reviewPerformer/:uid", reviewController.createPerformerReview);
-router.get("/:uid", reviewController.getUserReviews);
+
+// Customer reviews routes
+router.post("/reviewCustomer/:uid", reviewCustomerController.createCustomerReview);
+
+
+// Performer reviews routes
+router.post("/reviewPerformer/:uid", reviewPerformerController.createPerformerReview);
+
 
 router
     .route('/')

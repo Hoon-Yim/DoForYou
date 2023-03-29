@@ -10,10 +10,11 @@ router.get("/reviewCustomer/:cid", reviewsController.getCustomerReviews);
 router.get("/reviewCustomer/:cid/:tag", reviewsController.getCountForEachTag);
 router.put("/reviewCustomer/:cid/:like", reviewsController.updateCustomerRating);
 
+// Performer reviews routes
 
 
-
-// Get both customer and performer reviews
+// Both customer and performer reviews
+router.get("/:uid", reviewsController.getUserReviews);
 router
     .route('/')
     .get(reviewsController.getAllReviews);

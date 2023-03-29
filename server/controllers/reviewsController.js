@@ -19,8 +19,21 @@ exports.getAllReviews = catchAsync(async (req, res) => {
   });
 })
 
-// Displat all reviews for a specific customer
+// Displat all reviews for a specific user
+exports.getUserReviews = catchAsync(async (req, res) => {
 
+  const userId = req.params.uid;
+  const reviewsCustomer = await ReviewCustomer.find({ userId });
+  const reviewsPerformer = await ReviewPerformer.find({ userId });
+
+  res.status(200).json({
+      status: "success",
+      results: reviewsCustomer.length,
+      reviewsCustomer,
+      results: reviewsPerformer.length,
+      reviewsPerformer
+  });
+})
 
 // Submit a new review
 exports.submitCutomerReview = catchAsync(async (req, res) => {

@@ -1,22 +1,23 @@
 const ReviewCustomer = require("../models/reviewCustomerModel");
-const ReviewPerformer = require("../models/reviewPerformerModel");
 
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 
 // Submit a new review
-app.post('/reviews', async (req, res) => {
-    try {
-      const { customerId, rating, categories } = req.body;
-      const review = new Review({
+exports.submitCutomerReview = catchAsync(async (req, res) => {
+
+    const { customerId, rating, tag } = req.body;
+    const review = new ReviewCustomer({
         customerId,
         rating,
-        categories
-      });
-      await review.save();
-      res.status(201).json(review);
-    } catch (err) {
-      res.status(400).json({ message: err.message });
-    }
-  });
+        tag
+    });
+    await review.save();
+    res.status(201).json({
+        status: "success",
+        results: review.length,
+        review
+    });
+    
+});
 

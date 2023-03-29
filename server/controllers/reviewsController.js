@@ -1,7 +1,26 @@
 const ReviewCustomer = require("../models/reviewCustomerModel");
+const ReviewPerformer = require("../models/reviewPerformerModel");
 
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
+
+// Get all reviews 
+exports.getAllReviews = catchAsync(async (req, res) => {
+
+  const reviewsCustomer = await ReviewCustomer.find({});
+  const reviewsPerformer = await ReviewPerformer.find({});
+
+  res.status(200).json({
+      status: "success",
+      results: reviewsCustomer.length,
+      reviewsCustomer,
+      results: reviewsPerformer.length,
+      reviewsPerformer
+  });
+})
+
+// Displat all reviews for a specific customer
+
 
 // Submit a new review
 exports.submitCutomerReview = catchAsync(async (req, res) => {

@@ -6,15 +6,8 @@ const reviewPerformerController = require("../controllers/reviewPerformerControl
 
 
 // Customer reviews routes
-router.post("/reviewCustomer/:uid", reviewCustomerController.createCustomerReview);
+router.post("/reviewCustomer/", reviewCustomerController.submitCutomerReview);
 
 
-// Performer reviews routes
-router.post("/reviewPerformer/:uid", reviewPerformerController.createPerformerReview);
-
-
-router
-    .route('/')
-    .get(reviewController.getPerformersReviews);
 
 module.exports = router;

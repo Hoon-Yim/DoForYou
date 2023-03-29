@@ -4,9 +4,9 @@ const reviewCustomerSchema = mongoose.Schema({
     customerId: {
         type: String
     },
-    like: {
-        // true == like, false == dislike
-        type: Boolean
+    rating: { 
+        type: Number, 
+        default: 0 
     },
     tag: {
         type: String,

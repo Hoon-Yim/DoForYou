@@ -7,7 +7,7 @@ const reviewPerformerController = require("../controllers/reviewPerformerControl
 
 // Customer reviews routes
 router.post("/reviewCustomer/", reviewCustomerController.submitCutomerReview);
-
-
-
+router.get("/reviewCustomer/:cid", reviewCustomerController.getCustomerReviews);
+router.get("/reviewCustomer/:cid/:tag", reviewCustomerController.getCountForEachTag);
+router.put("/reviewCustomer/:cid/:like", reviewCustomerController.updateCustomerRating);
 module.exports = router;

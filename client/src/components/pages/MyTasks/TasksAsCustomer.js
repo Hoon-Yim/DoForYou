@@ -204,7 +204,12 @@ function TasksAsCustomer() {
                                         <div className="tasks-customer-left-list-item">
                                             <div className="tasks-customer-left-list-item-top">
                                                 <div className="tasks-customer-left-list-item-title">
-                                                    Cartoon Drawing Tutor
+                                                    <Link
+                                                        className=""
+                                                        to="/task-detail-as-customer"
+                                                    >
+                                                        Cartoon Drawing Tutor
+                                                    </Link>
                                                 </div>
                                                 <div className="tasks-customer-left-list-item-price">
                                                     <div className="tasks-customer-left-price-tag">
@@ -250,7 +255,12 @@ function TasksAsCustomer() {
                                         <div className="tasks-customer-right-list-item">
                                             <div className="tasks-customer-right-list-item-top">
                                                 <div className="tasks-customer-right-list-item-title">
-                                                    Cleaning Office
+                                                    <Link
+                                                        className=""
+                                                        to="/task-detail"
+                                                    >
+                                                        Cleaning Office
+                                                    </Link>
                                                 </div>
                                                 <div className="tasks-customer-right-list-item-price">
                                                     <div className="tasks-customer-right-price-tag">

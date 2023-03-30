@@ -2,10 +2,70 @@
     height: 100%;
     flex-grow: 1;
 }
+/* -------------------- Search bar -------------------- */
+.tasks-customer-search-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.tasks-customer-search-container .tasks-customer-search-input {
+    border: 2px solid var(--secondary-dark);
+}
+.tasks-customer-search-wrap {
+    width: 18%;
+}
+
+.tasks-customer-search-wrap .tasks-customer-search-box {
+    position: relative;
+    height: 40px;
+}
+
+.tasks-customer-search-wrap
+    .tasks-customer-search-box
+    .tasks-customer-search-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px 20px;
+}
+
+.tasks-customer-search-wrap
+    .tasks-customer-search-box
+    .tasks-customer-search-input {
+    border-radius: 30px;
+}
+
+.tasks-customer-search-btn-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 34px;
+    height: 32px;
+    background-color: var(--secondary-dark);
+    z-index: 1;
+    margin: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+}
+.tasks-customer-search-btn {
+    color: #fff;
+}
+
+.tasks-customer-content {
+    margin-top: 3.5rem;
+    width: 100%;
+    display: flex;
+}
+
 /* -------------------- Role filter -------------------- */
 .tasks-customer-role-container {
     display: flex;
     justify-content: center;
+    margin-top: 2rem;
 }
 
 .tasks-customer-role-box {
@@ -50,29 +110,6 @@
     border: none;
     background-color: transparent;
     font-size: 16px;
-}
-
-/* -------------------- Filtering -------------------- */
-.tasks-customer-filter {
-    width: 25%;
-}
-
-.tasks-customer-list {
-    /*border: 1px solid #000;*/
-    width: 75%;
-}
-
-.tasks-customer-filter-list-row {
-    display: flex;
-    padding: 7px;
-}
-
-.filter-checkbox {
-    margin-right: 8px;
-}
-
-.filter-label {
-    font-weight: 300;
 }
 
 /* -------------------- Content -------------------- */
@@ -156,6 +193,31 @@
 .tasks-customer-right-list-item-title {
     font-size: 22px;
     font-weight: 700;
+}
+.tasks-customer-left-list-item-title a,
+.tasks-customer-right-list-item-title a {
+    position: relative;
+    text-decoration: none;
+}
+
+.tasks-customer-left-list-item-title a::before,
+.tasks-customer-right-list-item-title a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 4px;
+    background-color: var(--secondary-dark);
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+.tasks-customer-left-list-item-title a:hover::before,
+.tasks-customer-right-list-item-title a:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
 }
 
 .tasks-customer-left-list-item-price,

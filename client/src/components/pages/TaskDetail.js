@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "../Button";
 import Footer from "../Footer";
+import ModalInterest from "../modals/ModalInterest";
 import Navbar from "../Navbar";
 import "./TaskDetail.css";
 
 function TaskDetail() {
+    const [show, setShow] = useState(false);
     return (
         <>
             <div id="container">
@@ -103,9 +105,14 @@ function TaskDetail() {
                                             buttonSize="btn--large-bold"
                                             buttonRadius="btn--half-rounded"
                                             type="submit"
+                                            onClick={() => setShow(true)}
                                         >
                                             I'M INTERESTED
                                         </Button>
+                                        <ModalInterest
+                                            onClose={() => setShow(false)}
+                                            show={show}
+                                        />
                                     </div>
                                 </div>
                             </div>

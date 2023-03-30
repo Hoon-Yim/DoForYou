@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "../../Button";
 import Footer from "../../Footer";
-import Modal from "../../modals/Modal";
+import ModalCancel from "../../modals/ModalCancel";
 import Navbar from "../../Navbar";
 import "./TaskDetailAsCustomer.css";
 
@@ -99,24 +99,28 @@ function TaskDetailAsCustomer() {
                                             nesciunt.
                                         </div>
                                     </div>
-                                    <div className="detail-as-customer-btn-interest">
-                                        <Button
-                                            buttonStyle="btn--secondary-dark"
-                                            buttonSize="btn--large-bold"
-                                            buttonRadius="btn--half-rounded"
-                                            type="submit"
-                                        >
-                                            EDIT
-                                        </Button>
-                                        <Button
-                                            buttonStyle="btn--cancel"
-                                            buttonSize="btn--large-bold"
-                                            buttonRadius="btn--half-rounded"
-                                            onClick={() => setShow(true)}
-                                        >
-                                            CANCEL
-                                        </Button>
-                                        <Modal
+                                    <div className="detail-as-customer-btns">
+                                        <div className="detail-as-customer-edit-btn">
+                                            <Button
+                                                buttonStyle="btn--secondary-dark"
+                                                buttonSize="btn--wide-bold"
+                                                buttonRadius="btn--half-rounded"
+                                                type="submit"
+                                            >
+                                                EDIT
+                                            </Button>
+                                        </div>
+                                        <div className="detail-as-customer-cancel-btn">
+                                            <Button
+                                                buttonStyle="btn--cancel"
+                                                buttonSize="btn--wide-bold"
+                                                buttonRadius="btn--half-rounded"
+                                                onClick={() => setShow(true)}
+                                            >
+                                                CANCEL
+                                            </Button>
+                                        </div>
+                                        <ModalCancel
                                             onClose={() => setShow(false)}
                                             show={show}
                                         />

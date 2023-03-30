@@ -96,10 +96,17 @@
     line-height: 24px;
 }
 
-.detail-as-customer-btn-interest {
+.detail-as-customer-btns {
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
+    margin: 2rem 2rem 0;
+}
+.detail-as-customer-edit-btn,
+.detail-as-customer-cancel-btn {
+    width: 100%;
+}
+.detail-as-customer-cancel-btn {
+    margin-left: 0.5rem;
 }
 
 /* 13 inch MacBook */
@@ -123,7 +130,7 @@
         width: 100%;
     }
 
-    .detail-as-customer-btn-interest .btn--large-bold {
+    .detail-as-customer-btns .btn--large-bold {
         font-size: 16px;
     }
 
@@ -161,7 +168,7 @@
         line-height: 20px;
         margin: 0.3rem;
     }
-    .detail-as-customer-btn-interest .btn--large-bold {
+    .detail-as-customer-btns .btn--large-bold {
         font-size: 14px;
     }
     .detail-as-customer-user-name {

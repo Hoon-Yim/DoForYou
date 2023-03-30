@@ -131,11 +131,18 @@
 }
 
 .my-profile-wrapper-right-profile-photo-image {
-    margin-top: 5rem;
+    display: flex;
+    margin: 5rem auto 0.5rem;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
 }
 
 .my-profile-wrapper-right-profile-photo-image img {
+    height: 100%;
     width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .my-profile-wrapper-right-profile-btns {
@@ -214,14 +221,24 @@
     .responsive-profile-photo {
         margin-bottom: 5px;
     }
-    .responsive-profile-photo-image,
+
     .responsive-profile-photo-btns {
         display: flex;
         justify-content: center;
     }
 
-    .responsive-profile-photo-image img {
+    .responsive-profile-photo-image {
+        display: flex;
+        margin: 1rem auto;
+        height: 180px;
         width: 180px;
+        border-radius: 50%;
+    }
+    .responsive-profile-photo-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
     }
 
     .responsive-profile-photo-btns .btn--small {

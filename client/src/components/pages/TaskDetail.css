@@ -114,7 +114,7 @@
 .task-detail-user-title {
     font-size: 20px;
 }
-
+/* image */
 .task-detail-user-image {
     display: flex;
     margin: 1rem auto;
@@ -130,6 +130,7 @@
     border-radius: 50%;
 }
 
+/* */
 .task-detail-user-name {
     font-size: 18px;
 }

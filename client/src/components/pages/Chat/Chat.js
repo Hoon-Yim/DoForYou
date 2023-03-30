@@ -113,6 +113,7 @@ function Chat() {
                             <div className="chat-messages">
                                 <div className="chat-messages-chatting">
                                     <div className="chat-chatting">
+                                        {/* after select chatting */}
                                         {/*
                                         <div className="chat-message-box sender">
                                             <div className="chat-message-from-other">
@@ -194,8 +195,29 @@ function Chat() {
                                                 Hello, It's me
                                             </div>
                                         </div>
-                                    
-                                    */}
+                                        <div className="chat-message-box sender">
+                                            <div className="chat-message-from-other">
+                                                Hello, I'm a sender
+                                            </div>
+                                        </div>
+                                        <div className="chat-message-box me">
+                                            <div className="chat-message-from-me">
+                                                Hello, It's me
+                                            </div>
+                                        </div>
+                                        <div className="chat-message-box sender">
+                                            <div className="chat-message-from-other">
+                                                Hello, I'm a sender
+                                            </div>
+                                        </div>
+                                        <div className="chat-message-box me">
+                                            <div className="chat-message-from-me">
+                                                Hello, It's me
+                                            </div>
+                                        </div>
+                                        */}
+
+                                        {/* before chatting */}
                                         <div className="chat-before-chat">
                                             <div className="chat-before-chat-arrow">
                                                 <i className="fa-solid fa-arrow-left fa-3x chat-arrow" />

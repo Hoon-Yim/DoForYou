@@ -2,6 +2,9 @@ import axios from "axios";
 import Cookies from "universal-cookie";
 import { useState, useEffect } from "react";
 import io from "socket.io-client";
+
+import Navbar from "./components/Navbar";
+
 const socket = io.connect("http://localhost:8000");
 
 function Chat() {
@@ -23,11 +26,6 @@ function Chat() {
             .then(data => {
                 setRooms(data.data.rooms);
             });
-
-        axios.get(`http://localhost:8000/api/chat/rooms/${cookies.get("firstname")}`)
-            .then(data => {
-                console.log(data.data);
-            });
     }, []);
 
     useEffect(() => {
@@ -48,6 +46,7 @@ function Chat() {
     
     return (
         <>
+            <Navbar />
             {
                 isJoined ?
                 <>

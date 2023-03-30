@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Cookies from "universal-cookie";
@@ -23,6 +24,11 @@ function Navbar(props) {
             setFirstname(cookies.get("firstname"));
             setIsLogin(true);
         }
+
+        axios.get(`http://localhost:8000/api/chat/rooms/${cookies.get("firstname")}`)
+            .then(data => {
+                console.log(data.data);
+            });
     }, []);
 
     // Close dropdown menu when the outside of the menu is clicked

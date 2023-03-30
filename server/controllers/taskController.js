@@ -1,19 +1,27 @@
 const Task = require("../models/taskModel");
 
+const APIFeatures = require("../utils/apiFeatures");
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 
 // Display all tasks
 exports.getAllTasks = catchAsync(async (req, res) => {
-    const tasks = await Task.find();
+    // const queryString = req.query;
+    // const tasks = await Task.find();
+
+    const features = new APIFeatures(Task.find(), req.query)
+        .filter()
+        .sort()
+        .limitFields()
+        .paginate();
+    const tasks = await features.query;
 
     res.status(200).json({
         status: "success",
         results: tasks.length,
         tasks
     });
-})
-
+});
 
 // Create new task
 exports.createTask = catchAsync(async (req, res) => {
@@ -24,7 +32,7 @@ exports.createTask = catchAsync(async (req, res) => {
         results: task.length,
         task
     });
-})
+});
 
 // Display task by id
 exports.getTaskById = catchAsync(async (req, res) => {
@@ -36,4 +44,4 @@ exports.getTaskById = catchAsync(async (req, res) => {
         results: task.length,
         task
     });
-})
+});

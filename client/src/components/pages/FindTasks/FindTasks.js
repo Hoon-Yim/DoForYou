@@ -8,11 +8,50 @@ import FindTasksItem from "./FindTasksItem";
 
 function FindTasks() {
     const [tasks, setTasks] = useState([]);
+    const [categories, setCategories] = useState({
+        "Courier Service": false,
+        "Cargo Transportation": false,
+        "Transport Repair": false,
+        "Event and Promotions": false,
+        "Computer": false,
+        "Software Development": false,
+        "Design": false,
+        "Photo Video Audio": false,
+        "Repair and Construction": false,
+        "Cleaning and Household": false,
+        "Installation": false,
+        "Repair of Digital Equipment": false,
+        "Virtual Assistant": false,
+        "Beauty and Health": false,
+        "Tutors and Training": false,
+    });
+
     useEffect(() => {
-        axios.get("http://localhost:8000/api/tasks").then((data) => {
+        axios.get(`http://localhost:8000/api/tasks`).then((data) => {
             setTasks(data.data.tasks);
         });
     }, []);
+
+    useEffect(() => {
+        const selectedCategories = Object.keys(categories).filter(key => categories[key] === true);
+        let filterString = "";
+        if (selectedCategories.length > 0) {
+            filterString = `?category=${selectedCategories.join(',')}`;
+        }
+        console.log(filterString);
+
+        axios.get(`http://localhost:8000/api/tasks${filterString}`).then((data) => {
+            setTasks(data.data.tasks);
+        });
+    }, [categories]);
+
+    const handleCheckbox = (key) => {
+        setCategories({
+            ...categories,
+            [key]: !categories[key]
+        });
+    }
+
     return (
         <>
             <div id="container">
@@ -51,24 +90,19 @@ function FindTasks() {
                                             <input
                                                 type="checkbox"
                                                 className="filter-checkbox"
+                                                value={categories["Courier Service"]}
+                                                onChange={() => handleCheckbox("Courier Service")}
                                             />
                                             <div className="filter-label">
-                                                All categories
+                                                Courier Services
                                             </div>
                                         </div>
                                         <div className="find-tasks-filter-list-row">
                                             <input
                                                 type="checkbox"
                                                 className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Courier services
-                                            </div>
-                                        </div>
-                                        <div className="find-tasks-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
+                                                value={categories["Cargo Transportation"]}
+                                                onChange={() => handleCheckbox("Cargo Transportation")}
                                             />
                                             <div className="filter-label">
                                                 Cargo Transportation
@@ -78,6 +112,8 @@ function FindTasks() {
                                             <input
                                                 type="checkbox"
                                                 className="filter-checkbox"
+                                                value={categories["Transport Repair"]}
+                                                onChange={() => handleCheckbox("Transport Repair")}
                                             />
                                             <div className="filter-label">
                                                 Transport Repair
@@ -87,6 +123,8 @@ function FindTasks() {
                                             <input
                                                 type="checkbox"
                                                 className="filter-checkbox"
+                                                value={categories["Event and Promotions"]}
+                                                onChange={() => handleCheckbox("Event and Promotions")}
                                             />
                                             <div className="filter-label">
                                                 Event and Promotions
@@ -96,6 +134,8 @@ function FindTasks() {
                                             <input
                                                 type="checkbox"
                                                 className="filter-checkbox"
+                                                value={categories["Computer"]}
+                                                onChange={() => handleCheckbox("Computer")}
                                             />
                                             <div className="filter-label">
                                                 Computer
@@ -105,6 +145,8 @@ function FindTasks() {
                                             <input
                                                 type="checkbox"
                                                 className="filter-checkbox"
+                                                value={categories["Software Development"]}
+                                                onChange={() => handleCheckbox("Software Development")}
                                             />
                                             <div className="filter-label">
                                                 Software Development
@@ -114,6 +156,8 @@ function FindTasks() {
                                             <input
                                                 type="checkbox"
                                                 className="filter-checkbox"
+                                                value={categories["Design"]}
+                                                onChange={() => handleCheckbox("Design")}
                                             />
                                             <div className="filter-label">
                                                 Design
@@ -123,6 +167,8 @@ function FindTasks() {
                                             <input
                                                 type="checkbox"
                                                 className="filter-checkbox"
+                                                value={categories["Photo Video Audio"]}
+                                                onChange={() => handleCheckbox("Photo Video Audio")}
                                             />
                                             <div className="filter-label">
                                                 Photo, Video and Audio
@@ -132,6 +178,8 @@ function FindTasks() {
                                             <input
                                                 type="checkbox"
                                                 className="filter-checkbox"
+                                                value={categories["Repair and Construction"]}
+                                                onChange={() => handleCheckbox("Repair and Construction")}
                                             />
                                             <div className="filter-label">
                                                 Repair and Construction
@@ -141,6 +189,8 @@ function FindTasks() {
                                             <input
                                                 type="checkbox"
                                                 className="filter-checkbox"
+                                                value={categories["Cleaning and Household"]}
+                                                onChange={() => handleCheckbox("Cleaning and Household")}
                                             />
                                             <div className="filter-label">
                                                 Cleaning and Household
@@ -150,6 +200,8 @@ function FindTasks() {
                                             <input
                                                 type="checkbox"
                                                 className="filter-checkbox"
+                                                value={categories["Installation"]}
+                                                onChange={() => handleCheckbox("Installation")}
                                             />
                                             <div className="filter-label">
                                                 Installation
@@ -159,6 +211,8 @@ function FindTasks() {
                                             <input
                                                 type="checkbox"
                                                 className="filter-checkbox"
+                                                value={categories["Repair of Digital Equipment"]}
+                                                onChange={() => handleCheckbox("Repair of Digital Equipment")}
                                             />
                                             <div className="filter-label">
                                                 Repair of Digital Equipment
@@ -168,6 +222,8 @@ function FindTasks() {
                                             <input
                                                 type="checkbox"
                                                 className="filter-checkbox"
+                                                value={categories["Virtual Assistant"]}
+                                                onChange={() => handleCheckbox("Virtual Assistant")}
                                             />
                                             <div className="filter-label">
                                                 Virtual Assistant
@@ -177,6 +233,8 @@ function FindTasks() {
                                             <input
                                                 type="checkbox"
                                                 className="filter-checkbox"
+                                                value={categories["Beauty and Health"]}
+                                                onChange={() => handleCheckbox("Beauty and Health")}
                                             />
                                             <div className="filter-label">
                                                 Beauty and Health
@@ -186,6 +244,8 @@ function FindTasks() {
                                             <input
                                                 type="checkbox"
                                                 className="filter-checkbox"
+                                                value={categories["Tutors and Training"]}
+                                                onChange={() => handleCheckbox("Tutors and Training")}
                                             />
                                             <div className="filter-label">
                                                 Tutors and Training

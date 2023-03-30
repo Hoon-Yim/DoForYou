@@ -42,9 +42,9 @@ const sendReceivedMessage = socket => {
 const handleDisconnection = socket => {
     socket.on("disconnect", () => {
         if (socket.id in chatInfo) {
+            roomController.exitRoom(chatInfo[socket.id]["roomId"], chatInfo[socket.id]["firstname"]);
+
             delete chatInfo[socket.id];
-            console.log(socket.id, "disconnected");
-            console.log(chatInfo);
         }
     });
 }

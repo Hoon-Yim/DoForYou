@@ -45,156 +45,22 @@ function TasksAsPerformer() {
                                 </div>
                             </div>
 
-                            <div className="tasks-performer-content">
-                                <div className="tasks-performer-filter">
-                                    <div className="tasks-performer-filter-list">
-                                        <div className="tasks-performer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                All categories
-                                            </div>
-                                        </div>
-                                        <div className="tasks-performer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Courier services
-                                            </div>
-                                        </div>
-                                        <div className="tasks-performer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Cargo Transportation
-                                            </div>
-                                        </div>
-                                        <div className="tasks-performer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Transport Repair
-                                            </div>
-                                        </div>
-                                        <div className="tasks-performer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Event and Promotions
-                                            </div>
-                                        </div>
-                                        <div className="tasks-performer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Computer
-                                            </div>
-                                        </div>
-                                        <div className="tasks-performer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Software Development
-                                            </div>
-                                        </div>
-                                        <div className="tasks-performer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Design
-                                            </div>
-                                        </div>
-                                        <div className="tasks-performer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Photo, Video and Audio
-                                            </div>
-                                        </div>
-                                        <div className="tasks-performer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Repair and Construction
-                                            </div>
-                                        </div>
-                                        <div className="tasks-performer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Cleaning and Household
-                                            </div>
-                                        </div>
-                                        <div className="tasks-performer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Installation
-                                            </div>
-                                        </div>
-                                        <div className="tasks-performer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Repair of Digital Equipment
-                                            </div>
-                                        </div>
-                                        <div className="tasks-performer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Virtual Assistant
-                                            </div>
-                                        </div>
-                                        <div className="tasks-performer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Beauty and Health
-                                            </div>
-                                        </div>
-                                        <div className="tasks-performer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Tutors and Training
-                                            </div>
+                            <div className="tasks-performer-search-container">
+                                <div className="tasks-performer-search-wrap">
+                                    <div className="tasks-performer-search-box">
+                                        <input
+                                            type="text"
+                                            className="tasks-performer-search-input"
+                                            placeholder="Search the keyword"
+                                        />
+                                        <div className="tasks-performer-search-btn-box">
+                                            <i class="fa-solid fa-magnifying-glass tasks-performer-search-btn"></i>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
+                            <div className="tasks-performer-content">
                                 <div className="tasks-performer-left-content">
                                     <div className="tasks-performer-left-content-title">
                                         Assigned

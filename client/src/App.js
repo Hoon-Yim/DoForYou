@@ -12,12 +12,15 @@ import ForgotPassword from "./components/pages/ForgotPassword/ForgotPassword";
 import ForgotPasswordAlert from "./components/pages/ForgotPassword/ForgotPasswordAlert";
 import TaskDetail from "./components/pages/TaskDetail";
 
-import Chat from "./Chat";
+import Chat from "./components/pages/Chat/Chat";
+
 import TasksAsCustomer from "./components/pages/MyTasks/TasksAsCustomer";
 import TasksAsPerformer from "./components/pages/MyTasks/TasksAsPerformer";
 import AboutUs from "./components/pages/AboutUs/AboutUs";
 import MyAccount from "./components/pages/MyAccount/MyAccount";
 import MyReviews from "./components/pages/MyReviews/MyReviews";
+import TaskDetailAsCustomer from "./components/pages/MyTasks/TaskDetailAsCustomer";
+import TaskDetailAsPerformer from "./components/pages/MyTasks/TaskDetailAsPerformer";
 
 function App() {
     return (
@@ -51,8 +54,16 @@ function App() {
                         element={<TasksAsCustomer />}
                     />
                     <Route
+                        path="/task-detail-as-customer"
+                        element={<TaskDetailAsCustomer />}
+                    />
+                    <Route
                         path="/my-tasks-performer"
                         element={<TasksAsPerformer />}
+                    />
+                    <Route
+                        path="/task-detail-as-performer"
+                        element={<TaskDetailAsPerformer />}
                     />
                     <Route path="/task-detail" element={<TaskDetail />} />
                     <Route path="/about-us" element={<AboutUs />} />

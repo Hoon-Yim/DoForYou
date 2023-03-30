@@ -250,11 +250,18 @@
 }
 
 .my-reviews-wrapper-right-profile-photo-image {
-    margin-top: 5rem;
+    display: flex;
+    margin: 5rem auto 0.5rem;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
 }
 
 .my-reviews-wrapper-right-profile-photo-image img {
+    height: 100%;
     width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 /* 13 inch MacBook */

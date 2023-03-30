@@ -28,6 +28,7 @@ function TasksAsCustomer() {
                                     </div>
                                 </h5>
                             </div>
+
                             <div className="tasks-customer-role-container">
                                 <div className="tasks-customer-role-box">
                                     <div className="role-filter">
@@ -45,156 +46,22 @@ function TasksAsCustomer() {
                                 </div>
                             </div>
 
-                            <div className="tasks-customer-content">
-                                <div className="tasks-customer-filter">
-                                    <div className="tasks-customer-filter-list">
-                                        <div className="tasks-customer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                All categories
-                                            </div>
-                                        </div>
-                                        <div className="tasks-customer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Courier services
-                                            </div>
-                                        </div>
-                                        <div className="tasks-customer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Cargo Transportation
-                                            </div>
-                                        </div>
-                                        <div className="tasks-customer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Transport Repair
-                                            </div>
-                                        </div>
-                                        <div className="tasks-customer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Event and Promotions
-                                            </div>
-                                        </div>
-                                        <div className="tasks-customer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Computer
-                                            </div>
-                                        </div>
-                                        <div className="tasks-customer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Software Development
-                                            </div>
-                                        </div>
-                                        <div className="tasks-customer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Design
-                                            </div>
-                                        </div>
-                                        <div className="tasks-customer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Photo, Video and Audio
-                                            </div>
-                                        </div>
-                                        <div className="tasks-customer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Repair and Construction
-                                            </div>
-                                        </div>
-                                        <div className="tasks-customer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Cleaning and Household
-                                            </div>
-                                        </div>
-                                        <div className="tasks-customer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Installation
-                                            </div>
-                                        </div>
-                                        <div className="tasks-customer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Repair of Digital Equipment
-                                            </div>
-                                        </div>
-                                        <div className="tasks-customer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Virtual Assistant
-                                            </div>
-                                        </div>
-                                        <div className="tasks-customer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Beauty and Health
-                                            </div>
-                                        </div>
-                                        <div className="tasks-customer-filter-list-row">
-                                            <input
-                                                type="checkbox"
-                                                className="filter-checkbox"
-                                            />
-                                            <div className="filter-label">
-                                                Tutors and Training
-                                            </div>
+                            <div className="tasks-customer-search-container">
+                                <div className="tasks-customer-search-wrap">
+                                    <div className="tasks-customer-search-box">
+                                        <input
+                                            type="text"
+                                            className="tasks-customer-search-input"
+                                            placeholder="Search the keyword"
+                                        />
+                                        <div className="tasks-customer-search-btn-box">
+                                            <i class="fa-solid fa-magnifying-glass tasks-customer-search-btn"></i>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
+                            <div className="tasks-customer-content">
                                 <div className="tasks-customer-left-content">
                                     <div className="tasks-customer-left-content-title">
                                         Created
@@ -204,7 +71,12 @@ function TasksAsCustomer() {
                                         <div className="tasks-customer-left-list-item">
                                             <div className="tasks-customer-left-list-item-top">
                                                 <div className="tasks-customer-left-list-item-title">
-                                                    Cartoon Drawing Tutor
+                                                    <Link
+                                                        className=""
+                                                        to="/task-detail-as-customer"
+                                                    >
+                                                        Cartoon Drawing Tutor
+                                                    </Link>
                                                 </div>
                                                 <div className="tasks-customer-left-list-item-price">
                                                     <div className="tasks-customer-left-price-tag">
@@ -250,7 +122,12 @@ function TasksAsCustomer() {
                                         <div className="tasks-customer-right-list-item">
                                             <div className="tasks-customer-right-list-item-top">
                                                 <div className="tasks-customer-right-list-item-title">
-                                                    Cleaning Office
+                                                    <Link
+                                                        className=""
+                                                        to="/task-detail"
+                                                    >
+                                                        Cleaning Office
+                                                    </Link>
                                                 </div>
                                                 <div className="tasks-customer-right-list-item-price">
                                                     <div className="tasks-customer-right-price-tag">

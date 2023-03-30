@@ -13,13 +13,13 @@ const roomSchema = mongoose.Schema({
             },
             disconnectedAt: {
                 type: Date,
-                default: Date.now()
+                default: Date.now
             }
         }
     ],
     createdAt: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     },
     lastContactAt: {
         type: Date

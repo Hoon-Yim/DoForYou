@@ -26,17 +26,26 @@ exports.createRoom = catchAsync(async (req, res, next) => {
 exports.getUnreadNotification = catchAsync(async (req, res, next) => {
     const user = await User.findOne({ firstname: req.params.firstname });
     const rooms = await Room.find({ "participants.user": user._id });
+    console.log(rooms);
     
+    let count = 0;
     for (const room of rooms) {
         for (const participant of room.participants) {
-            if (participant.disconnectedAt < room.lastContactAt) {
-                console.log("LATE!");
+            if (participant.user._id.equals(user._id)) {
+                if (participant.disconnectedAt < room.lastContactAt) {
+                    // console.log(room._id, user.firstname);
+                    // console.log(new Date(participant.disconnectedAt).toISOString(), new Date(room.lastContactAt).toISOString());
+                    count += 1;
+                }
             }
         }
     }
 
+    console.log(new Date(Date.now()).toISOString());
+
     res.status(200).json({
-        status: "success"
+        status: "success",
+        count
     });
 });
 
@@ -50,3 +59,11 @@ exports.joinRoom = async (roomId, firstname) => {
         });
     }
 };
+
+exports.exitRoom = async (roomId, firstname) => {
+    const user = await User.findOne({ firstname });
+    const room = await Room.findOneAndUpdate(
+        { _id: roomId, "participants.user": user._id },
+        { $set: { "participants.$.disconnectedAt": Date.now() }},
+        { new: true });
+}

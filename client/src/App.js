@@ -23,7 +23,6 @@ import TaskDetailAsCustomer from "./components/pages/MyTasks/TaskDetailAsCustome
 import TaskDetailAsPerformer from "./components/pages/MyTasks/TaskDetailAsPerformer";
 
 import EditAndCancelBtn from "./components/buttons/EditAndCancelBtn";
-import WriteReviewBtn from "./components/buttons/WriteReviewAboutPerformerBtn";
 import InterestedBtn from "./components/buttons/InterestedBtn";
 import CompleteAsPerformerBtn from "./components/buttons/CompleteAsPerformerBtn";
 import WriteReviewAboutPerformerBtn from "./components/buttons/WriteReviewAboutPerformerBtn";
@@ -77,6 +76,7 @@ function App() {
                     <Route path="/my-account" element={<MyAccount />} />
                     <Route path="/my-reviews" element={<MyReviews />} />
 
+                    <Route path="/interested-btn" element={<InterestedBtn />} />
                     <Route
                         path="/edit-and-cancel-btn"
                         element={<EditAndCancelBtn />}
@@ -87,14 +87,13 @@ function App() {
                     />
 
                     <Route
-                        path="/write-review-about-customer-btn"
-                        element={<WriteReviewAboutCustomerBtn />}
-                    />
-                    <Route
                         path="/complete-as-performer-btn"
                         element={<CompleteAsPerformerBtn />}
                     />
-                    <Route path="/interested-btn" element={<InterestedBtn />} />
+                    <Route
+                        path="/write-review-about-customer-btn"
+                        element={<WriteReviewAboutCustomerBtn />}
+                    />
                 </Routes>
             </Router>
         </>

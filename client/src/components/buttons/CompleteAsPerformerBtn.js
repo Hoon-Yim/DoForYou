@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Button } from "../Button";
 import ModalComplete from "../modals/ModalComplete";
+import ModalReviewCustomer from "../modals/ModalReviewCustomer";
 
 function CompleteAsPerformerBtn() {
     const [show, setShow] = useState(false);
@@ -26,7 +27,7 @@ function CompleteAsPerformerBtn() {
                     COMPLETE
                 </Button>
             </WriteReviewBtn>
-            <ModalComplete onClose={() => setShow(false)} show={show} />
+            <ModalReviewCustomer onClose={() => setShow(false)} show={show} />
         </CompletedDetailsBtn>
     );
 }

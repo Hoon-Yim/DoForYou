@@ -83,7 +83,7 @@
     /* -- before chatting -- */
     display: flex;
     align-items: center;
-}
+} 
 .chat-messages-chatting::-webkit-scrollbar {
     width: 14px;
     border-radius: 7px;

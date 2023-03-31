@@ -1,11 +1,62 @@
-import React from "react";
+import axios from "axios";
+import Cookies from "universal-cookie";
+import React, { useEffect, useState } from "react";
+import io from "socket.io-client";
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useParams } from "react-router-dom";
+
+import "./Chat.css";
 import { Button } from "../../Button";
+import ChatStart from "./ChatStart";
+import ContactPhoto from "./ContactPhoto";
 import Footer from "../../Footer";
 import Navbar from "../../Navbar";
-import "./Chat.css";
-import ContactPhoto from "./ContactPhoto";
+
+const socket = io.connect("http://localhost:8000");
 
 function Chat() {
+    const cookies = new Cookies();
+    const navigate = useNavigate();
+    const params = useParams();
+
+    const [firstname, setFirstname] = useState("");
+    const [text, setText] = useState("");
+    const [messages, setMessages] = useState(undefined);
+    const [roomId, setRoomId] = useState(undefined);
+    const [chatRooms, setChatRooms] = useState([]);
+
+    useEffect(() => {
+        setFirstname(cookies.get("firstname"));
+        setRoomId(cookies.get("roomId"));
+        console.log(cookies.get("roomId"));
+
+        axios
+            .get("http://localhost:8000/api/chat/rooms")
+            .then(data => {
+                setChatRooms(data.data.rooms);
+            });
+    }, []);
+
+    useEffect(() => {
+        if (roomId !== undefined) {
+            socket.emit("join_room", { roomId, firstname });
+            socket.on("send_previous_messages", messages => {
+                setMessages(messages.map(message => {
+                    return {
+                        message: message.message,
+                        sender: message.sender.firstname
+                    }
+                }));
+            });
+        }
+    }, [roomId]);
+
+     useEffect(() => {
+        socket.on("retrieve_message", msg => {
+            console.log(msg);
+            if (messages !== undefined) setMessages([...messages, msg]);
+        });
+    }, [messages, socket]);
+
     return (
         <>
             <div id="container">
@@ -17,243 +68,82 @@ function Chat() {
                         <div className="chat-wrapper">
                             <div className="chat-contacts">
                                 <div className="chat-contacts-title">Chats</div>
-                                <div
-                                    className="chat-contacts-person" /*onClick={() => }*/
-                                >
-                                    <ContactPhoto />
-                                    <div className="chat-contacts-person-name">
-                                        User 1
-                                    </div>
-                                </div>
-                                <div className="chat-contacts-person selected">
-                                    <ContactPhoto />
-                                    <div className="chat-contacts-person-name">
-                                        User 2
-                                    </div>
-                                </div>
-                                <div className="chat-contacts-person">
-                                    <ContactPhoto />
-                                    <div className="chat-contacts-person-name">
-                                        User 3
-                                    </div>
-                                </div>
-                                <div className="chat-contacts-person">
-                                    <ContactPhoto />
-                                    <div className="chat-contacts-person-name">
-                                        User 4
-                                    </div>
-                                </div>
-                                <div className="chat-contacts-person">
-                                    <ContactPhoto />
-                                    <div className="chat-contacts-person-name">
-                                        User 5
-                                    </div>
-                                </div>
-                                <div className="chat-contacts-person">
-                                    <ContactPhoto />
-                                    <div className="chat-contacts-person-name">
-                                        User 6
-                                    </div>
-                                </div>
-                                <div className="chat-contacts-person">
-                                    <ContactPhoto />
-                                    <div className="chat-contacts-person-name">
-                                        User 7
-                                    </div>
-                                </div>
-                                <div className="chat-contacts-person">
-                                    <ContactPhoto />
-                                    <div className="chat-contacts-person-name">
-                                        User 8
-                                    </div>
-                                </div>
-                                <div className="chat-contacts-person">
-                                    <ContactPhoto />
-                                    <div className="chat-contacts-person-name">
-                                        User 9
-                                    </div>
-                                </div>
-                                <div className="chat-contacts-person">
-                                    <ContactPhoto />
-                                    <div className="chat-contacts-person-name">
-                                        User 10
-                                    </div>
-                                </div>
-                                <div className="chat-contacts-person">
-                                    <ContactPhoto />
-                                    <div className="chat-contacts-person-name">
-                                        User 11
-                                    </div>
-                                </div>
-                                <div className="chat-contacts-person">
-                                    <ContactPhoto />
-                                    <div className="chat-contacts-person-name">
-                                        User 12
-                                    </div>
-                                </div>
-                                <div className="chat-contacts-person">
-                                    <ContactPhoto />
-                                    <div className="chat-contacts-person-name">
-                                        User 13
-                                    </div>
-                                </div>
-                                <div className="chat-contacts-person">
-                                    <ContactPhoto />
-                                    <div className="chat-contacts-person-name">
-                                        User 14
-                                    </div>
-                                </div>
-                                <div className="chat-contacts-person">
-                                    <ContactPhoto />
-                                    <div className="chat-contacts-person-name">
-                                        User 15
-                                    </div>
-                                </div>
+                                {
+                                    chatRooms.map(room => { 
+                                        return (
+                                            <Link 
+                                                onClick={() => {
+                                                    cookies.set("roomId", room._id, { path: "/" });
+                                                    window.location.reload();
+                                                }}
+                                            >
+                                                <div className="chat-contacts-person">
+                                                    <ContactPhoto />
+                                                    <div className="chat-contacts-person-name">
+                                                        {room._id}
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                        );
+                                    })
+                                }
                             </div>
                             <div className="chat-messages">
                                 <div className="chat-messages-chatting">
                                     <div className="chat-chatting">
                                         {/* after select chatting */}
-                                        {/*
-                                        <div className="chat-message-box sender">
-                                            <div className="chat-message-from-other">
-                                                Hello, I'm a sender
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box me">
-                                            <div className="chat-message-from-me">
-                                                Hello, It's me
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box sender">
-                                            <div className="chat-message-from-other">
-                                                Hello, I'm a sender
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box me">
-                                            <div className="chat-message-from-me">
-                                                Hello, It's me
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box sender">
-                                            <div className="chat-message-from-other">
-                                                Hello, I'm a sender
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box me">
-                                            <div className="chat-message-from-me">
-                                                Hello, It's me
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box sender">
-                                            <div className="chat-message-from-other">
-                                                Hello, I'm a sender
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box me">
-                                            <div className="chat-message-from-me">
-                                                Hello, It's me
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box sender">
-                                            <div className="chat-message-from-other">
-                                                Hello, I'm a sender
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box me">
-                                            <div className="chat-message-from-me">
-                                                Hello, It's me
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box sender">
-                                            <div className="chat-message-from-other">
-                                                Hello, I'm a sender
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box me">
-                                            <div className="chat-message-from-me">
-                                                Hello, It's me
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box sender">
-                                            <div className="chat-message-from-other">
-                                                Hello, I'm a sender
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box me">
-                                            <div className="chat-message-from-me">
-                                                Hello, It's me
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box sender">
-                                            <div className="chat-message-from-other">
-                                                Hello, I'm a sender
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box me">
-                                            <div className="chat-message-from-me">
-                                                Hello, It's me
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box sender">
-                                            <div className="chat-message-from-other">
-                                                Hello, I'm a sender
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box me">
-                                            <div className="chat-message-from-me">
-                                                Hello, It's me
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box sender">
-                                            <div className="chat-message-from-other">
-                                                Hello, I'm a sender
-                                            </div>
-                                        </div>
-                                        <div className="chat-message-box me">
-                                            <div className="chat-message-from-me">
-                                                Hello, It's me
-                                            </div>
-                                        </div>
-                                        */}
+                                        { 
+                                            messages && 
+                                            messages.map(message => {
+                                                let classname1 = "chat-message-box ";
+                                                let classname2 = "chat-message-from-";
+                                                if (message.sender === firstname) {
+                                                    classname1 += "me";
+                                                    classname2 += "me";
+                                                }
+                                                else {
+                                                    classname1 += "sender";
+                                                    classname2 += "other";
+                                                }
+
+                                                return (
+                                                    <div className={classname1}>
+                                                        <div className={classname2}>
+                                                            {message.message}
+                                                        </div>
+                                                    </div>
+                                                )
+                                            })
+                                        }
 
                                         {/* before chatting */}
-                                        <div className="chat-before-chat">
-                                            <div className="chat-before-chat-arrow">
-                                                <i className="fa-solid fa-arrow-left fa-3x chat-arrow" />
-                                            </div>
-                                            <div className="chat-before-chat-text">
-                                                <div className="chat-before-chat-main">
-                                                    <div className="chat-before-chat-main-greeting">
-                                                        Hello,
-                                                    </div>
-                                                    <div className="chat-before-chat-main-username">
-                                                        Seunghun
-                                                    </div>
-                                                </div>
-                                                <div className="chat-before-chat-sub">
-                                                    Please select a chat to
-                                                    start chatting.
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {roomId === undefined && <ChatStart firstname={firstname}/>}
                                     </div>
                                 </div>
-                                <div className="chat-message-input-box">
-                                    <input
-                                        className="chat-input"
-                                        type="text"
-                                        placeholder="Type your message here"
-                                    />
-                                    <Button
-                                        buttonStyle="btn--secondary-dark"
-                                        buttonSize="btn--medium-bold"
-                                        buttonRadius="btn--square"
-                                        type="submit"
-                                    >
-                                        Send
-                                    </Button>
-                                </div>
+                                <form onSubmit={e => {
+                                    e.preventDefault();
+                                    socket.emit("send_message", { roomId, firstname, message: text });
+                                    setMessages([...messages, { message: text, sender: firstname }]);
+                                    setText("");
+                                }}>
+                                    <div className="chat-message-input-box">
+                                        <input
+                                            className="chat-input"
+                                            type="text"
+                                            placeholder="Type your message here"
+                                            onChange={e => { setText(e.target.value); }} 
+                                            value={text}
+                                        />
+                                        <Button
+                                            buttonStyle="btn--secondary-dark"
+                                            buttonSize="btn--medium-bold"
+                                            buttonRadius="btn--square"
+                                            type="submit"
+                                        >
+                                            Send
+                                        </Button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                         {/* End */}

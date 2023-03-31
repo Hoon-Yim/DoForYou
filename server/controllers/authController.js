@@ -1,7 +1,5 @@
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
-const path = require('path');
-const fs = require('fs');
 const { promisify } = require("util");
 
 

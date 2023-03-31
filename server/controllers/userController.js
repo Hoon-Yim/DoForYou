@@ -1,5 +1,6 @@
 const User = require("../models/userModel");
-
+const path = require('path');
+const fs = require('fs');
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 
@@ -37,8 +38,7 @@ exports.uploadPicture = catchAsync(async (req, res, next) => {
                 contentType: 'image/png'
                 
             }
-        }
-        
+        }   
     );
     res.status(200).json({
         status: 'success',
@@ -59,30 +59,5 @@ exports.getUserPicture = async (req, res) => {
 
   };
   
-  exports.updateUserPicture = catchAsync(async (req, res, next) => {
-    const userId = req.params.uid;
-  
-    // Delete old profile picture
-    const user = await User.findById(userId);
-    if (user && user.img && user.img.data) {
-      fs.unlinkSync(path.join(__dirname, '../../client/public/images/profile/', user.img.data.filename));
-    }
-  
-    // Upload new profile picture
-    const updatedUser = await User.findByIdAndUpdate(
-      userId,
-      {
-        img: {
-          data: fs.readFileSync(path.join(__dirname, '../../client/public/images/profile', req.file.filename)),
-          contentType: 'image/png'
-        }
-      },
-      { new: true }
-    );
-  
-    res.status(200).json({
-      status: 'success',
-      user: updatedUser
-    });
-  });
+
   

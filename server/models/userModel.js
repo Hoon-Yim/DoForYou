@@ -116,6 +116,10 @@ const userSchema = mongoose.Schema({
         ]
     },
     description: String,
+    verified: {
+        type: Boolean,
+        default: false
+    },
     birthdate: Date,
     passwordChangedAt: Date,
     passwordResetToken: String,

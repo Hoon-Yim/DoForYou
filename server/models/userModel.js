@@ -116,6 +116,11 @@ const userSchema = mongoose.Schema({
             "Tutors and Training"
         ]
     },
+    verified: {
+        type: Boolean,
+        default: false
+    }
+    ,
     birthdate: Date,
     passwordChangedAt: Date,
     passwordResetToken: String,

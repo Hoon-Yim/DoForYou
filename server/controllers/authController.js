@@ -1,5 +1,7 @@
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
+const path = require('path');
+const fs = require('fs');
 
 const User = require("../models/userModel");
 const AppError = require("../utils/appError");
@@ -12,7 +14,9 @@ const signToken = id => {
     });
 }
 
+
 exports.signup = catchAsync(async (req, res, next) => {
+
     const newUser = await User.create(req.body);
 
     const token = signToken(newUser._id);
@@ -52,7 +56,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
         return next(new AppError("There is no user with the email address.", 404))
-    } 
+    }
 
     // 2) Generate the random reset token
     const resetToken = user.createPasswordResetToken();
@@ -74,7 +78,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
             status: "success",
             message: "Token sent to your email!"
         });
-    } catch(err) {
+    } catch (err) {
         user.passwordResetToken = undefined;
         user.passwordResetExpires = undefined;
         await user.save({ validateBeforeSave: false });
@@ -86,7 +90,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 exports.resetPassword = catchAsync(async (req, res, next) => {
     // Get user based on the token
     const hashedToken = crypto.createHash("sha256").update(req.params.token).digest("hex");
-    const user = await User.findOne({passwordResetToken: hashedToken, passwordResetExpires: { $gt: Date.now() }});
+    const user = await User.findOne({ passwordResetToken: hashedToken, passwordResetExpires: { $gt: Date.now() } });
 
     // If token has not expired, and there is user, set the new password
     if (!user) {
@@ -108,3 +112,64 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
         token
     });
 });
+
+exports.uploadPicture = catchAsync(async (req, res, next) => {
+
+    // Update user document with the new profile picture URL
+    const user = await User.findByIdAndUpdate(
+        req.params.uid,
+        {
+            img: {
+                data: fs.readFileSync(path.join(__dirname, '../../client/public/images/profile', req.file.filename)),
+                contentType: 'image/png'
+                
+            }
+        }
+        
+    );
+    res.status(200).json({
+        status: 'success',
+        user
+    });
+});
+
+// Get profile picture
+exports.getUserPicture = async (req, res) => {
+
+      const userId = req.params.uid;
+      const user = await User.findById(userId);
+      if (!user || !user.img || !user.img.data) {
+        return res.status(404).json({ error: 'User image not found' });
+      }
+      res.set('Content-Type', user.img.contentType);
+      res.send(user.img.data);
+
+  };
+  
+  exports.updateUserPicture = catchAsync(async (req, res, next) => {
+    const userId = req.params.uid;
+  
+    // Delete old profile picture
+    const user = await User.findById(userId);
+    if (user && user.img && user.img.data) {
+      fs.unlinkSync(path.join(__dirname, '../../client/public/images/profile', user.img.data.filename));
+    }
+  
+    // Upload new profile picture
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      {
+        img: {
+          data: fs.readFileSync(path.join(__dirname, '../../client/public/images/profile', req.file.filename)),
+          contentType: 'image/png'
+        }
+      },
+      { new: true }
+    );
+  
+    res.status(200).json({
+      status: 'success',
+      user: updatedUser
+    });
+  });
+  

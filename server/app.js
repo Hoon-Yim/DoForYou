@@ -2,6 +2,8 @@ const cors = require("cors");
 const express = require("express");
 const morgan = require("morgan"); // for logging purpose
 const app = express();
+const bodyParser = require('body-parser');
+const fs = require('fs');
 
 // Middlewares
 if (process.env.NODE_DEV == "development") {
@@ -9,6 +11,9 @@ if (process.env.NODE_DEV == "development") {
 }
 app.use(cors({ credentials: true, origin: "*" }));
 app.use(express.json());
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 // Routes
 const userRouter = require("./routes/userRoutes");

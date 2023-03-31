@@ -8,6 +8,11 @@ const userSchema = mongoose.Schema({
         type: Date,
         default: Date.now()
     },
+    img:
+    {
+        data: Buffer,
+        contentType: String
+    },
     email: {
         type: String,
         required: [true, "Email is required"],

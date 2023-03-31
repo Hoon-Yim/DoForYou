@@ -9,7 +9,11 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     const ext = file.mimetype.split('/')[1];
-    cb(null, `user-${req.params.uid}-${Date.now()}.${ext}`);
+    const filePath = path.join('../client/public/images/profile', `user-${req.params.uid}.png`);
+    if (fs.existsSync(filePath)) {
+      fs.unlinkSync(filePath);
+    }
+    cb(null, `user-${req.params.uid}.png`);
   }
 });
 

@@ -11,7 +11,6 @@ router.post("/forgotPassword", authController.forgotPassword);
 router.patch("/resetPassword/:token", authController.resetPassword);
 router.post('/profile/:uid', upload.single('photo'), userController.uploadPicture);
 router.get("/profile/:uid", userController.getUserPicture);
-router.put("/profile/:uid", upload.single('photo'), userController.updateUserPicture);
 router
     .route('/')
     .get(userController.getAllUsers);

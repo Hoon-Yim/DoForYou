@@ -28,15 +28,17 @@ function Navbar(props) {
             setIsLogin(true);
         }
 
-        axios
-            .get(
-                `http://localhost:8000/api/chat/rooms/${cookies.get(
-                    "firstname"
-                )}`
-            )
-            .then((data) => {
-                console.log(data.data);
-            });
+        if (cookies.get("firstname") !== undefined) {
+            axios
+                .get(
+                    `http://localhost:8000/api/chat/rooms/${cookies.get(
+                        "firstname"
+                    )}`
+                )
+                .then((data) => {
+                    console.log(data.data);
+                });
+        }
     }, []);
 
     // Close dropdown menu when the outside of the menu is clicked

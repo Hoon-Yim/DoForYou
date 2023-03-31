@@ -11,6 +11,7 @@ const STYLES = [
     "btn--login",
     "btn--outline",
     "btn--category",
+    "btn--slim-category",
 ];
 
 const SIZES = [

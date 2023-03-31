@@ -1,11 +1,11 @@
 import React from "react";
-import "./SliderTest.css";
+import "./ReviewSlide.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import Slider from "react-slick";
 
-function SliderTest() {
+function ReviewSlide() {
     var settings = {
         dots: true,
         infinite: false,
@@ -526,4 +526,4 @@ function SliderTest() {
     );
 }
 
-export default SliderTest;
+export default ReviewSlide;

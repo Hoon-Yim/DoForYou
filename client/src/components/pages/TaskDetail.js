@@ -4,6 +4,8 @@ import Footer from "../Footer";
 import ModalInterest from "../modals/ModalInterest";
 import Navbar from "../Navbar";
 import "./TaskDetail.css";
+import ModalReviewCustomer from "../modals/ModalReviewCustomer";
+import ModalReviewPerformer from "../modals/ModalReviewPerformer";
 
 function TaskDetail() {
     const [show, setShow] = useState(false);
@@ -109,7 +111,24 @@ function TaskDetail() {
                                         >
                                             I'M INTERESTED
                                         </Button>
+                                        {/* Modal for Showing interest */}
+                                        {/*
                                         <ModalInterest
+                                            onClose={() => setShow(false)}
+                                            show={show}
+                                        />
+                                        */}
+                                        {/* Testing modal for Reviewing customer */}
+                                        {/*
+                                        <ModalReviewCustomer
+                                            onClose={() => setShow(false)}
+                                            show={show}
+                                        />
+                                        */}
+
+                                        {/* Testing modal for Reviewing Performer */}
+
+                                        <ModalReviewPerformer
                                             onClose={() => setShow(false)}
                                             show={show}
                                         />

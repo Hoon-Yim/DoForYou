@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "../Button";
 import "./ModalReviewPerformer.css";
-import OneStarClicked from "./OneStarClicked";
 
 const ModalReviewPerformer = (props) => {
     const [isStarClicked, setIsStarClicked] = useState([

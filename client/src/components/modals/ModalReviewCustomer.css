@@ -98,3 +98,7 @@
 .modal-review-customer-cancel-btn {
     margin-left: 10px;
 }
+
+.selected-thumbs {
+    color: var(--primary-yellow);
+}

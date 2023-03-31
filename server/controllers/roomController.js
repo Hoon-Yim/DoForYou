@@ -26,7 +26,6 @@ exports.createRoom = catchAsync(async (req, res, next) => {
 exports.getUnreadNotification = catchAsync(async (req, res, next) => {
     const user = await User.findOne({ firstname: req.params.firstname });
     const rooms = await Room.find({ "participants.user": user._id });
-    console.log(rooms);
     
     let count = 0;
     for (const room of rooms) {
@@ -40,8 +39,6 @@ exports.getUnreadNotification = catchAsync(async (req, res, next) => {
             }
         }
     }
-
-    console.log(new Date(Date.now()).toISOString());
 
     res.status(200).json({
         status: "success",

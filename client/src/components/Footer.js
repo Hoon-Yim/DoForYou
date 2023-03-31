@@ -31,7 +31,10 @@ function Footer() {
                                 </div>
                             </div>
                             <div className="footer-link-right">
-                                <Link to="/contact-us" className="chat">
+                                <Link
+                                    to="/contact-us"
+                                    className="footer-link-chat"
+                                >
                                     <h4 className="footer-text">Let's Chat!</h4>
                                 </Link>
                                 <h5 className="footer-text">

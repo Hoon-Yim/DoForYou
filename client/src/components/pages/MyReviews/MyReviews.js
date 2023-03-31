@@ -100,7 +100,7 @@ function MyReviews() {
                                             <div className="my-reviews-as-customer-evaluation-bad-section">
                                                 <div className="my-reviews-as-customer-evaluation-bad-thumbs-section">
                                                     <div className="my-reviews-as-customer-evaluation-bad-thumbs">
-                                                        <i class="fa-regular fa-thumbs-down fa-2x my-reviews-thumbs-down" />
+                                                        <i class="fa-regular fa-thumbs-down fa-2x fa-flip-horizontal my-reviews-thumbs-down" />
                                                     </div>
                                                     <div className="my-reviews-as-customer-evaluation-bad-number">
                                                         2

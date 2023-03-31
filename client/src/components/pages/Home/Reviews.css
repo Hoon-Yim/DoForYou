@@ -26,17 +26,10 @@
 .reviews-title .title-sub {
     margin-top: 15px;
 }
-/*
-.react-multi-carousel-list {
-    display: flex;
-    justify-content: center;
-}
-*/
-.reviews-content {
-    margin-top: 30px;
-    display: flex;
-}
 
+.reviews-content {
+}
+/*
 .card {
     position: relative;
     overflow: hidden;
@@ -111,6 +104,7 @@
 .user-completed {
     font-weight: 300;
 }
+*/
 
 /* Large screen */
 @media only screen and (max-width: 1200px) {

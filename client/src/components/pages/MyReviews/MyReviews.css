@@ -200,7 +200,7 @@
 
 .reviews-numbers {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     width: 44px;
     margin-left: 0.5rem;
 }

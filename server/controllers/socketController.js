@@ -35,7 +35,7 @@ const sendReceivedMessage = socket => {
     socket.on("send_message", data => {
         messageController.insertMessageIntoDB(data);
 
-        socket.in(data.roomId).emit("retrieve_message", `${data.firstname}: ${data.message}`);
+        socket.in(data.roomId).emit("retrieve_message", {message: data.message, sender: data.firstname});
     });
 }
 
@@ -45,6 +45,7 @@ const handleDisconnection = socket => {
             roomController.exitRoom(chatInfo[socket.id]["roomId"], chatInfo[socket.id]["firstname"]);
 
             delete chatInfo[socket.id];
+            console.log(chatInfo, "disconnected");
         }
     });
 }

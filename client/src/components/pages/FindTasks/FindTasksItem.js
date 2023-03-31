@@ -8,7 +8,7 @@ export default function FindTasksItem(props) {
                 <div className="find-task-list-item-title">
                     <Link
                         className="find-task-list-item-title-link"
-                        to="/task-detail"
+                        to={`/tasks/${props.task._id}`}
                     >
                         {props.task.title}
                     </Link>

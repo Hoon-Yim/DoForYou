@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../Button";
-import "./ModalCancel.css";
+import "./ModalInterest.css";
 
 const ModalInterest = (props) => {
     if (!props.show) {

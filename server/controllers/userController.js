@@ -3,6 +3,8 @@ const User = require("../models/userModel");
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 
+const authController = require("./authController")
+
 exports.getAllUsers = catchAsync(async (req, res) => {
     const users = await User.find();
 
@@ -11,6 +13,16 @@ exports.getAllUsers = catchAsync(async (req, res) => {
         results: users.length,
         users
     });
+});
+
+exports.becomePerformer = catchAsync(async(req, res) => {
+	const userId = await authController.decodeToken(req.body.jwt);
+	const user = await User.findByIdAndUpdate(userId, req.body.formObject, { new: true });
+    console.log(user)
+
+	res.status(201).json({
+		status: "success"
+		});
 });
 
 

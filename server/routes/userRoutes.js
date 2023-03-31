@@ -15,5 +15,6 @@ router.put("/profile/:uid", upload.single('photo'), userController.updateUserPic
 router
     .route('/')
     .get(userController.getAllUsers);
+router.post("/becomePerformer", userController.becomePerformer);
 
 module.exports = router;

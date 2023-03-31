@@ -2,6 +2,8 @@ const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const path = require('path');
 const fs = require('fs');
+const { promisify } = require("util");
+
 
 const User = require("../models/userModel");
 const AppError = require("../utils/appError");
@@ -12,6 +14,11 @@ const signToken = id => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_IN
     });
+}
+
+exports.decodeToken = async token => {
+	const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+	return decoded.id;
 }
 
 

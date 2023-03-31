@@ -169,8 +169,7 @@ function CreateNewTask() {
                                                                     Design
                                                                 </option>
                                                                 <option
-                                                                    value="Photo, Video and
-                                                                Audio"
+                                                                    value="Photo Video Audio"
                                                                 >
                                                                     Photo, Video
                                                                     and Audio

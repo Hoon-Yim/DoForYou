@@ -70,14 +70,17 @@ function Chat() {
                                 <div className="chat-contacts-title">Chats</div>
                                 {
                                     chatRooms.map(room => { 
+                                        let classname = "chat-contacts-person ";
+                                        if (room._id === roomId) classname += "selected";
                                         return (
                                             <Link 
+                                                style={{ textDecoration: "none" }}
                                                 onClick={() => {
                                                     cookies.set("roomId", room._id, { path: "/" });
                                                     window.location.reload();
                                                 }}
                                             >
-                                                <div className="chat-contacts-person">
+                                                <div className={classname}>
                                                     <ContactPhoto />
                                                     <div className="chat-contacts-person-name">
                                                         {room._id}

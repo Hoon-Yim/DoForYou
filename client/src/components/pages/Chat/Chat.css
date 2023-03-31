@@ -83,7 +83,7 @@
     /* -- before chatting -- */
     display: flex;
     align-items: center;
-} 
+}
 .chat-messages-chatting::-webkit-scrollbar {
     width: 14px;
     border-radius: 7px;
@@ -98,9 +98,9 @@
 
 .chat-chatting {
     padding-right: 20px;
-    /* for before chatting page */
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -108,6 +108,7 @@
 .chat-before-chat {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 .chat-before-chat-arrow {
 }

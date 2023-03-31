@@ -21,6 +21,7 @@ import MyAccount from "./components/pages/MyAccount/MyAccount";
 import MyReviews from "./components/pages/MyReviews/MyReviews";
 import TaskDetailAsCustomer from "./components/pages/MyTasks/TaskDetailAsCustomer";
 import TaskDetailAsPerformer from "./components/pages/MyTasks/TaskDetailAsPerformer";
+import SliderTest from "./components/SliderTest";
 
 function App() {
     return (
@@ -69,6 +70,8 @@ function App() {
                     <Route path="/about-us" element={<AboutUs />} />
                     <Route path="/my-account" element={<MyAccount />} />
                     <Route path="/my-reviews" element={<MyReviews />} />
+
+                    <Route path="/slider" element={<SliderTest />} />
                 </Routes>
             </Router>
         </>

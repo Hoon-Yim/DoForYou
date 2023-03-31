@@ -2,7 +2,14 @@ import axios from "axios";
 import Cookies from "universal-cookie";
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useParams } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Link,
+    useNavigate,
+    useParams,
+} from "react-router-dom";
 
 import "./Chat.css";
 import { Button } from "../../Button";
@@ -29,29 +36,29 @@ function Chat() {
         setRoomId(cookies.get("roomId"));
         console.log(cookies.get("roomId"));
 
-        axios
-            .get("http://localhost:8000/api/chat/rooms")
-            .then(data => {
-                setChatRooms(data.data.rooms);
-            });
+        axios.get("http://localhost:8000/api/chat/rooms").then((data) => {
+            setChatRooms(data.data.rooms);
+        });
     }, []);
 
     useEffect(() => {
         if (roomId !== undefined) {
             socket.emit("join_room", { roomId, firstname });
-            socket.on("send_previous_messages", messages => {
-                setMessages(messages.map(message => {
-                    return {
-                        message: message.message,
-                        sender: message.sender.firstname
-                    }
-                }));
+            socket.on("send_previous_messages", (messages) => {
+                setMessages(
+                    messages.map((message) => {
+                        return {
+                            message: message.message,
+                            sender: message.sender.firstname,
+                        };
+                    })
+                );
             });
         }
     }, [roomId]);
 
-     useEffect(() => {
-        socket.on("retrieve_message", msg => {
+    useEffect(() => {
+        socket.on("retrieve_message", (msg) => {
             console.log(msg);
             if (messages !== undefined) setMessages([...messages, msg]);
         });
@@ -68,73 +75,97 @@ function Chat() {
                         <div className="chat-wrapper">
                             <div className="chat-contacts">
                                 <div className="chat-contacts-title">Chats</div>
-                                {
-                                    chatRooms.map(room => { 
-                                        let classname = "chat-contacts-person ";
-                                        if (room._id === roomId) classname += "selected";
-                                        return (
-                                            <Link 
-                                                style={{ textDecoration: "none" }}
-                                                onClick={() => {
-                                                    cookies.set("roomId", room._id, { path: "/" });
-                                                    window.location.reload();
-                                                }}
-                                            >
-                                                <div className={classname}>
-                                                    <ContactPhoto />
-                                                    <div className="chat-contacts-person-name">
-                                                        {room._id}
-                                                    </div>
+                                {chatRooms.map((room) => {
+                                    let classname = "chat-contacts-person ";
+                                    if (room._id === roomId)
+                                        classname += "selected";
+                                    return (
+                                        <Link
+                                            style={{ textDecoration: "none" }}
+                                            onClick={() => {
+                                                cookies.set(
+                                                    "roomId",
+                                                    room._id,
+                                                    { path: "/" }
+                                                );
+                                                window.location.reload();
+                                            }}
+                                        >
+                                            <div className={classname}>
+                                                <ContactPhoto />
+                                                <div className="chat-contacts-person-name">
+                                                    {room._id}
                                                 </div>
-                                            </Link>
-                                        );
-                                    })
-                                }
+                                            </div>
+                                        </Link>
+                                    );
+                                })}
                             </div>
                             <div className="chat-messages">
                                 <div className="chat-messages-chatting">
                                     <div className="chat-chatting">
                                         {/* after select chatting */}
-                                        { 
-                                            messages && 
-                                            messages.map(message => {
-                                                let classname1 = "chat-message-box ";
-                                                let classname2 = "chat-message-from-";
-                                                if (message.sender === firstname) {
+                                        {messages &&
+                                            messages.map((message) => {
+                                                let classname1 =
+                                                    "chat-message-box ";
+                                                let classname2 =
+                                                    "chat-message-from-";
+                                                if (
+                                                    message.sender === firstname
+                                                ) {
                                                     classname1 += "me";
                                                     classname2 += "me";
-                                                }
-                                                else {
+                                                } else {
                                                     classname1 += "sender";
                                                     classname2 += "other";
                                                 }
 
                                                 return (
                                                     <div className={classname1}>
-                                                        <div className={classname2}>
+                                                        <div
+                                                            className={
+                                                                classname2
+                                                            }
+                                                        >
                                                             {message.message}
                                                         </div>
                                                     </div>
-                                                )
-                                            })
-                                        }
+                                                );
+                                            })}
 
                                         {/* before chatting */}
-                                        {roomId === undefined && <ChatStart firstname={firstname}/>}
+                                        {roomId === undefined && (
+                                            <ChatStart firstname={firstname} />
+                                        )}
                                     </div>
                                 </div>
-                                <form onSubmit={e => {
-                                    e.preventDefault();
-                                    socket.emit("send_message", { roomId, firstname, message: text });
-                                    setMessages([...messages, { message: text, sender: firstname }]);
-                                    setText("");
-                                }}>
+                                <form
+                                    onSubmit={(e) => {
+                                        e.preventDefault();
+                                        socket.emit("send_message", {
+                                            roomId,
+                                            firstname,
+                                            message: text,
+                                        });
+                                        setMessages([
+                                            ...messages,
+                                            {
+                                                message: text,
+                                                sender: firstname,
+                                            },
+                                        ]);
+                                        setText("");
+                                    }}
+                                >
                                     <div className="chat-message-input-box">
                                         <input
                                             className="chat-input"
                                             type="text"
                                             placeholder="Type your message here"
-                                            onChange={e => { setText(e.target.value); }} 
+                                            onChange={(e) => {
+                                                setText(e.target.value);
+                                            }}
                                             value={text}
                                         />
                                         <Button

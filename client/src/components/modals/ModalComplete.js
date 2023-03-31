@@ -1,27 +1,27 @@
 import React from "react";
 import { Button } from "../Button";
-import "./ModalCancel.css";
+import "./ModalComplete.css";
 
-const ModalCancel = (props) => {
+const ModalComplete = (props) => {
     if (!props.show) {
         return null;
     }
     return (
-        <div className="modal-cancel" onClick={props.onClose}>
+        <div className="modal-complete" onClick={props.onClose}>
             <div
-                className="modal-cancel-content"
+                className="modal-complete-content"
                 onClick={(e) => e.stopPropagation()}
             >
-                <div className="modal-cancel-header">
-                    <h4 className="modal-cancel-title">Cancel the task</h4>
+                <div className="modal-complete-header">
+                    <h4 className="modal-complete-title">Completed the task</h4>
                 </div>
-                <div className="modal-cancel-body">
-                    <div className="modal-cancel-body-text">
-                        Are you sure you'd like to cancel the task?
+                <div className="modal-complete-body">
+                    <div className="modal-complete-body-text">
+                        Are you sure you completed the task properly?
                     </div>
                 </div>
-                <div className="modal-cancel-btns">
-                    <div className="modal-cancel-no-btn">
+                <div className="modal-complete-btns">
+                    <div className="modal-complete-no-btn">
                         <Button
                             buttonStyle="btn--cancel"
                             buttonSize="btn--wide-bold"
@@ -31,7 +31,7 @@ const ModalCancel = (props) => {
                             No
                         </Button>
                     </div>
-                    <div className="modal-cancel-yes-btn">
+                    <div className="modal-complete-yes-btn">
                         <Button
                             buttonStyle="btn--primary-yellow"
                             buttonSize="btn--wide-bold"
@@ -47,4 +47,4 @@ const ModalCancel = (props) => {
     );
 };
 
-export default ModalCancel;
+export default ModalComplete;

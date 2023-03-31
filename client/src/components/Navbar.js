@@ -20,13 +20,21 @@ function Navbar(props) {
         if (cookies.get("jwt") === "logout") {
             setIsLogin(false);
             setFirstname("");
+        } else if (cookies.get("jwt") === undefined) {
+            setIsLogin(false);
+            setFirstname("");
         } else {
             setFirstname(cookies.get("firstname"));
             setIsLogin(true);
         }
 
-        axios.get(`http://localhost:8000/api/chat/rooms/${cookies.get("firstname")}`)
-            .then(data => {
+        axios
+            .get(
+                `http://localhost:8000/api/chat/rooms/${cookies.get(
+                    "firstname"
+                )}`
+            )
+            .then((data) => {
                 console.log(data.data);
             });
     }, []);

@@ -3,24 +3,24 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "../Button";
 import Footer from "../Footer";
-import ModalInterest from "../modals/ModalInterest";
 import Navbar from "../Navbar";
 import "./TaskDetail.css";
+import ModalInterest from "../modals/ModalInterest";
 import ModalReviewCustomer from "../modals/ModalReviewCustomer";
 import ModalReviewPerformer from "../modals/ModalReviewPerformer";
 
 function TaskDetail() {
     const params = useParams();
-    
+
     const [show, setShow] = useState(false);
     const [task, setTask] = useState({});
 
     useEffect(() => {
         axios
             .get(`http://localhost:8000/api/tasks/${params.taskId}`)
-            .then(data => {
+            .then((data) => {
                 setTask(data.data.task);
-            })
+            });
     }, []);
     return (
         <>
@@ -41,14 +41,13 @@ function TaskDetail() {
                                                 Written
                                             </div>
                                             <div className="written-date">
-                                                {
-                                                    new Date(task.updatedAt)
-                                                        .toLocaleDateString("en-US", {
-                                                            month: "short",
-                                                            day: "numeric",
-                                                            year: "numeric"
-                                                        })
-                                                }
+                                                {new Date(
+                                                    task.updatedAt
+                                                ).toLocaleDateString("en-US", {
+                                                    month: "short",
+                                                    day: "numeric",
+                                                    year: "numeric",
+                                                })}
                                             </div>
                                         </div>
                                         {/* <div className="task-detail-views">
@@ -66,12 +65,11 @@ function TaskDetail() {
                                         </div>
                                         <div className="task-detail-content-body-value">
                                             {task.remote
-                                                ?
-                                                "Can be done remotely"
-                                                :
-                                                `${task.location &&
-                                                task.location.address}`
-                                            }
+                                                ? "Can be done remotely"
+                                                : `${
+                                                      task.location &&
+                                                      task.location.address
+                                                  }`}
                                         </div>
                                     </div>
                                     <div className="task-detail-content-body-start">
@@ -79,32 +77,32 @@ function TaskDetail() {
                                             Start date
                                         </div>
                                         <div className="task-detail-content-body-value">
-                                            {
-                                                new Date(task.startDate)
-                                                    .toLocaleDateString("en-US", {
-                                                        month: "short",
-                                                        day: "numeric",
-                                                        year: "numeric",
-                                                        hour: "numeric",
-                                                        minute: "numeric"
-                                                    })
-                                            }                                            </div>
+                                            {new Date(
+                                                task.startDate
+                                            ).toLocaleDateString("en-US", {
+                                                month: "short",
+                                                day: "numeric",
+                                                year: "numeric",
+                                                hour: "numeric",
+                                                minute: "numeric",
+                                            })}{" "}
+                                        </div>
                                     </div>
                                     <div className="task-detail-content-body-end">
                                         <div className="task-detail-content-body-key">
                                             End date
                                         </div>
                                         <div className="task-detail-content-body-value">
-                                            {
-                                                new Date(task.endDate)
-                                                    .toLocaleDateString("en-US", {
-                                                        month: "short",
-                                                        day: "numeric",
-                                                        year: "numeric",
-                                                        hour: "numeric",
-                                                        minute: "numeric"
-                                                    })
-                                            }                                            </div>
+                                            {new Date(
+                                                task.endDate
+                                            ).toLocaleDateString("en-US", {
+                                                month: "short",
+                                                day: "numeric",
+                                                year: "numeric",
+                                                hour: "numeric",
+                                                minute: "numeric",
+                                            })}{" "}
+                                        </div>
                                     </div>
                                     <hr className="task-detail-horizontal-line" />
                                     <div className="task-detail-content-body-budget">

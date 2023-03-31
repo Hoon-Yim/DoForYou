@@ -22,6 +22,13 @@ import MyReviews from "./components/pages/MyReviews/MyReviews";
 import TaskDetailAsCustomer from "./components/pages/MyTasks/TaskDetailAsCustomer";
 import TaskDetailAsPerformer from "./components/pages/MyTasks/TaskDetailAsPerformer";
 
+import EditAndCancelBtn from "./components/buttons/EditAndCancelBtn";
+import WriteReviewBtn from "./components/buttons/WriteReviewAboutPerformerBtn";
+import InterestedBtn from "./components/buttons/InterestedBtn";
+import CompleteAsPerformerBtn from "./components/buttons/CompleteAsPerformerBtn";
+import WriteReviewAboutPerformerBtn from "./components/buttons/WriteReviewAboutPerformerBtn";
+import WriteReviewAboutCustomerBtn from "./components/buttons/WriteReviewAboutCustomerBtn";
+
 function App() {
     return (
         <>
@@ -69,6 +76,25 @@ function App() {
                     <Route path="/about-us" element={<AboutUs />} />
                     <Route path="/my-account" element={<MyAccount />} />
                     <Route path="/my-reviews" element={<MyReviews />} />
+
+                    <Route
+                        path="/edit-and-cancel-btn"
+                        element={<EditAndCancelBtn />}
+                    />
+                    <Route
+                        path="/write-review-about-performer-btn"
+                        element={<WriteReviewAboutPerformerBtn />}
+                    />
+
+                    <Route
+                        path="/write-review-about-customer-btn"
+                        element={<WriteReviewAboutCustomerBtn />}
+                    />
+                    <Route
+                        path="/complete-as-performer-btn"
+                        element={<CompleteAsPerformerBtn />}
+                    />
+                    <Route path="/interested-btn" element={<InterestedBtn />} />
                 </Routes>
             </Router>
         </>

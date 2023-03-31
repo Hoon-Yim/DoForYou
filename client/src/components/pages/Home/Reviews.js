@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "../../Button";
 import "./Reviews.css";
+import ReviewSlide from "./ReviewSlide";
 // import ReviewsItem from "./ReviewsItem";
 
 function Reviews() {
@@ -16,6 +17,7 @@ function Reviews() {
                     </div>
                     <div className="reviews-content">
                         {/* The slider will be here */}
+                        <ReviewSlide />
                     </div>
                 </div>
             </div>

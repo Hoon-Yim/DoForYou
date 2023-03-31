@@ -54,19 +54,19 @@ function App() {
                         path="/my-tasks-customer"
                         element={<TasksAsCustomer />}
                     />
-                    <Route
+                    {/* <Route
                         path="/task-detail-as-customer"
                         element={<TaskDetailAsCustomer />}
-                    />
+                    /> */}
                     <Route
                         path="/my-tasks-performer"
                         element={<TasksAsPerformer />}
                     />
-                    <Route
+                    {/* <Route
                         path="/task-detail-as-performer"
                         element={<TaskDetailAsPerformer />}
-                    />
-                    <Route path="/task-detail" element={<TaskDetail />} />
+                    /> */}
+                    <Route path="/tasks/:taskId" element={<TaskDetail />} />
                     <Route path="/about-us" element={<AboutUs />} />
                     <Route path="/my-account" element={<MyAccount />} />
                     <Route path="/my-reviews" element={<MyReviews />} />

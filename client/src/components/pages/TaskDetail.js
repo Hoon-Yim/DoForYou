@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Button } from "../Button";
 import Footer from "../Footer";
 import ModalInterest from "../modals/ModalInterest";
@@ -6,7 +8,18 @@ import Navbar from "../Navbar";
 import "./TaskDetail.css";
 
 function TaskDetail() {
+    const params = useParams();
+    
     const [show, setShow] = useState(false);
+    const [task, setTask] = useState({});
+
+    useEffect(() => {
+        axios
+            .get(`http://localhost:8000/api/tasks/${params.taskId}`)
+            .then(data => {
+                setTask(data.data.task);
+            })
+    }, []);
     return (
         <>
             <div id="container">
@@ -18,7 +31,7 @@ function TaskDetail() {
                             <div className="task-detail-content">
                                 <div className="task-detail-content-main">
                                     <div className="task-detail-title">
-                                        Create a turnkey website
+                                        {task.title}
                                     </div>
                                     <div className="task-detail-main-bottom">
                                         <div className="task-detail-written-date">
@@ -26,15 +39,22 @@ function TaskDetail() {
                                                 Written
                                             </div>
                                             <div className="written-date">
-                                                Jan 1, 2023
+                                                {
+                                                    new Date(task.updatedAt)
+                                                        .toLocaleDateString("en-US", {
+                                                            month: "short",
+                                                            day: "numeric",
+                                                            year: "numeric"
+                                                        })
+                                                }
                                             </div>
                                         </div>
-                                        <div className="task-detail-views">
-                                            <div className="views-number">
-                                                32
-                                            </div>
-                                            <div className="views">views</div>
-                                        </div>
+                                        {/* <div className="task-detail-views">
+                                                <div className="views-number">
+                                                    32
+                                                </div>
+                                                <div className="views">views</div>
+                                            </div> */}
                                     </div>
                                 </div>
                                 <div className="task-detail-content-body">
@@ -43,7 +63,13 @@ function TaskDetail() {
                                             Address
                                         </div>
                                         <div className="task-detail-content-body-value">
-                                            Can be done remotely
+                                            {task.remote
+                                                ?
+                                                "Can be done remotely"
+                                                :
+                                                `${task.location &&
+                                                task.location.address}`
+                                            }
                                         </div>
                                     </div>
                                     <div className="task-detail-content-body-start">
@@ -51,16 +77,32 @@ function TaskDetail() {
                                             Start date
                                         </div>
                                         <div className="task-detail-content-body-value">
-                                            Jan 4, 2023 12:00
-                                        </div>
+                                            {
+                                                new Date(task.startDate)
+                                                    .toLocaleDateString("en-US", {
+                                                        month: "short",
+                                                        day: "numeric",
+                                                        year: "numeric",
+                                                        hour: "numeric",
+                                                        minute: "numeric"
+                                                    })
+                                            }                                            </div>
                                     </div>
                                     <div className="task-detail-content-body-end">
                                         <div className="task-detail-content-body-key">
                                             End date
                                         </div>
                                         <div className="task-detail-content-body-value">
-                                            Jan 10, 2023 23:59
-                                        </div>
+                                            {
+                                                new Date(task.endDate)
+                                                    .toLocaleDateString("en-US", {
+                                                        month: "short",
+                                                        day: "numeric",
+                                                        year: "numeric",
+                                                        hour: "numeric",
+                                                        minute: "numeric"
+                                                    })
+                                            }                                            </div>
                                     </div>
                                     <hr className="task-detail-horizontal-line" />
                                     <div className="task-detail-content-body-budget">
@@ -68,7 +110,7 @@ function TaskDetail() {
                                             Budget
                                         </div>
                                         <div className="task-detail-content-body-value">
-                                            $ 225.00
+                                            ${task.budget}
                                         </div>
                                     </div>
                                     <div className="task-detail-content-body-payment">
@@ -76,7 +118,7 @@ function TaskDetail() {
                                             How to pay
                                         </div>
                                         <div className="task-detail-content-body-value">
-                                            by Bank e-transfer
+                                            by {task.paymentMethod}
                                         </div>
                                     </div>
                                     <hr className="task-detail-horizontal-line" />
@@ -85,18 +127,7 @@ function TaskDetail() {
                                             Details
                                         </div>
                                         <div className="task-detail-content-body-value">
-                                            Sed ut perspiciatis unde omnis iste
-                                            natus error sit voluptatem
-                                            accusantium doloremque laudantium,
-                                            totam rem aperiam, eaque ipsa quae
-                                            ab illo inventore veritatis et quasi
-                                            architecto beatae vitae dicta sunt
-                                            explicabo. Nemo enim ipsam
-                                            voluptatem quia voluptas sit
-                                            aspernatur aut odit aut fugit, sed
-                                            quia consequuntur magni dolores eos
-                                            qui ratione voluptatem sequi
-                                            nesciunt.
+                                            {task.details}
                                         </div>
                                     </div>
                                     <div className="task-detail-btn-interest">

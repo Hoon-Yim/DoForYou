@@ -2,13 +2,12 @@ import axios from "axios";
 import Cookies from "universal-cookie";
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./Chat.css";
 import { Button } from "../../Button";
 import ChatStart from "./ChatStart";
 import ContactPhoto from "./ContactPhoto";
-import Footer from "../../Footer";
 import Navbar from "../../Navbar";
 
 const socket = io.connect("http://localhost:8000");
@@ -16,7 +15,6 @@ const socket = io.connect("http://localhost:8000");
 function Chat() {
     const cookies = new Cookies();
     const navigate = useNavigate();
-    const params = useParams();
 
     const [firstname, setFirstname] = useState("");
     const [text, setText] = useState("");

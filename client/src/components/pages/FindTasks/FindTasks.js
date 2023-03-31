@@ -38,7 +38,6 @@ function FindTasks() {
         if (selectedCategories.length > 0) {
             filterString = `?category=${selectedCategories.join(',')}`;
         }
-        console.log(filterString);
 
         axios.get(`http://localhost:8000/api/tasks${filterString}`).then((data) => {
             setTasks(data.data.tasks);

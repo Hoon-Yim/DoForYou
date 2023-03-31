@@ -37,7 +37,7 @@ exports.createTask = catchAsync(async (req, res) => {
 // Display task by id
 exports.getTaskById = catchAsync(async (req, res) => {
     const taskId = req.params.tid
-    const task = await Task.find({ _id: taskId })
+    const task = await Task.findOne({ _id: taskId })
 
     res.status(200).json({
         status: "success",

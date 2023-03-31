@@ -18,6 +18,10 @@ exports.getAllUsers = catchAsync(async (req, res) => {
 
 exports.becomePerformer = catchAsync(async(req, res) => {
 	const userId = await authController.decodeToken(req.body.jwt);
+    const object = {
+        ...req.body.formObject,
+        role: "performer"
+    }
 	const user = await User.findByIdAndUpdate(userId, req.body.formObject, { new: true });
     console.log(user)
 

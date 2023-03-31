@@ -31,6 +31,7 @@ function Register() {
             })
             .then((data) => {
                 cookies.set("jwt", data.data.token);
+                cookies.set("firstname", data.data.data.user.firstname);
                 navigate("/");
             })
             .catch((error) => {

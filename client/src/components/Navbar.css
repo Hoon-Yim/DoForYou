@@ -142,6 +142,27 @@
     color: var(--text-main);
 }
 
+.profile-chat-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 22px;
+    height: 22px;
+    background-color: #cf3a3f;
+    padding: 1px;
+    border-radius: 10px;
+}
+
+.profile-alert-num {
+    color: #fff;
+}
+
 /* Mobile */
 
 .fa-bars {

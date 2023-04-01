@@ -19,7 +19,14 @@ function DropdownProfile() {
                 </li>
                 <hr />
                 <li className="profile-menu-list-item">
-                    <Link to="/chat">Chat</Link>
+                    <div className="profile-chat-section">
+                        <div className="profile-chat-link">
+                            <Link to="/chat">Chat</Link>
+                        </div>
+                        <div className="profile-alert">
+                            <i class="fa-solid fa-beat profile-alert-num fa-xs fa-2" />
+                        </div>
+                    </div>
                 </li>
                 <li className="profile-menu-list-item-logout">
                     <Button

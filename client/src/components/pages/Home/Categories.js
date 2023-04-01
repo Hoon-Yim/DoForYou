@@ -15,147 +15,132 @@ function Categrories() {
                     </div>
                     <div className="categories-list">
                         <div className="categories-list-row">
-                            <Button
-                                className="category"
-                                buttonStyle="btn--category"
-                                buttonSize="btn--large"
-                                buttonRadius="btn--rounded"
-                            >
-                                <i className="fa-solid fa-box cate-icon" />
-                                Courier Services
-                            </Button>
-                            <Button
-                                className="category"
-                                buttonStyle="btn--category"
-                                buttonSize="btn--large"
-                                buttonRadius="btn--rounded"
-                            >
-                                <i className="fa-solid fa-truck cate-icon" />
-                                Cargo Transportation
-                            </Button>
-                            <Button
-                                className="category"
-                                buttonStyle="btn--category"
-                                buttonSize="btn--large"
-                                buttonRadius="btn--rounded"
-                            >
-                                <i className="fa-solid fa-car-side cate-icon" />
-                                Transport Repair
-                            </Button>
-                            <Button
-                                className="category"
-                                buttonStyle="btn--category"
-                                buttonSize="btn--large"
-                                buttonRadius="btn--rounded"
-                            >
-                                <i className="fa-solid fa-star cate-icon" />
-                                Event and Promotions
-                            </Button>
+                            <div className="categories-list-btn-box">
+                                <button className="categories-btn-content">
+                                    <i className="fa-solid fa-box cate-icon" />
+                                    <div className="categories-btn-name">
+                                        Courier Services
+                                    </div>
+                                </button>
+                            </div>
+                            <div className="categories-list-btn-box">
+                                <button className="categories-btn-content">
+                                    <i className="fa-solid fa-truck cate-icon" />
+                                    <div className="categories-btn-name">
+                                        Cargo Transportation
+                                    </div>
+                                </button>
+                            </div>
+                            <div className="categories-list-btn-box">
+                                <button className="categories-btn-content">
+                                    <i className="fa-solid fa-car-side cate-icon" />
+                                    <div className="categories-btn-name">
+                                        Transport Repair
+                                    </div>
+                                </button>
+                            </div>
+                            <div className="categories-list-btn-box">
+                                <button className="categories-btn-content">
+                                    <i className="fa-solid fa-star cate-icon" />
+                                    <div className="categories-btn-name">
+                                        Event and Promotions
+                                    </div>
+                                </button>
+                            </div>
                         </div>
                         <div className="categories-list-row">
-                            <Button
-                                className="category"
-                                buttonStyle="btn--category"
-                                buttonSize="btn--large"
-                                buttonRadius="btn--rounded"
-                            >
-                                <i className="fa-solid fa-desktop cate-icon" />
-                                Computer
-                            </Button>
-                            <Button
-                                className="category"
-                                buttonStyle="btn--category"
-                                buttonSize="btn--large"
-                                buttonRadius="btn--rounded"
-                            >
-                                <i className="fa-solid fa-laptop-code cate-icon" />
-                                Software Development
-                            </Button>
-                            <Button
-                                className="category"
-                                buttonStyle="btn--category"
-                                buttonSize="btn--large"
-                                buttonRadius="btn--rounded"
-                            >
-                                <i className="fa-solid fa-pen-fancy cate-icon" />
-                                Design
-                            </Button>
-                            <Button
-                                className="category"
-                                buttonStyle="btn--category"
-                                buttonSize="btn--large"
-                                buttonRadius="btn--rounded"
-                            >
-                                <i className="fa-solid fa-camera-retro cate-icon" />
-                                Photo, Video and Audio
-                            </Button>
+                            <div className="categories-list-btn-box">
+                                <button className="categories-btn-content">
+                                    <i className="fa-solid fa-desktop cate-icon" />
+                                    <div className="categories-btn-name">
+                                        Computer
+                                    </div>
+                                </button>
+                            </div>
+                            <div className="categories-list-btn-box">
+                                <button className="categories-btn-content">
+                                    <i className="fa-solid fa-laptop-code cate-icon" />
+                                    <div className="categories-btn-name">
+                                        Software Development
+                                    </div>
+                                </button>
+                            </div>
+                            <div className="categories-list-btn-box">
+                                <button className="categories-btn-content">
+                                    <i className="fa-solid fa-pen-fancy cate-icon" />
+                                    <div className="categories-btn-name">
+                                        Design
+                                    </div>
+                                </button>
+                            </div>
+                            <div className="categories-list-btn-box">
+                                <button className="categories-btn-content">
+                                    <i className="fa-solid fa-camera-retro cate-icon" />
+                                    <div className="categories-btn-name">
+                                        Photo, Video and Audio
+                                    </div>
+                                </button>
+                            </div>
                         </div>
                         <div className="categories-list-row">
-                            <Button
-                                className="category"
-                                buttonStyle="btn--category"
-                                buttonSize="btn--large"
-                                buttonRadius="btn--rounded"
-                            >
-                                <i className="fa-solid fa-hammer cate-icon" />
-                                Repair and Construction
-                            </Button>
-                            <Button
-                                className="category"
-                                buttonStyle="btn--category"
-                                buttonSize="btn--large"
-                                buttonRadius="btn--rounded"
-                            >
-                                <i className="fa-solid fa-broom cate-icon" />
-                                Cleaning and Household
-                            </Button>
-                            <Button
-                                className="category"
-                                buttonStyle="btn--category"
-                                buttonSize="btn--large"
-                                buttonRadius="btn--rounded"
-                            >
-                                <i className="fa-solid fa-plug cate-icon" />
-                                Installation
-                            </Button>
-                            <Button
-                                className="category"
-                                buttonStyle="btn--category"
-                                buttonSize="btn--large"
-                                buttonRadius="btn--rounded"
-                            >
-                                <i className="fa-solid fa-laptop cate-icon" />
-                                Repair of Digital Equipment
-                            </Button>
+                            <div className="categories-list-btn-box">
+                                <button className="categories-btn-content">
+                                    <i className="fa-solid fa-hammer cate-icon" />
+                                    <div className="categories-btn-name">
+                                        Repair and Construction
+                                    </div>
+                                </button>
+                            </div>
+                            <div className="categories-list-btn-box">
+                                <button className="categories-btn-content">
+                                    <i className="fa-solid fa-broom cate-icon" />
+                                    <div className="categories-btn-name">
+                                        Cleaning and Household
+                                    </div>
+                                </button>
+                            </div>
+                            <div className="categories-list-btn-box">
+                                <button className="categories-btn-content">
+                                    <i className="fa-solid fa-plug cate-icon" />
+                                    <div className="categories-btn-name">
+                                        Installation
+                                    </div>
+                                </button>
+                            </div>
+                            <div className="categories-list-btn-box">
+                                <button className="categories-btn-content">
+                                    <i className="fa-solid fa-laptop cate-icon" />
+                                    <div className="categories-btn-name">
+                                        Repair of Digital Equipment
+                                    </div>
+                                </button>
+                            </div>
                         </div>
                         <div className="categories-list-row">
-                            <Button
-                                className="category"
-                                buttonStyle="btn--category"
-                                buttonSize="btn--large"
-                                buttonRadius="btn--rounded"
-                            >
-                                <i className="fa-solid fa-headset cate-icon" />
-                                Virtual Assistant
-                            </Button>
-                            <Button
-                                className="category"
-                                buttonStyle="btn--category"
-                                buttonSize="btn--large"
-                                buttonRadius="btn--rounded"
-                            >
-                                <i className="fa-solid fa-face-smile-beam cate-icon" />
-                                Beauty and Health
-                            </Button>
-                            <Button
-                                className="category"
-                                buttonStyle="btn--category"
-                                buttonSize="btn--large"
-                                buttonRadius="btn--rounded"
-                            >
-                                <i className="fa-solid fa-book cate-icon" />
-                                Tutors and Training
-                            </Button>
+                            <div className="categories-list-btn-box">
+                                <button className="categories-btn-content">
+                                    <i className="fa-solid fa-headset cate-icon" />
+                                    <div className="categories-btn-name">
+                                        Virtual Assistant
+                                    </div>
+                                </button>
+                            </div>
+                            <div className="categories-list-btn-box">
+                                <button className="categories-btn-content">
+                                    <i className="fa-solid fa-face-smile-beam cate-icon" />
+                                    <div className="categories-btn-name">
+                                        Beauty and Health
+                                    </div>
+                                </button>
+                            </div>
+                            <div className="categories-list-btn-box">
+                                <button className="categories-btn-content">
+                                    <i className="fa-solid fa-book cate-icon" />
+                                    <div className="categories-btn-name">
+                                        Tutors and Training
+                                    </div>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

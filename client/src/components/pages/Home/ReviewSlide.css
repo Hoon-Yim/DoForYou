@@ -109,9 +109,24 @@
     color: var(--secondary-dark) !important;
 }
 
+/* Tablet */
+@media only screen and (max-width: 992px) {
+    .carousel {
+        padding: 3rem 2rem;
+    }
+}
+
+/* Tablet */
+@media only screen and (max-width: 768px) {
+    .carousel {
+        padding: 2rem 2rem;
+    }
+}
+
+/* Mobile */
 @media only screen and (max-width: 480px) {
     .carousel {
-        padding: 2rem 1.5rem;
+        padding: 1.5rem 2rem;
     }
     .review-price,
     .review-desc {

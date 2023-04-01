@@ -20,10 +20,12 @@ const userRouter = require("./routes/userRoutes");
 const taskRouter = require("./routes/taskRoutes");
 const roomRouter = require("./routes/roomRoutes");
 const reviewRouter = require("./routes/reviewRoutes");
+const adminRouter = require("./routes/adminRoutes");
 app.use("/api/users", userRouter);
 app.use("/api/tasks", taskRouter);
 app.use("/api/chat/rooms", roomRouter);
 app.use("/api/reviews", reviewRouter);
+app.use("/api/admin", adminRouter);
 
 
 const AppError = require("./utils/appError");

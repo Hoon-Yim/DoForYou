@@ -69,11 +69,11 @@ function BecomePerformer() {
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
-        firstname: "",
-        lastname: "",
-        birthdate: "",
-        email: "",
-        phone: "",
+        // firstname: "",
+        // lastname: "",
+        // birthdate: "",
+        // email: "",
+        // phone: "",
         description: "",
         categories: []
     });
@@ -109,25 +109,25 @@ function BecomePerformer() {
             }
         });
 
-        formObject = {
-            ...formObject,
-            birthdate: new Date(formObject.birthdate)
-        }
+        // formObject = {
+        //     ...formObject,
+        //     birthdate: new Date(formObject.birthdate)
+        // }
 
         if (selectedCategories.length > 0) {
             formObject = {
                 ...formObject,
-                categories: selectedCategories
+                $push: { categories: selectedCategories }
             }
-        } else {
-            delete formObject.categories;
         }
+        delete formObject.categories;
 
         axios
             .post("http://localhost:8000/api/users/becomePerformer", { 
                 formObject, 
                 jwt: cookies.get("jwt")
-            });
+            })
+            .then(() => { navigate("/"); });
     }
 
     return (
@@ -191,6 +191,7 @@ function BecomePerformer() {
                                 </div>
                                 <div className="performer-form">
                                     <form /*onSubmit={handleSubmit}*/>
+                                        {/*}
                                         <div className="performer-info-combine">
                                             <div className="performer-info-combine-left">
                                                 <div className="performer-input-field">
@@ -280,6 +281,7 @@ function BecomePerformer() {
                                                 </div>
                                             </div>
                                         </div>
+                                        */}
 
                                         <div className="performer-input-field">
                                             <div className="performer-label-combine">

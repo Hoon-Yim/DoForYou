@@ -15,5 +15,6 @@ router
     .route('/')
     .get(userController.getAllUsers);
 router.post("/becomePerformer", userController.becomePerformer);
+router.get("/getUserRole/:userId", userController.getUserRole);
 
 module.exports = router;

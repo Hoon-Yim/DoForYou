@@ -10,7 +10,7 @@ import Register from "./components/pages/Register/Register";
 import BecomePerformer from "./components/pages/BecomePerformer/BecomePerformer";
 import ForgotPassword from "./components/pages/ForgotPassword/ForgotPassword";
 import ForgotPasswordAlert from "./components/pages/ForgotPassword/ForgotPasswordAlert";
-import TaskDetail from "./components/pages/TaskDetail";
+import TaskDetail from "./components/pages/TaskDetail/TaskDetail";
 
 import Chat from "./components/pages/Chat/Chat";
 

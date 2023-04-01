@@ -96,7 +96,7 @@ const userSchema = mongoose.Schema({
     },
     // interesting categories as a performer
     categories: {
-        type: String,
+        type: [String],
         enum: [
             "Courier Service",
             "Repair of Digital Devices",

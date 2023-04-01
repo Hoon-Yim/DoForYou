@@ -22,12 +22,22 @@ exports.becomePerformer = catchAsync(async(req, res) => {
         ...req.body.formObject,
         role: "performer"
     }
-	const user = await User.findByIdAndUpdate(userId, req.body.formObject, { new: true });
-    console.log(user)
+
+	const user = await User.findByIdAndUpdate(userId, object, { new: true });
 
 	res.status(201).json({
 		status: "success"
-		});
+    });
+});
+
+exports.getUserRole = catchAsync(async(req, res) => {
+    const userId = await authController.decodeToken(req.params.userId);
+    const user = await User.findById(userId);
+
+    res.status(200).json({
+        status: "success",
+        role: user.role
+    });
 });
 
 

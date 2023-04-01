@@ -200,7 +200,7 @@ function Navbar(props) {
                             {isLogin ? (
                                 <>
                                     <div className="navbar-profile-box">
-                                        <i class="fa-solid fa-user"></i>
+                                        <i class="fa-solid fa-user navbar-user-icon"></i>
                                         <button
                                             className="navbar-profile"
                                             onClick={() =>

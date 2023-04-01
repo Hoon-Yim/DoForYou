@@ -2,9 +2,10 @@ import React from "react";
 import { Button } from "../../Button";
 import "../../../App.css";
 import "./Main.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Main() {
+    const navigate = useNavigate();
     return (
         <div className="main-container">
             <div className="main-image">
@@ -34,28 +35,33 @@ function Main() {
                     </div>
                 </div>
                 <div className="main-btns">
-                    <Button
-                        className="btn"
-                        buttonStyle="btn--secondary-dark"
-                        buttonSize="btn--large"
+                    <div
+                        className="main-get-started-btn-box"
+                        onClick={() => {
+                            navigate("/login");
+                        }}
                     >
-                        <Link to="/login" className="main-btn-link-login">
-                            GET STARTED
-                        </Link>
-                    </Button>
-                    <Button
-                        className="btn"
-                        buttonStyle="btn--outline"
-                        buttonSize="btn--large"
+                        <div className="main-get-started-btn">
+                            <div className="main-get-started-btn-name">
+                                GET STARTED
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        className="main-contact-us-btn-box"
+                        onClick={() => {
+                            navigate("/contact-us");
+                        }}
                     >
-                        <Link
-                            to="/contact-us"
-                            className="main-btn-link-contact"
-                        >
-                            CONTACT US
-                        </Link>
-                        <i className="fa-solid fa-comments chat-icon" />
-                    </Button>
+                        <div className="main-contact-us-btn">
+                            <div className="main-contact-us-btn-name">
+                                CONTACT US
+                            </div>
+                            <div className="main-contact-us-btn-icon">
+                                <i className="fa-solid fa-comments chat-icon" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

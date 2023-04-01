@@ -106,6 +106,18 @@ const taskSchema = mongoose.Schema({
         type: Date,
         default: Date.now()
     },
+    uploadedUser: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+    },
+    assignedUser: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User"
+    },
+    isCompleted: {
+        type: Boolean,
+        default: false
+    }
 })
 
 module.exports = mongoose.model("Task", taskSchema);

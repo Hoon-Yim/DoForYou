@@ -1,23 +1,27 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "../../Button";
 import Footer from "../../Footer";
 import Navbar from "../../Navbar";
 import "./TaskDetail.css";
 import ModalInterest from "../../modals/ModalInterest";
+import ModalComplete from "../../modals/ModalComplete"
 import ModalReviewCustomer from "../../modals/ModalReviewCustomer";
 import ModalReviewPerformer from "../../modals/ModalReviewPerformer";
+
+import UploadedCustomerButton from "./UploadedCustomerButton";
+import AssignedPerformerButton from "./AssignedPerformerButton";
+import UnassignedPerformerButton from "./UnassignedPerformerButton";
 
 function TaskDetail() {
     const cookies = new Cookies();
     const params = useParams();
+    const navigate = useNavigate();
 
-    const [show, setShow] = useState(false);
     const [task, setTask] = useState({});
-
-    const [userRole, setUserRole] = useState(false);
+    const [user, setUser] = useState({});
 
     useEffect(() => {
         axios
@@ -27,11 +31,66 @@ function TaskDetail() {
             });
         
         axios
-            .get(`http://localhost:8000/api/users/getUserRole/${cookies.get("jwt")}`)
+            .get(`http://localhost:8000/api/users/getLoggedInUser/${cookies.get("jwt")}`)
             .then(data => {
-                setUserRole(data.data.role);
+                setUser(data.data.user);
             });
     }, []);
+
+    const populateButton = () => {
+        // if performer but unassigned
+        if (user.role === "customer") {
+            if (task.uploadedUser._id === user._id) {
+                return (
+                    <>
+                        <Button
+                            buttonStyle="btn--cancel"
+                            buttonSize="btn--large-bold"
+                            buttonRadius="btn--half-rounded"
+                            onClick={() => { navigate(`/edit-task/${task._id}`) }}
+                        >
+                            Edit
+                        </Button>
+                        <UploadedCustomerButton />
+                    </>
+                )
+            } else {
+                return null;
+            }
+        } else if (user.role === "performer") {
+            if (task.assingedUser) { // when the task has assigned performer
+                if (task.assingedUser._id === user._id) {
+                    return <AssignedPerformerButton />    // showing complete button
+                } else {
+                    return (
+                        <Button
+                            buttonStyle="btn--cancel"
+                            buttonSize="btn--large-bold"
+                            buttonRadius="btn--half-rounded"
+                        >
+                            Already Assigned
+                        </Button>
+                    )
+                }
+            } else {                                  // logged in user is not assigned user
+                return <UnassignedPerformerButton />  // showing interst button
+            }
+        } else {
+            if (task.isCompleted === true) {
+                return (
+                    <Button
+                        buttonStyle="btn--cancel"
+                        buttonSize="btn--large-bold"
+                        buttonRadius="btn--half-rounded"
+                    >
+                        Completed
+                    </Button>
+                )
+            } else {
+                return null;
+            }
+        }
+    }
 
     return (
         <>
@@ -142,22 +201,7 @@ function TaskDetail() {
                                         </div>
                                     </div>
                                     <div className="task-detail-btn-interest">
-                                        <Button
-                                            buttonStyle="btn--primary-yellow"
-                                            buttonSize="btn--large-bold"
-                                            buttonRadius="btn--half-rounded"
-                                            type="submit"
-                                            onClick={() => setShow(true)}
-                                        >
-                                            I'M INTERESTED
-                                        </Button>
-                                        {/* Modal for Showing interest */}
-                                        {/*
-                                        <ModalInterest
-                                            onClose={() => setShow(false)}
-                                            show={show}
-                                        />
-                                        */}
+                                        {populateButton()}
                                         {/* Testing modal for Reviewing customer */}
                                         {/*
                                         <ModalReviewCustomer
@@ -167,11 +211,10 @@ function TaskDetail() {
                                         */}
 
                                         {/* Testing modal for Reviewing Performer */}
-
-                                        <ModalReviewPerformer
+                                        {/* <ModalReviewPerformer
                                             onClose={() => setShow(false)}
                                             show={show}
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                             </div>

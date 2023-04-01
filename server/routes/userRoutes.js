@@ -20,6 +20,6 @@ router
     .route('/')
     .get(userController.getAllUsers);
 router.post("/becomePerformer", userController.becomePerformer);
-router.get("/getUserRole/:userId", userController.getUserRole);
+router.get("/getLoggedInUser/:userId", userController.getLoggedInUser);
 
 module.exports = router;

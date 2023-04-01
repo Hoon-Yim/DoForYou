@@ -61,7 +61,7 @@ exports.uploadPicture = catchAsync(async (req, res, next) => {
 });
 
 // Get profile picture
-exports.getUserPicture = async (req, res) => {
+exports.getUserPicture = catchAsync(async (req, res, next) => {
 
       const userId = req.params.uid;
       const user = await User.findById(userId);
@@ -71,7 +71,76 @@ exports.getUserPicture = async (req, res) => {
       res.set('Content-Type', user.img.contentType);
       res.send(user.img.data);
 
-  };
-  
+  });
 
+
+// Upload file  
+exports.uploadFile = catchAsync(async (req, res, next) => {
+    try {
+      const userId = req.params.uid;
+      const { buffer, mimetype, originalname, size } = req.file;
   
+      const result = await User.findByIdAndUpdate(
+        userId,
+        {
+          $push: {
+            files: {
+              file: {
+                data: buffer,
+                contentType: mimetype,
+                originalName: originalname,
+                fileSize: size,
+              },
+            },
+          },
+        },
+        { new: true }
+      );
+  
+      if (!result) {
+        return res.status(404).send('User not found');
+      }
+  
+      res.send('File updated');
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Internal server error');
+    }
+  });
+
+  // Get user files
+exports.getUserFiles = catchAsync(async (req, res, next) => {
+    try {
+      const userId = req.params.uid;
+  
+      const user = await User.findById(userId);
+      if (!user) {
+        return res.status(404).send('User not found');
+      }
+  
+      const files = user.files;
+  
+      res.json(files);
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Internal server error');
+    }
+  });
+  
+  
+  exports.deleteAllFiles = catchAsync(async (req, res, next) => {
+    try {
+      const userId = req.params.uid;
+      const result = await User.updateOne(
+        { _id: userId },
+        { $set: { files: [] } }
+      );
+      if (result.nModified === 0) {
+        return res.status(404).send('User not found');
+      }
+      res.send('All files deleted');
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Internal server error');
+    }
+  });

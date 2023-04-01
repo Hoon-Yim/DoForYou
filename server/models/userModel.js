@@ -54,7 +54,7 @@ const userSchema = mongoose.Schema({
         type: String,
         lowercase: true,
         enum: ["customer", "performer"],
-        default: "customer", 
+        default: "customer",
         required: [true, "Role is required"]
     },
     location: {
@@ -120,25 +120,37 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
+    files: [{
+        file: {
+            data: Buffer,
+            contentType: String,
+            originalName: String,
+            fileSize: Number
+        },
+        uploadedAt: {
+            type: Date,
+            default: Date.now
+        }
+    }],
     birthdate: Date,
     passwordChangedAt: Date,
     passwordResetToken: String,
     passwordResetExpires: Date,
 });
 
-userSchema.pre("save", async function(next) {
-    if(!this.isModified("password")) return next();
+userSchema.pre("save", async function (next) {
+    if (!this.isModified("password")) return next();
 
     // Encrypting password
     this.password = await bcrypt.hash(this.password, 12);
     next();
 });
 
-userSchema.methods.isPasswordCorrect = async function(givenPassword, userPassword) {
+userSchema.methods.isPasswordCorrect = async function (givenPassword, userPassword) {
     return await bcrypt.compare(givenPassword, userPassword);
 }
 
-userSchema.methods.createPasswordResetToken = function() {
+userSchema.methods.createPasswordResetToken = function () {
     const resetToken = crypto.randomBytes(32).toString("hex");
 
     this.passwordResetToken = crypto.createHash("sha256").update(resetToken).digest("hex");

@@ -14,6 +14,7 @@ function Navbar(props) {
     const [click, setClick] = useState(false);
     const [navbarRight, setNavbarRight] = useState(true);
     const [firstname, setFirstname] = useState("");
+    const [count, setCount] = useState();
 
     // Login
     const [isLogin, setIsLogin] = useState(false);
@@ -37,7 +38,7 @@ function Navbar(props) {
                     )}`
                 )
                 .then((data) => {
-                    console.log(data.data);
+                    setCount(data.data.count);
                 });
         }
     }, []);
@@ -168,8 +169,7 @@ function Navbar(props) {
                             </li>
                             <li className="nav-item">
                                 {isLogin ? (
-                                    <Link
-                                        to="/login"
+                                    <button
                                         className="nav-links-mobile"
                                         onClick={() => {
                                             cookies.set("jwt", "logout", {
@@ -178,11 +178,11 @@ function Navbar(props) {
                                             cookies.remove("firstname", {
                                                 path: "/",
                                             });
-                                            window.location.reload();
+                                            navigate("/");
                                         }}
                                     >
                                         Log out
-                                    </Link>
+                                    </button>
                                 ) : (
                                     <Link
                                         to="/login"
@@ -209,7 +209,9 @@ function Navbar(props) {
                                         >
                                             {firstname}
                                         </button>
-                                        {openProfile && <DropdownProfile />}
+                                        {openProfile && (
+                                            <DropdownProfile count={count} />
+                                        )}
                                     </div>
                                 </>
                             ) : (

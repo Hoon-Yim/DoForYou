@@ -152,11 +152,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 22px;
-    height: 22px;
+    width: 25px;
+    height: 25px;
     background-color: #cf3a3f;
     padding: 1px;
-    border-radius: 10px;
+    border-radius: 13px;
 }
 
 .profile-alert-num {

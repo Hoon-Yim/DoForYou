@@ -26,10 +26,10 @@ function TaskDetail() {
     useEffect(() => {
         axios
             .get(`http://localhost:8000/api/tasks/${params.taskId}`)
-            .then(data => {
+            .then((data) => {
                 setTask(data.data.task);
             });
-        
+
         axios
             .get(`http://localhost:8000/api/users/getLoggedInUser/${cookies.get("jwt")}`)
             .then(data => {

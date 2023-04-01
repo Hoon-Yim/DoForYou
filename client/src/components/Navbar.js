@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 import { Button } from "./Button";
 import "./Navbar.css";
@@ -9,6 +9,7 @@ import DropdownProfile from "./DropdownProfile";
 function Navbar(props) {
     const cookies = new Cookies();
     const ref = useRef();
+    const navigate = useNavigate();
 
     const [click, setClick] = useState(false);
     const [navbarRight, setNavbarRight] = useState(true);
@@ -217,13 +218,9 @@ function Navbar(props) {
                                     buttonStyle="btn--secondary-dark"
                                     buttonSize="btn--medium-bold"
                                     buttonRadius="btn--rounded"
+                                    onClick={() => navigate("/login")}
                                 >
-                                    <Link
-                                        to="/login"
-                                        className="login-btn-link"
-                                    >
-                                        Log in
-                                    </Link>
+                                    Log in
                                 </Button>
                             )}
                         </div>

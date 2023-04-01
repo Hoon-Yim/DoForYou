@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -8,8 +8,20 @@ import { Button } from "../../Button";
 function Login() {
     const navigate = useNavigate();
     const cookies = new Cookies();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMsg, setErrorMsg] = useState("");
+
+    const showAlert = () => {
+        if (errorMsg === "Incorrect email or password") {
+            return (
+                <div className="login-error-message">
+                    <div className="login-error-message-text">{errorMsg}</div>
+                </div>
+            );
+        }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -26,7 +38,9 @@ function Login() {
                 navigate("/");
             })
             .catch((error) => {
-                console.log(error);
+                if (error.response.status === 401) {
+                    setErrorMsg(error.response.data.message);
+                }
             });
     };
 
@@ -93,6 +107,7 @@ function Login() {
                                                 onChange={(e) =>
                                                     setEmail(e.target.value)
                                                 }
+                                                required
                                             />
                                         </div>
                                         <div className="login-input-field">
@@ -105,8 +120,10 @@ function Login() {
                                                 onChange={(e) =>
                                                     setPassword(e.target.value)
                                                 }
+                                                required
                                             />
                                         </div>
+                                        {showAlert()}
                                         <div className="login-submit">
                                             <Button
                                                 buttonStyle="btn--primary-yellow"

@@ -15,45 +15,45 @@ function ReviewSlide() {
         initialSlide: 0,
         responsive: [
             {
-                breakpoint: 2100,
-                settings: {
-                    slidesToShow: 7,
-                    slidesToScroll: 1,
-                },
-            },
-            {
-                breakpoint: 1900,
+                breakpoint: 2160,
                 settings: {
                     slidesToShow: 6,
                     slidesToScroll: 1,
                 },
             },
             {
-                breakpoint: 1600,
+                breakpoint: 1880,
                 settings: {
                     slidesToShow: 5,
                     slidesToScroll: 1,
                 },
             },
             {
-                breakpoint: 1400,
+                breakpoint: 1575,
                 settings: {
                     slidesToShow: 4,
                     slidesToScroll: 1,
                 },
             },
             {
-                breakpoint: 1200,
+                breakpoint: 1280,
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 3,
                 },
             },
             {
-                breakpoint: 896,
+                breakpoint: 992,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
+                },
+            },
+            {
+                breakpoint: 690,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
                 },
             },
             {
@@ -85,7 +85,7 @@ function ReviewSlide() {
                                     printing and typesetting industry. Lorem
                                     Ipsum has been the industry's standard dummy
                                     text ever since the 1500s, when an unknown
-                                    printer took a galley
+                                    printer took a galley.
                                 </div>
                             </div>
                             <div className="review-performer-info">
@@ -132,7 +132,7 @@ function ReviewSlide() {
                                     hic tenetur a sapiente delectus, ut aut
                                     reiciendis voluptatibus maiores alias
                                     consequatur aut perferendis doloribus
-                                    asperiores repellat
+                                    asperiores repellat.
                                 </div>
                             </div>
                             <div className="review-performer-info">
@@ -169,37 +169,36 @@ function ReviewSlide() {
                                     <i class="fa-solid fa-quote-left fa-2x" />
                                 </div>
                                 <div className="review-title">
-                                    Repair speaker
+                                    Host for the event
                                 </div>
-                                <div className="review-price">$ 65.00</div>
+                                <div className="review-price">$ 360.00</div>
                                 <div className="review-desc">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy
-                                    text ever since the 1500s, when an unknown
-                                    printer took a galley
+                                    Quis autem vel eum iure reprehenderit qui in
+                                    ea voluptate velit esse quam nihil molestiae
+                                    consequatur, vel illum qui dolorem eum
+                                    fugiat quo voluptas nulla pariatur?
                                 </div>
                             </div>
                             <div className="review-performer-info">
                                 <div className="review-performer-pic">
                                     <a href="/">
                                         <img
-                                            src="images/profile/f1.jpg"
+                                            src="images/profile/m1.jpg"
                                             alt=""
                                         />
                                     </a>
                                 </div>
                                 <div className="review-performer-details">
                                     <div className="review-performer-user-name">
-                                        Victoria K.
+                                        Dmitry G.
                                     </div>
                                     <div className="review-performer-user-rating">
                                         Rating:
                                         <i className="fas fa-star"></i>
-                                        4.5
+                                        4.8
                                     </div>
                                     <div className="review-performer-user-completed">
-                                        completed <b>21</b> tasks
+                                        completed <b>34</b> tasks
                                     </div>
                                 </div>
                             </div>
@@ -214,37 +213,37 @@ function ReviewSlide() {
                                     <i class="fa-solid fa-quote-left fa-2x" />
                                 </div>
                                 <div className="review-title">
-                                    Repair speaker
+                                    Do hair and make up for party
                                 </div>
-                                <div className="review-price">$ 65.00</div>
+                                <div className="review-price">$ 90.00</div>
                                 <div className="review-desc">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy
-                                    text ever since the 1500s, when an unknown
-                                    printer took a galley
+                                    Nam libero tempore, cum soluta nobis est
+                                    eligendi optio cumque nihil impedit quo
+                                    minus id quod maxime placeat facere
+                                    possimus, omnis voluptas assumenda est,
+                                    omnis dolor repellendus.
                                 </div>
                             </div>
                             <div className="review-performer-info">
                                 <div className="review-performer-pic">
                                     <a href="/">
                                         <img
-                                            src="images/profile/f1.jpg"
+                                            src="images/profile/f3.jpg"
                                             alt=""
                                         />
                                     </a>
                                 </div>
                                 <div className="review-performer-details">
                                     <div className="review-performer-user-name">
-                                        Victoria K.
+                                        Bonnie A.
                                     </div>
                                     <div className="review-performer-user-rating">
                                         Rating:
                                         <i className="fas fa-star"></i>
-                                        4.5
+                                        4.9
                                     </div>
                                     <div className="review-performer-user-completed">
-                                        completed <b>21</b> tasks
+                                        completed <b>13</b> tasks
                                     </div>
                                 </div>
                             </div>
@@ -259,37 +258,39 @@ function ReviewSlide() {
                                     <i class="fa-solid fa-quote-left fa-2x" />
                                 </div>
                                 <div className="review-title">
-                                    Repair speaker
+                                    Simple web design
                                 </div>
-                                <div className="review-price">$ 65.00</div>
+                                <div className="review-price">$ 120.00</div>
                                 <div className="review-desc">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy
-                                    text ever since the 1500s, when an unknown
-                                    printer took a galley
+                                    At vero eos et accusamus et iusto odio
+                                    dignissimos ducimus qui blanditiis
+                                    praesentium voluptatum deleniti atque
+                                    corrupti quos dolores et quas molestias
+                                    excepturi sint occaecati cupiditate non
+                                    provident, similique sunt in culpa qui
+                                    officia deserunt.
                                 </div>
                             </div>
                             <div className="review-performer-info">
                                 <div className="review-performer-pic">
                                     <a href="/">
                                         <img
-                                            src="images/profile/f1.jpg"
+                                            src="images/profile/m3.jpg"
                                             alt=""
                                         />
                                     </a>
                                 </div>
                                 <div className="review-performer-details">
                                     <div className="review-performer-user-name">
-                                        Victoria K.
+                                        Tom H.
                                     </div>
                                     <div className="review-performer-user-rating">
                                         Rating:
                                         <i className="fas fa-star"></i>
-                                        4.5
+                                        4.9
                                     </div>
                                     <div className="review-performer-user-completed">
-                                        completed <b>21</b> tasks
+                                        completed <b>22</b> tasks
                                     </div>
                                 </div>
                             </div>
@@ -304,37 +305,38 @@ function ReviewSlide() {
                                     <i class="fa-solid fa-quote-left fa-2x" />
                                 </div>
                                 <div className="review-title">
-                                    Repair speaker
+                                    Figure drawing tutor
                                 </div>
-                                <div className="review-price">$ 65.00</div>
+                                <div className="review-price">$ 320.00</div>
                                 <div className="review-desc">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy
-                                    text ever since the 1500s, when an unknown
-                                    printer took a galley
+                                    Sed ut perspiciatis unde omnis iste natus
+                                    error sit voluptatem accusantium doloremque
+                                    laudantium, totam rem aperiam, eaque ipsa
+                                    quae ab illo inventore veritatis et quasi
+                                    architecto beatae vitae dicta sunt
+                                    explicabo.
                                 </div>
                             </div>
                             <div className="review-performer-info">
                                 <div className="review-performer-pic">
                                     <a href="/">
                                         <img
-                                            src="images/profile/f1.jpg"
+                                            src="images/profile/m2.jpg"
                                             alt=""
                                         />
                                     </a>
                                 </div>
                                 <div className="review-performer-details">
                                     <div className="review-performer-user-name">
-                                        Victoria K.
+                                        Nalden V.
                                     </div>
                                     <div className="review-performer-user-rating">
                                         Rating:
                                         <i className="fas fa-star"></i>
-                                        4.5
+                                        4.8
                                     </div>
                                     <div className="review-performer-user-completed">
-                                        completed <b>21</b> tasks
+                                        completed <b>16</b> tasks
                                     </div>
                                 </div>
                             </div>
@@ -349,37 +351,38 @@ function ReviewSlide() {
                                     <i class="fa-solid fa-quote-left fa-2x" />
                                 </div>
                                 <div className="review-title">
-                                    Repair speaker
+                                    Pick up the package from personal locker
                                 </div>
-                                <div className="review-price">$ 65.00</div>
+                                <div className="review-price">$ 25.00</div>
                                 <div className="review-desc">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy
-                                    text ever since the 1500s, when an unknown
-                                    printer took a galley
+                                    Suspendisse maximus sollicitudin ligula id
+                                    viverra. Nullam vel sapien arcu.
+                                    Pellentesque sit amet nisl id justo volutpat
+                                    malesuada. Nulla auctor, est vitae tincidunt
+                                    pretium, massa risus varius risus, a cursus
+                                    leo sem non sapien. Sed sem felis
                                 </div>
                             </div>
                             <div className="review-performer-info">
                                 <div className="review-performer-pic">
                                     <a href="/">
                                         <img
-                                            src="images/profile/f1.jpg"
+                                            src="images/profile/m4.jpg"
                                             alt=""
                                         />
                                     </a>
                                 </div>
                                 <div className="review-performer-details">
                                     <div className="review-performer-user-name">
-                                        Victoria K.
+                                        Garret Q.
                                     </div>
                                     <div className="review-performer-user-rating">
                                         Rating:
                                         <i className="fas fa-star"></i>
-                                        4.5
+                                        4.6
                                     </div>
                                     <div className="review-performer-user-completed">
-                                        completed <b>21</b> tasks
+                                        completed <b>19</b> tasks
                                     </div>
                                 </div>
                             </div>
@@ -394,37 +397,38 @@ function ReviewSlide() {
                                     <i class="fa-solid fa-quote-left fa-2x" />
                                 </div>
                                 <div className="review-title">
-                                    Repair speaker
+                                    Replace the ram
                                 </div>
-                                <div className="review-price">$ 65.00</div>
+                                <div className="review-price">$ 50.00</div>
                                 <div className="review-desc">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy
-                                    text ever since the 1500s, when an unknown
-                                    printer took a galley
+                                    euismod vitae orci et, rhoncus lobortis
+                                    quam. Etiam lacinia ligula ante. In hac
+                                    habitasse platea dictumst. Curabitur
+                                    porttitor sem justo. Curabitur ac ipsum in
+                                    felis luctus volutpat non eu arcu. Cras
+                                    condimentum porta quam eu lobortis.
                                 </div>
                             </div>
                             <div className="review-performer-info">
                                 <div className="review-performer-pic">
                                     <a href="/">
                                         <img
-                                            src="images/profile/f1.jpg"
+                                            src="images/profile/f6.jpg"
                                             alt=""
                                         />
                                     </a>
                                 </div>
                                 <div className="review-performer-details">
                                     <div className="review-performer-user-name">
-                                        Victoria K.
+                                        Hannah Y.
                                     </div>
                                     <div className="review-performer-user-rating">
                                         Rating:
                                         <i className="fas fa-star"></i>
-                                        4.5
+                                        4.9
                                     </div>
                                     <div className="review-performer-user-completed">
-                                        completed <b>21</b> tasks
+                                        completed <b>23</b> tasks
                                     </div>
                                 </div>
                             </div>
@@ -439,37 +443,39 @@ function ReviewSlide() {
                                     <i class="fa-solid fa-quote-left fa-2x" />
                                 </div>
                                 <div className="review-title">
-                                    Repair speaker
+                                    Clean the room for dog
                                 </div>
-                                <div className="review-price">$ 65.00</div>
+                                <div className="review-price">$ 60.00</div>
                                 <div className="review-desc">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy
-                                    text ever since the 1500s, when an unknown
-                                    printer took a galley
+                                    Donec id fringilla ex, non hendrerit eros.
+                                    Donec vestibulum, tellus at vestibulum
+                                    suscipit, nunc erat pulvinar lacus,
+                                    scelerisque tempus est leo finibus elit. Sed
+                                    porttitor cursus elit eget pellentesque.
+                                    Pellentesque pharetra odio ac ante placerat
+                                    efficitur. Cras tempus pulvinar blandit.
                                 </div>
                             </div>
                             <div className="review-performer-info">
                                 <div className="review-performer-pic">
                                     <a href="/">
                                         <img
-                                            src="images/profile/f1.jpg"
+                                            src="images/profile/f5.jpg"
                                             alt=""
                                         />
                                     </a>
                                 </div>
                                 <div className="review-performer-details">
                                     <div className="review-performer-user-name">
-                                        Victoria K.
+                                        Zyne G.
                                     </div>
                                     <div className="review-performer-user-rating">
                                         Rating:
                                         <i className="fas fa-star"></i>
-                                        4.5
+                                        4.9
                                     </div>
                                     <div className="review-performer-user-completed">
-                                        completed <b>21</b> tasks
+                                        completed <b>6</b> tasks
                                     </div>
                                 </div>
                             </div>
@@ -484,37 +490,38 @@ function ReviewSlide() {
                                     <i class="fa-solid fa-quote-left fa-2x" />
                                 </div>
                                 <div className="review-title">
-                                    Repair speaker
+                                    Personal Training at gym
                                 </div>
-                                <div className="review-price">$ 65.00</div>
+                                <div className="review-price">$ 280.00</div>
                                 <div className="review-desc">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy
-                                    text ever since the 1500s, when an unknown
-                                    printer took a galley
+                                    Aliquam erat volutpat. Etiam tincidunt elit
+                                    eu arcu auctor, id rutrum urna cursus. Nam
+                                    dolor nisi, bibendum sit amet pellentesque
+                                    in, vestibulum blandit erat. Sed sed ante et
+                                    urna pellentesque viverra. Lorem ipsum dolor
+                                    sit amet, consectetur adipiscing elit.
                                 </div>
                             </div>
                             <div className="review-performer-info">
                                 <div className="review-performer-pic">
                                     <a href="/">
                                         <img
-                                            src="images/profile/f1.jpg"
+                                            src="images/profile/f4.jpg"
                                             alt=""
                                         />
                                     </a>
                                 </div>
                                 <div className="review-performer-details">
                                     <div className="review-performer-user-name">
-                                        Victoria K.
+                                        Soo O.
                                     </div>
                                     <div className="review-performer-user-rating">
                                         Rating:
                                         <i className="fas fa-star"></i>
-                                        4.5
+                                        4.8
                                     </div>
                                     <div className="review-performer-user-completed">
-                                        completed <b>21</b> tasks
+                                        completed <b>15</b> tasks
                                     </div>
                                 </div>
                             </div>

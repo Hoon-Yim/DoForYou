@@ -140,13 +140,26 @@
 .login-input-field input {
     width: 100%;
     height: 35px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     padding-left: 10px;
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: 1px solid;
     font-size: 16px;
+}
+
+.login-error-message {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    background-color: rgba(255, 0, 0, 0.2);
+    border: 1px solid #cf3a3f;
+    margin-bottom: 1.5rem;
+}
+
+.login-error-message-text {
+    color: #cf3a3f;
 }
 
 .login-submit,

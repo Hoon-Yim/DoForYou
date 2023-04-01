@@ -108,3 +108,21 @@
 .slick-next:before {
     color: var(--secondary-dark) !important;
 }
+
+@media only screen and (max-width: 480px) {
+    .carousel {
+        padding: 2rem 1.5rem;
+    }
+    .review-price,
+    .review-desc {
+        font-size: 15px;
+    }
+    .review-performer-user-name {
+        font-size: 15px;
+    }
+
+    .review-performer-user-rating,
+    .review-performer-user-completed {
+        font-size: 14px;
+    }
+}

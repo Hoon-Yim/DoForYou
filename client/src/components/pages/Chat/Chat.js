@@ -99,84 +99,90 @@ function Chat() {
                                     );
                                 })}
                             </div>
-                            <div className="chat-messages">
-                                <div className="chat-messages-chatting">
-                                    <div className="chat-chatting">
-                                        {/* after select chatting */}
-                                        {messages &&
-                                            messages.map((message) => {
-                                                let classname1 =
-                                                    "chat-message-box ";
-                                                let classname2 =
-                                                    "chat-message-from-";
-                                                if (
-                                                    message.sender === firstname
-                                                ) {
-                                                    classname1 += "me";
-                                                    classname2 += "me";
-                                                } else {
-                                                    classname1 += "sender";
-                                                    classname2 += "other";
-                                                }
+                            {roomId === undefined ? (
+                                <ChatStart firstname={firstname} />
+                            ) : (
+                                <div className="chat-messages">
+                                    <div className="chat-messages-chatting-after">
+                                        <div className="chat-chatting">
+                                            {/* after select chatting */}
+                                            {messages &&
+                                                messages.map((message) => {
+                                                    let classname1 =
+                                                        "chat-message-box ";
+                                                    let classname2 =
+                                                        "chat-message-from-";
+                                                    if (
+                                                        message.sender ===
+                                                        firstname
+                                                    ) {
+                                                        classname1 += "me";
+                                                        classname2 += "me";
+                                                    } else {
+                                                        classname1 += "sender";
+                                                        classname2 += "other";
+                                                    }
 
-                                                return (
-                                                    <div className={classname1}>
+                                                    return (
                                                         <div
                                                             className={
-                                                                classname2
+                                                                classname1
                                                             }
                                                         >
-                                                            {message.message}
+                                                            <div
+                                                                className={
+                                                                    classname2
+                                                                }
+                                                            >
+                                                                {
+                                                                    message.message
+                                                                }
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                );
-                                            })}
-
-                                        {/* before chatting */}
-                                        {roomId === undefined && (
-                                            <ChatStart firstname={firstname} />
-                                        )}
+                                                    );
+                                                })}
+                                        </div>
                                     </div>
-                                </div>
-                                <form
-                                    onSubmit={(e) => {
-                                        e.preventDefault();
-                                        socket.emit("send_message", {
-                                            roomId,
-                                            firstname,
-                                            message: text,
-                                        });
-                                        setMessages([
-                                            ...messages,
-                                            {
+                                    <form
+                                        onSubmit={(e) => {
+                                            e.preventDefault();
+                                            socket.emit("send_message", {
+                                                roomId,
+                                                firstname,
                                                 message: text,
-                                                sender: firstname,
-                                            },
-                                        ]);
-                                        setText("");
-                                    }}
-                                >
-                                    <div className="chat-message-input-box">
-                                        <input
-                                            className="chat-input"
-                                            type="text"
-                                            placeholder="Type your message here"
-                                            onChange={(e) => {
-                                                setText(e.target.value);
-                                            }}
-                                            value={text}
-                                        />
-                                        <Button
-                                            buttonStyle="btn--secondary-dark"
-                                            buttonSize="btn--medium-bold"
-                                            buttonRadius="btn--square"
-                                            type="submit"
-                                        >
-                                            Send
-                                        </Button>
-                                    </div>
-                                </form>
-                            </div>
+                                            });
+                                            setMessages([
+                                                ...messages,
+                                                {
+                                                    message: text,
+                                                    sender: firstname,
+                                                },
+                                            ]);
+                                            setText("");
+                                        }}
+                                    >
+                                        <div className="chat-message-input-box">
+                                            <input
+                                                className="chat-input"
+                                                type="text"
+                                                placeholder="Type your message here"
+                                                onChange={(e) => {
+                                                    setText(e.target.value);
+                                                }}
+                                                value={text}
+                                            />
+                                            <Button
+                                                buttonStyle="btn--secondary-dark"
+                                                buttonSize="btn--medium-bold"
+                                                buttonRadius="btn--square"
+                                                type="submit"
+                                            >
+                                                Send
+                                            </Button>
+                                        </div>
+                                    </form>
+                                </div>
+                            )}
                         </div>
                         {/* End */}
                     </div>

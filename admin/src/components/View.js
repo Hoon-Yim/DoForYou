@@ -6,14 +6,28 @@ export default function View() {
 
     const [APIData, setAPIData] = useState([]);
     const [successMessage, setSuccessMessage] = useState("");
+    const [filesCount, setFilesCount] = useState({});
 
     useEffect(() => {
-        
         axios.get(`http://localhost:8000/api/users/notVerified`)
             .then((response) => {
                 setAPIData(response.data);
+                // Retrieve files count for each user
+
+                const promises = response.data.map(user =>
+                    axios.get(`http://localhost:8000/api/admin/files/${user._id}`)
+                        .then((response) => {
+                            console.log(response.data.length)
+                            setFilesCount(prevState => ({
+                                ...prevState,
+                                [user._id]: response.data.length
+
+                            }));
+                        })
+                );
+                Promise.all(promises).then(() => console.log('All files count retrieved'));
             })
-    }, [])
+    }, []);
 
     const getData = () => {
         axios.get(`http://localhost:8000/api/users/`)
@@ -35,17 +49,17 @@ export default function View() {
     return (
         <div className="container mx-auto px-4 sm:px-8">
             <div className="py-8">
-            <div className="flex justify-between items-center">
-                <div>
-                    <h2 className="text-2xl text-accent my-7">Dashboard</h2>
+                <div className="flex justify-between items-center">
+                    <div>
+                        <h2 className="text-2xl text-accent my-7">Dashboard</h2>
+                    </div>
+                    <div className="ml-auto">
+                        <a href="/"
+                            className="text-sm bg-secondary border text-white py-2 px-6 rounded-md hover:bg-primary hover:border font-semibold py-2 px-4 rounded">
+                            Logout
+                        </a>
+                    </div>
                 </div>
-                <div className="ml-auto">
-                    <a href="/"
-                        className="text-sm bg-secondary border text-white py-2 px-6 rounded-md hover:bg-primary hover:border font-semibold py-2 px-4 rounded">
-                        Logout
-                    </a>
-                </div>
-            </div>
                 <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
 
                     <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -64,6 +78,10 @@ export default function View() {
                                     <th
                                         className="px-10 py-3 border-b-2 border-gray-200 bg-secondary text-left text-xs font-semibold text-white uppercase tracking-wider">
                                         Action
+                                    </th>
+                                    <th
+                                        className="px-10 py-3 border-b-2 border-gray-200 bg-secondary text-left text-xs font-semibold text-white uppercase tracking-wider">
+                                        Files
                                     </th>
                                 </tr>
                             </thead>
@@ -96,6 +114,10 @@ export default function View() {
 
                                                 </span>
                                             </td>
+                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-md font-semibold">
+                                                <p className={`ml-7 whitespace-no-wrap ${filesCount[data._id] > 0 ? 'text-red-600' : 'text-primary'}`}>{filesCount[data._id] || 0}</p>
+                                            </td>
+
                                         </tr>
                                     </tbody>
                                 )

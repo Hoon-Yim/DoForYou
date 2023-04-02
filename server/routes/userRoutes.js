@@ -14,7 +14,10 @@ router.post('/profile/:uid', upload.single('photo'), userController.uploadPictur
 router.get("/profile/:uid", userController.getUserPicture);
 router.post("/profile/uploadFile/:uid", uploadFile.single('file'), userController.uploadFile);
 router.get("/profile/files/:uid", userController.getUserFiles);
+router.get("/profile/files/:uid/:fid", userController.getFileById);
 router.put("/profile/files/:uid", userController.deleteAllFiles);
+router.get("/notVerified", userController.getNotVerifiedUsers);
+router.put("/verified", userController.verifyUser);
 
 router
     .route('/')

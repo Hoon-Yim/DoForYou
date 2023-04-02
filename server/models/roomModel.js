@@ -5,6 +5,10 @@ const roomSchema = mongoose.Schema({
         type: String,
         default: "Chat Room"
     },
+    task: {
+        type: mongoose.Schema.ObjectId,
+        ref: "Task"
+    },
     participants: [
         {
             user: {

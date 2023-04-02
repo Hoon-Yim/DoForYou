@@ -1,8 +1,11 @@
 const catchAsync = require("../utils/catchAsync");
+const authController = require("../controllers/authController");
+const messageController = require("../controllers/messageController");
 
 // const Message = require("../models/messageModel");
 const Room = require("../models/roomModel");
 const User = require("../models/userModel");
+const Task = require("../models/taskModel");
 
 exports.getAllRooms = catchAsync(async (req, res, next) => {
     const rooms = await Room.find();
@@ -14,8 +17,36 @@ exports.getAllRooms = catchAsync(async (req, res, next) => {
     });
 }); 
 
+exports.getParticipatedRooms = catchAsync(async (req, res, next) => {
+    const userId = await authController.decodeToken(req.params.userId);
+    // const user = await User.findById(userId);
+    const rooms = await Room.find({
+        "participants.user": userId
+    });
+
+    res.status(200).json({
+        status: "success",
+        results: rooms.length,
+        rooms
+    });
+});
+
 exports.createRoom = catchAsync(async (req, res, next) => {
-    const room = await Room.create(req.body);
+    const user1 = await User.findById(req.body.customerId);
+    const user2 = await User.findById(req.body.performerId);
+    const task = await Task.findById(req.body.taskId);
+
+    const room = await Room.create({
+        participants: [{ user: user1 }, { user: user2 }],
+        task
+    });
+
+    const data = {
+        roomId: room._id,
+        firstname: user2.firstname,
+        message: "~|+_",
+    }
+    messageController.insertMessageIntoDB(data);
 
     res.status(201).json({
         status: "success",

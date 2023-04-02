@@ -15,10 +15,6 @@ const joinRoom = socket => {
             firstname: data.firstname
         }
 
-        console.log(chatInfo);
-
-        roomController.joinRoom(data.roomId, data.firstname);
-
         messageController
             .retrieveMessages(data.roomId)
             .then(messages => {

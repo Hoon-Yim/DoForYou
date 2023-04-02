@@ -26,9 +26,9 @@ exports.becomePerformer = catchAsync(async (req, res) => {
   });
 });
 
-exports.getLoggedInUser = catchAsync(async (req, res) => {
-  const userId = await authController.decodeToken(req.params.userId);
-  const user = await User.findById(userId);
+exports.getLoggedInUser = catchAsync(async(req, res) => {
+    const userId = await authController.decodeToken(req.params.token);
+    const user = await User.findById(userId);
 
   res.status(200).json({
     status: "success",

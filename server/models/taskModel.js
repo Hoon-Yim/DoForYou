@@ -27,7 +27,7 @@ const taskSchema = mongoose.Schema({
         ],
         required: [true, "Category is required"]
     },
-    remote: {
+    isRemote: {
         type: Boolean,
         default: false
     },

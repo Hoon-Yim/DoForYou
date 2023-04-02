@@ -78,10 +78,11 @@ exports.getUserPicture = catchAsync(async (req, res, next) => {
   });
 
   exports.verifyUser = catchAsync(async (req, res, next) => {
-    const { id } = req.params;
-    const { verified } = req.body;
 
-    const updatedUser = await User.updateOne({ _id: id }, { verified });
+    const id = req.params.uid;
+    const verify = req.body.verify;
+
+    const updatedUser = await User.updateOne({ _id: id }, { 'verified' : verify});
 
     if (!updatedUser) {
       return next(new AppError("User not found", 404));
@@ -93,4 +94,9 @@ exports.getUserPicture = catchAsync(async (req, res, next) => {
       updatedUser
     });
   });
+
+
+  
+
+
 

@@ -7,7 +7,9 @@ import axios from "axios";
 import FindTasksItem from "./FindTasksItem";
 
 function FindTasks() {
+    const [search, setSearch] = useState("");
     const [tasks, setTasks] = useState([]);
+    const [filterString, setFilterString] = useState("");
     const [categories, setCategories] = useState({
         "Courier Service": false,
         "Cargo Transportation": false,
@@ -36,10 +38,12 @@ function FindTasks() {
         const selectedCategories = Object.keys(categories).filter(key => categories[key] === true);
         let filterString = "";
         if (selectedCategories.length > 0) {
-            filterString = `?category=${selectedCategories.join(',')}`;
+            filterString = `category=${selectedCategories.join(',')}`;
         }
 
-        axios.get(`http://localhost:8000/api/tasks${filterString}`).then((data) => {
+        setFilterString(filterString);
+
+        axios.get(`http://localhost:8000/api/tasks?${filterString}`).then((data) => {
             setTasks(data.data.tasks);
         });
     }, [categories]);
@@ -70,14 +74,26 @@ function FindTasks() {
                             <div className="find-tasks-search-container">
                                 <div className="find-tasks-search-wrap">
                                     <div className="search-box">
-                                        <input
-                                            type="text"
-                                            className="search-input"
-                                            placeholder="Search the keyword"
-                                        />
-                                        <div className="button button_common">
-                                            SEARCH
-                                        </div>
+                                        <form onSubmit={e => {
+                                            e.preventDefault();
+
+                                            const query = `?search=${search}&` + filterString;
+
+                                            axios.get(`http://localhost:8000/api/tasks${query}`).then((data) => {
+                                                setTasks(data.data.tasks);
+                                            });
+                                        }}>
+                                            <input
+                                                type="text"
+                                                className="search-input"
+                                                placeholder="Search the keyword"
+                                                value={search}
+                                                onChange={e => setSearch(e.target.value)}
+                                            />
+                                            <div className="button button_common">
+                                                SEARCH
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

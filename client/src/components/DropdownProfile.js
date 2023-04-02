@@ -52,6 +52,7 @@ function DropdownProfile({ count }) {
                                 path: "/",
                             });
                             navigate("/");
+                            window.location.reload();
                         }}
                     >
                         Log out

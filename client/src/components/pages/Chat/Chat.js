@@ -36,6 +36,7 @@ function Chat() {
 
         axios.get("http://localhost:8000/api/chat/rooms").then((data) => {
             setChatRooms(data.data.rooms);
+            console.log(data);
         });
     }, []);
 

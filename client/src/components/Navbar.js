@@ -179,6 +179,7 @@ function Navbar(props) {
                                                 path: "/",
                                             });
                                             navigate("/");
+                                            window.location.reload();
                                         }}
                                     >
                                         Log out

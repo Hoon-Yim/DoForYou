@@ -12,6 +12,7 @@ const STYLES = [
     "btn--outline",
     "btn--category",
     "btn--slim-category",
+    "btn--slim-category-clicked",
 ];
 
 const SIZES = [

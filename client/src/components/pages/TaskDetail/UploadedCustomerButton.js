@@ -15,15 +15,12 @@ function UploadedCustomerButton() {
                 type="submit"
                 onClick={() => setShow(true)}
             >
-                Cancel
+                CANCEL
             </Button>
 
-            <ModalCancel
-                onClose={() => setShow(false)}
-                show={show}
-            />
+            <ModalCancel onClose={() => setShow(false)} show={show} />
         </>
-    )
+    );
 }
 
 export default UploadedCustomerButton;

@@ -9,7 +9,7 @@ const reviewCustomerSchema = mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: "User"
     },
-    like: {
+    likes: {
         type: Boolean
     },
     tags: {

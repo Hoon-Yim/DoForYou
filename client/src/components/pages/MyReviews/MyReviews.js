@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../../Button";
 import Footer from "../../Footer";
@@ -6,6 +6,13 @@ import Navbar from "../../Navbar";
 import "./MyReviews.css";
 
 function MyReviews() {
+    const [customerReview, setCustomerReview] = useState({});
+    const [performerReview, setPerformerReview] = useState({});
+
+    useEffect(() => {
+
+    }, []);
+
     return (
         <>
             <div id="container">
@@ -46,9 +53,6 @@ function MyReviews() {
                                         <div className="my-reviews-as-customer-evaluation">
                                             <div className="my-reviews-as-customer-evaluation-good-section">
                                                 <div className="my-reviews-as-customer-evaluation-good-thumbs-section">
-                                                    <div className="my-reviews-as-customer-evaluation-good-number">
-                                                        32
-                                                    </div>
                                                     <div className="my-reviews-as-customer-evaluation-good-thumbs">
                                                         <i class="fa-regular fa-thumbs-up fa-2x my-reviews-thumbs-up" />
                                                     </div>
@@ -101,9 +105,6 @@ function MyReviews() {
                                                 <div className="my-reviews-as-customer-evaluation-bad-thumbs-section">
                                                     <div className="my-reviews-as-customer-evaluation-bad-thumbs">
                                                         <i class="fa-regular fa-thumbs-down fa-2x fa-flip-horizontal my-reviews-thumbs-down" />
-                                                    </div>
-                                                    <div className="my-reviews-as-customer-evaluation-bad-number">
-                                                        2
                                                     </div>
                                                 </div>
                                                 <div className="my-reviews-as-customer-evaluation-bad-keywords">

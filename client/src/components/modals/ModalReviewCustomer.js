@@ -10,15 +10,15 @@ function GoodTags(props) {
 
     return counts.map((iteration) => {
         const jsxArray = Array.from({ length: iteration }, (_) => {
-            let style = {};
+            let style = "btn--slim-category";
             let currentIndex = index;
             if (props.goodTags[goodTagNames[currentIndex]] === true)
-                style = { border: "3px solid #000" };
+                style += "-clicked";
 
             return (
                 <div className="performer-categories-btn-box" key={index}>
                     <Button
-                        buttonStyle="btn--slim-category"
+                        buttonStyle={style}
                         buttonSize="btn--small"
                         buttonRadius="btn--rounded"
                         onClick={e => {
@@ -51,14 +51,13 @@ function BadTags(props) {
 
     return counts.map((iteration) => {
         const jsxArray = Array.from({ length: iteration }, (_) => {
-            let style = {};
+            let style = "btn--slim-category";
             let currentIndex = index;
             if (props.badTags[badTagNames[currentIndex]] === true)
-                style = { border: "3px solid #000" };
-
+                style += "-clicked"
             return (
                 <Button
-                    buttonStyle="btn--slim-category"
+                    buttonStyle={style}
                     buttonSize="btn--small"
                     buttonRadius="btn--rounded"
                     onClick={e => {

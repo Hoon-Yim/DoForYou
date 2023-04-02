@@ -15,12 +15,15 @@ module.exports = class APIFeatures {
 
         console.log(queryObject);
         let findObject = {};
-        const categories = queryObject.category.split(',');
+        if (queryObject.categories) {
+            findObject.category = { $in: queryObject.category.split(',') }
+        }
+        if (queryObject.search !== "") {
+            findObject.$text = { $search: queryObject.search }
+        }
 
         //const tours = await Tour.find().where("duration").equals(5).where("difficulty").equals("easy");
-        this.query = this.query.find({
-            category: { $in: categories }
-        });
+        this.query = this.query.find(findObject);
 
         return this;
     }

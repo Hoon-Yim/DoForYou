@@ -28,21 +28,19 @@ function TaskDetail() {
             .then((data) => {
                 setTask(data.data.task);
                 setUploadedUser(data.data.task.uploadedUser);
-                console.log(data.data.task);
             });
 
         axios
             .get(`http://localhost:8000/api/users/getLoggedInUser/${cookies.get("jwt")}`)
             .then(data => {
                 setUser(data.data.user);
-                console.log(data.data.user);
             });
     }, []);
 
     const populateButton = () => {
         // if performer but unassigned
         if (user.role === "customer") {
-            if (task.uploadedUser._id === user._id) {
+            if (uploadedUser._id === user._id) {
                 if (task.isCompleted === false) {
                     return (
                         <>

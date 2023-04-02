@@ -120,4 +120,6 @@ const taskSchema = mongoose.Schema({
     }
 })
 
+taskSchema.index({ title: "text" })
+
 module.exports = mongoose.model("Task", taskSchema);

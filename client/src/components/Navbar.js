@@ -19,10 +19,8 @@ function Navbar(props) {
     // Login
     const [isLogin, setIsLogin] = useState(false);
     useEffect(() => {
-        if (cookies.get("jwt") === "logout") {
-            setIsLogin(false);
-            setFirstname("");
-        } else if (cookies.get("jwt") === undefined) {
+        const jwt = cookies.get("jwt");
+        if (jwt === "logout" || jwt === undefined) {
             setIsLogin(false);
             setFirstname("");
         } else {

@@ -1,4 +1,8 @@
 const Task = require("../models/taskModel");
+const User = require("../models/userModel");
+const Room = require("../models/roomModel");
+
+const authController = require("./authController");
 
 const APIFeatures = require("../utils/apiFeatures");
 const AppError = require("../utils/appError");
@@ -37,11 +41,41 @@ exports.createTask = catchAsync(async (req, res) => {
 // Display task by id
 exports.getTaskById = catchAsync(async (req, res) => {
     const taskId = req.params.tid
-    const task = await Task.findOne({ _id: taskId })
+    const task = await Task.findOne({ _id: taskId }).populate("uploadedUser").populate("assignedUser");
 
     res.status(200).json({
         status: "success",
         results: task.length,
+        task
+    });
+});
+
+exports.assignPerformer = catchAsync(async (req, res) => {
+    const userId = await authController.decodeToken(req.body.token);
+    const user = await User.findById(userId);
+    const room = await Room.findById(req.body.roomId);
+
+    const performer = room.participants.filter(participant => {
+        return !participant.user.equals(user._id);
+    })
+
+    const task = await Task.findByIdAndUpdate(room.task, {
+        assignedUser: performer[0].user
+    }, { new: true });
+
+    res.status(201).json({
+        status: "success",
+        task
+    });
+});
+
+exports.setTaskCompleted = catchAsync(async (req, res) => {
+    const task = await Task.findByIdAndUpdate(req.params.taskId, {
+        isCompleted: true
+    }, { new: true });
+
+    res.status(201).json({
+        status: "success",
         task
     });
 });

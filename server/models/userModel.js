@@ -120,18 +120,6 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
-    files: [{
-        file: {
-            data: Buffer,
-            contentType: String,
-            originalName: String,
-            fileSize: Number
-        },
-        uploadedAt: {
-            type: Date,
-            default: Date.now
-        }
-    }],
     birthdate: Date,
     passwordChangedAt: Date,
     passwordResetToken: String,

@@ -13,6 +13,8 @@ module.exports = class APIFeatures {
         // 2A) Advanced Filtering
         if (Object.keys(queryObject).length === 0) { return this; }
 
+        console.log(queryObject);
+        let findObject = {};
         const categories = queryObject.category.split(',');
 
         //const tours = await Tour.find().where("duration").equals(5).where("difficulty").equals("easy");

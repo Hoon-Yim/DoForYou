@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { Button } from "../Button";
 import "./ModalInterest.css";
@@ -6,6 +7,7 @@ const ModalInterest = (props) => {
     if (!props.show) {
         return null;
     }
+
     return (
         <div className="modal-interest" onClick={props.onClose}>
             <div
@@ -48,7 +50,16 @@ const ModalInterest = (props) => {
                             buttonStyle="btn--primary-yellow"
                             buttonSize="btn--wide-bold"
                             buttonRadius="btn--square"
-                            onClick={props.onClose}
+                            onClick={() => {
+                                axios
+                                    .post("http://localhost:8000/api/chat/rooms", {
+                                        customerId: props.customerId,
+                                        performerId: props.performerId,
+                                        taskId: props.taskId
+                                    }) 
+                                    .then(data => { console.log(data.data); })
+                                props.onClose()
+                            }}
                         >
                             Yes
                         </Button>

@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Cookies from "universal-cookie";
 import "./App.css";
 import CreateNewTask from "./components/pages/NewTask/CreateNewTask";
 import FindTasks from "./components/pages/FindTasks/FindTasks";
@@ -29,6 +30,8 @@ import WriteReviewAboutPerformerBtn from "./components/buttons/WriteReviewAboutP
 import WriteReviewAboutCustomerBtn from "./components/buttons/WriteReviewAboutCustomerBtn";
 
 function App() {
+    const cookies = new Cookies();
+
     return (
         <>
             <Router>

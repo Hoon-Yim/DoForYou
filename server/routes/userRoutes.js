@@ -12,10 +12,10 @@ router.post("/forgotPassword", authController.forgotPassword);
 router.patch("/resetPassword/:token", authController.resetPassword);
 router.post('/profile/:uid', upload.single('photo'), userController.uploadPicture);
 router.get("/profile/:uid", userController.getUserPicture);
-router.post("/profile/uploadFile/:uid", uploadFile.single('file'), userController.uploadFile);
-router.get("/profile/files/:uid", userController.getUserFiles);
-router.get("/profile/files/:uid/:fid", userController.getFileById);
-router.put("/profile/files/:uid", userController.deleteAllFiles);
+// router.post("/profile/uploadFile/:uid", uploadFile.single('file'), userController.uploadFile);
+// router.get("/profile/files/:uid", userController.getUserFiles);
+// router.get("/profile/files/:uid/:fid", userController.getFileById);
+// router.put("/profile/files/:uid", userController.deleteAllFiles);
 router.get("/notVerified", userController.getNotVerifiedUsers);
 router.put("/verified", userController.verifyUser);
 

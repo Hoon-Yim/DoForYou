@@ -5,7 +5,7 @@ const reviewsController = require("../controllers/reviewsController")
 
 
 // Customer reviews routes
-router.post("/reviewCustomer/:cid", reviewsController.submitCutomerReview);
+router.post("/reviewCustomer", reviewsController.submitCutomerReview);
 router.get("/reviewCustomer/:cid/all", reviewsController.getCustomerReviews);
 router.get("/reviewCustomer/:cid/:tag", reviewsController.getCountForEachTag);
 router.put("/reviewCustomer/:cid/:like", reviewsController.updateCustomerRating);

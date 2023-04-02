@@ -40,13 +40,7 @@ exports.getUserReviews = catchAsync(async (req, res) => {
 
 // Submit a new review
 exports.submitCutomerReview = catchAsync(async (req, res) => {
-  const { customerId } = req.params.cid;
-  const { likes, tag } = req.body;
-  const review = new ReviewCustomer({
-    customerId,
-    likes,
-    tag
-  });
+  const review = new ReviewCustomer(req.body);
   await review.save();
   res.status(201).json({
     status: "success",

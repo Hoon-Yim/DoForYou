@@ -11,4 +11,6 @@ router
     .route('/')
     .get(taskController.getAllTasks);
 
+router.post("/setTaskCompleted/:taskId", taskController.setTaskCompleted);
+
 module.exports = router;

@@ -11,7 +11,7 @@ router.get("/reviewCustomer/:cid/:tag", reviewsController.getCountForEachTag);
 router.put("/reviewCustomer/:cid/:like", reviewsController.updateCustomerRating);
 
 // Performer reviews routes
-router.post("/reviewPerformer/:pid", reviewsController.submitPerformerReview )
+router.post("/reviewPerformer", reviewsController.submitPerformerReview);
 router.get("/reviewPerformer/:pid/all", reviewsController.getPerformerReviews);
 
 

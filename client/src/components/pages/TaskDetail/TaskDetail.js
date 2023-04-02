@@ -42,7 +42,7 @@ function TaskDetail() {
     const populateButton = () => {
         // if performer but unassigned
         if (user.role === "customer") {
-            if (task.uploadedUser === user._id) {
+            if (task.uploadedUser._id === user._id) {
                 if (task.isCompleted === false) {
                     return (
                         <>
@@ -58,14 +58,14 @@ function TaskDetail() {
                         </>
                     )
                 } else {
-                    return <PerformerReview />
+                    return task.isCompleted && <PerformerReview task={task} />
                 }
             } else {
                 return null;
             }
         } else if (user.role === "performer") {
             if (task.assignedUser) { // when the task has assigned performer
-                if (task.assignedUser === user._id) {
+                if (task.assignedUser._id === user._id) {
                     return (
                         !task.isCompleted ?
                         <AssignedPerformerButton taskId={task._id} /> : // showing complete button

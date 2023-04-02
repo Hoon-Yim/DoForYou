@@ -21,6 +21,7 @@ function PerformerReview(props) {
             <ModalReviewPerformer
                 onClose={() => setShow(false)}
                 show={show}
+                task={props.task}
             />
         </>
     )

@@ -209,9 +209,7 @@ const ModalReviewCustomer = (props) => {
                                         like: isClickGood ? true : false,
                                         tags: selectedTags
                                     })
-                                    .then(data => {
-                                        console.log(data.data.review);
-                                    });
+                                    .then(data => { });
                                 
                                 props.onClose()
                             }}

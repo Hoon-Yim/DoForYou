@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Button } from "../Button";
 import "./ModalReviewPerformer.css";
@@ -12,6 +13,7 @@ const ModalReviewPerformer = (props) => {
     ]);
 
     const [star, setStar] = useState(1);
+    const [review, setReview] = useState("");
 
     if (!props.show) {
         return null;
@@ -34,11 +36,11 @@ const ModalReviewPerformer = (props) => {
                         </div>
                     </div>
                     <div className="modal-review-performer-body-username">
-                        Bella H.
+                        {props.task.assignedUser.firstname} {props.task.assignedUser.lastname}
                     </div>
                     <div className="modal-review-performer-stars-box">
                         <div className="modal-review-performer-stars">
-                            {isStarClicked.map((starr, i) => {
+                            {isStarClicked.map((_, i) => {
                                 let classname =
                                     "fa-star fa-xl review-performer-star fa-";
                                 if (i < star) {
@@ -65,6 +67,8 @@ const ModalReviewPerformer = (props) => {
                             className="modal-review-performer-body-opinion-textarea"
                             rows={7}
                             placeholder="Share your opinion about this performer"
+                            value={review}
+                            onChange={e => setReview(e.target.value) }
                         />
                     </div>
                 </div>
@@ -74,7 +78,19 @@ const ModalReviewPerformer = (props) => {
                             buttonStyle="btn--primary-yellow"
                             buttonSize="btn--wide-bold"
                             buttonRadius="btn--square"
-                            /*onClick={() => }*/
+                            onClick={() => {
+                                axios
+                                    .post("http://localhost:8000/api/reviews/reviewPerformer", {
+                                        task: props.task,
+                                        performer: props.task.assignedUser,
+                                        rating: star,
+                                        review
+                                    })
+                                    .then(data => {
+                                        console.log(data.data.review);
+                                    });
+                                props.onClose();
+                            }}
                         >
                             Submit
                         </Button>

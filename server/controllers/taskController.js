@@ -41,7 +41,7 @@ exports.createTask = catchAsync(async (req, res) => {
 // Display task by id
 exports.getTaskById = catchAsync(async (req, res) => {
     const taskId = req.params.tid
-    const task = await Task.findOne({ _id: taskId }).populate("uploadedUser");
+    const task = await Task.findOne({ _id: taskId }).populate("uploadedUser").populate("assignedUser");
 
     res.status(200).json({
         status: "success",

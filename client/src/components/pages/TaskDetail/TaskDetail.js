@@ -6,10 +6,6 @@ import { Button } from "../../Button";
 import Footer from "../../Footer";
 import Navbar from "../../Navbar";
 import "./TaskDetail.css";
-import ModalInterest from "../../modals/ModalInterest";
-import ModalComplete from "../../modals/ModalComplete"
-import ModalReviewCustomer from "../../modals/ModalReviewCustomer";
-import ModalReviewPerformer from "../../modals/ModalReviewPerformer";
 
 import UploadedCustomerButton from "./UploadedCustomerButton";
 import AssignedPerformerButton from "./AssignedPerformerButton";
@@ -17,8 +13,8 @@ import UnassignedPerformerButton from "./UnassignedPerformerButton";
 
 function TaskDetail() {
     const cookies = new Cookies();
-    const params = useParams();
     const navigate = useNavigate();
+    const params = useParams();
 
     const [task, setTask] = useState({});
     const [user, setUser] = useState({});
@@ -28,19 +24,21 @@ function TaskDetail() {
             .get(`http://localhost:8000/api/tasks/${params.taskId}`)
             .then((data) => {
                 setTask(data.data.task);
+                console.log(data.data.task);
             });
 
         axios
             .get(`http://localhost:8000/api/users/getLoggedInUser/${cookies.get("jwt")}`)
             .then(data => {
                 setUser(data.data.user);
+                console.log(data.data.user);
             });
     }, []);
 
     const populateButton = () => {
         // if performer but unassigned
         if (user.role === "customer") {
-            if (task.uploadedUser._id === user._id) {
+            if (task.uploadedUser === user._id) {
                 return (
                     <>
                         <Button
@@ -73,7 +71,7 @@ function TaskDetail() {
                     )
                 }
             } else {                                  // logged in user is not assigned user
-                return <UnassignedPerformerButton />  // showing interst button
+                return <UnassignedPerformerButton performerId={user._id} customerId={task.uploadedUser} taskId={task._id} />  // showing interst button
             }
         } else {
             if (task.isCompleted === true) {
@@ -134,7 +132,7 @@ function TaskDetail() {
                                             Address
                                         </div>
                                         <div className="task-detail-content-body-value">
-                                            {task.remote
+                                            {task.isRemote
                                                 ? "Can be done remotely"
                                                 : `${
                                                       task.location &&
@@ -202,19 +200,6 @@ function TaskDetail() {
                                     </div>
                                     <div className="task-detail-btn-interest">
                                         {populateButton()}
-                                        {/* Testing modal for Reviewing customer */}
-                                        {/*
-                                        <ModalReviewCustomer
-                                            onClose={() => setShow(false)}
-                                            show={show}
-                                        />
-                                        */}
-
-                                        {/* Testing modal for Reviewing Performer */}
-                                        {/* <ModalReviewPerformer
-                                            onClose={() => setShow(false)}
-                                            show={show}
-                                        /> */}
                                     </div>
                                 </div>
                             </div>

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "../../Button";
 import ModalInterest from "../../modals/ModalInterest";
 
-function UnassignedPerformerButton() {
+function UnassignedPerformerButton(props) {
     const [show, setShow] = useState(false);
 
     return (
@@ -21,6 +21,9 @@ function UnassignedPerformerButton() {
             <ModalInterest
                 onClose={() => setShow(false)}
                 show={show}
+                performerId={props.performerId}
+                customerId={props.customerId}
+                taskId={props.taskId}
             />
         </>
     )

@@ -7,6 +7,7 @@ router
     .route('/')
     .get(roomController.getAllRooms)
     .post(roomController.createRoom);
+router.get("/getParticipatedRooms/:userId", roomController.getParticipatedRooms);
 
 router.get("/:firstname", roomController.getUnreadNotification);
 

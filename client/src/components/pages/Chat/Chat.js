@@ -33,19 +33,15 @@ function Chat() {
     useEffect(() => {
         setFirstname(cookies.get("firstname"));
         setRoomId(cookies.get("roomId"));
-
-<<<<<<< HEAD
-        axios.get("http://localhost:8000/api/chat/rooms").then((data) => {
-            setChatRooms(data.data.rooms);
-            console.log(data);
-        });
-=======
         axios
-            .get(`http://localhost:8000/api/chat/rooms/getParticipatedRooms/${cookies.get("jwt")}`)
+            .get(
+                `http://localhost:8000/api/chat/rooms/getParticipatedRooms/${cookies.get(
+                    "jwt"
+                )}`
+            )
             .then((data) => {
                 setChatRooms(data.data.rooms);
             });
->>>>>>> 3405e0432f167286c2406ac44e5cf48bac21c911
     }, []);
 
     useEffect(() => {
@@ -142,27 +138,43 @@ function Chat() {
                                                                     classname2
                                                                 }
                                                             >
-                                                                {message.message !== "~|+_" 
-                                                                    ? message.message
-                                                                    : (
-                                                                        <>
-                                                                            <div>{message.sender} wants to take care of your task!</div>
-                                                                            <Button
-                                                                                buttonStyle="btn--primary-blue"
-                                                                                buttonSize="btn--medium-bold"
-                                                                                buttonRadius="btn--square"
-                                                                                onClick={() => {
-                                                                                    axios.post("http://localhost:8000/api/tasks/assignPerformer", {
-                                                                                        token: cookies.get("jwt"),
-                                                                                        roomId
-                                                                                    })
-                                                                                }}
-                                                                            >
-                                                                                Accept!
-                                                                            </Button>
-                                                                        </>
-                                                                    )
-                                                                }
+                                                                {message.message !==
+                                                                "~|+_" ? (
+                                                                    message.message
+                                                                ) : (
+                                                                    <>
+                                                                        <div>
+                                                                            {
+                                                                                message.sender
+                                                                            }{" "}
+                                                                            wants
+                                                                            to
+                                                                            take
+                                                                            care
+                                                                            of
+                                                                            your
+                                                                            task!
+                                                                        </div>
+                                                                        <Button
+                                                                            buttonStyle="btn--primary-blue"
+                                                                            buttonSize="btn--medium-bold"
+                                                                            buttonRadius="btn--square"
+                                                                            onClick={() => {
+                                                                                axios.post(
+                                                                                    "http://localhost:8000/api/tasks/assignPerformer",
+                                                                                    {
+                                                                                        token: cookies.get(
+                                                                                            "jwt"
+                                                                                        ),
+                                                                                        roomId,
+                                                                                    }
+                                                                                );
+                                                                            }}
+                                                                        >
+                                                                            Accept!
+                                                                        </Button>
+                                                                    </>
+                                                                )}
                                                             </div>
                                                         </div>
                                                     );

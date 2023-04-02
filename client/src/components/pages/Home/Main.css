@@ -95,14 +95,45 @@
     display: flex;
     justify-content: flex-end;
 }
-
-.main-btns .btn {
-    margin: 0 6px;
+.main-get-started-btn-box,
+.main-contact-us-btn-box {
+    margin: 0 5px;
 }
 
-.main-btn-link-login {
+.main-get-started-btn-box {
+    width: 200px;
+    padding: 15px 0;
+    border: 2px solid var(--secondary-dark);
+    border-radius: 15px;
+    background-color: var(--secondary-dark);
+}
+.main-get-started-btn {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-get-started-btn-name {
+    font-size: 18px;
     color: #fff;
-    text-decoration: none;
+}
+
+.main-contact-us-btn-box {
+    width: 200px;
+    padding: 15px 0;
+    border: 2px solid var(--secondary-dark);
+    border-radius: 15px;
+    background-color: #fff;
+}
+.main-contact-us-btn {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-contact-us-btn-icon,
+.main-contact-us-btn-name {
+    font-size: 18px;
 }
 
 .main-btn-link-contact {
@@ -220,12 +251,13 @@
     .main-text > h2 {
         font-size: 32px;
         margin-bottom: -20px;
+        margin-right: 20px;
     }
 
     .deco-cursor {
-        width: 290px;
+        width: 295px;
         height: 40px;
-        left: 80px;
+        left: 95px;
         top: 10px;
     }
 
@@ -241,9 +273,17 @@
         display: flex;
         justify-content: center;
     }
+    .main-get-started-btn-box,
+    .main-contact-us-btn-box {
+        width: 180px;
+        padding: 12px 0;
+        border-radius: 12px;
+    }
 
-    .main-btns .btn {
-        margin: 5px 5px;
+    .main-get-started-btn-name,
+    .main-contact-us-btn-icon,
+    .main-contact-us-btn-name {
+        font-size: 16px;
     }
 }
 
@@ -276,7 +316,7 @@
     }
 
     .deco-cursor {
-        width: 220px;
+        width: 215px;
         height: 30px;
         left: 55px;
         top: 10px;
@@ -296,12 +336,12 @@
     }
 
     .main-btns {
+        width: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        align-items: center;
     }
-
-    .main-btns .btn {
-        margin: 5px 0;
+    .main-contact-us-btn-box {
+        margin-top: 6px;
     }
 }

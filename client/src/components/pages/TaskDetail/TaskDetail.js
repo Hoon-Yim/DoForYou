@@ -10,6 +10,8 @@ import "./TaskDetail.css";
 import UploadedCustomerButton from "./UploadedCustomerButton";
 import AssignedPerformerButton from "./AssignedPerformerButton";
 import UnassignedPerformerButton from "./UnassignedPerformerButton";
+import CustomerReview from "./CustomerReview";
+import PerformerReview from "./PerformerReview";
 
 function TaskDetail() {
     const cookies = new Cookies();
@@ -18,12 +20,14 @@ function TaskDetail() {
 
     const [task, setTask] = useState({});
     const [user, setUser] = useState({});
+    const [uploadedUser, setUploadedUser] = useState({});
 
     useEffect(() => {
         axios
             .get(`http://localhost:8000/api/tasks/${params.taskId}`)
             .then((data) => {
                 setTask(data.data.task);
+                setUploadedUser(data.data.task.uploadedUser);
                 console.log(data.data.task);
             });
 
@@ -38,27 +42,35 @@ function TaskDetail() {
     const populateButton = () => {
         // if performer but unassigned
         if (user.role === "customer") {
-            if (task.uploadedUser === user._id) {
-                return (
-                    <>
-                        <Button
-                            buttonStyle="btn--cancel"
-                            buttonSize="btn--large-bold"
-                            buttonRadius="btn--half-rounded"
-                            onClick={() => { navigate(`/edit-task/${task._id}`) }}
-                        >
-                            Edit
-                        </Button>
-                        <UploadedCustomerButton />
-                    </>
-                )
+            if (task.uploadedUser._id === user._id) {
+                if (task.isCompleted === false) {
+                    return (
+                        <>
+                            <Button
+                                buttonStyle="btn--cancel"
+                                buttonSize="btn--large-bold"
+                                buttonRadius="btn--half-rounded"
+                                onClick={() => { navigate(`/edit-task/${task._id}`) }}
+                            >
+                                Edit
+                            </Button>
+                            <UploadedCustomerButton />
+                        </>
+                    )
+                } else {
+                    return task.isCompleted && <PerformerReview task={task} />
+                }
             } else {
                 return null;
             }
         } else if (user.role === "performer") {
-            if (task.assingedUser) { // when the task has assigned performer
-                if (task.assingedUser._id === user._id) {
-                    return <AssignedPerformerButton />    // showing complete button
+            if (task.assignedUser) { // when the task has assigned performer
+                if (task.assignedUser._id === user._id) {
+                    return (
+                        !task.isCompleted ?
+                        <AssignedPerformerButton taskId={task._id} /> : // showing complete button
+                        <CustomerReview task={task} />
+                    )
                 } else {
                     return (
                         <Button
@@ -70,8 +82,13 @@ function TaskDetail() {
                         </Button>
                     )
                 }
-            } else {                                  // logged in user is not assigned user
-                return <UnassignedPerformerButton performerId={user._id} customerId={task.uploadedUser} taskId={task._id} />  // showing interst button
+            } else { // logged in user is not assigned user
+                // showing interst button
+                return <UnassignedPerformerButton 
+                            performerId={user._id} 
+                            customerId={task.uploadedUser} 
+                            taskId={task._id} 
+                        />  
             }
         } else {
             if (task.isCompleted === true) {
@@ -211,7 +228,7 @@ function TaskDetail() {
                                     <img src="images/profile/m4.jpg" alt="" />
                                 </div>
                                 <div className="task-detail-user-name">
-                                    Michael D.
+                                    {uploadedUser.firstname} {uploadedUser.lastname}
                                 </div>
                                 <div className="task-detail-user-reviews">
                                     Reviews:

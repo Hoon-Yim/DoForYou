@@ -1,15 +1,19 @@
 const mongoose = require("mongoose");
 
 const reviewCustomerSchema = mongoose.Schema({
-    customerId: {
-        type: String
+    task: {
+        type: mongoose.Schema.ObjectId,
+        ref: "Task"
     },
-    likes: {
-        type: Number,
-        default: 0
+    customer: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User"
     },
-    tag: {
-        type: String,
+    like: {
+        type: Boolean
+    },
+    tags: {
+        type: [String],
         enum: [
             "Punctual payment",
             "Good manners",

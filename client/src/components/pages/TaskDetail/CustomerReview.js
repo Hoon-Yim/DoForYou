@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 import { Button } from "../../Button";
-import ModalComplete from "../../modals/ModalComplete";
+import ModalReviewCustomer from "../../modals/ModalReviewCustomer";
 
-function AssignedPerformerButton(props) {
+function CustomerReview(props) {
     const [show, setShow] = useState(false);
 
     return (
@@ -15,16 +15,16 @@ function AssignedPerformerButton(props) {
                 type="submit"
                 onClick={() => setShow(true)}
             >
-                Complete
+                Write Review For Customer
             </Button>
 
-            <ModalComplete
+            <ModalReviewCustomer
                 onClose={() => setShow(false)}
                 show={show}
-                taskId={props.taskId}
+                task={props.task}
             />
         </>
     )
 }
 
-export default AssignedPerformerButton;
+export default CustomerReview;

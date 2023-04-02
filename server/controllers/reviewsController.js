@@ -40,13 +40,7 @@ exports.getUserReviews = catchAsync(async (req, res) => {
 
 // Submit a new review
 exports.submitCutomerReview = catchAsync(async (req, res) => {
-  const { customerId } = req.params.cid;
-  const { likes, tag } = req.body;
-  const review = new ReviewCustomer({
-    customerId,
-    likes,
-    tag
-  });
+  const review = new ReviewCustomer(req.body);
   await review.save();
   res.status(201).json({
     status: "success",
@@ -103,43 +97,35 @@ exports.updateCustomerRating = catchAsync(async (req, res) => {
 // Submit a new review
 
 exports.submitPerformerReview = catchAsync(async (req, res) => {
-  
-  const { pid: performerId } = req.params;
-  const { customerId, rating, review } = req.body;
+  const { performer, rating } = req.body;
+
   // Find existing reviews for the performer
-  const existingReviews = await ReviewPerformer.find({ performerId });
+  const existingReviews = await ReviewPerformer.find({ performer });
 
   // Calculate the new average rating
   const existingRatingsTotal = existingReviews.reduce((total, review) => total + review.rating, 0);
   const newAverageRating = ((existingRatingsTotal + rating) / (existingReviews.length + 1).toFixed(2));
 
   // Create a new review document
-  const newReview = new ReviewPerformer({
-    performerId,
-    customerId,
-    rating,
-    review,
-  });
+  console.log(req.body);
+  const newReview = new ReviewPerformer(req.body);
 
   // Save the new review
   await newReview.save();
 
   // Update the performer with the new average rating
-  const performer = await ReviewPerformer.findOneAndUpdate(
-    { id: performerId },
-    { $set: { averageRating: newAverageRating } },
-    { new: true }
+  await ReviewPerformer.findOneAndUpdate(
+    { performer },
+    { $set: { averageRating: newAverageRating } }
   );
 
   // Update the ratings in the existing reviews
-  await ReviewPerformer.updateMany({ performerId }, { $set: { average_rating: newAverageRating } });
+  const updatedReview = await ReviewPerformer.updateMany({ performer }, { $set: { average_rating: newAverageRating } }, { new: true });
 
   res.status(201).json({ 
     status: "success",
-    performer, 
-    review: newReview 
+    review: updatedReview 
   });
- 
 });
 
 

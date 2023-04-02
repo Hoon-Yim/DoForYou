@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { Button } from "../Button";
 import "./ModalComplete.css";
@@ -36,7 +37,14 @@ const ModalComplete = (props) => {
                             buttonStyle="btn--primary-yellow"
                             buttonSize="btn--wide-bold"
                             buttonRadius="btn--square"
-                            onClick={props.onClose}
+                            onClick={() => {
+                                axios
+                                    .post(`http://localhost:8000/api/tasks/setTaskCompleted/${props.taskId}`)
+                                    .then(data => {
+                                        console.log("Success");
+                                    });
+                                props.onClose();
+                            }}
                         >
                             Yes
                         </Button>

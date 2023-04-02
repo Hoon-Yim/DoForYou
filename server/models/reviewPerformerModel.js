@@ -1,19 +1,20 @@
 const mongoose = require("mongoose");
 
 const reviewPerformerSchema = mongoose.Schema({
-    performerId: {
-        type: String
+    task: {
+        type: mongoose.Schema.ObjectId,
+        ref: "Task"
     },
-    customerId: {
-        type: String
+    performer: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User"
     },
     rating: {
         type: Number,
-        default: 0
+        default: 1
     },
     average_rating: {
         type: Number,
-        default: 0
     },
     review: {
         type: String

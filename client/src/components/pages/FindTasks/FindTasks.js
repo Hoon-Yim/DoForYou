@@ -8,6 +8,8 @@ import FindTasksItem from "./FindTasksItem";
 
 function FindTasks() {
     const [search, setSearch] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [tasks, setTasks] = useState([]);
     const [filterString, setFilterString] = useState("");
     const [categories, setCategories] = useState({
@@ -31,6 +33,11 @@ function FindTasks() {
     useEffect(() => {
         axios.get(`http://localhost:8000/api/tasks`).then((data) => {
             setTasks(data.data.tasks);
+            console.log(data.data.tasks)
+        });
+        axios.get(`http://localhost:8000/api/tasks`).then((data) => {
+            setTasks(data.data.tasks);
+            console.log(data.data.tasks)
         });
     }, []);
 

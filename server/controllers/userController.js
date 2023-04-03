@@ -12,6 +12,14 @@ exports.getAllUsers = catchAsync(async (req, res) => {
 
 });
 
+exports.getOneUser = catchAsync(async (req, res) => {
+  const userId = req.params.uid;
+  const user = await User.findById(userId);
+
+  res.status(200).send(user)
+
+});
+
 exports.updateUser = catchAsync(async (req, res) => {
 
   const updateEmployee = await User.findByIdAndUpdate(req.params.uid, req.body)

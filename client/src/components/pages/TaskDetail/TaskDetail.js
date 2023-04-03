@@ -41,16 +41,6 @@ function TaskDetail() {
                 setUser(data.data.user);
 
             });
-        axios
-            .get(
-                `http://localhost:8000/api/users/getLoggedInUser/${cookies.get(
-                    "jwt"
-                )}`
-            )
-            .then((data) => {
-                setUser(data.data.user);
-
-            });
     }, []);
 
 

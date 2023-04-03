@@ -15,7 +15,7 @@ function CustomerReview(props) {
                 type="submit"
                 onClick={() => setShow(true)}
             >
-                Write Review For Customer
+                WRITE REVIEW FOR CUSTOMER
             </Button>
 
             <ModalReviewCustomer
@@ -24,7 +24,7 @@ function CustomerReview(props) {
                 task={props.task}
             />
         </>
-    )
+    );
 }
 
 export default CustomerReview;

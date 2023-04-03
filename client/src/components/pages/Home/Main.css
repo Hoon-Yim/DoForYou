@@ -98,6 +98,7 @@
 .main-get-started-btn-box,
 .main-contact-us-btn-box {
     margin: 0 5px;
+    cursor: pointer;
 }
 
 .main-get-started-btn-box {

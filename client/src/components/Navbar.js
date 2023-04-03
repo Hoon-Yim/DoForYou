@@ -118,11 +118,11 @@ function Navbar(props) {
                             </li>
                             <li className="nav-item">
                                 <Link
-                                    to="/about-us"
+                                    to="/contact-us"
                                     className="nav-links"
                                     onClick={closeMobileMenu}
                                 >
-                                    About Us
+                                    Contact Us
                                 </Link>
                             </li>
                             <li className="nav-item">

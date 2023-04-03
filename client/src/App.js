@@ -20,14 +20,6 @@ import TasksAsPerformer from "./components/pages/MyTasks/TasksAsPerformer";
 import AboutUs from "./components/pages/AboutUs/AboutUs";
 import MyAccount from "./components/pages/MyAccount/MyAccount";
 import MyReviews from "./components/pages/MyReviews/MyReviews";
-import TaskDetailAsCustomer from "./components/pages/MyTasks/TaskDetailAsCustomer";
-import TaskDetailAsPerformer from "./components/pages/MyTasks/TaskDetailAsPerformer";
-
-import EditAndCancelBtn from "./components/buttons/EditAndCancelBtn";
-import InterestedBtn from "./components/buttons/InterestedBtn";
-import CompleteAsPerformerBtn from "./components/buttons/CompleteAsPerformerBtn";
-import WriteReviewAboutPerformerBtn from "./components/buttons/WriteReviewAboutPerformerBtn";
-import WriteReviewAboutCustomerBtn from "./components/buttons/WriteReviewAboutCustomerBtn";
 
 function App() {
     const cookies = new Cookies();
@@ -62,18 +54,19 @@ function App() {
                         path="/my-tasks-customer"
                         element={<TasksAsCustomer />}
                     />
-                    {/* <Route
+                    <Route
                         path="/task-detail-as-customer"
                         element={<TaskDetailAsCustomer />}
-                    /> */}
+                    />
+                    <Route path="/my-tasks" element={<MyTask />} />
                     <Route
                         path="/my-tasks-performer"
                         element={<TasksAsPerformer />}
                     />
-                    {/* <Route
+                    <Route
                         path="/task-detail-as-performer"
                         element={<TaskDetailAsPerformer />}
-                    /> */}
+                    />
                     <Route path="/tasks/:taskId" element={<TaskDetail />} />
                     <Route path="/about-us" element={<AboutUs />} />
                     <Route path="/my-account" element={<MyAccount />} />

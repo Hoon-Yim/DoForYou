@@ -31,8 +31,12 @@ function TaskDetail() {
             });
 
         axios
-            .get(`http://localhost:8000/api/users/getLoggedInUser/${cookies.get("jwt")}`)
-            .then(data => {
+            .get(
+                `http://localhost:8000/api/users/getLoggedInUser/${cookies.get(
+                    "jwt"
+                )}`
+            )
+            .then((data) => {
                 setUser(data.data.user);
             });
     }, []);
@@ -48,27 +52,34 @@ function TaskDetail() {
                                 buttonStyle="btn--cancel"
                                 buttonSize="btn--large-bold"
                                 buttonRadius="btn--half-rounded"
-                                onClick={() => { navigate(`/edit-task/${task._id}`) }}
+                                onClick={() => {
+                                    navigate(`/edit-task/${task._id}`);
+                                }}
                             >
-                                Edit
+                                EDIT
                             </Button>
+                            <div
+                                className="margin-1rem"
+                                style={{ margin: "0.25rem" }}
+                            ></div>
                             <UploadedCustomerButton />
                         </>
-                    )
+                    );
                 } else {
-                    return task.isCompleted && <PerformerReview task={task} />
+                    return task.isCompleted && <PerformerReview task={task} />;
                 }
             } else {
                 return null;
             }
         } else if (user.role === "performer") {
-            if (task.assignedUser) { // when the task has assigned performer
+            if (task.assignedUser) {
+                // when the task has assigned performer
                 if (task.assignedUser._id === user._id) {
-                    return (
-                        !task.isCompleted ?
-                        <AssignedPerformerButton taskId={task._id} /> : // showing complete button
+                    return !task.isCompleted ? (
+                        <AssignedPerformerButton taskId={task._id} /> // showing complete button
+                    ) : (
                         <CustomerReview task={task} />
-                    )
+                    );
                 } else {
                     return (
                         <Button
@@ -78,15 +89,18 @@ function TaskDetail() {
                         >
                             Already Assigned
                         </Button>
-                    )
+                    );
                 }
-            } else { // logged in user is not assigned user
+            } else {
+                // logged in user is not assigned user
                 // showing interst button
-                return <UnassignedPerformerButton 
-                            performerId={user._id} 
-                            customerId={task.uploadedUser} 
-                            taskId={task._id} 
-                        />  
+                return (
+                    <UnassignedPerformerButton
+                        performerId={user._id}
+                        customerId={task.uploadedUser}
+                        taskId={task._id}
+                    />
+                );
             }
         } else {
             if (task.isCompleted === true) {
@@ -98,12 +112,12 @@ function TaskDetail() {
                     >
                         Completed
                     </Button>
-                )
+                );
             } else {
                 return null;
             }
         }
-    }
+    };
 
     return (
         <>
@@ -193,7 +207,7 @@ function TaskDetail() {
                                             Budget
                                         </div>
                                         <div className="task-detail-content-body-value">
-                                            ${task.budget}
+                                            $ {task.budget}.00
                                         </div>
                                     </div>
                                     <div className="task-detail-content-body-payment">
@@ -226,7 +240,8 @@ function TaskDetail() {
                                     <img src="images/profile/m4.jpg" alt="" />
                                 </div>
                                 <div className="task-detail-user-name">
-                                    {uploadedUser.firstname} {uploadedUser.lastname}
+                                    {uploadedUser.firstname}{" "}
+                                    {uploadedUser.lastname}
                                 </div>
                                 <div className="task-detail-user-reviews">
                                     Reviews:

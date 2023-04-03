@@ -15,7 +15,7 @@ function AssignedPerformerButton(props) {
                 type="submit"
                 onClick={() => setShow(true)}
             >
-                Complete
+                COMPLETE
             </Button>
 
             <ModalComplete
@@ -24,7 +24,7 @@ function AssignedPerformerButton(props) {
                 taskId={props.taskId}
             />
         </>
-    )
+    );
 }
 
 export default AssignedPerformerButton;

@@ -15,7 +15,7 @@ function PerformerReview(props) {
                 type="submit"
                 onClick={() => setShow(true)}
             >
-                Write Review For Performer
+                WRITE REVIEW FOR PERFORMER
             </Button>
 
             <ModalReviewPerformer
@@ -24,7 +24,7 @@ function PerformerReview(props) {
                 task={props.task}
             />
         </>
-    )
+    );
 }
 
 export default PerformerReview;

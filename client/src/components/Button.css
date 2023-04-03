@@ -57,6 +57,8 @@
 .btn--slim-category-clicked {
     height: 38px;
     border: 3px solid var(--secondary-dark);
+    background-color: var(--secondary-light);
+    margin: 3px 5px;
 }
 
 .btn--small,

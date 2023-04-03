@@ -26,6 +26,12 @@ function Footer() {
                                         <Link to="/">FAQ</Link>
                                     </div>
                                     <div className="footer-link-link">
+                                        <Link to="/">Our Blog</Link>
+                                    </div>
+                                    <div className="footer-link-link">
+                                        <Link to="/">Support</Link>
+                                    </div>
+                                    <div className="footer-link-link">
                                         <Link to="/about-us">About Us</Link>
                                     </div>
                                 </div>
@@ -38,7 +44,13 @@ function Footer() {
                                     <h4 className="footer-text">Let's Chat!</h4>
                                 </Link>
                                 <h5 className="footer-text">
-                                    doforyou@doforyou.com
+                                    <a
+                                        style={{ textDecoration: "none" }}
+                                        href="mailto:doforyouca@gmail.com"
+                                        target="_blank"
+                                    >
+                                        doforyouca@gmail.com
+                                    </a>
                                 </h5>
                                 <h5 className="footer-text">
                                     +1 (123) 456 7890

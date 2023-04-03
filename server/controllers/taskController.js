@@ -79,3 +79,15 @@ exports.setTaskCompleted = catchAsync(async (req, res) => {
         task
     });
 });
+
+exports.getCreatedTasks = catchAsync(async (req, res) => {
+    const user = await User.findById(req.params.userId);
+    const createdTasks = await Task.find({ uploadedUser: user, isCompleted: false });
+    const completedTasks = await Task.find({ uploadedUser: user, isCompleted: true })
+
+    res.status(200).json({
+        status: "success",
+        createdTasks,
+        completedTasks
+    });
+});

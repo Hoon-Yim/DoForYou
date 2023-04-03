@@ -8,8 +8,6 @@ import Cookies from "universal-cookie";
 import "./CreateNewTask.css";
 import { Button } from "../../Button";
 
-
-
 function CreateNewTask() {
     const cookies = new Cookies();
     const navigate = useNavigate();
@@ -39,8 +37,12 @@ function CreateNewTask() {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:8000/api/users/getLoggedInUser/${cookies.get("jwt")}`)
-            .then(data => {
+            .get(
+                `http://localhost:8000/api/users/getLoggedInUser/${cookies.get(
+                    "jwt"
+                )}`
+            )
+            .then((data) => {
                 setUser(data.data.user);
             });
     }, []);
@@ -59,8 +61,8 @@ function CreateNewTask() {
             phone,
             startDate: new Date(`${startDate}T${startTime}:00`),
             endDate: new Date(`${endDate}T${endTime}:00`),
-            uploadedUser: user._id
-        }
+            uploadedUser: user._id,
+        };
 
         if (isRemote === true) {
             delete object.location;
@@ -76,133 +78,6 @@ function CreateNewTask() {
                 console.log(error);
             });
     };
-
-    function AddressSection() {
-        return (
-            <div
-                className="create-new-task-input-field"
-                style={{
-                    marginBottom:
-                        "1.5rem",
-                }}
-            >
-                <div className="create-new-task-input-label">
-                    What is address?
-                </div>
-                <div className="create-new-task-input-sub-label">
-                    Address
-                </div>
-                <input
-                    type="text"
-                    className="create-new-task-input-field-sub-input"
-                    placeholder="Address"
-                    onChange={(e) =>
-                        setAddress(
-                            e.target
-                                .value
-                        )
-                    }
-                />
-                <div className="create-new-task-address-combine">
-                    <div className="create-new-task-address-combine-left">
-                        <div className="create-new-task-input-sub-label">
-                            City
-                        </div>
-                        <input
-                            type="text"
-                            className="create-new-task-input-field-sub-input"
-                            placeholder="City"
-                            onChange={(
-                                e
-                            ) =>
-                                setCity(
-                                    e
-                                        .target
-                                        .value
-                                )
-                            }
-                        />
-                    </div>
-                    <div className="create-new-task-address-combine-right">
-                        <div className="create-new-task-input-sub-label">
-                            Province
-                        </div>
-                        <select
-                            name=""
-                            id=""
-                            className="create-new-task-input-sub-select"
-                            onChange={(
-                                e
-                            ) =>
-                                setProvince(
-                                    e
-                                        .target
-                                        .value
-                                )
-                            }
-                        >
-                            <option
-                                value=""
-                                selected
-                                disabled
-                            >
-                                Select
-                            </option>
-                            <option value="Alberta">
-                                Alberta
-                            </option>
-                            <option value="British Columbia">
-                                British
-                                Columbia
-                            </option>
-                            <option value="Manitoba">
-                                Manitoba
-                            </option>
-                            <option value="New Brunswick">
-                                New
-                                Brunswick
-                            </option>
-                            <option value="Newfoundland">
-                                Newfoundland
-                            </option>
-                            <option value="Nova Scotia">
-                                Nova
-                                Scotia
-                            </option>
-                            <option value="Ontario">
-                                Ontario
-                            </option>
-                            <option value="Prince Edward Island">
-                                Prince
-                                Edward
-                                Island
-                            </option>
-                            <option value="Quebec">
-                                Quebec
-                            </option>
-                            <option value="Saskatchewan">
-                                Saskatchewan
-                            </option>
-                        </select>
-                    </div>
-                </div>
-                <div className="create-new-task-input-sub-label">
-                    Postal Code
-                </div>
-                <input
-                    type="text"
-                    className="create-new-task-input-field-sub-input"
-                    placeholder="A1B2C3"
-                    onChange={(e) =>
-                        setPostalCode(
-                            e.target
-                                .value
-                        )
-                    }
-                />
-            </div>
-        )
-    }
 
     return (
         <>
@@ -320,9 +195,7 @@ function CreateNewTask() {
                                                                 <option value="Design">
                                                                     Design
                                                                 </option>
-                                                                <option
-                                                                    value="Photo Video Audio"
-                                                                >
+                                                                <option value="Photo Video Audio">
                                                                     Photo, Video
                                                                     and Audio
                                                                 </option>
@@ -379,13 +252,14 @@ function CreateNewTask() {
                                                                         ) => {
                                                                             setIsRemote(
                                                                                 true
-                                                                            )
+                                                                            );
                                                                             setIsInPerson(
                                                                                 false
-                                                                            )
+                                                                            );
                                                                         }}
-
-                                                                        defaultChecked={isRemote}
+                                                                        defaultChecked={
+                                                                            isRemote
+                                                                        }
                                                                     />
                                                                     <div className="radio-combine-label">
                                                                         Can be
@@ -406,10 +280,10 @@ function CreateNewTask() {
                                                                         ) => {
                                                                             setIsRemote(
                                                                                 false
-                                                                            )
+                                                                            );
                                                                             setIsInPerson(
                                                                                 true
-                                                                            )
+                                                                            );
                                                                         }}
                                                                     />
                                                                     <div className="radio-combine-label">
@@ -421,7 +295,149 @@ function CreateNewTask() {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        {isInPerson && <AddressSection />}
+                                                        {isInPerson && (
+                                                            <div
+                                                                className="create-new-task-input-field"
+                                                                style={{
+                                                                    marginBottom:
+                                                                        "1.5rem",
+                                                                }}
+                                                            >
+                                                                <div className="create-new-task-input-label">
+                                                                    What is
+                                                                    address?
+                                                                </div>
+                                                                <div className="create-new-task-input-sub-label">
+                                                                    Address
+                                                                </div>
+                                                                <input
+                                                                    type="text"
+                                                                    className="create-new-task-input-field-sub-input"
+                                                                    placeholder="Address"
+                                                                    value={
+                                                                        address
+                                                                    }
+                                                                    onChange={(
+                                                                        e
+                                                                    ) =>
+                                                                        setAddress(
+                                                                            e
+                                                                                .target
+                                                                                .value
+                                                                        )
+                                                                    }
+                                                                />
+                                                                <div className="create-new-task-address-combine">
+                                                                    <div className="create-new-task-address-combine-left">
+                                                                        <div className="create-new-task-input-sub-label">
+                                                                            City
+                                                                        </div>
+                                                                        <input
+                                                                            type="text"
+                                                                            className="create-new-task-input-field-sub-input"
+                                                                            placeholder="City"
+                                                                            value={
+                                                                                city
+                                                                            }
+                                                                            onChange={(
+                                                                                e
+                                                                            ) =>
+                                                                                setCity(
+                                                                                    e
+                                                                                        .target
+                                                                                        .value
+                                                                                )
+                                                                            }
+                                                                        />
+                                                                    </div>
+                                                                    <div className="create-new-task-address-combine-right">
+                                                                        <div className="create-new-task-input-sub-label">
+                                                                            Province
+                                                                        </div>
+                                                                        <select
+                                                                            name=""
+                                                                            id=""
+                                                                            className="create-new-task-input-sub-select"
+                                                                            value={
+                                                                                province
+                                                                            }
+                                                                            onChange={(
+                                                                                e
+                                                                            ) =>
+                                                                                setProvince(
+                                                                                    e
+                                                                                        .target
+                                                                                        .value
+                                                                                )
+                                                                            }
+                                                                        >
+                                                                            <option
+                                                                                value=""
+                                                                                selected
+                                                                                disabled
+                                                                            >
+                                                                                Select
+                                                                            </option>
+                                                                            <option value="Alberta">
+                                                                                Alberta
+                                                                            </option>
+                                                                            <option value="British Columbia">
+                                                                                British
+                                                                                Columbia
+                                                                            </option>
+                                                                            <option value="Manitoba">
+                                                                                Manitoba
+                                                                            </option>
+                                                                            <option value="New Brunswick">
+                                                                                New
+                                                                                Brunswick
+                                                                            </option>
+                                                                            <option value="Newfoundland">
+                                                                                Newfoundland
+                                                                            </option>
+                                                                            <option value="Nova Scotia">
+                                                                                Nova
+                                                                                Scotia
+                                                                            </option>
+                                                                            <option value="Ontario">
+                                                                                Ontario
+                                                                            </option>
+                                                                            <option value="Prince Edward Island">
+                                                                                Prince
+                                                                                Edward
+                                                                                Island
+                                                                            </option>
+                                                                            <option value="Quebec">
+                                                                                Quebec
+                                                                            </option>
+                                                                            <option value="Saskatchewan">
+                                                                                Saskatchewan
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="create-new-task-input-sub-label">
+                                                                    Postal Code
+                                                                </div>
+                                                                <input
+                                                                    type="text"
+                                                                    className="create-new-task-input-field-sub-input"
+                                                                    placeholder="A1B2C3"
+                                                                    value={
+                                                                        postalCode
+                                                                    }
+                                                                    onChange={(
+                                                                        e
+                                                                    ) =>
+                                                                        setPostalCode(
+                                                                            e
+                                                                                .target
+                                                                                .value
+                                                                        )
+                                                                    }
+                                                                />
+                                                            </div>
+                                                        )}
                                                         <div
                                                             className="create-new-task-input-field"
                                                             style={{
@@ -508,14 +524,14 @@ function CreateNewTask() {
                                                                         type="date"
                                                                         className="create-new-task-input-field-sub-input"
                                                                         onChange={(
-                                                                        e
-                                                                    ) =>
-                                                                        setEndDate(
                                                                             e
-                                                                                .target
-                                                                                .value
-                                                                        )
-                                                                    }
+                                                                        ) =>
+                                                                            setEndDate(
+                                                                                e
+                                                                                    .target
+                                                                                    .value
+                                                                            )
+                                                                        }
                                                                     />
                                                                 </div>
                                                                 <div className="create-new-task-date-and-time-combine-right">
@@ -527,14 +543,14 @@ function CreateNewTask() {
                                                                         type="time"
                                                                         className="create-new-task-input-field-sub-input"
                                                                         onChange={(
-                                                                        e
-                                                                    ) =>
-                                                                        setEndTime(
                                                                             e
-                                                                                .target
-                                                                                .value
-                                                                        )
-                                                                    }
+                                                                        ) =>
+                                                                            setEndTime(
+                                                                                e
+                                                                                    .target
+                                                                                    .value
+                                                                            )
+                                                                        }
                                                                     />
                                                                 </div>
                                                             </div>

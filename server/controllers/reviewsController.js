@@ -65,17 +65,33 @@ exports.getCustomerReviews = catchAsync(async (req, res) => {
 // Get count of reviews for a specific customer and tag
 exports.getCountForEachTag = catchAsync(async (req, res) => {
   const customerId = req.params.cid;
-  const tag = req.params.tag;
-  const reviews = await ReviewCustomer.find({ customerId: customerId, tag: tag });
+  const tags = [
+    "Punctual payment",
+    "Good manners",
+    "Friendly",
+    "Great Communication",
+    "Reasonable request",
+    "Positive",
+    "Payment delay",
+    "Lack of description",
+    "Rude",
+    "Poor Communication",
+    "Unreasonable request",
+    "Negative"
+  ];
 
-  const count = reviews.length
+  const counts = {};
+  for (const tag of tags) {
+    const reviews = await ReviewCustomer.find({ customer: customerId, tags: tag });
+    counts[tag] = reviews.length;
+  }
 
-  res.status(201).json({
+  res.status(200).json({
     status: "success",
-    results: reviews.length,
-    count
+    counts
   });
 });
+
 
 // Update likes count
 exports.updateCustomerRating = catchAsync(async (req, res) => {

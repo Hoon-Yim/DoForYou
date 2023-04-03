@@ -249,13 +249,7 @@ function TaskDetail() {
                                     {uploadedUser.firstname}{" "}
                                     {uploadedUser.lastname}
                                 </div>
-                                <div className="task-detail-user-reviews">
-                                    Reviews:
-                                    <i className="fa-solid fa-thumbs-up task-detail-thumbs-up"></i>
-                                    <div className="task-detail-user-reviews-number">
-                                        21
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>

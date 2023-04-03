@@ -33,9 +33,9 @@ exports.becomePerformer = catchAsync(async (req, res) => {
   });
 });
 
-exports.getLoggedInUser = catchAsync(async(req, res) => {
-    const userId = await authController.decodeToken(req.params.token);
-    const user = await User.findById(userId);
+exports.getLoggedInUser = catchAsync(async (req, res) => {
+  const userId = await authController.decodeToken(req.params.token);
+  const user = await User.findById(userId);
 
   res.status(200).json({
     status: "success",
@@ -47,13 +47,13 @@ exports.getLoggedInUser = catchAsync(async(req, res) => {
 exports.uploadPicture = catchAsync(async (req, res, next) => {
 
   // Update user document with the new profile picture URL
+  const photo = req.file;
   const user = await User.findByIdAndUpdate(
     req.params.uid,
     {
       img: {
-        data: fs.readFileSync(path.join(__dirname, '../../client/public/images/profile', req.file.filename)),
+        data: photo.buffer,
         contentType: 'image/png'
-
       }
     }
   );
@@ -77,33 +77,48 @@ exports.getUserPicture = catchAsync(async (req, res, next) => {
 });
 
 
+exports.deletePicture = catchAsync(async (req, res, next) => {
+  const user = await User.updateOne(
+    { _id: req.params.uid },
+    { $unset: { img: 1 } }
+  );
 
-  exports.getNotVerifiedUsers = catchAsync(async (req, res) => {
-    const users = await User.find({ verified: false });
+  if (user.nModified === 0) {
+    return next(new AppError('User not found', 404));
+  }
 
-    res.status(200).send(users)
+  res.status(204).json({
+    status: 'success',
+    data: null
   });
+});
 
-  exports.verifyUser = catchAsync(async (req, res, next) => {
+exports.getNotVerifiedUsers = catchAsync(async (req, res) => {
+  const users = await User.find({ verified: false });
 
-    const id = req.params.uid;
-    const verify = req.body.verify;
+  res.status(200).send(users)
+});
 
-    const updatedUser = await User.updateOne({ _id: id }, { 'verified' : verify});
+exports.verifyUser = catchAsync(async (req, res, next) => {
 
-    if (!updatedUser) {
-      return next(new AppError("User not found", 404));
-    }
+  const id = req.params.uid;
+  const verify = req.body.verify;
 
-    res.status(200).json({
-      status: "success",
-      message: "User updated successfully",
-      updatedUser
-    });
+  const updatedUser = await User.updateOne({ _id: id }, { 'verified': verify });
+
+  if (!updatedUser) {
+    return next(new AppError("User not found", 404));
+  }
+
+  res.status(200).json({
+    status: "success",
+    message: "User updated successfully",
+    updatedUser
   });
+});
 
 
-  
+
 
 
 

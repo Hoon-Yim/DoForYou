@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "../../Button";
 import ModalCancel from "../../modals/ModalCancel";
 
-function UploadedCustomerButton() {
+function UploadedCustomerButton(props) {
     const [show, setShow] = useState(false);
 
     return (
@@ -18,7 +18,7 @@ function UploadedCustomerButton() {
                 CANCEL
             </Button>
 
-            <ModalCancel onClose={() => setShow(false)} show={show} />
+            <ModalCancel onClose={() => setShow(false)} show={show} taskId={props.taskId} />
         </>
     );
 }

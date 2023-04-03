@@ -1,8 +1,11 @@
+import axios from "axios";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../Button";
 import "./ModalCancel.css";
 
 const ModalCancel = (props) => {
+    const navigate = useNavigate();
     if (!props.show) {
         return null;
     }
@@ -36,7 +39,17 @@ const ModalCancel = (props) => {
                             buttonStyle="btn--primary-yellow"
                             buttonSize="btn--wide-bold"
                             buttonRadius="btn--square"
-                            onClick={props.onClose}
+                            onClick={() => {
+                                console.log(props.taskId);
+                                axios
+                                    .delete(`http://localhost:8000/api/tasks/delete/${props.taskId}`)
+                                    .then((data) => {
+                                    })
+                                    .catch((error) => {
+                                        console.log(error);
+                                    });
+                                navigate("/find-tasks");
+                            }}
                         >
                             Yes
                         </Button>

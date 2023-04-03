@@ -65,7 +65,7 @@ function TaskDetail() {
                                 className="margin-1rem"
                                 style={{ margin: "0.25rem" }}
                             ></div>
-                            <UploadedCustomerButton />
+                            <UploadedCustomerButton taskId={task._id} />
                         </>
                     );
                 } else {

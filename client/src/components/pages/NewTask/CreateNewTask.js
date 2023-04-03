@@ -96,8 +96,15 @@ function CreateNewTask() {
             delete object.location;
         }
 
+        let url = "http://localhost:8000/api/tasks/";
+        if (taskId === undefined) {
+            url += "create";
+        } else {
+            url += `edit/${taskId}`;
+        }
+
         axios
-            .post("http://localhost:8000/api/tasks/create", object)
+            .post(url, object)
             .then((data) => {
                 console.log(data.data);
                 navigate("/find-tasks");
@@ -171,6 +178,7 @@ function CreateNewTask() {
                                                                 type="text"
                                                                 className="create-new-task-input-field-input"
                                                                 placeholder="Assemble the sofa from IKEA"
+                                                                value={title}
                                                                 onChange={(e) =>
                                                                     setTitle(
                                                                         e.target
@@ -187,6 +195,7 @@ function CreateNewTask() {
                                                                 name=""
                                                                 id=""
                                                                 className="create-new-task-input-select"
+                                                                value={category}
                                                                 onChange={(e) =>
                                                                     setCategory(
                                                                         e.target
@@ -477,7 +486,7 @@ function CreateNewTask() {
                                                                 When do you need
                                                                 to start work?
                                                             </div>
-                                                            <select
+                                                            {/* <select
                                                                 name=""
                                                                 id=""
                                                                 className="
@@ -501,7 +510,7 @@ function CreateNewTask() {
                                                                     Specify the
                                                                     period
                                                                 </option>
-                                                            </select>
+                                                            </select> */}
                                                             <div className="create-new-task-date-and-time-combine">
                                                                 <div className="create-new-task-date-and-time-combine-left">
                                                                     <div className="create-new-task-input-sub-label">
@@ -511,6 +520,7 @@ function CreateNewTask() {
                                                                     <input
                                                                         type="date"
                                                                         className="create-new-task-input-field-sub-input"
+                                                                        value={startDate}
                                                                         onChange={(
                                                                             e
                                                                         ) =>
@@ -530,6 +540,7 @@ function CreateNewTask() {
                                                                     <input
                                                                         type="time"
                                                                         className="create-new-task-input-field-sub-input"
+                                                                        value={startTime}
                                                                         onChange={(
                                                                             e
                                                                         ) =>
@@ -551,6 +562,7 @@ function CreateNewTask() {
                                                                     <input
                                                                         type="date"
                                                                         className="create-new-task-input-field-sub-input"
+                                                                        value={endDate}
                                                                         onChange={(
                                                                             e
                                                                         ) =>
@@ -570,6 +582,7 @@ function CreateNewTask() {
                                                                     <input
                                                                         type="time"
                                                                         className="create-new-task-input-field-sub-input"
+                                                                        value={endTime}
                                                                         onChange={(
                                                                             e
                                                                         ) =>
@@ -591,6 +604,7 @@ function CreateNewTask() {
                                                                 className="create-new-task-input-field-textarea"
                                                                 rows={5}
                                                                 placeholder="Details"
+                                                                value={details}
                                                                 onChange={(e) =>
                                                                     setDetails(
                                                                         e.target
@@ -612,6 +626,7 @@ function CreateNewTask() {
                                                                     type="number"
                                                                     className="create-new-task-input-field-input"
                                                                     placeholder="0.00"
+                                                                    value={budget}
                                                                     onChange={(
                                                                         e
                                                                     ) =>
@@ -682,6 +697,7 @@ function CreateNewTask() {
                                                                 type="text"
                                                                 className="create-new-task-input-field-input"
                                                                 placeholder="123-456-7890"
+                                                                value={phone}
                                                                 onChange={(e) =>
                                                                     setPhone(
                                                                         e.target

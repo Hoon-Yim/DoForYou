@@ -76,6 +76,11 @@ function Chat() {
                                     let classname = "chat-contacts-person ";
                                     if (room._id === roomId)
                                         classname += "selected";
+
+                                    const title = room.participants.filter(participant => {
+                                        return participant.user.firstname !== firstname;
+                                    });
+
                                     return (
                                         <Link
                                             style={{ textDecoration: "none" }}
@@ -91,7 +96,7 @@ function Chat() {
                                             <div className={classname}>
                                                 <ContactPhoto />
                                                 <div className="chat-contacts-person-name">
-                                                    {room._id}
+                                                    {title[0].user.firstname}
                                                 </div>
                                             </div>
                                         </Link>

@@ -22,7 +22,7 @@ exports.getParticipatedRooms = catchAsync(async (req, res, next) => {
     // const user = await User.findById(userId);
     const rooms = await Room.find({
         "participants.user": userId
-    });
+    }).populate("participants.user");
 
     res.status(200).json({
         status: "success",

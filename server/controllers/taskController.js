@@ -116,3 +116,25 @@ exports.getAssignedTasks = catchAsync(async (req, res) => {
         completedTasks
     });
 });
+
+exports.editTask = catchAsync(async (req, res) => {
+    const task = await Task.findByIdAndUpdate(req.params.taskId, req.body, {new: true});
+
+    res.status(201).json({
+        status: "success",
+        results: task.length,
+        task
+    });
+});
+
+exports.deleteTask = catchAsync(async (req, res) => {
+    const task = await Task.findByIdAndDelete(req.params.taskId);
+
+    if (!task) {
+        return next(new AppError("No document found with that ID", 404));
+    }
+
+    res.status(204).json({
+        status: "success"
+    });
+});

@@ -20,6 +20,7 @@ function TaskDetail() {
 
     const [task, setTask] = useState({});
     const [user, setUser] = useState({});
+    const [reviews, setReviews] = useState({});
     const [uploadedUser, setUploadedUser] = useState({});
 
     useEffect(() => {
@@ -38,8 +39,20 @@ function TaskDetail() {
             )
             .then((data) => {
                 setUser(data.data.user);
+
+            });
+        axios
+            .get(
+                `http://localhost:8000/api/users/getLoggedInUser/${cookies.get(
+                    "jwt"
+                )}`
+            )
+            .then((data) => {
+                setUser(data.data.user);
+
             });
     }, []);
+
 
     const populateButton = () => {
         // if performer but unassigned
@@ -163,10 +176,9 @@ function TaskDetail() {
                                         <div className="task-detail-content-body-value">
                                             {task.isRemote
                                                 ? "Can be done remotely"
-                                                : `${
-                                                      task.location &&
-                                                      task.location.address
-                                                  }`}
+                                                : `${task.location &&
+                                                task.location.address
+                                                }`}
                                         </div>
                                     </div>
                                     <div className="task-detail-content-body-start">
@@ -237,7 +249,11 @@ function TaskDetail() {
                                     Customer Information
                                 </div>
                                 <div className="task-detail-user-image">
-                                    <img src="images/profile/m4.jpg" alt="" />
+                                    {uploadedUser.img ? (
+                                        <img src={`http://localhost:8000/api/users/profile/${uploadedUser._id}`} alt="profile" />
+                                    ) : (
+                                        <img src="images/profile/SY.png" alt="default profile" />
+                                    )}
                                 </div>
                                 <div className="task-detail-user-name">
                                     {uploadedUser.firstname}{" "}

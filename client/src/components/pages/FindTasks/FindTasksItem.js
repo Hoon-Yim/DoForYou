@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 export default function FindTasksItem(props) {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+
+    useEffect(() => {
+        // fetch customer data when component mounts
+        axios.get(`http://localhost:8000/api/users/${props.task.uploadedUser}`)
+            .then(response => {
+                setFirstName(response.data.firstname)
+                setLastName(response.data.lastname)
+            }).catch(error => console.error(error));
+    }, [props.task.uploadedUser]);
+
+
     return (
         <div className="find-task-list-item">
             <div className="find-task-list-item-top">
@@ -59,7 +73,7 @@ export default function FindTasksItem(props) {
                     </div>
                 </div>
                 {/* change later */}
-                <div className="find-task-list-item-uploader">Michael D.</div>
+                <div className="find-task-list-item-uploader"> {`${firstName} ${lastName.charAt(0)}.`}</div>
             </div>
         </div>
     );

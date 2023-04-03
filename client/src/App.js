@@ -36,6 +36,7 @@ function App() {
                         path="/create-new-task"
                         element={<CreateNewTask />}
                     />
+                    <Route path="/edit-task/:taskId" element={<CreateNewTask />} />
                     <Route path="/find-tasks" element={<FindTasks />} />
                     <Route path="/contact-us" element={<ContactUs />} />
                     <Route path="/login" element={<Login />} />

@@ -1,15 +1,10 @@
 import axios from "axios";
-import { Outlet } from "react-router-dom";
 import Cookies from "universal-cookie";
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
     Link,
     useNavigate,
-    useParams,
 } from "react-router-dom";
 
 import "./Chat.css";
@@ -22,7 +17,6 @@ const socket = io.connect("http://localhost:8000");
 
 function Chat() {
     const cookies = new Cookies();
-    const navigate = useNavigate();
 
     const [firstname, setFirstname] = useState("");
     const [text, setText] = useState("");
@@ -41,6 +35,7 @@ function Chat() {
             )
             .then((data) => {
                 setChatRooms(data.data.rooms);
+                console.log(data.data.rooms);
             });
     }, []);
 

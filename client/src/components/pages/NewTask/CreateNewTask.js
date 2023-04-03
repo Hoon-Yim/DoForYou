@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../../App.css";
 import Footer from "../../Footer";
 import Navbar from "../../Navbar";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import "./CreateNewTask.css";
@@ -11,6 +11,7 @@ import { Button } from "../../Button";
 function CreateNewTask() {
     const cookies = new Cookies();
     const navigate = useNavigate();
+    const { taskId } = useParams();
 
     const [user, setUser] = useState({});
 
@@ -45,6 +46,33 @@ function CreateNewTask() {
             .then((data) => {
                 setUser(data.data.user);
             });
+
+        if (taskId !== undefined) {
+            axios.get(`http://localhost:8000/api/tasks/${taskId}`)
+                .then(data => {
+                    const task = data.data.task;
+                    setTitle(task.title);
+                    setCategory(task.category);
+                    setIsRemote(task.isRemote);
+                    setIsInPerson(!task.isRemote);
+                    setAddress(task.address);
+                    setProvince(task.province);
+                    setPostalCode(task.zipcode);
+
+                    const [start_date, start_time] = task.startDate.split('T');
+                    const [end_date, end_time] = task.endDate.split('T');
+
+                    setStartDate(start_date);
+                    setStartTime(start_time.slice(0, 5));
+                    setEndDate(end_date);
+                    setEndTime(end_time.slice(0, 5));
+
+                    setDetails(task.details);
+                    setBudget(task.budget);
+                    setPaymentMethod(task.paymentMethod);
+                    setPhone(task.phone);
+                });
+        }
     }, []);
 
     const handleSubmit = (e) => {

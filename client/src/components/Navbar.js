@@ -140,7 +140,7 @@ function Navbar(props) {
                                         <div className="nav-menu-active-user-menu">
                                             <ul className="nav-menu-active-user-menu-list">
                                                 <li className="nav-menu-active-user-menu-list-item">
-                                                    <Link to="/my-tasks-customer">
+                                                    <Link to="/my-tasks">
                                                         My Tasks
                                                     </Link>
                                                 </li>

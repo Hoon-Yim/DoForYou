@@ -11,6 +11,7 @@ router
     .route('/')
     .get(taskController.getAllTasks);
 router.get("/getCreatedTasks/:userId", taskController.getCreatedTasks);
+router.get("/getAssignedTasks/:userId", taskController.getAssignedTasks);
 
 router.post("/setTaskCompleted/:taskId", taskController.setTaskCompleted);
 

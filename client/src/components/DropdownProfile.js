@@ -23,7 +23,7 @@ function DropdownProfile({ count }) {
         <div className="navbar-profile-dropdown">
             <ul className="profile-menu-list">
                 <li className="profile-menu-list-item">
-                    <Link to="/my-tasks-customer">My Tasks</Link>
+                    <Link to="/my-tasks">My Tasks</Link>
                 </li>
                 <li className="profile-menu-list-item">
                     <Link to="/my-account">My Account</Link>

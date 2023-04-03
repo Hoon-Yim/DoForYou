@@ -34,10 +34,26 @@ export default function FindTasksItem(props) {
                         <div className="find-task-list-item-desc-date-time">
                             {/* change later */}
                             <div className="find-task-list-item-desc-date-start">
-                                Jan 4, 2023 12:00
+                                {new Date(
+                                    props.task.startDate
+                                ).toLocaleDateString("en-US", {
+                                    month: "short",
+                                    day: "numeric",
+                                    year: "numeric",
+                                    hour: "numeric",
+                                    minute: "numeric",
+                                })}{" "}
                             </div>
                             <div className="find-task-list-item-desc-date-end">
-                                - Jan 10, 2023 23:59
+                                {"-" + new Date(
+                                    props.task.endDate
+                                ).toLocaleDateString("en-US", {
+                                    month: "short",
+                                    day: "numeric",
+                                    year: "numeric",
+                                    hour: "numeric",
+                                    minute: "numeric",
+                                })}{" "}
                             </div>
                         </div>
                     </div>

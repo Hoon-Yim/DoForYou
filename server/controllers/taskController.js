@@ -82,12 +82,37 @@ exports.setTaskCompleted = catchAsync(async (req, res) => {
 
 exports.getCreatedTasks = catchAsync(async (req, res) => {
     const user = await User.findById(req.params.userId);
-    const createdTasks = await Task.find({ uploadedUser: user, isCompleted: false });
-    const completedTasks = await Task.find({ uploadedUser: user, isCompleted: true })
+    let findObject = { uploadedUser: user };
+    if (req.query.search !== "") {
+        findObject.$text = { $search: req.query.search }
+    }
+    const createdTasks = await Task.find({...findObject, isCompleted: false })
+                                    .populate("uploadedUser").populate("assignedUser");
+    const completedTasks = await Task.find({...findObject, isCompleted: true })
+                                    .populate("uploadedUser").populate("assignedUser");
 
     res.status(200).json({
         status: "success",
         createdTasks,
+        completedTasks
+    });
+});
+
+exports.getAssignedTasks = catchAsync(async (req, res) => {
+    const user = await User.findById(req.params.userId);
+    let findObject = { assignedUser: user };
+    if (req.query.search !== "") {
+        findObject.$text = { $search: req.query.search }
+    }
+
+    const assignedTasks = await Task.find({...findObject, isCompleted: false})
+                                    .populate("uploadedUser").populate("assignedUser");
+    const completedTasks = await Task.find({...findObject, isCompleted: true})
+                                    .populate("uploadedUser").populate("assignedUser");
+
+    res.status(200).json({
+        status: "success",
+        assignedTasks,
         completedTasks
     });
 });

@@ -53,23 +53,7 @@ function App() {
                         element={<ForgotPasswordAlert />}
                     />
                     <Route path="/chat" element={<Chat />} />
-                    <Route
-                        path="/my-tasks-customer"
-                        element={<TasksAsCustomer />}
-                    />
-                    <Route
-                        path="/task-detail-as-customer"
-                        element={<TaskDetailAsCustomer />}
-                    />
                     <Route path="/my-tasks" element={<MyTask />} />
-                    <Route
-                        path="/my-tasks-performer"
-                        element={<TasksAsPerformer />}
-                    />
-                    <Route
-                        path="/task-detail-as-performer"
-                        element={<TaskDetailAsPerformer />}
-                    />
                     <Route path="/tasks/:taskId" element={<TaskDetail />} />
                     <Route path="/about-us" element={<AboutUs />} />
                     <Route path="/my-account" element={<MyAccount />} />

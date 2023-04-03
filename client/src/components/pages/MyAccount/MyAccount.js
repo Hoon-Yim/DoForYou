@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Cookies from "universal-cookie";
 import { Link } from "react-router-dom";
 import { Button } from "../../Button";
 import Footer from "../../Footer";
@@ -6,7 +8,61 @@ import Navbar from "../../Navbar";
 import "./MyAccount.css";
 
 function MyProfile() {
+
+    const cookies = new Cookies();
+    const [user, setUser] = useState({});
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [phone, setPhone] = useState("");
+    const [address, setAddress] = useState("");
+    const [city, setCity] = useState("");
+    const [province, setProvince] = useState("");
+    const [postalCode, setPostalCode] = useState("");
+    const [description, setDescription] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
+
+    useEffect(() => {
+        axios
+            .get(`http://localhost:8000/api/users/getLoggedInUser/${cookies.get("jwt")}`)
+            .then(data => {
+                setUser(data.data.user);
+                setFirstName(data.data.user);
+                setFirstName(data.data.user.firstname);
+                setLastName(data.data.user.lastname);
+                setPhone(data.data.user.phone);
+                setAddress(data.data.user.location.address);
+                setCity(data.data.user.location.city);
+                setProvince(data.data.user.location.province);
+                setPostalCode(data.data.user.location.zipcode);
+                setDescription(data.data.user.description);
+            });
+    }, []);
+    console.log(user._id)
+    const handleSubmit = () => {
+       
+        axios.put(`http://localhost:8000/api/users/updateUser/${user._id}`, {
+            firstName,
+            lastName,
+            phone,
+            address,
+            city,
+            province,
+            postalCode,
+            description
+        }).then((response) => {
+            console.log(response);
+            setErrorMessage("")
+            setSuccessMessage("Profile has been updated successfully!")
+        }).catch(error => {
+            setSuccessMessage("")
+            setErrorMessage(error.response.data.message)
+            console.log(error)
+        });
+    }
+
     return (
+
         <>
             <div id="container">
                 <Navbar />
@@ -57,7 +113,7 @@ function MyProfile() {
                                     </div>
                                     <div className="my-profile-wrapper-left-profile-form">
                                         <form
-                                            /*onSubmit={handleSubmit}*/ id="my-profile-action"
+                                            id="my-profile-action"
                                         >
                                             <div className="my-profile-wrapper-left-profile-title">
                                                 Personal Information
@@ -70,12 +126,8 @@ function MyProfile() {
                                                         </div>
                                                         <input
                                                             type="text"
-                                                            placeholder="First Name"
-                                                            /*onChange={(e) =>
-                                                        setFirstName(
-                                                            e.target.value
-                                                        )
-                                                    }*/
+                                                            value={firstName}
+                                                            onChange={(e) => setFirstName(e.target.value)}
                                                         />
                                                     </div>
                                                 </div>
@@ -86,12 +138,12 @@ function MyProfile() {
                                                         </div>
                                                         <input
                                                             type="text"
-                                                            placeholder="Last Name"
-                                                            /*onChange={(e) =>
-                                                        setLastName(
-                                                            e.target.value
-                                                        )
-                                                    }*/
+                                                            value={lastName}
+                                                            onChange={(e) =>
+                                                                setLastName(
+                                                                    e.target.value
+                                                                )
+                                                            }
                                                         />
                                                     </div>
                                                 </div>
@@ -102,10 +154,10 @@ function MyProfile() {
                                                 </div>
                                                 <input
                                                     type="text"
-                                                    placeholder="123-456-7890"
-                                                    /*onChange={(e) =>
-                                                setPhone(e.target.value)
-                                            }*/
+                                                    value={phone}
+                                                    onChange={(e) =>
+                                                        setPhone(e.target.value)
+                                                    }
                                                 />
                                             </div>
                                             <div className="my-profile-input-field">
@@ -114,10 +166,10 @@ function MyProfile() {
                                                 </div>
                                                 <input
                                                     type="text"
-                                                    placeholder="Address"
-                                                    /*onChange={(e) =>
-                                                setAddress(e.target.value)
-                                            }*/
+                                                    value={address}
+                                                    onChange={(e) =>
+                                                        setAddress(e.target.value)
+                                                    }
                                                 />
                                                 <div className="my-profile-address-combine">
                                                     <div className="my-profile-address-combine-left">
@@ -126,10 +178,10 @@ function MyProfile() {
                                                         </div>
                                                         <input
                                                             type="text"
-                                                            placeholder="City"
-                                                            /*onChange={(e) =>
-                                                        setCity(e.target.value)
-                                                    }*/
+                                                            value={city}
+                                                            onChange={(e) =>
+                                                                setCity(e.target.value)
+                                                            }
                                                         />
                                                     </div>
                                                     <div className="my-profile-address-combine-right">
@@ -139,18 +191,18 @@ function MyProfile() {
                                                         <select
                                                             name=""
                                                             id=""
-                                                            /*onChange={(e) =>
-                                                        setProvince(
-                                                            e.target.value
-                                                        )
-                                                    }*/
+                                                            value={province}
+                                                            onChange={(e) =>
+                                                                setProvince(
+                                                                    e.target.value
+                                                                )
+                                                            }
                                                         >
                                                             <option
-                                                                value=""
                                                                 selected
                                                                 disabled
                                                             >
-                                                                Select
+                                                                {province}
                                                             </option>
                                                             <option value="Alberta">
                                                                 Alberta
@@ -191,10 +243,10 @@ function MyProfile() {
                                                 </div>
                                                 <input
                                                     type="text"
-                                                    placeholder="A1B2C3"
-                                                    /*onChange={(e) =>
-                                                setPostalCode(e.target.value)
-                                            }*/
+                                                    value={postalCode}
+                                                    onChange={(e) =>
+                                                        setPostalCode(e.target.value)
+                                                    }
                                                 />
                                             </div>
                                             <div className="my-profile-input-field">
@@ -204,10 +256,10 @@ function MyProfile() {
                                                 <textarea
                                                     className="my-profile-input-field-textarea"
                                                     rows={5}
-                                                    placeholder=""
-                                                    /*onChange={(e) =>
-                                                    setDetails(e.target.value)
-                                                }*/
+                                                    value={description ? description : ""}
+                                                    onChange={(e) =>
+                                                        setDescription(e.target.value)
+                                                    }
                                                 />
                                             </div>
                                         </form>
@@ -243,6 +295,8 @@ function MyProfile() {
                                         </div>
                                     </div>
                                     <div className="my-profile-wrapper-right-bottom">
+                                        <p className="text-green-400">{successMessage}</p>
+                                        <p className="text-red-400">{errorMessage}</p>
                                         <div className="my-profile-wrapper-right-bottom-manage-btn">
                                             <Button
                                                 buttonStyle="btn--cancel"
@@ -259,6 +313,7 @@ function MyProfile() {
                                                 buttonSize="btn--wide-bold"
                                                 type="submit"
                                                 form="my-profile-action"
+                                                onClick={handleSubmit}
                                             >
                                                 SAVE
                                             </Button>
@@ -322,9 +377,9 @@ function MyProfile() {
                                                 <input
                                                     type="password"
                                                     placeholder="•••••••••••"
-                                                    /*onChange={(e) =>
-                                                setPhone(e.target.value)
-                                            }*/
+                                                /*onChange={(e) =>
+                                            setPhone(e.target.value)
+                                        }*/
                                                 />
                                             </div>
                                             <div className="my-profile-input-field">
@@ -334,9 +389,9 @@ function MyProfile() {
                                                 <input
                                                     type="password"
                                                     placeholder="•••••••••••"
-                                                    /*onChange={(e) =>
-                                                setPhone(e.target.value)
-                                            }*/
+                                                /*onChange={(e) =>
+                                            setPhone(e.target.value)
+                                        }*/
                                                 />
                                             </div>
                                         </form>

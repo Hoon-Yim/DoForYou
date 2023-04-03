@@ -12,6 +12,13 @@ exports.getAllUsers = catchAsync(async (req, res) => {
 
 });
 
+exports.updateUser = catchAsync(async (req, res) => {
+
+  const updateEmployee = await User.findByIdAndUpdate(req.params.uid, req.body)
+
+  res.status(200).send(updateEmployee)
+});
+
 exports.becomePerformer = catchAsync(async (req, res) => {
   const userId = await authController.decodeToken(req.body.jwt);
   const object = {

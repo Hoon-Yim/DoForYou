@@ -23,7 +23,7 @@ export default function FindTasksItem(props) {
             <div className="find-task-list-item-bottom">
                 <div className="find-task-list-item-desc">
                     <div className="find-task-list-item-desc-address">
-                        {props.task.remote
+                        {props.task.isRemote
                             ? "Can be done remotely"
                             : `${props.task.location.city}, ${props.task.location.province}`}
                     </div>

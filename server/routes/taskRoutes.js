@@ -10,6 +10,7 @@ router.post("/assignPerformer", taskController.assignPerformer);
 router
     .route('/')
     .get(taskController.getAllTasks);
+router.get("/getCreatedTasks/:userId", taskController.getCreatedTasks);
 
 router.post("/setTaskCompleted/:taskId", taskController.setTaskCompleted);
 

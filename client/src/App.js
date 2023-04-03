@@ -20,6 +20,9 @@ import TasksAsPerformer from "./components/pages/MyTasks/TasksAsPerformer";
 import AboutUs from "./components/pages/AboutUs/AboutUs";
 import MyAccount from "./components/pages/MyAccount/MyAccount";
 import MyReviews from "./components/pages/MyReviews/MyReviews";
+import TaskDetailAsCustomer from "./components/pages/MyTasks/TaskDetailAsCustomer";
+import TaskDetailAsPerformer from "./components/pages/MyTasks/TaskDetailAsPerformer";
+import MyTask from "./components/pages/MyTasks/MyTask";
 
 function App() {
     const cookies = new Cookies();

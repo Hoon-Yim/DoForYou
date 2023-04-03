@@ -9,6 +9,7 @@ router.post("/signup", authController.signup);
 router.post("/login", authController.login);
 router.post("/forgotPassword", authController.forgotPassword);
 router.patch("/resetPassword/:token", authController.resetPassword);
+router.put("/updateUser/:uid", userController.updateUser);
 router.post('/profile/:uid', upload.single('photo'), userController.uploadPicture);
 router.get("/profile/:uid", userController.getUserPicture);
 router.get("/notVerified", userController.getNotVerifiedUsers);

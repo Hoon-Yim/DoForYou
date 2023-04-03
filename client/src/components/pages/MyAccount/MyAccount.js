@@ -10,6 +10,7 @@ import "./MyAccount.css";
 function MyProfile() {
 
     const cookies = new Cookies();
+    const [profilePicture, setProfilePicture] = useState(null);
     const [user, setUser] = useState({});
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -40,7 +41,7 @@ function MyProfile() {
     }, []);
     console.log(user._id)
     const handleSubmit = () => {
-       
+
         axios.put(`http://localhost:8000/api/users/updateUser/${user._id}`, {
             firstName,
             lastName,
@@ -61,6 +62,42 @@ function MyProfile() {
         });
     }
 
+    const handleFileInputChange = (event) => {
+        setProfilePicture(event.target.files[0]);
+    };
+
+    const handleUploadClick = async () => {
+        const formData = new FormData();
+        formData.append('photo', profilePicture);
+
+        axios.post(`http://localhost:8000/api/users/profile/${user._id}`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+            .then(response => {
+                console.log(response);
+                window.location.reload(); // add this line
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+
+    const handleDeletePicture = () => {
+        axios
+            .put(`http://localhost:8000/api/users/profile/${user._id}`)
+            .then((response) => {
+                setProfilePicture(null);
+                console.log(response);
+                window.location.reload();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+
     return (
 
         <>
@@ -72,10 +109,11 @@ function MyProfile() {
                             <div className="responsive-profile-photo-box">
                                 <div className="responsive-profile-photo">
                                     <div className="responsive-profile-photo-image">
-                                        <img
-                                            src="images/profile/SY.png"
-                                            alt="profile"
-                                        />
+                                        {user.img ? (
+                                            <img src={`http://localhost:8000/api/users/profile/${user._id}`} alt="profile" />
+                                        ) : (
+                                            <img src="images/profile/SY.png" alt="default profile" />
+                                        )}
                                     </div>
                                 </div>
                                 <div className="responsive-profile-photo-btns">
@@ -269,26 +307,34 @@ function MyProfile() {
                                     <div className="my-profile-wrapper-right-profile-box">
                                         <div className="my-profile-wrapper-right-profile-photo">
                                             <div className="my-profile-wrapper-right-profile-photo-image">
-                                                <img
-                                                    src="images/profile/SY.png"
-                                                    alt="profile"
-                                                />
+                                                {user.img ? (
+                                                    <img src={`http://localhost:8000/api/users/profile/${user._id}`} alt="profile" />
+                                                ) : (
+                                                    <img src="images/profile/SY.png" alt="default profile" />
+                                                )}
                                             </div>
                                         </div>
+                                        <label for="pic-upload" class="img-label"  >
+                                            Select
+                                            <input id="pic-upload" type="file" class="img-input" accept=".jpg,.jpeg,.png" onChange={handleFileInputChange} />
+                                        </label>
                                         <div className="my-profile-wrapper-right-profile-btns">
+
                                             <Button
                                                 buttonStyle="btn--outline"
                                                 buttonSize="btn--small"
                                                 buttonRadius="btn--rounded"
                                                 type="submit"
+                                                onClick={handleUploadClick}
                                             >
-                                                Edit
+                                                Update
                                             </Button>
                                             <Button
                                                 buttonStyle="btn--outline"
                                                 buttonSize="btn--small"
                                                 buttonRadius="btn--rounded"
                                                 type="submit"
+                                                onClick={handleDeletePicture}
                                             >
                                                 Remove
                                             </Button>
@@ -341,73 +387,6 @@ function MyProfile() {
                                     >
                                         SAVE
                                     </Button>
-                                </div>
-                            </div>
-                            <div className="my-profile-wrapper-bottom">
-                                <div className="my-profile-wrapper-left">
-                                    <div className="my-profile-wrapper-left-password-form">
-                                        <form
-                                            /*onSubmit={handleSubmit}*/ id="my-password-action"
-                                        >
-                                            <div className="my-profile-wrapper-left-password-title">
-                                                Change Password
-                                            </div>
-                                            <div className="my-profile-wrapper-left-password-sub-title">
-                                                Create a new password with the
-                                                following requirements:
-                                            </div>
-                                            <div className="my-profile-wrapper-left-password-desc">
-                                                <ul className="my-profile-wrapper-left-password-desc-list">
-                                                    <li>
-                                                        length - at least 8
-                                                        characters
-                                                    </li>
-                                                    <li>lower case</li>
-                                                    <li>
-                                                        numbers or special
-                                                        characters: !, @, # and
-                                                        others
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div className="my-profile-input-field">
-                                                <div className="my-profile-input-label">
-                                                    New Password
-                                                </div>
-                                                <input
-                                                    type="password"
-                                                    placeholder="•••••••••••"
-                                                /*onChange={(e) =>
-                                            setPhone(e.target.value)
-                                        }*/
-                                                />
-                                            </div>
-                                            <div className="my-profile-input-field">
-                                                <div className="my-profile-input-label">
-                                                    Confirm Password
-                                                </div>
-                                                <input
-                                                    type="password"
-                                                    placeholder="•••••••••••"
-                                                /*onChange={(e) =>
-                                            setPhone(e.target.value)
-                                        }*/
-                                                />
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div className="my-profile-wrapper-right-password">
-                                    <div className="my-profile-wrapper-right-bottom-save-btn">
-                                        <Button
-                                            buttonStyle="btn--primary-blue"
-                                            buttonSize="btn--wide-bold"
-                                            type="submit"
-                                            form="my-password-action"
-                                        >
-                                            SAVE
-                                        </Button>
-                                    </div>
                                 </div>
                             </div>
                         </div>

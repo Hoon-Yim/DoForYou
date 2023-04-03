@@ -132,7 +132,7 @@
 
 .my-profile-wrapper-right-profile-photo-image {
     display: flex;
-    margin: 5rem auto 0.5rem;
+    margin: 5rem auto 3rem;
     height: 150px;
     width: 150px;
     border-radius: 50%;
@@ -337,4 +337,18 @@
     .my-profile-wrapper-left-password-desc-list {
         font-size: 14px;
     }
+}
+.img-input{
+        display: none;
+}
+
+.img-label{
+    margin-left: 9px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #fff;
+    padding: 8px 60px;
+    border: 2px solid var(--secondary-medium);
+    font-size: 15px;
 }

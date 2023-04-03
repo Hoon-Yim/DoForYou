@@ -1,6 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const upload = require("../controllers/uploadImageController");
+//const upload = require("../controllers/uploadImageController");
+
+const multer = require('multer');
+
+const upload = multer({
+    storage: multer.memoryStorage()
+  });
 
 const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
@@ -12,8 +18,10 @@ router.patch("/resetPassword/:token", authController.resetPassword);
 router.put("/updateUser/:uid", userController.updateUser);
 router.post('/profile/:uid', upload.single('photo'), userController.uploadPicture);
 router.get("/profile/:uid", userController.getUserPicture);
+router.put("/profile/:uid", userController.deletePicture);
 router.get("/notVerified", userController.getNotVerifiedUsers);
 router.put("/verify/:uid", userController.verifyUser);
+
 
 router
     .route('/')

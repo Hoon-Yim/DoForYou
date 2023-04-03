@@ -74,25 +74,6 @@ function App() {
                     <Route path="/about-us" element={<AboutUs />} />
                     <Route path="/my-account" element={<MyAccount />} />
                     <Route path="/my-reviews" element={<MyReviews />} />
-
-                    <Route path="/interested-btn" element={<InterestedBtn />} />
-                    <Route
-                        path="/edit-and-cancel-btn"
-                        element={<EditAndCancelBtn />}
-                    />
-                    <Route
-                        path="/write-review-about-performer-btn"
-                        element={<WriteReviewAboutPerformerBtn />}
-                    />
-
-                    <Route
-                        path="/complete-as-performer-btn"
-                        element={<CompleteAsPerformerBtn />}
-                    />
-                    <Route
-                        path="/write-review-about-customer-btn"
-                        element={<WriteReviewAboutCustomerBtn />}
-                    />
                 </Routes>
             </Router>
         </>

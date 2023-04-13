@@ -12,7 +12,7 @@ router.put("/reviewCustomer/:cid/:like", reviewsController.updateCustomerRating)
 
 // Performer reviews routes
 router.post("/reviewPerformer", reviewsController.submitPerformerReview);
-router.get("/reviewPerformer/:pid/all", reviewsController.getPerformerReviews);
+router.get("/reviewPerformer/:pid", reviewsController.getPerformerReviews);
 
 
 // Both customer and performer reviews

@@ -147,8 +147,18 @@ exports.submitPerformerReview = catchAsync(async (req, res) => {
 
 // Get all reviews for a specific performer
 exports.getPerformerReviews = catchAsync(async (req, res) => {
-  const performerId = req.params.pid;
-  const reviews = await ReviewPerformer.find({ performerId })
+  const performer = req.params.pid;
+  const reviews = await ReviewPerformer.find({ performer })
+  .populate({
+    path: "task",
+    populate: {
+      path: "uploadedUser",
+      model: "User"
+    }
+  });;
+
+  console.log(reviews);
+
   res.status(201).json({
     status: "success",
     results: reviews.length,

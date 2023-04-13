@@ -13,9 +13,8 @@ module.exports = class APIFeatures {
         // 2A) Advanced Filtering
         if (Object.keys(queryObject).length === 0) { return this; }
 
-        console.log(queryObject);
         let findObject = {};
-        if (queryObject.categories) {
+        if (queryObject.category && queryObject.category !== []) {
             findObject.category = { $in: queryObject.category.split(',') }
         }
         if (queryObject.search !== "") {

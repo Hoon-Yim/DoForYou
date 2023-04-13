@@ -33,11 +33,6 @@ function FindTasks() {
     useEffect(() => {
         axios.get(`http://localhost:8000/api/tasks`).then((data) => {
             setTasks(data.data.tasks);
-            console.log(data.data.tasks)
-        });
-        axios.get(`http://localhost:8000/api/tasks`).then((data) => {
-            setTasks(data.data.tasks);
-            console.log(data.data.tasks)
         });
     }, []);
 
@@ -45,7 +40,7 @@ function FindTasks() {
         const selectedCategories = Object.keys(categories).filter(key => categories[key] === true);
         let filterString = "";
         if (selectedCategories.length > 0) {
-            filterString = `category=${selectedCategories.join(',')}`;
+            filterString = `category=${selectedCategories.join(',')}&search=${search}`; 
         }
 
         setFilterString(filterString);
@@ -84,9 +79,13 @@ function FindTasks() {
                                         <form onSubmit={e => {
                                             e.preventDefault();
 
-                                            const query = `?search=${search}&` + filterString;
+                                            const selectedCategories = Object.keys(categories).filter(key => categories[key] === true);
+                                            let filterString = "";
+                                            if (selectedCategories.length > 0) {
+                                                filterString = `category=${selectedCategories.join(',')}&search=${search}`;
+                                            }
 
-                                            axios.get(`http://localhost:8000/api/tasks${query}`).then((data) => {
+                                            axios.get(`http://localhost:8000/api/tasks?${filterString}`).then((data) => {
                                                 setTasks(data.data.tasks);
                                             });
                                         }}>

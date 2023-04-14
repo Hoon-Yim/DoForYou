@@ -318,6 +318,10 @@ function MyProfile() {
                                             </div>
                                         </div>
                                     </div>
+                                    {
+                                        user.verified &&
+                                        <span>Verified</span>
+                                    }
                                 </div>
                             </div>
                         </div>

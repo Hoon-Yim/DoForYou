@@ -24,8 +24,6 @@ function MyProfile() {
     const [successMessage, setSuccessMessage] = useState("");
     const fileInputRef = useRef(null);
 
-
-
     useEffect(() => {
         axios.get(`http://localhost:8000/api/users/getLoggedInUser/${cookies.get("jwt")}`).then((data) => {
             setUser(data.data.user);
@@ -41,7 +39,7 @@ function MyProfile() {
         });
     }, []);
 
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         axios
             .put(`http://localhost:8000/api/users/updateUser/${user._id}`, {
@@ -308,7 +306,7 @@ function MyProfile() {
                                                 )}
                                             </div>
                                         </div>
-                                        
+
                                         <div className="my-profile-wrapper-right-profile-upload-box">
                                             <input
                                                 id="pic-upload"
@@ -340,58 +338,48 @@ function MyProfile() {
                                                 Remove
                                             </Button>
                                         </div>
-                                        <br></br>
-                                        <br></br>
-                                        <div className="my-profile-wrapper-left-profile-title">
-                                                Verification document
-                                        </div>
-                                        <div className="my-profile-wrapper-right-profile-upload-box">
-                                            <input
-                                                id="file-upload"
-                                                type="file"
-                                                class="upload-box"
-                                                accept=".doc,.pdf,.docx"
-                                                onChange={handleFileInputChange}
-                                                ref={fileInputRef}
-                                            />
-                                        </div>
-                                        <div className="my-profile-wrapper-right-profile-btns">
-                                            <Button
-                                                id="my-profile-update-btn"
-                                                buttonStyle="btn--outline"
-                                                buttonSize="btn--small-wide"
-                                                buttonRadius="btn--rounded"
-                                                type="submit"
-                                                onClick={handleUploadFileClick}
-                                            >
-                                                Submit
-                                            </Button>
-                                            <Button
-                                                id="my-profile-remove-btn"
-                                                buttonStyle="btn--outline"
-                                                buttonSize="btn--small-wide"
-                                                buttonRadius="btn--rounded"
-                                                type="submit"
-                                                onClick={handleRemoveFile}
-                                            >
-                                                Remove
-                                            </Button>
-                                        </div>
                                     </div>
-                                    
+
                                     <div className="my-profile-wrapper-right-bottom">
+                                        <div className="my-profile-wrapper-right-profile-verification-upload">
+                                            <div className="my-profile-wrapper-right-profile-upload-title">
+                                                Verification document
+                                            </div>
+                                            <div className="my-profile-wrapper-right-profile-upload-box">
+                                                <input
+                                                    id="file-upload"
+                                                    type="file"
+                                                    class="verification-upload-box"
+                                                    accept=".doc,.pdf,.docx"
+                                                    onChange={handleFileInputChange}
+                                                    ref={fileInputRef}
+                                                />
+                                            </div>
+                                            <div className="my-profile-wrapper-right-profile-btns">
+                                                <Button
+                                                    id="my-profile-update-btn"
+                                                    buttonStyle="btn--secondary-dark"
+                                                    buttonSize="btn--small-wide"
+                                                    buttonRadius="btn--rounded"
+                                                    type="submit"
+                                                    onClick={handleUploadFileClick}
+                                                >
+                                                    Submit
+                                                </Button>
+                                                <Button
+                                                    id="my-profile-remove-btn"
+                                                    buttonStyle="btn--secondary-dark"
+                                                    buttonSize="btn--small-wide"
+                                                    buttonRadius="btn--rounded"
+                                                    type="submit"
+                                                    onClick={handleRemoveFile}
+                                                >
+                                                    Remove
+                                                </Button>
+                                            </div>
+                                        </div>
                                         <p className="text-green-400">{successMessage}</p>
                                         <p className="text-red-400">{errorMessage}</p>
-                                        <div className="my-profile-wrapper-right-bottom-manage-btn">
-                                            <Button
-                                                buttonStyle="btn--cancel"
-                                                buttonSize="btn--wide-bold"
-                                                type="reset"
-                                                form="my-profile-action"
-                                            >
-                                                RESET
-                                            </Button>
-                                        </div>
                                         <div className="my-profile-wrapper-right-bottom-save-btn">
                                             <Button
                                                 buttonStyle="btn--primary-blue"
@@ -407,15 +395,44 @@ function MyProfile() {
                                 </div>
                             </div>
                             <div className="responsive-profile-bottom-box">
-                                <div className="responsive-profile-bottom-manage-btn">
-                                    <Button
-                                        buttonStyle="btn--cancel"
-                                        buttonSize="btn--wide-bold"
-                                        type="reset"
-                                        form="my-profile-action"
-                                    >
-                                        RESET
-                                    </Button>
+                                <div className="my-profile-wrapper-right-profile-verification-upload">
+                                    <div className="my-profile-wrapper-right-profile-upload-title">
+                                        Verification document
+                                    </div>
+                                    <div className="my-profile-wrapper-right-profile-upload-box">
+                                        <input
+                                            id="file-upload"
+                                            type="file"
+                                            class="verification-upload-box"
+                                            accept=".doc,.pdf,.docx"
+                                            onChange={handleFileInputChange}
+                                            ref={fileInputRef}
+                                        />
+                                    </div>
+                                    <div className="my-profile-wrapper-right-profile-btns">
+                                        <div className="my-profile-wrapper-right-profile-btns-responsive">
+                                            <Button
+                                                id="my-profile-update-btn"
+                                                buttonStyle="btn--secondary-dark"
+                                                buttonSize="btn--small-wide"
+                                                buttonRadius="btn--rounded"
+                                                type="submit"
+                                                onClick={handleUploadFileClick}
+                                            >
+                                                Submit
+                                            </Button>
+                                            <Button
+                                                id="my-profile-remove-btn"
+                                                buttonStyle="btn--secondary-dark"
+                                                buttonSize="btn--small-wide"
+                                                buttonRadius="btn--rounded"
+                                                type="submit"
+                                                onClick={handleRemoveFile}
+                                            >
+                                                Remove
+                                            </Button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="responsive-profile-bottom-save-btn">
                                     <Button

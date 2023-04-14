@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Button } from "../Button";
 import "./ModalReviewCustomer.css";
+import { useNavigate } from "react-router-dom";
 
 function GoodTags(props) {
     let index = 0;
@@ -12,8 +13,7 @@ function GoodTags(props) {
         const jsxArray = Array.from({ length: iteration }, (_) => {
             let style = "btn--slim-category";
             let currentIndex = index;
-            if (props.goodTags[goodTagNames[currentIndex]] === true)
-                style += "-clicked";
+            if (props.goodTags[goodTagNames[currentIndex]] === true) style += "-clicked";
 
             return (
                 <div className="performer-categories-btn-box" key={index}>
@@ -21,20 +21,19 @@ function GoodTags(props) {
                         buttonStyle={style}
                         buttonSize="btn--small"
                         buttonRadius="btn--rounded"
-                        onClick={e => {
+                        onClick={(e) => {
                             e.preventDefault();
                             props.setGoodTags({
                                 ...props.goodTags,
-                                [goodTagNames[currentIndex]]: !props.goodTags[goodTagNames[currentIndex]]
+                                [goodTagNames[currentIndex]]: !props.goodTags[goodTagNames[currentIndex]],
                             });
                         }}
                     >
                         <div className="cate-icon-small">{goodTagNames[index++]}</div>
                     </Button>
                 </div>
-            )
-        }
-        );
+            );
+        });
 
         return (
             <div className="review-customer-good-keyword-row" key={iteration}>
@@ -53,26 +52,24 @@ function BadTags(props) {
         const jsxArray = Array.from({ length: iteration }, (_) => {
             let style = "btn--slim-category";
             let currentIndex = index;
-            if (props.badTags[badTagNames[currentIndex]] === true)
-                style += "-clicked"
+            if (props.badTags[badTagNames[currentIndex]] === true) style += "-clicked";
             return (
                 <Button
                     buttonStyle={style}
                     buttonSize="btn--small"
                     buttonRadius="btn--rounded"
-                    onClick={e => {
+                    onClick={(e) => {
                         e.preventDefault();
                         props.setBadTags({
                             ...props.badTags,
-                            [badTagNames[currentIndex]]: !props.badTags[badTagNames[currentIndex]]
+                            [badTagNames[currentIndex]]: !props.badTags[badTagNames[currentIndex]],
                         });
                     }}
                 >
                     <div className="cate-icon-small">{badTagNames[index++]}</div>
                 </Button>
-            )
-        }
-        );
+            );
+        });
 
         return (
             <div className="review-customer-good-keyword-row" key={iteration}>
@@ -83,24 +80,25 @@ function BadTags(props) {
 }
 
 const ModalReviewCustomer = (props) => {
+    const navigate = useNavigate();
     const [isClickGood, setIsClickGood] = useState(false);
     const [isClickBad, setIsClickBad] = useState(false);
 
     const [goodTags, setGoodTags] = useState({
         "Punctual payment": false,
         "Good manners": false,
-        "Friendly": false,
+        Friendly: false,
         "Great Communication": false,
         "Reasonable request": false,
-        "Positive": false,
+        Positive: false,
     });
     const [badTags, setBadTags] = useState({
         "Payment delay": false,
         "Lack of description": false,
-        "Rude": false,
+        Rude: false,
         "Poor Communication": false,
         "Unreasonable request": false,
-        "Negative": false
+        Negative: false,
     });
 
     const selectGoodThumbs = () => {
@@ -119,8 +117,7 @@ const ModalReviewCustomer = (props) => {
         );
     };
     const selectBadThumbs = () => {
-        let classname =
-            "fa-regular fa-thumbs-down fa-3x fa-flip-horizontal modal-review-thumbs-down ";
+        let classname = "fa-regular fa-thumbs-down fa-3x fa-flip-horizontal modal-review-thumbs-down ";
         if (isClickBad) {
             classname += "selected-thumbs";
         }
@@ -151,40 +148,40 @@ const ModalReviewCustomer = (props) => {
             return <></>;
         }
     };
+    const handleImgError = (e) => {
+        e.target.src = "../images/profile/default.png";
+    };
     if (!props.show) {
         return null;
     }
     return (
         <div className="modal-review-customer" onClick={props.onClose}>
-            <div
-                className="modal-review-customer-content"
-                onClick={(e) => e.stopPropagation()}
-            >
+            <div className="modal-review-customer-content" onClick={(e) => e.stopPropagation()}>
                 <div className="modal-review-customer-header">
-                    <h4 className="modal-review-customer-title">
-                        Review the customer
-                    </h4>
+                    <h4 className="modal-review-customer-title">Review the customer</h4>
                 </div>
                 <div className="modal-review-customer-body">
                     <div className="modal-review-customer-user-image-box">
                         <div className="modal-review-customer-user-image">
-                            <img src="images/profile/m4.jpg" alt="" />
+                            {props.task.uploadedUser ? (
+                                <img
+                                    src={`http://localhost:8000/api/users/profile/${props.task.uploadedUser._id}`}
+                                    onError={handleImgError}
+                                    alt="default profile"
+                                />
+                            ) : (
+                                <></>
+                            )}
                         </div>
                     </div>
                     <div className="modal-review-customer-body-username">
                         {props.task.uploadedUser.firstname} {props.task.uploadedUser.lastname}
                     </div>
                     <div className="modal-review-customer-good-bad-box">
-                        <div className="modal-review-customer-good">
-                            {selectGoodThumbs()}
-                        </div>
-                        <div className="modal-review-customer-bad">
-                            {selectBadThumbs()}
-                        </div>
+                        <div className="modal-review-customer-good">{selectGoodThumbs()}</div>
+                        <div className="modal-review-customer-bad">{selectBadThumbs()}</div>
                     </div>
-                    <div className="modal-review-customer-body-keyword-box">
-                        {showKeywordBox()}
-                    </div>
+                    <div className="modal-review-customer-body-keyword-box">{showKeywordBox()}</div>
                 </div>
                 <div className="modal-review-customer-btns">
                     <div className="modal-review-customer-submit-btn">
@@ -194,7 +191,7 @@ const ModalReviewCustomer = (props) => {
                             buttonRadius="btn--square"
                             onClick={() => {
                                 const object = isClickGood ? goodTags : badTags;
-                                const selectedTags = Object.keys(object).filter(key => {
+                                const selectedTags = Object.keys(object).filter((key) => {
                                     if (object[key] === true) {
                                         return key;
                                     }
@@ -206,11 +203,13 @@ const ModalReviewCustomer = (props) => {
                                         task: props.task,
                                         customer: props.task.uploadedUser,
                                         like: isClickGood ? true : false,
-                                        tags: selectedTags
+                                        tags: selectedTags,
                                     })
-                                    .then(data => { });
-                                
-                                props.onClose()
+                                    .then((data) => {});
+
+                                navigate("/my-tasks");
+                                window.location.reload();
+                                props.onClose();
                             }}
                         >
                             Submit

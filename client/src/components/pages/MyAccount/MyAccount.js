@@ -49,7 +49,7 @@ function MyProfile() {
                     province,
                     zipcode: postalCode,
                 },
-                description
+                description,
             })
             .then((response) => {
                 setErrorMessage("");

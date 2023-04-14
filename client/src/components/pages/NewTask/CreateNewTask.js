@@ -37,41 +37,34 @@ function CreateNewTask() {
     };
 
     useEffect(() => {
-        axios
-            .get(
-                `http://localhost:8000/api/users/getLoggedInUser/${cookies.get(
-                    "jwt"
-                )}`
-            )
-            .then((data) => {
-                setUser(data.data.user);
-            });
+        axios.get(`http://localhost:8000/api/users/getLoggedInUser/${cookies.get("jwt")}`).then((data) => {
+            setUser(data.data.user);
+        });
 
         if (taskId !== undefined) {
-            axios.get(`http://localhost:8000/api/tasks/${taskId}`)
-                .then(data => {
-                    const task = data.data.task;
-                    setTitle(task.title);
-                    setCategory(task.category);
-                    setIsRemote(task.isRemote);
-                    setIsInPerson(!task.isRemote);
-                    setAddress(task.address);
-                    setProvince(task.province);
-                    setPostalCode(task.zipcode);
+            axios.get(`http://localhost:8000/api/tasks/${taskId}`).then((data) => {
+                const task = data.data.task;
+                setTitle(task.title);
+                setCategory(task.category);
+                setIsRemote(task.isRemote);
+                setIsInPerson(!task.isRemote);
+                setAddress(task.address);
+                setProvince(task.province);
+                setPostalCode(task.zipcode);
 
-                    const [start_date, start_time] = task.startDate.split('T');
-                    const [end_date, end_time] = task.endDate.split('T');
+                const [start_date, start_time] = task.startDate.split("T");
+                const [end_date, end_time] = task.endDate.split("T");
 
-                    setStartDate(start_date);
-                    setStartTime(start_time.slice(0, 5));
-                    setEndDate(end_date);
-                    setEndTime(end_time.slice(0, 5));
+                setStartDate(start_date);
+                setStartTime(start_time.slice(0, 5));
+                setEndDate(end_date);
+                setEndTime(end_time.slice(0, 5));
 
-                    setDetails(task.details);
-                    setBudget(task.budget);
-                    setPaymentMethod(task.paymentMethod);
-                    setPhone(task.phone);
-                });
+                setDetails(task.details);
+                setBudget(task.budget);
+                setPaymentMethod(task.paymentMethod);
+                setPhone(task.phone);
+            });
         }
     }, []);
 
@@ -130,15 +123,13 @@ function CreateNewTask() {
                                                 1205 Performers can help you
                                             </div>
                                             <div className="create-new-task-wrapper-left-text-sub">
-                                                Please answer all questions in
-                                                the form.
+                                                Please answer all questions in the form.
                                             </div>
                                             <div className="create-new-task-wrapper-left-text-sub">
                                                 to get response from performers.
                                             </div>
                                             <div className="create-new-task-wrapper-left-text-sub">
-                                                It will take less than 5
-                                                minutes.
+                                                It will take less than 5 minutes.
                                             </div>
                                         </div>
                                     </div>
@@ -147,10 +138,7 @@ function CreateNewTask() {
                                         <div className="create-new-task-image-box">
                                             <img
                                                 className="create-new-task-image-png"
-                                                src={
-                                                    process.env.PUBLIC_URL +
-                                                    "images/create-task.png"
-                                                }
+                                                src={process.env.PUBLIC_URL + "images/create-task.png"}
                                                 alt="become-create-new-task"
                                             />
                                         </div>
@@ -167,9 +155,7 @@ function CreateNewTask() {
                                             <div className="create-new-task-inline-box">
                                                 <div className="create-new-task-form">
                                                     {/* create-new-task-form */}
-                                                    <form
-                                                        onSubmit={handleSubmit}
-                                                    >
+                                                    <form onSubmit={handleSubmit}>
                                                         <div className="create-new-task-input-field">
                                                             <div className="create-new-task-input-label">
                                                                 Title of task
@@ -179,155 +165,99 @@ function CreateNewTask() {
                                                                 className="create-new-task-input-field-input"
                                                                 placeholder="Assemble the sofa from IKEA"
                                                                 value={title}
-                                                                onChange={(e) =>
-                                                                    setTitle(
-                                                                        e.target
-                                                                            .value
-                                                                    )
-                                                                }
+                                                                onChange={(e) => setTitle(e.target.value)}
+                                                                required
                                                             />
                                                         </div>
                                                         <div className="create-new-task-input-field">
-                                                            <div className="create-new-task-input-label">
-                                                                Category
-                                                            </div>
+                                                            <div className="create-new-task-input-label">Category</div>
                                                             <select
                                                                 name=""
                                                                 id=""
                                                                 className="create-new-task-input-select"
                                                                 value={category}
-                                                                onChange={(e) =>
-                                                                    setCategory(
-                                                                        e.target
-                                                                            .value
-                                                                    )
-                                                                }
+                                                                onChange={(e) => setCategory(e.target.value)}
+                                                                required
                                                             >
-                                                                <option
-                                                                    value=""
-                                                                    disabled
-                                                                    selected
-                                                                >
+                                                                <option value="" disabled selected>
                                                                     Select
                                                                 </option>
                                                                 <option value="Courier Service">
-                                                                    Courier
-                                                                    Services
+                                                                    Courier Services
                                                                 </option>
                                                                 <option value="Cargo Transportation">
-                                                                    Cargo
-                                                                    Transportation
+                                                                    Cargo Transportation
                                                                 </option>
                                                                 <option value="Transport Repair">
-                                                                    Transport
-                                                                    Repair
+                                                                    Transport Repair
                                                                 </option>
-                                                                <option value="Computer">
-                                                                    Computer
-                                                                </option>
+                                                                <option value="Computer">Computer</option>
                                                                 <option value="Software Development">
-                                                                    Software
-                                                                    Development
+                                                                    Software Development
                                                                 </option>
-                                                                <option value="Design">
-                                                                    Design
-                                                                </option>
+                                                                <option value="Design">Design</option>
                                                                 <option value="Photo Video Audio">
-                                                                    Photo, Video
-                                                                    and Audio
+                                                                    Photo, Video and Audio
                                                                 </option>
                                                                 <option value="Event and Promotions">
-                                                                    Event and
-                                                                    Promotions
+                                                                    Event and Promotions
                                                                 </option>
                                                                 <option value="Repair and Construction">
-                                                                    Repair and
-                                                                    Construction
+                                                                    Repair and Construction
                                                                 </option>
                                                                 <option value="Cleaning and Household">
-                                                                    Cleaning and
-                                                                    Household
+                                                                    Cleaning and Household
                                                                 </option>
-                                                                <option value="Installation">
-                                                                    Installation
-                                                                </option>
+                                                                <option value="Installation">Installation</option>
                                                                 <option value="Repair of Digital Equipment">
-                                                                    Repair of
-                                                                    Digital
-                                                                    Equipment
+                                                                    Repair of Digital Equipment
                                                                 </option>
                                                                 <option value="Virtual Assistant">
-                                                                    Virtual
-                                                                    Assistant
+                                                                    Virtual Assistant
                                                                 </option>
                                                                 <option value="Beauty and Health">
-                                                                    Beauty and
-                                                                    Health
+                                                                    Beauty and Health
                                                                 </option>
                                                                 <option value="Tutors and Training">
-                                                                    Tutors and
-                                                                    Training
+                                                                    Tutors and Training
                                                                 </option>
                                                             </select>
                                                         </div>
                                                         <div className="create-new-task-input-field">
                                                             <div className="create-new-task-input-label">
-                                                                Service
-                                                                remotely?
+                                                                Service remotely?
                                                             </div>
                                                             <div className="create-new-task-radio-combine">
                                                                 <div className="create-new-task-radio-combine-left">
                                                                     <input
                                                                         className="create-new-task-radio"
                                                                         type="radio"
-                                                                        value={
-                                                                            isRemote
-                                                                        }
+                                                                        value={isRemote}
                                                                         name="service"
-                                                                        onChange={(
-                                                                            e
-                                                                        ) => {
-                                                                            setIsRemote(
-                                                                                true
-                                                                            );
-                                                                            setIsInPerson(
-                                                                                false
-                                                                            );
+                                                                        onChange={(e) => {
+                                                                            setIsRemote(true);
+                                                                            setIsInPerson(false);
                                                                         }}
-                                                                        defaultChecked={
-                                                                            isRemote
-                                                                        }
+                                                                        defaultChecked={isRemote}
+                                                                        required
                                                                     />
                                                                     <div className="radio-combine-label">
-                                                                        Can be
-                                                                        done
-                                                                        remotely
+                                                                        Can be done remotely
                                                                     </div>
                                                                 </div>
                                                                 <div className="create-new-task-radio-combine-right">
                                                                     <input
                                                                         className="create-new-task-radio"
                                                                         type="radio"
-                                                                        value={
-                                                                            isInPerson
-                                                                        }
+                                                                        value={isInPerson}
                                                                         name="service"
-                                                                        onChange={(
-                                                                            e
-                                                                        ) => {
-                                                                            setIsRemote(
-                                                                                false
-                                                                            );
-                                                                            setIsInPerson(
-                                                                                true
-                                                                            );
+                                                                        onChange={(e) => {
+                                                                            setIsRemote(false);
+                                                                            setIsInPerson(true);
                                                                         }}
                                                                     />
                                                                     <div className="radio-combine-label">
-                                                                        Need to
-                                                                        be done
-                                                                        in
-                                                                        person
+                                                                        Need to be done in person
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -336,13 +266,11 @@ function CreateNewTask() {
                                                             <div
                                                                 className="create-new-task-input-field"
                                                                 style={{
-                                                                    marginBottom:
-                                                                        "1.5rem",
+                                                                    marginBottom: "1.5rem",
                                                                 }}
                                                             >
                                                                 <div className="create-new-task-input-label">
-                                                                    What is
-                                                                    address?
+                                                                    What is address?
                                                                 </div>
                                                                 <div className="create-new-task-input-sub-label">
                                                                     Address
@@ -351,18 +279,8 @@ function CreateNewTask() {
                                                                     type="text"
                                                                     className="create-new-task-input-field-sub-input"
                                                                     placeholder="Address"
-                                                                    value={
-                                                                        address
-                                                                    }
-                                                                    onChange={(
-                                                                        e
-                                                                    ) =>
-                                                                        setAddress(
-                                                                            e
-                                                                                .target
-                                                                                .value
-                                                                        )
-                                                                    }
+                                                                    value={address}
+                                                                    onChange={(e) => setAddress(e.target.value)}
                                                                 />
                                                                 <div className="create-new-task-address-combine">
                                                                     <div className="create-new-task-address-combine-left">
@@ -373,18 +291,8 @@ function CreateNewTask() {
                                                                             type="text"
                                                                             className="create-new-task-input-field-sub-input"
                                                                             placeholder="City"
-                                                                            value={
-                                                                                city
-                                                                            }
-                                                                            onChange={(
-                                                                                e
-                                                                            ) =>
-                                                                                setCity(
-                                                                                    e
-                                                                                        .target
-                                                                                        .value
-                                                                                )
-                                                                            }
+                                                                            value={city}
+                                                                            onChange={(e) => setCity(e.target.value)}
                                                                         />
                                                                     </div>
                                                                     <div className="create-new-task-address-combine-right">
@@ -395,58 +303,33 @@ function CreateNewTask() {
                                                                             name=""
                                                                             id=""
                                                                             className="create-new-task-input-sub-select"
-                                                                            value={
-                                                                                province
-                                                                            }
-                                                                            onChange={(
-                                                                                e
-                                                                            ) =>
-                                                                                setProvince(
-                                                                                    e
-                                                                                        .target
-                                                                                        .value
-                                                                                )
+                                                                            value={province}
+                                                                            onChange={(e) =>
+                                                                                setProvince(e.target.value)
                                                                             }
                                                                         >
-                                                                            <option
-                                                                                value=""
-                                                                                selected
-                                                                                disabled
-                                                                            >
+                                                                            <option value="" selected disabled>
                                                                                 Select
                                                                             </option>
-                                                                            <option value="Alberta">
-                                                                                Alberta
-                                                                            </option>
+                                                                            <option value="Alberta">Alberta</option>
                                                                             <option value="British Columbia">
-                                                                                British
-                                                                                Columbia
+                                                                                British Columbia
                                                                             </option>
-                                                                            <option value="Manitoba">
-                                                                                Manitoba
-                                                                            </option>
+                                                                            <option value="Manitoba">Manitoba</option>
                                                                             <option value="New Brunswick">
-                                                                                New
-                                                                                Brunswick
+                                                                                New Brunswick
                                                                             </option>
                                                                             <option value="Newfoundland">
                                                                                 Newfoundland
                                                                             </option>
                                                                             <option value="Nova Scotia">
-                                                                                Nova
-                                                                                Scotia
+                                                                                Nova Scotia
                                                                             </option>
-                                                                            <option value="Ontario">
-                                                                                Ontario
-                                                                            </option>
+                                                                            <option value="Ontario">Ontario</option>
                                                                             <option value="Prince Edward Island">
-                                                                                Prince
-                                                                                Edward
-                                                                                Island
+                                                                                Prince Edward Island
                                                                             </option>
-                                                                            <option value="Quebec">
-                                                                                Quebec
-                                                                            </option>
+                                                                            <option value="Quebec">Quebec</option>
                                                                             <option value="Saskatchewan">
                                                                                 Saskatchewan
                                                                             </option>
@@ -460,31 +343,19 @@ function CreateNewTask() {
                                                                     type="text"
                                                                     className="create-new-task-input-field-sub-input"
                                                                     placeholder="A1B2C3"
-                                                                    value={
-                                                                        postalCode
-                                                                    }
-                                                                    onChange={(
-                                                                        e
-                                                                    ) =>
-                                                                        setPostalCode(
-                                                                            e
-                                                                                .target
-                                                                                .value
-                                                                        )
-                                                                    }
+                                                                    value={postalCode}
+                                                                    onChange={(e) => setPostalCode(e.target.value)}
                                                                 />
                                                             </div>
                                                         )}
                                                         <div
                                                             className="create-new-task-input-field"
                                                             style={{
-                                                                marginBottom:
-                                                                    "1.5rem",
+                                                                marginBottom: "1.5rem",
                                                             }}
                                                         >
                                                             <div className="create-new-task-input-label">
-                                                                When do you need
-                                                                to start work?
+                                                                When do you need to start work?
                                                             </div>
                                                             {/* <select
                                                                 name=""
@@ -514,84 +385,52 @@ function CreateNewTask() {
                                                             <div className="create-new-task-date-and-time-combine">
                                                                 <div className="create-new-task-date-and-time-combine-left">
                                                                     <div className="create-new-task-input-sub-label">
-                                                                        Starting
-                                                                        date
+                                                                        Starting date
                                                                     </div>
                                                                     <input
                                                                         type="date"
                                                                         className="create-new-task-input-field-sub-input"
                                                                         value={startDate}
-                                                                        onChange={(
-                                                                            e
-                                                                        ) =>
-                                                                            setStartDate(
-                                                                                e
-                                                                                    .target
-                                                                                    .value
-                                                                            )
-                                                                        }
+                                                                        onChange={(e) => setStartDate(e.target.value)}
+                                                                        required
                                                                     />
                                                                 </div>
                                                                 <div className="create-new-task-date-and-time-combine-right">
                                                                     <div className="create-new-task-input-sub-label">
-                                                                        Starting
-                                                                        time
+                                                                        Starting time
                                                                     </div>
                                                                     <input
                                                                         type="time"
                                                                         className="create-new-task-input-field-sub-input"
                                                                         value={startTime}
-                                                                        onChange={(
-                                                                            e
-                                                                        ) =>
-                                                                            setStartTime(
-                                                                                e
-                                                                                    .target
-                                                                                    .value
-                                                                            )
-                                                                        }
+                                                                        onChange={(e) => setStartTime(e.target.value)}
+                                                                        required
                                                                     />
                                                                 </div>
                                                             </div>
                                                             <div className="create-new-task-date-and-time-combine">
                                                                 <div className="create-new-task-date-and-time-combine-left">
                                                                     <div className="create-new-task-input-sub-label">
-                                                                        Ending
-                                                                        date
+                                                                        Ending date
                                                                     </div>
                                                                     <input
                                                                         type="date"
                                                                         className="create-new-task-input-field-sub-input"
                                                                         value={endDate}
-                                                                        onChange={(
-                                                                            e
-                                                                        ) =>
-                                                                            setEndDate(
-                                                                                e
-                                                                                    .target
-                                                                                    .value
-                                                                            )
-                                                                        }
+                                                                        onChange={(e) => setEndDate(e.target.value)}
+                                                                        required
                                                                     />
                                                                 </div>
                                                                 <div className="create-new-task-date-and-time-combine-right">
                                                                     <div className="create-new-task-input-sub-label">
-                                                                        Ending
-                                                                        time
+                                                                        Ending time
                                                                     </div>
                                                                     <input
                                                                         type="time"
                                                                         className="create-new-task-input-field-sub-input"
                                                                         value={endTime}
-                                                                        onChange={(
-                                                                            e
-                                                                        ) =>
-                                                                            setEndTime(
-                                                                                e
-                                                                                    .target
-                                                                                    .value
-                                                                            )
-                                                                        }
+                                                                        onChange={(e) => setEndTime(e.target.value)}
+                                                                        required
                                                                     />
                                                                 </div>
                                                             </div>
@@ -605,37 +444,23 @@ function CreateNewTask() {
                                                                 rows={5}
                                                                 placeholder="Details"
                                                                 value={details}
-                                                                onChange={(e) =>
-                                                                    setDetails(
-                                                                        e.target
-                                                                            .value
-                                                                    )
-                                                                }
+                                                                onChange={(e) => setDetails(e.target.value)}
+                                                                required
                                                             />
                                                         </div>
                                                         <div className="create-new-task-input-field">
                                                             <div className="create-new-task-input-label">
-                                                                What budget are
-                                                                you looking for?
+                                                                What budget are you looking for?
                                                             </div>
                                                             <div className="create-new-task-input-budget-section">
-                                                                <div className="create-new-task-input-dollar">
-                                                                    $
-                                                                </div>
+                                                                <div className="create-new-task-input-dollar">$</div>
                                                                 <input
                                                                     type="number"
                                                                     className="create-new-task-input-field-input"
                                                                     placeholder="0.00"
                                                                     value={budget}
-                                                                    onChange={(
-                                                                        e
-                                                                    ) =>
-                                                                        setBudget(
-                                                                            e
-                                                                                .target
-                                                                                .value
-                                                                        )
-                                                                    }
+                                                                    onChange={(e) => setBudget(e.target.value)}
+                                                                    required
                                                                 />
                                                             </div>
                                                         </div>
@@ -650,20 +475,13 @@ function CreateNewTask() {
                                                                         type="radio"
                                                                         value="in-person"
                                                                         name="payment"
-                                                                        onChange={(
-                                                                            e
-                                                                        ) =>
-                                                                            setPaymentMethod(
-                                                                                e
-                                                                                    .target
-                                                                                    .value
-                                                                            )
+                                                                        onChange={(e) =>
+                                                                            setPaymentMethod(e.target.value)
                                                                         }
+                                                                        required
                                                                     />
                                                                     <div className="radio-combine-label">
-                                                                        Directly
-                                                                        pay in
-                                                                        person
+                                                                        Directly pay in person
                                                                     </div>
                                                                 </div>
                                                                 <div className="create-new-task-radio-combine-right">
@@ -672,19 +490,12 @@ function CreateNewTask() {
                                                                         type="radio"
                                                                         value="e-transfer"
                                                                         name="payment"
-                                                                        onChange={(
-                                                                            e
-                                                                        ) =>
-                                                                            setPaymentMethod(
-                                                                                e
-                                                                                    .target
-                                                                                    .value
-                                                                            )
+                                                                        onChange={(e) =>
+                                                                            setPaymentMethod(e.target.value)
                                                                         }
                                                                     />
                                                                     <div className="radio-combine-label">
-                                                                        by Bank
-                                                                        e-transfer
+                                                                        by Bank e-transfer
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -698,12 +509,8 @@ function CreateNewTask() {
                                                                 className="create-new-task-input-field-input"
                                                                 placeholder="123-456-7890"
                                                                 value={phone}
-                                                                onChange={(e) =>
-                                                                    setPhone(
-                                                                        e.target
-                                                                            .value
-                                                                    )
-                                                                }
+                                                                onChange={(e) => setPhone(e.target.value)}
+                                                                required
                                                             />
                                                         </div>
                                                         <div className="new-task-bottom">
@@ -711,9 +518,7 @@ function CreateNewTask() {
                                                                 <Button
                                                                     buttonStyle="btn--cancel"
                                                                     buttonSize="btn--wide-bold"
-                                                                    onClick={
-                                                                        backToMain
-                                                                    }
+                                                                    onClick={backToMain}
                                                                 >
                                                                     CANCEL
                                                                 </Button>

@@ -1,27 +1,41 @@
 import React from "react";
 import styled from "styled-components";
 
-function ContactPhoto() {
+function ContactPhoto(username) {
+    const handleImgError = (e) => {
+        e.target.src = "../images/profile/default.png";
+    };
     const ContactPhotoBox = styled.div`
-        background-color: var(--secondary-light);
-        width: 50px;
-        height: 50px;
-        border-radius: 25px;
         display: flex;
         align-items: center;
         justify-content: center;
     `;
     const ContactPhoto = styled.div`
+        width: 50px;
+        height: 50px;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 100%;
     `;
+    const ContactPhotoImage = styled.img`
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    `;
+
     return (
         <>
             <ContactPhotoBox>
                 <ContactPhoto>
-                    <i class="fa-solid fa-user fa-xl" />
+                    {username ? (
+                        <ContactPhotoImage
+                            src={`http://localhost:8000/api/users/profile/${username.username._id}`}
+                            onError={handleImgError}
+                            alt="default profile"
+                        />
+                    ) : (
+                        <></>
+                    )}
                 </ContactPhoto>
             </ContactPhotoBox>
         </>

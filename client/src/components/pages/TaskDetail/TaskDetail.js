@@ -20,7 +20,7 @@ function TaskDetail() {
 
     const [task, setTask] = useState({});
     const [user, setUser] = useState({});
-    const [reviews, setReviews] = useState({});
+    // const [reviews, setReviews] = useState({});
     const [uploadedUser, setUploadedUser] = useState({});
 
     useEffect(() => {
@@ -79,13 +79,9 @@ function TaskDetail() {
                 }
             } else {
                 // logged in user is not assigned user
-                // showing interst button
+                // showing interest button
                 return (
-                    <UnassignedPerformerButton
-                        performerId={user._id}
-                        customerId={uploadedUser._id}
-                        taskId={task._id}
-                    />
+                    <UnassignedPerformerButton performerId={user._id} customerId={uploadedUser._id} taskId={task._id} />
                 );
             }
         } else {
@@ -190,7 +186,7 @@ function TaskDetail() {
                                             alt="profile"
                                         />
                                     ) : (
-                                        <img src="images/profile/default.png" alt="default profile" />
+                                        <img src="../images/profile/default.png" alt="default profile" />
                                     )}
                                 </div>
                                 <div className="task-detail-user-name">

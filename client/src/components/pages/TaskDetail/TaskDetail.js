@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Button } from "../../Button";
 import Footer from "../../Footer";
 import Navbar from "../../Navbar";
@@ -179,7 +179,7 @@ function TaskDetail() {
                             </div>
                             <div className="task-detail-user-box">
                                 <div className="task-detail-user-title">Customer Information</div>
-                                <div className="task-detail-user-image">
+                                <Link className="task-detail-user-image" to={`/profile/${uploadedUser._id}`}>
                                     {uploadedUser.img ? (
                                         <img
                                             src={`http://localhost:8000/api/users/profile/${uploadedUser._id}`}
@@ -188,7 +188,7 @@ function TaskDetail() {
                                     ) : (
                                         <img src="../images/profile/default.png" alt="default profile" />
                                     )}
-                                </div>
+                                </Link>
                                 <div className="task-detail-user-name">
                                     {uploadedUser.firstname} {uploadedUser.lastname}
                                 </div>

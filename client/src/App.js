@@ -19,6 +19,7 @@ import TasksAsCustomer from "./components/pages/MyTasks/TasksAsCustomer";
 import TasksAsPerformer from "./components/pages/MyTasks/TasksAsPerformer";
 import AboutUs from "./components/pages/AboutUs/AboutUs";
 import MyAccount from "./components/pages/MyAccount/MyAccount";
+import MyProfile from "./components/pages/Profile/MyAccount";
 import MyReviews from "./components/pages/MyReviews/MyReviews";
 import TaskDetailAsCustomer from "./components/pages/MyTasks/TaskDetailAsCustomer";
 import TaskDetailAsPerformer from "./components/pages/MyTasks/TaskDetailAsPerformer";
@@ -58,6 +59,7 @@ function App() {
                     <Route path="/tasks/:taskId" element={<TaskDetail />} />
                     <Route path="/about-us" element={<AboutUs />} />
                     <Route path="/my-account" element={<MyAccount />} />
+                    <Route path="/profile/:userId" element={<MyProfile />} />
                     <Route path="/my-reviews" element={<MyReviews />} />
                 </Routes>
             </Router>

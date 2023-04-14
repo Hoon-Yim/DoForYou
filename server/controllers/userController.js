@@ -103,6 +103,7 @@ exports.deletePicture = catchAsync(async (req, res, next) => {
 });
 
 exports.getNotVerifiedUsers = catchAsync(async (req, res) => {
+  
   const users = await User.find({ verified: false });
 
   res.status(200).send(users)

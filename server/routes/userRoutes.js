@@ -20,7 +20,7 @@ router.put("/updateUser/:uid", userController.updateUser);
 router.post('/profile/:uid', upload.single('photo'), userController.uploadPicture);
 router.get("/profile/:uid", userController.getUserPicture);
 router.put("/profile/:uid", userController.deletePicture);
-router.get("/notVerified", userController.getNotVerifiedUsers);
+router.get("/verify/false", userController.getNotVerifiedUsers);
 router.put("/verify/:uid", userController.verifyUser);
 
 

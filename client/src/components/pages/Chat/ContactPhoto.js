@@ -3,43 +3,43 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-function ContactPhoto(props) {
-    const [user, setUser] = useState({});
-
+function ContactPhoto(username) {
+    const handleImgError = (e) => {
+        e.target.src = "../images/profile/default.png";
+    };
     const ContactPhotoBox = styled.div`
-        background-color: var(--secondary-light);
-        width: 50px;
-        height: 50px;
-        border-radius: 25px;
         display: flex;
         align-items: center;
         justify-content: center;
     `;
     const ContactPhoto = styled.div`
+        width: 50px;
+        height: 50px;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 100%;
     `;
 
-    useEffect(() => {
-        axios
-            .get(`http://localhost:8000/api/users/${props.userId}`)
-            .then(data => {
-                setUser(data.data.user);
-            });
-    }, []);
+    const ContactPhotoImage = styled.img`
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    `;
+
     return (
         <>
             <ContactPhotoBox>
-                {user.img ? (
-                    <img
-                        src={`http://localhost:8000/api/users/profile/${user._id}`}
-                        alt="profile"
-                    />
-                ) : (
-                    <img src="images/profile/default.png" alt="default profile" />
-                )}
+                <ContactPhoto>
+                    {username ? (
+                        <ContactPhotoImage
+                            src={`http://localhost:8000/api/users/profile/${username.username._id}`}
+                            onError={handleImgError}
+                            alt="default profile"
+                        />
+                    ) : (
+                        <></>
+                    )}
+                </ContactPhoto>
             </ContactPhotoBox>
         </>
     );

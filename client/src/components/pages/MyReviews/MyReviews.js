@@ -16,29 +16,23 @@ function MyReviews() {
     const [user, setUser] = useState({});
 
     useEffect(() => {
-        axios
-            .get(`http://localhost:8000/api/users/getLoggedInUser/${cookies.get("jwt")}`)
-            .then(data => {
-                setUser(data.data.user);
-                const userId = data.data.user._id;
+        axios.get(`http://localhost:8000/api/users/getLoggedInUser/${cookies.get("jwt")}`).then((data) => {
+            setUser(data.data.user);
+            const userId = data.data.user._id;
 
-                axios
-                    .get(`http://localhost:8000/api/reviews/reviewCustomer/${userId}`)
-                    .then(data => {
-                        setPositiveCounts(Object.values(data.data.positiveCounts));
-                        setNegativeCounts(Object.values(data.data.negativeCounts));
-                    });
-
-                axios
-                    .get(`http://localhost:8000/api/reviews/reviewPerformer/${userId}`)
-                    .then(data => {
-                        setPerformerReview(data.data.reviews);
-                    });
+            axios.get(`http://localhost:8000/api/reviews/reviewCustomer/${userId}`).then((data) => {
+                setPositiveCounts(Object.values(data.data.positiveCounts));
+                setNegativeCounts(Object.values(data.data.negativeCounts));
             });
+
+            axios.get(`http://localhost:8000/api/reviews/reviewPerformer/${userId}`).then((data) => {
+                setPerformerReview(data.data.reviews);
+            });
+        });
     }, []);
 
     const populatePerformerReview = () => {
-        return performerReview.map(review => {
+        return performerReview.map((review) => {
             const populateStars = () => {
                 const stars = [];
                 const rating = review.rating;
@@ -51,39 +45,33 @@ function MyReviews() {
                 }
 
                 return <div className="review-stars">{stars}</div>;
-            }
+            };
             return (
                 <div className="my-reviews-as-performer-review-box">
                     <div className="my-reviews-as-performer-review-left">
                         <div className="my-reviews-as-performer-review-stars">
                             {populateStars()}
                             <div className="reviews-numbers">
-                                <div className="reviews-num">
-                                    {review.rating}
-                                </div>
-                                <div className="reviews-out-of-num">
-                                    / 5
-                                </div>
+                                <div className="reviews-num">{review.rating}</div>
+                                <div className="reviews-out-of-num">/ 5</div>
                             </div>
                         </div>
                         <div className="my-reviews-as-performer-review-bottom">
                             <div className="my-reviews-as-performer-review-writer">
-                                {`${review.task.uploadedUser.firstname} ${review.task.uploadedUser.lastname.charAt(0)}.`}
+                                {`${review.task.uploadedUser.firstname} ${review.task.uploadedUser.lastname.charAt(
+                                    0
+                                )}.`}
                             </div>
                         </div>
                     </div>
                     <div className="my-reviews-as-performer-review-right">
-                        <div className="my-reviews-as-performer-review-title">
-                            {review.task.title}
-                        </div>
-                        <div className="my-reviews-as-performer-review-desc">
-                            {review.review}
-                        </div>
+                        <div className="my-reviews-as-performer-review-title">{review.task.title}</div>
+                        <div className="my-reviews-as-performer-review-desc">{review.review}</div>
                     </div>
                 </div>
-            )
+            );
         });
-    }
+    };
 
     const populateGoodReviews = () => {
         const list = [
@@ -92,7 +80,7 @@ function MyReviews() {
             "Friendly",
             "Great Communication",
             "Reasonable Request",
-            "Positive"
+            "Positive",
         ];
 
         return (
@@ -103,30 +91,24 @@ function MyReviews() {
                     </div>
                 </div>
                 <div className="my-reviews-as-customer-evaluation-good-keywords">
-                    {
-                        positiveCounts.map((value, i) => {
-                            if (value > 0) {
-                                return (
-                                    <div className="evaluation-good">
-                                        <div className="evaluation-good-keyword">
-                                            <div className="evaluation-good-keyword-punctual-payment">
-                                                {list[i]}
-                                            </div>
-                                            <div className="evaluation-good-keyword-number">
-                                                {value}
-                                            </div>
-                                        </div>
+                    {positiveCounts.map((value, i) => {
+                        if (value > 0) {
+                            return (
+                                <div className="evaluation-good">
+                                    <div className="evaluation-good-keyword">
+                                        <div className="evaluation-good-keyword-punctual-payment">{list[i]}</div>
+                                        <div className="evaluation-good-keyword-number">{value}</div>
                                     </div>
-                                )
-                            } else {
-                                return null;
-                            }
-                        })
-                    }
+                                </div>
+                            );
+                        } else {
+                            return null;
+                        }
+                    })}
                 </div>
             </div>
-        )
-    }
+        );
+    };
 
     const populateBadReviews = () => {
         const list = [
@@ -135,41 +117,51 @@ function MyReviews() {
             "Rude",
             "Poor Communication",
             "Unreasonable Request",
-            "Negative"
+            "Negative",
         ];
 
         return (
             <div className="my-reviews-as-customer-evaluation-bad-section">
-                < div className="my-reviews-as-customer-evaluation-bad-thumbs-section" >
+                <div className="my-reviews-as-customer-evaluation-bad-thumbs-section">
                     <div className="my-reviews-as-customer-evaluation-bad-thumbs">
                         <i class="fa-regular fa-thumbs-down fa-2x fa-flip-horizontal my-reviews-thumbs-down" />
                     </div>
-                </div >
-                <div className="my-reviews-as-customer-evaluation-bad-keywords">
-                    {
-                        negativeCounts.map((value, i) => {
-                            if (value > 0) {
-                                return (
-                                    <div className="evaluation-bad">
-                                        <div className="evaluation-bad-keyword">
-                                            <div className="evaluation-bad-keyword-number">
-                                                {value}
-                                            </div>
-                                            <div className="evaluation-bad-keyword-punctual-payment">
-                                                {list[i]}
-                                            </div>
-                                        </div>
-                                    </div>
-                                )
-                            } else {
-                                return null;
-                            }
-                        })
-                    } 
                 </div>
-            </div >
-        )
-    }
+                <div className="my-reviews-as-customer-evaluation-bad-keywords">
+                    {negativeCounts.map((value, i) => {
+                        if (value > 0) {
+                            return (
+                                <div className="evaluation-bad">
+                                    <div className="evaluation-bad-keyword">
+                                        <div className="evaluation-bad-keyword-number">{value}</div>
+                                        <div className="evaluation-bad-keyword-punctual-payment">{list[i]}</div>
+                                    </div>
+                                </div>
+                            );
+                        } else {
+                            return null;
+                        }
+                    })}
+                </div>
+                <div className="my-reviews-as-customer-evaluation-bad-keywords">
+                    {negativeCounts.map((value, i) => {
+                        if (value > 0) {
+                            return (
+                                <div className="evaluation-good">
+                                    <div className="evaluation-good-keyword">
+                                        <div className="evaluation-good-keyword-punctual-payment">{list[i]}</div>
+                                        <div className="evaluation-good-keyword-number">{value}</div>
+                                    </div>
+                                </div>
+                            );
+                        } else {
+                            return null;
+                        }
+                    })}
+                </div>
+            </div>
+        );
+    };
 
     return (
         <>
@@ -183,9 +175,12 @@ function MyReviews() {
                                     <div className="responsive-profile-photo">
                                         <div className="responsive-profile-photo-image">
                                             {user.img ? (
-                                                <img src={`http://localhost:8000/api/users/profile/${user._id}`} alt="profile" />
+                                                <img
+                                                    src={`http://localhost:8000/api/users/profile/${user._id}`}
+                                                    alt="profile"
+                                                />
                                             ) : (
-                                                <img src="images/profile/SY.png" alt="default profile" />
+                                                <img src="images/profile/default.png" alt="default profile" />
                                             )}
                                         </div>
                                     </div>
@@ -195,44 +190,39 @@ function MyReviews() {
                                 <div className="my-reviews-wrapper-left">
                                     <div className="my-reviews-wrapper-left-section-title">
                                         <div className="my-reviews-wrapper-left-section-profile">
-                                            <Link to="/my-account">
-                                                Profile
-                                            </Link>
+                                            <Link to="/my-account">Profile</Link>
                                         </div>
                                         <div className="my-reviews-wrapper-left-section-reviews">
-                                            <Link to="/my-reviews">
-                                                Reviews
-                                            </Link>
+                                            <Link to="/my-reviews">Reviews</Link>
                                         </div>
                                     </div>
                                     <div className="my-reviews-as-customer">
-                                        <div className="my-reviews-as-customer-title">
-                                            As a Customer
-                                        </div>
+                                        <div className="my-reviews-as-customer-title">As a Customer</div>
                                         <div className="my-reviews-as-customer-evaluation">
                                             {populateGoodReviews()}
                                             {populateBadReviews()}
                                         </div>
                                     </div>
-                                    {user.role === "performer" && 
+                                    {user.role === "performer" && (
                                         <div className="my-reviews-as-performer">
-                                            <div className="my-reviews-as-performer-title">
-                                                As a Performer
-                                            </div>
+                                            <div className="my-reviews-as-performer-title">As a Performer</div>
                                             <div className="my-reviews-as-performer-reviews">
                                                 {populatePerformerReview()}
                                             </div>
                                         </div>
-                                    }
+                                    )}
                                 </div>
                                 <div className="my-reviews-wrapper-right">
                                     <div className="my-reviews-wrapper-right-profile-box">
                                         <div className="my-reviews-wrapper-right-profile-photo">
                                             <div className="my-reviews-wrapper-right-profile-photo-image">
                                                 {user.img ? (
-                                                    <img src={`http://localhost:8000/api/users/profile/${user._id}`} alt="profile" />
+                                                    <img
+                                                        src={`http://localhost:8000/api/users/profile/${user._id}`}
+                                                        alt="profile"
+                                                    />
                                                 ) : (
-                                                    <img src="images/profile/SY.png" alt="default profile" />
+                                                    <img src="images/profile/default.png" alt="default profile" />
                                                 )}
                                             </div>
                                         </div>

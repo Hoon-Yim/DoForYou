@@ -2,31 +2,24 @@ import axios from "axios";
 import React from "react";
 import { Button } from "../Button";
 import "./ModalInterest.css";
+import { useNavigate } from "react-router-dom";
 
 const ModalInterest = (props) => {
+    const navigate = useNavigate();
     if (!props.show) {
         return null;
     }
 
     return (
         <div className="modal-interest" onClick={props.onClose}>
-            <div
-                className="modal-interest-content"
-                onClick={(e) => e.stopPropagation()}
-            >
+            <div className="modal-interest-content" onClick={(e) => e.stopPropagation()}>
                 <div className="modal-interest-header">
-                    <h4 className="modal-interest-title">
-                        Ready for sending message
-                    </h4>
+                    <h4 className="modal-interest-title">Ready for sending message</h4>
                 </div>
                 <div className="modal-interest-body">
                     <div className="modal-interest-body-text-main">
-                        <div className="modal-interest-body-text-line">
-                            If you're chosen by the customer,
-                        </div>
-                        <div className="modal-interest-body-text-line">
-                            they will contact you.
-                        </div>
+                        <div className="modal-interest-body-text-line">If you're chosen by the customer,</div>
+                        <div className="modal-interest-body-text-line">they will contact you.</div>
                     </div>
                     <div className="modal-interest-body-text-sub">
                         <div className="modal-interest-body-text-sub-line">
@@ -56,10 +49,14 @@ const ModalInterest = (props) => {
                                     .post("http://localhost:8000/api/chat/rooms", {
                                         customerId: props.customerId,
                                         performerId: props.performerId,
-                                        taskId: props.taskId
-                                    }) 
-                                    .then(data => { console.log(data.data); })
-                                props.onClose()
+                                        taskId: props.taskId,
+                                    })
+                                    .then((data) => {
+                                        console.log(data.data);
+                                    });
+                                navigate("/find-tasks");
+                                window.location.reload();
+                                props.onClose();
                             }}
                         >
                             Yes

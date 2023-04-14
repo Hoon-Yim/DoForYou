@@ -15,14 +15,10 @@ function AssignedPerformerButton(props) {
                 type="submit"
                 onClick={() => setShow(true)}
             >
-                COMPLETE
+                COMPLETED
             </Button>
 
-            <ModalComplete
-                onClose={() => setShow(false)}
-                show={show}
-                taskId={props.taskId}
-            />
+            <ModalComplete onClose={() => setShow(false)} show={show} taskId={props.taskId} />
         </>
     );
 }

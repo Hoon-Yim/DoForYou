@@ -27,7 +27,6 @@ function Chat() {
         setRoomId(cookies.get("roomId"));
         axios.get(`http://localhost:8000/api/chat/rooms/getParticipatedRooms/${cookies.get("jwt")}`).then((data) => {
             setChatRooms(data.data.rooms);
-            console.log(data.data.rooms);
         });
     }, []);
 
@@ -83,7 +82,7 @@ function Chat() {
                                             }}
                                         >
                                             <div className={classname}>
-                                                <ContactPhoto userId={title[0].user._id} />
+                                                <ContactPhoto username={title[0].user} />
                                                 <div className="chat-contacts-person-name">
                                                     {title[0].user.firstname}
                                                 </div>
@@ -96,6 +95,7 @@ function Chat() {
                                 <ChatStart firstname={firstname} />
                             ) : (
                                 <div className="chat-messages">
+                                    {/*  */}
                                     <div className="chat-messages-chatting-after-info-box">
                                         <div className="chat-messages-chatting-after-sender-image-box">
                                             <div className="chat-messages-chatting-after-image">
@@ -123,7 +123,9 @@ function Chat() {
                                             </div>
                                         </div>
                                         <div className="chat-messages-chatting-after-name">{opponent.firstname}</div>
+
                                     </div>
+                                    {/*  */}
                                     <div className="chat-messages-chatting-after">
                                         <div className="chat-chatting">
                                             {/* after select chatting */}
@@ -140,46 +142,53 @@ function Chat() {
                                                     }
 
                                                     return (
-                                                        <div className={classname1}>
-                                                            <div className={classname2}>
-                                                                {message.message !== "~|+_" ? (
-                                                                    message.message
-                                                                ) : (
-                                                                    <>
-                                                                        <div className="interest-alert-message">
-                                                                            {message.sender} is interested in your task.
-                                                                            <br />
-                                                                            You can check the reviews about
-                                                                            <br />
-                                                                            performer to confirm if this performer
-                                                                            <br />
-                                                                            is suitable person to help you :)
-                                                                            <br />
-                                                                            <br />
-                                                                            If you'd like to accept,
-                                                                        </div>
-                                                                        <div className="interest-alert-message-btn">
-                                                                            <Button
-                                                                                buttonStyle="btn--primary-blue"
-                                                                                buttonSize="btn--medium-bold"
-                                                                                buttonRadius="btn--square"
-                                                                                onClick={() => {
-                                                                                    axios.post(
-                                                                                        "http://localhost:8000/api/tasks/assignPerformer",
-                                                                                        {
-                                                                                            token: cookies.get("jwt"),
-                                                                                            roomId,
-                                                                                        }
-                                                                                    );
-                                                                                }}
-                                                                            >
-                                                                                Accept !
-                                                                            </Button>
-                                                                        </div>
-                                                                    </>
-                                                                )}
+                                                        <>
+                                                            {/*  */}
+                                                            {/*  */}
+                                                            <div className={classname1}>
+                                                                <div className={classname2}>
+                                                                    {message.message !== "~|+_" ? (
+                                                                        message.message
+                                                                    ) : (
+                                                                        <>
+                                                                            <div className="interest-alert-message">
+                                                                                {message.sender} is interested in your
+                                                                                task.
+                                                                                <br />
+                                                                                You can check the reviews about
+                                                                                <br />
+                                                                                performer to confirm if this performer
+                                                                                <br />
+                                                                                is suitable person to help you :)
+                                                                                <br />
+                                                                                <br />
+                                                                                If you'd like to accept,
+                                                                            </div>
+                                                                            <div className="interest-alert-message-btn">
+                                                                                <Button
+                                                                                    buttonStyle="btn--primary-blue"
+                                                                                    buttonSize="btn--medium-bold"
+                                                                                    buttonRadius="btn--square"
+                                                                                    onClick={() => {
+                                                                                        axios.post(
+                                                                                            "http://localhost:8000/api/tasks/assignPerformer",
+                                                                                            {
+                                                                                                token: cookies.get(
+                                                                                                    "jwt"
+                                                                                                ),
+                                                                                                roomId,
+                                                                                            }
+                                                                                        );
+                                                                                    }}
+                                                                                >
+                                                                                    Accept !
+                                                                                </Button>
+                                                                            </div>
+                                                                        </>
+                                                                    )}
+                                                                </div>
                                                             </div>
-                                                        </div>
+                                                        </>
                                                     );
                                                 })}
                                         </div>

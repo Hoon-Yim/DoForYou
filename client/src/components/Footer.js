@@ -46,10 +46,10 @@ function Footer() {
                                 <h5 className="footer-text">
                                     <a
                                         style={{ textDecoration: "none" }}
-                                        href="mailto:doforyouca@gmail.com"
+                                        href="mailto:doforyou@doforyou.com"
                                         target="_blank"
                                     >
-                                        doforyouca@gmail.com
+                                        doforyou@doforyou.com
                                     </a>
                                 </h5>
                                 <h5 className="footer-text">

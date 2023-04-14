@@ -41,7 +41,8 @@ function MyProfile() {
         });
     }, []);
 
-    const handleSubmit = () => {
+    const handleSubmit = e => {
+        e.preventDefault();
         axios
             .put(`http://localhost:8000/api/users/updateUser/${user._id}`, {
                 firstname: firstName,
@@ -59,6 +60,8 @@ function MyProfile() {
                 setErrorMessage("");
                 cookies.set("firstname", response.data.user.firstname);
                 setSuccessMessage("Profile has been updated successfully!");
+
+                window.location.reload();
             })
             .catch((error) => {
                 setSuccessMessage("");

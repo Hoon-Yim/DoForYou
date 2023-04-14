@@ -2,10 +2,7 @@ import axios from "axios";
 import Cookies from "universal-cookie";
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
-import {
-    Link,
-    useNavigate,
-} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./Chat.css";
 import { Button } from "../../Button";
@@ -27,16 +24,10 @@ function Chat() {
     useEffect(() => {
         setFirstname(cookies.get("firstname"));
         setRoomId(cookies.get("roomId"));
-        axios
-            .get(
-                `http://localhost:8000/api/chat/rooms/getParticipatedRooms/${cookies.get(
-                    "jwt"
-                )}`
-            )
-            .then((data) => {
-                setChatRooms(data.data.rooms);
-                console.log(data.data.rooms);
-            });
+        axios.get(`http://localhost:8000/api/chat/rooms/getParticipatedRooms/${cookies.get("jwt")}`).then((data) => {
+            setChatRooms(data.data.rooms);
+            console.log(data.data.rooms);
+        });
     }, []);
 
     useEffect(() => {
@@ -74,10 +65,9 @@ function Chat() {
                                 <div className="chat-contacts-title">Chats</div>
                                 {chatRooms.map((room) => {
                                     let classname = "chat-contacts-person ";
-                                    if (room._id === roomId)
-                                        classname += "selected";
+                                    if (room._id === roomId) classname += "selected";
 
-                                    const title = room.participants.filter(participant => {
+                                    const title = room.participants.filter((participant) => {
                                         return participant.user.firstname !== firstname;
                                     });
 
@@ -85,11 +75,7 @@ function Chat() {
                                         <Link
                                             style={{ textDecoration: "none" }}
                                             onClick={() => {
-                                                cookies.set(
-                                                    "roomId",
-                                                    room._id,
-                                                    { path: "/" }
-                                                );
+                                                cookies.set("roomId", room._id, { path: "/" });
                                                 window.location.reload();
                                             }}
                                         >
@@ -107,19 +93,22 @@ function Chat() {
                                 <ChatStart firstname={firstname} />
                             ) : (
                                 <div className="chat-messages">
+                                    <div className="chat-messages-chatting-after-info-box">
+                                        <div className="chat-messages-chatting-after-sender-image-box">
+                                            <div className="chat-messages-chatting-after-image">
+                                                <img src="images/profile/default.png" alt="default profile" />
+                                            </div>
+                                        </div>
+                                        <div className="chat-messages-chatting-after-name">Yoonhee</div>
+                                    </div>
                                     <div className="chat-messages-chatting-after">
                                         <div className="chat-chatting">
                                             {/* after select chatting */}
                                             {messages &&
                                                 messages.map((message) => {
-                                                    let classname1 =
-                                                        "chat-message-box ";
-                                                    let classname2 =
-                                                        "chat-message-from-";
-                                                    if (
-                                                        message.sender ===
-                                                        firstname
-                                                    ) {
+                                                    let classname1 = "chat-message-box ";
+                                                    let classname2 = "chat-message-from-";
+                                                    if (message.sender === firstname) {
                                                         classname1 += "me";
                                                         classname2 += "me";
                                                     } else {
@@ -128,51 +117,42 @@ function Chat() {
                                                     }
 
                                                     return (
-                                                        <div
-                                                            className={
-                                                                classname1
-                                                            }
-                                                        >
-                                                            <div
-                                                                className={
-                                                                    classname2
-                                                                }
-                                                            >
-                                                                {message.message !==
-                                                                "~|+_" ? (
+                                                        <div className={classname1}>
+                                                            <div className={classname2}>
+                                                                {message.message !== "~|+_" ? (
                                                                     message.message
                                                                 ) : (
                                                                     <>
-                                                                        <div>
-                                                                            {
-                                                                                message.sender
-                                                                            }{" "}
-                                                                            wants
-                                                                            to
-                                                                            take
-                                                                            care
-                                                                            of
-                                                                            your
-                                                                            task!
+                                                                        <div className="interest-alert-message">
+                                                                            {message.sender} is interested in your task.
+                                                                            <br />
+                                                                            You can check the reviews about
+                                                                            <br />
+                                                                            performer to confirm if this performer
+                                                                            <br />
+                                                                            is suitable person to help you :)
+                                                                            <br />
+                                                                            <br />
+                                                                            If you'd like to accept,
                                                                         </div>
-                                                                        <Button
-                                                                            buttonStyle="btn--primary-blue"
-                                                                            buttonSize="btn--medium-bold"
-                                                                            buttonRadius="btn--square"
-                                                                            onClick={() => {
-                                                                                axios.post(
-                                                                                    "http://localhost:8000/api/tasks/assignPerformer",
-                                                                                    {
-                                                                                        token: cookies.get(
-                                                                                            "jwt"
-                                                                                        ),
-                                                                                        roomId,
-                                                                                    }
-                                                                                );
-                                                                            }}
-                                                                        >
-                                                                            Accept!
-                                                                        </Button>
+                                                                        <div className="interest-alert-message-btn">
+                                                                            <Button
+                                                                                buttonStyle="btn--primary-blue"
+                                                                                buttonSize="btn--medium-bold"
+                                                                                buttonRadius="btn--square"
+                                                                                onClick={() => {
+                                                                                    axios.post(
+                                                                                        "http://localhost:8000/api/tasks/assignPerformer",
+                                                                                        {
+                                                                                            token: cookies.get("jwt"),
+                                                                                            roomId,
+                                                                                        }
+                                                                                    );
+                                                                                }}
+                                                                            >
+                                                                                Accept !
+                                                                            </Button>
+                                                                        </div>
                                                                     </>
                                                                 )}
                                                             </div>

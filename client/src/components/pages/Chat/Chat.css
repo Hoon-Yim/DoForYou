@@ -60,7 +60,7 @@
     border-bottom: 1px solid var(--secondary-light);
 }
 .chat-contacts-person .chat-contacts-person-name {
-    margin-left: 5px;
+    margin-left: 10px;
 }
 .chat-messages {
     display: flex;
@@ -72,6 +72,31 @@
     background-color: var(--primary-blue);
     /*border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;*/
+}
+.chat-messages-chatting-after-info-box {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 10px;
+}
+
+.chat-messages-chatting-after-image {
+    display: flex;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.chat-messages-chatting-after-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.chat-messages-chatting-after-name {
+    margin-left: 10px;
+    color: #fff;
+    font-size: 18px;
 }
 
 .chat-messages-chatting {
@@ -86,7 +111,7 @@
 .chat-messages-chatting-after {
     flex-grow: 1;
     overflow: auto;
-    margin-bottom: 15px;
+    margin: 15px 0;
     height: 100%;
 }
 
@@ -150,6 +175,16 @@
 .chat-before-chat-sub {
     margin-top: 5px;
     font-size: 18px;
+}
+
+.interest-alert-message {
+    margin-bottom: 10px;
+    line-height: 18px;
+}
+
+.interest-alert-message-btn {
+    display: flex;
+    justify-content: center;
 }
 
 /* -- after select chatting -- */

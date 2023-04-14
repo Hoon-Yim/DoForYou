@@ -24,25 +24,15 @@ function TaskDetail() {
     const [uploadedUser, setUploadedUser] = useState({});
 
     useEffect(() => {
-        axios
-            .get(`http://localhost:8000/api/tasks/${params.taskId}`)
-            .then((data) => {
-                setTask(data.data.task);
-                setUploadedUser(data.data.task.uploadedUser);
-            });
+        axios.get(`http://localhost:8000/api/tasks/${params.taskId}`).then((data) => {
+            setTask(data.data.task);
+            setUploadedUser(data.data.task.uploadedUser);
+        });
 
-        axios
-            .get(
-                `http://localhost:8000/api/users/getLoggedInUser/${cookies.get(
-                    "jwt"
-                )}`
-            )
-            .then((data) => {
-                setUser(data.data.user);
-
-            });
+        axios.get(`http://localhost:8000/api/users/getLoggedInUser/${cookies.get("jwt")}`).then((data) => {
+            setUser(data.data.user);
+        });
     }, []);
-
 
     const populateButton = () => {
         // if performer but unassigned
@@ -61,10 +51,7 @@ function TaskDetail() {
                             >
                                 EDIT
                             </Button>
-                            <div
-                                className="margin-1rem"
-                                style={{ margin: "0.25rem" }}
-                            ></div>
+                            <div className="margin-1rem" style={{ margin: "0.25rem" }}></div>
                             <UploadedCustomerButton taskId={task._id} />
                         </>
                     );
@@ -85,11 +72,7 @@ function TaskDetail() {
                     );
                 } else {
                     return (
-                        <Button
-                            buttonStyle="btn--cancel"
-                            buttonSize="btn--large-bold"
-                            buttonRadius="btn--half-rounded"
-                        >
+                        <Button buttonStyle="btn--cancel" buttonSize="btn--large-bold" buttonRadius="btn--half-rounded">
                             Already Assigned
                         </Button>
                     );
@@ -108,11 +91,7 @@ function TaskDetail() {
         } else {
             if (task.isCompleted === true) {
                 return (
-                    <Button
-                        buttonStyle="btn--cancel"
-                        buttonSize="btn--large-bold"
-                        buttonRadius="btn--half-rounded"
-                    >
+                    <Button buttonStyle="btn--cancel" buttonSize="btn--large-bold" buttonRadius="btn--half-rounded">
                         Completed
                     </Button>
                 );
@@ -132,18 +111,12 @@ function TaskDetail() {
                         <div className="task-detail-wrapper">
                             <div className="task-detail-content">
                                 <div className="task-detail-content-main">
-                                    <div className="task-detail-title">
-                                        {task.title}
-                                    </div>
+                                    <div className="task-detail-title">{task.title}</div>
                                     <div className="task-detail-main-bottom">
                                         <div className="task-detail-written-date">
-                                            <div className="written">
-                                                Written
-                                            </div>
+                                            <div className="written">Written</div>
                                             <div className="written-date">
-                                                {new Date(
-                                                    task.updatedAt
-                                                ).toLocaleDateString("en-US", {
+                                                {new Date(task.updatedAt).toLocaleDateString("en-US", {
                                                     month: "short",
                                                     day: "numeric",
                                                     year: "numeric",
@@ -160,25 +133,17 @@ function TaskDetail() {
                                 </div>
                                 <div className="task-detail-content-body">
                                     <div className="task-detail-content-body-address">
-                                        <div className="task-detail-content-body-key">
-                                            Address
-                                        </div>
+                                        <div className="task-detail-content-body-key">Address</div>
                                         <div className="task-detail-content-body-value">
                                             {task.isRemote
                                                 ? "Can be done remotely"
-                                                : `${task.location &&
-                                                task.location.address
-                                                }`}
+                                                : `${task.location && task.location.address}`}
                                         </div>
                                     </div>
                                     <div className="task-detail-content-body-start">
-                                        <div className="task-detail-content-body-key">
-                                            Start date
-                                        </div>
+                                        <div className="task-detail-content-body-key">Start date</div>
                                         <div className="task-detail-content-body-value">
-                                            {new Date(
-                                                task.startDate
-                                            ).toLocaleDateString("en-US", {
+                                            {new Date(task.startDate).toLocaleDateString("en-US", {
                                                 month: "short",
                                                 day: "numeric",
                                                 year: "numeric",
@@ -188,13 +153,9 @@ function TaskDetail() {
                                         </div>
                                     </div>
                                     <div className="task-detail-content-body-end">
-                                        <div className="task-detail-content-body-key">
-                                            End date
-                                        </div>
+                                        <div className="task-detail-content-body-key">End date</div>
                                         <div className="task-detail-content-body-value">
-                                            {new Date(
-                                                task.endDate
-                                            ).toLocaleDateString("en-US", {
+                                            {new Date(task.endDate).toLocaleDateString("en-US", {
                                                 month: "short",
                                                 day: "numeric",
                                                 year: "numeric",
@@ -205,51 +166,36 @@ function TaskDetail() {
                                     </div>
                                     <hr className="task-detail-horizontal-line" />
                                     <div className="task-detail-content-body-budget">
-                                        <div className="task-detail-content-body-key">
-                                            Budget
-                                        </div>
-                                        <div className="task-detail-content-body-value">
-                                            $ {task.budget}.00
-                                        </div>
+                                        <div className="task-detail-content-body-key">Budget</div>
+                                        <div className="task-detail-content-body-value">$ {task.budget}.00</div>
                                     </div>
                                     <div className="task-detail-content-body-payment">
-                                        <div className="task-detail-content-body-key">
-                                            How to pay
-                                        </div>
-                                        <div className="task-detail-content-body-value">
-                                            by {task.paymentMethod}
-                                        </div>
+                                        <div className="task-detail-content-body-key">How to pay</div>
+                                        <div className="task-detail-content-body-value">by {task.paymentMethod}</div>
                                     </div>
                                     <hr className="task-detail-horizontal-line" />
                                     <div className="task-detail-content-body-desc">
-                                        <div className="task-detail-content-body-key">
-                                            Details
-                                        </div>
-                                        <div className="task-detail-content-body-value">
-                                            {task.details}
-                                        </div>
+                                        <div className="task-detail-content-body-key">Details</div>
+                                        <div className="task-detail-content-body-value">{task.details}</div>
                                     </div>
-                                    <div className="task-detail-btn-interest">
-                                        {populateButton()}
-                                    </div>
+                                    <div className="task-detail-btn-interest">{populateButton()}</div>
                                 </div>
                             </div>
                             <div className="task-detail-user-box">
-                                <div className="task-detail-user-title">
-                                    Customer Information
-                                </div>
+                                <div className="task-detail-user-title">Customer Information</div>
                                 <div className="task-detail-user-image">
                                     {uploadedUser.img ? (
-                                        <img src={`http://localhost:8000/api/users/profile/${uploadedUser._id}`} alt="profile" />
+                                        <img
+                                            src={`http://localhost:8000/api/users/profile/${uploadedUser._id}`}
+                                            alt="profile"
+                                        />
                                     ) : (
-                                        <img src="images/profile/SY.png" alt="default profile" />
+                                        <img src="images/profile/default.png" alt="default profile" />
                                     )}
                                 </div>
                                 <div className="task-detail-user-name">
-                                    {uploadedUser.firstname}{" "}
-                                    {uploadedUser.lastname}
+                                    {uploadedUser.firstname} {uploadedUser.lastname}
                                 </div>
-                                
                             </div>
                         </div>
                     </div>

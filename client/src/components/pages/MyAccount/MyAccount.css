@@ -132,7 +132,7 @@
 
 .my-profile-wrapper-right-profile-photo-image {
     display: flex;
-    margin: 5rem auto 3rem;
+    margin: 5rem auto 1.5rem;
     height: 150px;
     width: 150px;
     border-radius: 50%;
@@ -145,13 +145,35 @@
     border-radius: 50%;
 }
 
+.upload-box {
+    font-size: 12px;
+    background-color: var(--secondary-very-light);
+    border-radius: 50px;
+    width: 100%;
+    outline: none;
+}
+
+::-webkit-file-upload-button {
+    background-color: #fff;
+    border: 2px solid var(--secondary-medium);
+    padding: 6px 12px;
+    border-radius: 50px;
+    outline: none;
+}
+
+::-webkit-file-upload-button:hover {
+    background-color: var(--secondary-medium);
+    color: #fff;
+}
+
 .my-profile-wrapper-right-profile-btns {
     display: flex;
     justify-content: center;
+    margin-top: 8px;
 }
 
-.my-profile-wrapper-right-profile-btns button {
-    margin: 1rem 0.2rem;
+#my-profile-remove-btn {
+    margin-left: 5px;
 }
 
 .my-profile-wrapper-right-bottom {
@@ -222,9 +244,20 @@
         margin-bottom: 5px;
     }
 
-    .responsive-profile-photo-btns {
+    .responsive-my-profile-image-btns {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .responsive-my-profile-wrapper-right-profile-upload-box {
+        width: 40%;
+    }
+    .responsive-my-profile-wrapper-right-profile-btns {
+        width: 40%;
         display: flex;
         justify-content: center;
+        margin-top: 7px;
     }
 
     .responsive-profile-photo-image {
@@ -240,12 +273,6 @@
         object-fit: cover;
         border-radius: 50%;
     }
-
-    .responsive-profile-photo-btns .btn--small {
-        margin: 0 4px;
-        width: 90px;
-    }
-
     .my-profile-wrapper-left {
         width: 100%;
     }
@@ -259,6 +286,7 @@
     .my-profile-wrapper-right {
         display: none;
     }
+
     .my-profile-wrapper-right-profile-btns {
         flex-direction: column;
         margin-top: 10px;
@@ -302,6 +330,13 @@
 
 /* Mobile */
 @media only screen and (max-width: 480px) {
+    .responsive-my-profile-wrapper-right-profile-upload-box {
+        width: 80%;
+    }
+    .responsive-my-profile-wrapper-right-profile-btns {
+        width: 80%;
+    }
+
     .my-profile-wrapper-left-section-title,
     .my-profile-wrapper-left-password-title {
         font-size: 24px;
@@ -337,18 +372,4 @@
     .my-profile-wrapper-left-password-desc-list {
         font-size: 14px;
     }
-}
-.img-input{
-        display: none;
-}
-
-.img-label{
-    margin-left: 9px;
-    margin-top: 20px;
-    cursor: pointer;
-    border-radius: 25px;
-    background-color: #fff;
-    padding: 8px 60px;
-    border: 2px solid var(--secondary-medium);
-    font-size: 15px;
 }

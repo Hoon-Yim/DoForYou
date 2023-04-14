@@ -96,35 +96,6 @@ function Chat() {
                             ) : (
                                 <div className="chat-messages">
                                     {/*  */}
-                                    <div className="chat-messages-chatting-after-info-box">
-                                        <div className="chat-messages-chatting-after-sender-image-box">
-                                            <div className="chat-messages-chatting-after-image">
-                                                {
-                                                    (() => {
-                                                        let user = {};
-                                                        axios
-                                                            .get(`http://localhost:8000/api/users/${cookies.get("opponentId")}`)
-                                                            .then(data => {
-                                                                user = data.data.user
-                                                            });
-                                                        
-                                                        if (user.img) {
-                                                            return (
-                                                                <img
-                                                                    src={`http://localhost:8000/api/users/profile/${user._id}`}
-                                                                    alt="profile"
-                                                                />
-                                                            )
-                                                        } else {
-                                                            return <img src="images/profile/default.png" alt="default profile" />
-                                                        }
-                                                    })()
-                                                }
-                                            </div>
-                                        </div>
-                                        <div className="chat-messages-chatting-after-name">{opponent.firstname}</div>
-
-                                    </div>
                                     {/*  */}
                                     <div className="chat-messages-chatting-after">
                                         <div className="chat-chatting">

@@ -65,13 +65,15 @@ exports.getCustomerReviews = catchAsync(async (req, res) => {
 // Get count of reviews for a specific customer and tag
 exports.getCountForEachTag = catchAsync(async (req, res) => {
   const customerId = req.params.cid;
-  const tags = [
+  const positiveTags = [
     "Punctual payment",
     "Good manners",
     "Friendly",
     "Great Communication",
     "Reasonable request",
     "Positive",
+  ];
+  const negativeTags = [
     "Payment delay",
     "Lack of description",
     "Rude",
@@ -80,15 +82,22 @@ exports.getCountForEachTag = catchAsync(async (req, res) => {
     "Negative"
   ];
 
-  const counts = {};
-  for (const tag of tags) {
+  const positiveCounts = {};
+  const negativeCounts = {};
+  for (const tag of positiveTags) {
     const reviews = await ReviewCustomer.find({ customer: customerId, tags: tag });
-    counts[tag] = reviews.length;
+    positiveCounts[tag] = reviews.length;
   }
+  for (const tag of negativeTags) {
+    const reviews = await ReviewCustomer.find({ customer: customerId, tags: tag });
+    negativeCounts[tag] = reviews.length;
+  }
+  
 
   res.status(200).json({
     status: "success",
-    counts
+    positiveCounts,
+    negativeCounts
   });
 });
 

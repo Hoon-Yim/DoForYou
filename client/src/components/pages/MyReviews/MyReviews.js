@@ -9,10 +9,10 @@ import Cookies from "universal-cookie";
 
 function MyReviews() {
     const cookies = new Cookies();
-    const [customerReview, setCustomerReview] = useState({});
     const [customerReviewValues, setCustomerReviewValues] = useState([]);
+    const [positiveCounts, setPositiveCounts] = useState([]);
+    const [negativeCounts, setNegativeCounts] = useState([]);
     const [performerReview, setPerformerReview] = useState([]);
-    const [tagCounts, setTagCounts] = useState({});
     const [user, setUser] = useState({});
 
     useEffect(() => {
@@ -25,8 +25,8 @@ function MyReviews() {
                 axios
                     .get(`http://localhost:8000/api/reviews/reviewCustomer/${userId}`)
                     .then(data => {
-                        setCustomerReview(data.data.counts);
-                        setCustomerReviewValues(Object.values(data.data.counts));
+                        setPositiveCounts(Object.values(data.data.positiveCounts));
+                        setNegativeCounts(Object.values(data.data.negativeCounts));
                     });
 
                 axios
@@ -85,6 +85,92 @@ function MyReviews() {
         });
     }
 
+    const populateGoodReviews = () => {
+        const list = [
+            "Punctual Payment",
+            "Good Manners",
+            "Friendly",
+            "Great Communication",
+            "Reasonable Request",
+            "Positive"
+        ];
+
+        return (
+            <div className="my-reviews-as-customer-evaluation-good-section">
+                <div className="my-reviews-as-customer-evaluation-good-thumbs-section">
+                    <div className="my-reviews-as-customer-evaluation-good-thumbs">
+                        <i class="fa-regular fa-thumbs-up fa-2x my-reviews-thumbs-up" />
+                    </div>
+                </div>
+                <div className="my-reviews-as-customer-evaluation-good-keywords">
+                    {
+                        positiveCounts.map((value, i) => {
+                            if (value > 0) {
+                                return (
+                                    <div className="evaluation-good">
+                                        <div className="evaluation-good-keyword">
+                                            <div className="evaluation-good-keyword-punctual-payment">
+                                                {list[i]}
+                                            </div>
+                                            <div className="evaluation-good-keyword-number">
+                                                {value}
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            } else {
+                                return null;
+                            }
+                        })
+                    }
+                </div>
+            </div>
+        )
+    }
+
+    const populateBadReviews = () => {
+        const list = [
+            "Payment Delay",
+            "Lack of Description",
+            "Rude",
+            "Poor Communication",
+            "Unreasonable Request",
+            "Negative"
+        ];
+
+        return (
+            <div className="my-reviews-as-customer-evaluation-bad-section">
+                < div className="my-reviews-as-customer-evaluation-bad-thumbs-section" >
+                    <div className="my-reviews-as-customer-evaluation-bad-thumbs">
+                        <i class="fa-regular fa-thumbs-down fa-2x fa-flip-horizontal my-reviews-thumbs-down" />
+                    </div>
+                </div >
+                <div className="my-reviews-as-customer-evaluation-bad-keywords">
+                    {
+                        negativeCounts.map((value, i) => {
+                            if (value > 0) {
+                                return (
+                                    <div className="evaluation-good">
+                                        <div className="evaluation-good-keyword">
+                                            <div className="evaluation-good-keyword-punctual-payment">
+                                                {list[i]}
+                                            </div>
+                                            <div className="evaluation-good-keyword-number">
+                                                {value}
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            } else {
+                                return null;
+                            }
+                        })
+                    } 
+                </div>
+            </div >
+        )
+    }
+
     return (
         <>
             <div id="container">
@@ -124,146 +210,8 @@ function MyReviews() {
                                             As a Customer
                                         </div>
                                         <div className="my-reviews-as-customer-evaluation">
-                                            <div className="my-reviews-as-customer-evaluation-good-section">
-                                                <div className="my-reviews-as-customer-evaluation-good-thumbs-section">
-                                                    <div className="my-reviews-as-customer-evaluation-good-thumbs">
-                                                        <i class="fa-regular fa-thumbs-up fa-2x my-reviews-thumbs-up" />
-                                                    </div>
-                                                </div>
-                                                <div className="my-reviews-as-customer-evaluation-good-keywords">
-                                                    <div className="evaluation-good">
-                                                        <div className="evaluation-good-keyword">
-                                                            <div className="evaluation-good-keyword-punctual-payment">
-                                                                Punctual Payment
-                                                            </div>
-                                                            <div className="evaluation-good-keyword-number">
-                                                                {customerReviewValues[0]}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="evaluation-good">
-                                                        <div className="evaluation-good-keyword">
-                                                            <div className="evaluation-good-keyword-punctual-payment">
-                                                                Good Manners
-                                                            </div>
-                                                            <div className="evaluation-good-keyword-number">
-                                                                {customerReviewValues[1]}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="evaluation-good">
-                                                        <div className="evaluation-good-keyword">
-                                                            <div className="evaluation-good-keyword-punctual-payment">
-                                                                Friendly
-                                                            </div>
-                                                            <div className="evaluation-good-keyword-number">
-                                                                {customerReviewValues[2]}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="evaluation-good">
-                                                        <div className="evaluation-good-keyword">
-                                                            <div className="evaluation-good-keyword-punctual-payment">
-                                                                Great
-                                                                Communication
-                                                            </div>
-                                                            <div className="evaluation-good-keyword-number">
-                                                                {customerReviewValues[3]}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="evaluation-good">
-                                                        <div className="evaluation-good-keyword">
-                                                            <div className="evaluation-good-keyword-punctual-payment">
-                                                                Reasonable request
-                                                            </div>
-                                                            <div className="evaluation-good-keyword-number">
-                                                                {customerReviewValues[4]}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="evaluation-good">
-                                                        <div className="evaluation-good-keyword">
-                                                            <div className="evaluation-good-keyword-punctual-payment">
-                                                                Positive
-                                                            </div>
-                                                            <div className="evaluation-good-keyword-number">
-                                                                {customerReviewValues[5]}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="my-reviews-as-customer-evaluation-bad-section">
-                                                <div className="my-reviews-as-customer-evaluation-bad-thumbs-section">
-                                                    <div className="my-reviews-as-customer-evaluation-bad-thumbs">
-                                                        <i class="fa-regular fa-thumbs-down fa-2x fa-flip-horizontal my-reviews-thumbs-down" />
-                                                    </div>
-                                                </div>
-                                                <div className="my-reviews-as-customer-evaluation-bad-keywords">
-                                                    <div className="evaluation-bad">
-                                                        <div className="evaluation-bad-keyword">
-                                                            <div className="evaluation-bad-keyword-number">
-                                                                {customerReviewValues[6]}
-                                                            </div>
-                                                            <div className="evaluation-bad-keyword-punctual-payment">
-                                                                Payment Delay
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="evaluation-bad">
-                                                        <div className="evaluation-bad-keyword">
-                                                            <div className="evaluation-bad-keyword-number">
-                                                                {customerReviewValues[7]}
-                                                            </div>
-                                                            <div className="evaluation-bad-keyword-punctual-payment">
-                                                                Lack of
-                                                                Description
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="evaluation-bad">
-                                                        <div className="evaluation-bad-keyword">
-                                                            <div className="evaluation-bad-keyword-number">
-                                                                {customerReviewValues[8]}
-                                                            </div>
-                                                            <div className="evaluation-bad-keyword-punctual-payment">
-                                                                Rude
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="evaluation-bad">
-                                                        <div className="evaluation-bad-keyword">
-                                                            <div className="evaluation-bad-keyword-number">
-                                                                {customerReviewValues[9]}
-                                                            </div>
-                                                            <div className="evaluation-bad-keyword-punctual-payment">
-                                                                Poor Communication
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="evaluation-bad">
-                                                        <div className="evaluation-bad-keyword">
-                                                            <div className="evaluation-bad-keyword-number">
-                                                                {customerReviewValues[10]}
-                                                            </div>
-                                                            <div className="evaluation-bad-keyword-punctual-payment">
-                                                                Unreasonable Request
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="evaluation-bad">
-                                                        <div className="evaluation-bad-keyword">
-                                                            <div className="evaluation-bad-keyword-number">
-                                                                {customerReviewValues[11]}
-                                                            </div>
-                                                            <div className="evaluation-bad-keyword-punctual-payment">
-                                                                Negative
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {populateGoodReviews()}
+                                            {populateBadReviews()}
                                         </div>
                                     </div>
                                     {user.role === "performer" && 

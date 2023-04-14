@@ -51,6 +51,7 @@ const ModalInterest = (props) => {
                             buttonSize="btn--wide-bold"
                             buttonRadius="btn--square"
                             onClick={() => {
+                                console.log(props.customerId, props.performerId, props.taskId);
                                 axios
                                     .post("http://localhost:8000/api/chat/rooms", {
                                         customerId: props.customerId,

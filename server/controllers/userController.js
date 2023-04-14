@@ -21,10 +21,11 @@ exports.getOneUser = catchAsync(async (req, res) => {
 });
 
 exports.updateUser = catchAsync(async (req, res) => {
+  const updatedUser = await User.findByIdAndUpdate(req.params.uid, req.body)
 
-  const updateEmployee = await User.findByIdAndUpdate(req.params.uid, req.body)
-
-  res.status(200).send(updateEmployee)
+  res.status(200).json({
+    user: updatedUser
+  });
 });
 
 exports.becomePerformer = catchAsync(async (req, res) => {

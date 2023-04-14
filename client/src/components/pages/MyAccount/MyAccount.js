@@ -36,27 +36,29 @@ function MyProfile() {
             setDescription(data.data.user.description);
         });
     }, []);
-    console.log(user._id);
+
     const handleSubmit = () => {
         axios
             .put(`http://localhost:8000/api/users/updateUser/${user._id}`, {
-                firstName,
-                lastName,
+                firstname: firstName,
+                lastname: lastName,
                 phone,
                 address,
-                city,
-                province,
-                postalCode,
-                description,
+                location: {
+                    city,
+                    province,
+                    zipcode: postalCode,
+                },
+                description
             })
             .then((response) => {
-                console.log(response);
                 setErrorMessage("");
+                cookies.set("firstname", response.data.user.firstname);
                 setSuccessMessage("Profile has been updated successfully!");
             })
             .catch((error) => {
                 setSuccessMessage("");
-                setErrorMessage(error.response.data.message);
+                setErrorMessage(error.message);
                 console.log(error);
             });
     };

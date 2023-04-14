@@ -83,7 +83,7 @@ function TaskDetail() {
                 return (
                     <UnassignedPerformerButton
                         performerId={user._id}
-                        customerId={task.uploadedUser._id}
+                        customerId={uploadedUser._id}
                         taskId={task._id}
                     />
                 );

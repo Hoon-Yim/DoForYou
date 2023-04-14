@@ -168,7 +168,10 @@ const ModalReviewCustomer = (props) => {
                 <div className="modal-review-customer-body">
                     <div className="modal-review-customer-user-image-box">
                         <div className="modal-review-customer-user-image">
-                            <img src="images/profile/m4.jpg" alt="" />
+                            <img
+                                src={`http://localhost:8000/api/users/profile/${props.task.uploadedUser._id}`}
+                                alt="profile"
+                            />
                         </div>
                     </div>
                     <div className="modal-review-customer-body-username">
@@ -199,12 +202,10 @@ const ModalReviewCustomer = (props) => {
                                         return key;
                                     }
                                 });
-                                console.log(selectedTags);
 
                                 axios
                                     .post("http://localhost:8000/api/reviews/reviewCustomer", {
-                                        task: props.task,
-                                        customer: props.task.uploadedUser,
+                                        task: props.taskId,
                                         like: isClickGood ? true : false,
                                         tags: selectedTags
                                     })

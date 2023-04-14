@@ -150,13 +150,13 @@ function MyReviews() {
                         negativeCounts.map((value, i) => {
                             if (value > 0) {
                                 return (
-                                    <div className="evaluation-good">
-                                        <div className="evaluation-good-keyword">
-                                            <div className="evaluation-good-keyword-punctual-payment">
-                                                {list[i]}
-                                            </div>
-                                            <div className="evaluation-good-keyword-number">
+                                    <div className="evaluation-bad">
+                                        <div className="evaluation-bad-keyword">
+                                            <div className="evaluation-bad-keyword-number">
                                                 {value}
+                                            </div>
+                                            <div className="evaluation-bad-keyword-punctual-payment">
+                                                {list[i]}
                                             </div>
                                         </div>
                                     </div>

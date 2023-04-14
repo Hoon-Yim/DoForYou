@@ -21,6 +21,7 @@ function CustomerReview(props) {
             <ModalReviewCustomer
                 onClose={() => setShow(false)}
                 show={show}
+                taskId={props.taskId}
                 task={props.task}
             />
         </>

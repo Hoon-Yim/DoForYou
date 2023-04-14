@@ -56,7 +56,7 @@ function TaskDetail() {
                         </>
                     );
                 } else {
-                    return task.isCompleted && <PerformerReview task={task} />;
+                    return task.isCompleted && <PerformerReview taskId={task._id} task={task} />;
                 }
             } else {
                 return null;
@@ -68,7 +68,7 @@ function TaskDetail() {
                     return !task.isCompleted ? (
                         <AssignedPerformerButton taskId={task._id} /> // showing complete button
                     ) : (
-                        <CustomerReview task={task} />
+                        <CustomerReview taskId={task._id} task={task} />
                     );
                 } else {
                     return (

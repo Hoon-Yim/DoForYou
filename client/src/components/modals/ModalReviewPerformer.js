@@ -32,7 +32,10 @@ const ModalReviewPerformer = (props) => {
                 <div className="modal-review-performer-body">
                     <div className="modal-review-performer-user-image-box">
                         <div className="modal-review-performer-user-image">
-                            <img src="images/profile/f4.jpg" alt="" />
+                            <img
+                                src={`http://localhost:8000/api/users/profile/${props.task.assignedUser._id}`}
+                                alt="profile"
+                            />
                         </div>
                     </div>
                     <div className="modal-review-performer-body-username">
@@ -81,14 +84,12 @@ const ModalReviewPerformer = (props) => {
                             onClick={() => {
                                 axios
                                     .post("http://localhost:8000/api/reviews/reviewPerformer", {
-                                        task: props.task,
-                                        performer: props.task.assignedUser,
+                                        task: props.taskId,
+                                        // performer: props.task.assignedUser,
                                         rating: star,
                                         review
                                     })
-                                    .then(data => {
-                                        console.log(data.data.review);
-                                    });
+                                    .then(data => {});
                                 props.onClose();
                             }}
                         >

@@ -1,5 +1,6 @@
 const ReviewCustomer = require("../models/reviewCustomerModel");
 const ReviewPerformer = require("../models/reviewPerformerModel");
+const Task = require("../models/taskModel");
 
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
@@ -40,6 +41,9 @@ exports.getUserReviews = catchAsync(async (req, res) => {
 
 // Submit a new review
 exports.submitCutomerReview = catchAsync(async (req, res) => {
+  const task = await Task.findById(req.body.task);
+  req.body.task = task;
+  req.body.customer = task.uploadedUser;
   const review = new ReviewCustomer(req.body);
   await review.save();
   res.status(201).json({
@@ -122,6 +126,8 @@ exports.updateCustomerRating = catchAsync(async (req, res) => {
 // Submit a new review
 
 exports.submitPerformerReview = catchAsync(async (req, res) => {
+  req.body.task = await Task.findById(req.body.task);
+  req.body.performer = req.body.task.assignedUser;
   const { performer, rating } = req.body;
 
   // Find existing reviews for the performer
@@ -132,7 +138,6 @@ exports.submitPerformerReview = catchAsync(async (req, res) => {
   const newAverageRating = ((existingRatingsTotal + rating) / (existingReviews.length + 1).toFixed(2));
 
   // Create a new review document
-  console.log(req.body);
   const newReview = new ReviewPerformer(req.body);
 
   // Save the new review

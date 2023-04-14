@@ -9,7 +9,7 @@ export default function View() {
     const [filesCount, setFilesCount] = useState({});
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/users/notVerified`)
+        axios.get(`http://localhost:8000/api/users/verify/false`)
             .then((response) => {
                 setAPIData(response.data);
                 // Retrieve files count for each user

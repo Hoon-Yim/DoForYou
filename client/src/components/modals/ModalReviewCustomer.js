@@ -196,12 +196,10 @@ const ModalReviewCustomer = (props) => {
                                         return key;
                                     }
                                 });
-                                console.log(selectedTags);
 
                                 axios
                                     .post("http://localhost:8000/api/reviews/reviewCustomer", {
-                                        task: props.task,
-                                        customer: props.task.uploadedUser,
+                                        task: props.taskId,
                                         like: isClickGood ? true : false,
                                         tags: selectedTags,
                                     })

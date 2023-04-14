@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { Link } from "react-router-dom";
@@ -10,6 +10,7 @@ import "./MyAccount.css";
 function MyProfile() {
     const cookies = new Cookies();
     const [profilePicture, setProfilePicture] = useState(null);
+    const [file, setFile] = useState(null);
     const [user, setUser] = useState({});
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -21,6 +22,9 @@ function MyProfile() {
     const [description, setDescription] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
+    const fileInputRef = useRef(null);
+
+
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/users/getLoggedInUser/${cookies.get("jwt")}`).then((data) => {
@@ -37,7 +41,8 @@ function MyProfile() {
         });
     }, []);
 
-    const handleSubmit = () => {
+    const handleSubmit = e => {
+        e.preventDefault();
         axios
             .put(`http://localhost:8000/api/users/updateUser/${user._id}`, {
                 firstname: firstName,
@@ -55,6 +60,8 @@ function MyProfile() {
                 setErrorMessage("");
                 cookies.set("firstname", response.data.user.firstname);
                 setSuccessMessage("Profile has been updated successfully!");
+
+                window.location.reload();
             })
             .catch((error) => {
                 setSuccessMessage("");
@@ -63,8 +70,12 @@ function MyProfile() {
             });
     };
 
-    const handleFileInputChange = (event) => {
+    const handlePhotoInputChange = (event) => {
         setProfilePicture(event.target.files[0]);
+    };
+
+    const handleFileInputChange = (event) => {
+        setFile(event.target.files[0]);
     };
 
     const handleUploadClick = async () => {
@@ -99,6 +110,29 @@ function MyProfile() {
             });
     };
 
+    const handleUploadFileClick = async () => {
+        const formData = new FormData();
+        formData.append("file", file);
+
+        axios
+            .post(`http://localhost:8000/api/admin/files/${user._id}`, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            })
+            .then((response) => {
+                console.log(response);
+                window.location.reload(); // add this line
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    const handleRemoveFile = () => {
+        fileInputRef.current.value = ""; // clear the input box value
+    };
+
     return (
         <>
             <div id="container">
@@ -127,7 +161,7 @@ function MyProfile() {
                                             type="file"
                                             class="upload-box"
                                             accept=".jpg,.jpeg,.png"
-                                            onChange={handleFileInputChange}
+                                            onChange={handlePhotoInputChange}
                                         />
                                     </div>
                                     <div className="responsive-my-profile-wrapper-right-profile-btns">
@@ -274,13 +308,14 @@ function MyProfile() {
                                                 )}
                                             </div>
                                         </div>
+                                        
                                         <div className="my-profile-wrapper-right-profile-upload-box">
                                             <input
                                                 id="pic-upload"
                                                 type="file"
                                                 class="upload-box"
                                                 accept=".jpg,.jpeg,.png"
-                                                onChange={handleFileInputChange}
+                                                onChange={handlePhotoInputChange}
                                             />
                                         </div>
                                         <div className="my-profile-wrapper-right-profile-btns">
@@ -305,7 +340,45 @@ function MyProfile() {
                                                 Remove
                                             </Button>
                                         </div>
+                                        <br></br>
+                                        <br></br>
+                                        <div className="my-profile-wrapper-left-profile-title">
+                                                Verification document
+                                        </div>
+                                        <div className="my-profile-wrapper-right-profile-upload-box">
+                                            <input
+                                                id="file-upload"
+                                                type="file"
+                                                class="upload-box"
+                                                accept=".doc,.pdf,.docx"
+                                                onChange={handleFileInputChange}
+                                                ref={fileInputRef}
+                                            />
+                                        </div>
+                                        <div className="my-profile-wrapper-right-profile-btns">
+                                            <Button
+                                                id="my-profile-update-btn"
+                                                buttonStyle="btn--outline"
+                                                buttonSize="btn--small-wide"
+                                                buttonRadius="btn--rounded"
+                                                type="submit"
+                                                onClick={handleUploadFileClick}
+                                            >
+                                                Submit
+                                            </Button>
+                                            <Button
+                                                id="my-profile-remove-btn"
+                                                buttonStyle="btn--outline"
+                                                buttonSize="btn--small-wide"
+                                                buttonRadius="btn--rounded"
+                                                type="submit"
+                                                onClick={handleRemoveFile}
+                                            >
+                                                Remove
+                                            </Button>
+                                        </div>
                                     </div>
+                                    
                                     <div className="my-profile-wrapper-right-bottom">
                                         <p className="text-green-400">{successMessage}</p>
                                         <p className="text-red-400">{errorMessage}</p>

@@ -81,8 +81,8 @@ const ModalReviewPerformer = (props) => {
                             onClick={() => {
                                 axios
                                     .post("http://localhost:8000/api/reviews/reviewPerformer", {
-                                        task: props.task,
-                                        performer: props.task.assignedUser,
+                                        task: props.taskId,
+                                        // performer: props.task.assignedUser,
                                         rating: star,
                                         review,
                                     })

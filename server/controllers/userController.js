@@ -21,7 +21,7 @@ exports.getOneUser = catchAsync(async (req, res) => {
 });
 
 exports.updateUser = catchAsync(async (req, res) => {
-  const updatedUser = await User.findByIdAndUpdate(req.params.uid, req.body)
+  const updatedUser = await User.findByIdAndUpdate(req.params.uid, req.body, {new: true});
 
   res.status(200).json({
     user: updatedUser
@@ -103,6 +103,7 @@ exports.deletePicture = catchAsync(async (req, res, next) => {
 });
 
 exports.getNotVerifiedUsers = catchAsync(async (req, res) => {
+  
   const users = await User.find({ verified: false });
 
   res.status(200).send(users)

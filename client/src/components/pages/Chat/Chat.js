@@ -20,6 +20,7 @@ function Chat() {
     const [messages, setMessages] = useState(undefined);
     const [roomId, setRoomId] = useState(undefined);
     const [chatRooms, setChatRooms] = useState([]);
+    const [opponent, setOpponent] = useState({});
 
     useEffect(() => {
         setFirstname(cookies.get("firstname"));
@@ -76,11 +77,13 @@ function Chat() {
                                             style={{ textDecoration: "none" }}
                                             onClick={() => {
                                                 cookies.set("roomId", room._id, { path: "/" });
+                                                cookies.set("opponentId", title[0].user._id);
+    
                                                 window.location.reload();
                                             }}
                                         >
                                             <div className={classname}>
-                                                <ContactPhoto />
+                                                <ContactPhoto userId={title[0].user._id} />
                                                 <div className="chat-contacts-person-name">
                                                     {title[0].user.firstname}
                                                 </div>
@@ -96,10 +99,30 @@ function Chat() {
                                     <div className="chat-messages-chatting-after-info-box">
                                         <div className="chat-messages-chatting-after-sender-image-box">
                                             <div className="chat-messages-chatting-after-image">
-                                                <img src="images/profile/default.png" alt="default profile" />
+                                                {
+                                                    (() => {
+                                                        let user = {};
+                                                        axios
+                                                            .get(`http://localhost:8000/api/users/${cookies.get("opponentId")}`)
+                                                            .then(data => {
+                                                                user = data.data.user
+                                                            });
+                                                        
+                                                        if (user.img) {
+                                                            return (
+                                                                <img
+                                                                    src={`http://localhost:8000/api/users/profile/${user._id}`}
+                                                                    alt="profile"
+                                                                />
+                                                            )
+                                                        } else {
+                                                            return <img src="images/profile/default.png" alt="default profile" />
+                                                        }
+                                                    })()
+                                                }
                                             </div>
                                         </div>
-                                        <div className="chat-messages-chatting-after-name">Yoonhee</div>
+                                        <div className="chat-messages-chatting-after-name">{opponent.firstname}</div>
                                     </div>
                                     <div className="chat-messages-chatting-after">
                                         <div className="chat-chatting">

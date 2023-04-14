@@ -16,8 +16,9 @@ exports.getOneUser = catchAsync(async (req, res) => {
   const userId = req.params.uid;
   const user = await User.findById(userId);
 
-  res.status(200).send(user)
-
+  res.status(200).json({
+    user
+  })
 });
 
 exports.updateUser = catchAsync(async (req, res) => {

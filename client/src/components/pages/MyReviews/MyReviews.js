@@ -143,22 +143,6 @@ function MyReviews() {
                         }
                     })}
                 </div>
-                <div className="my-reviews-as-customer-evaluation-bad-keywords">
-                    {negativeCounts.map((value, i) => {
-                        if (value > 0) {
-                            return (
-                                <div className="evaluation-good">
-                                    <div className="evaluation-good-keyword">
-                                        <div className="evaluation-good-keyword-punctual-payment">{list[i]}</div>
-                                        <div className="evaluation-good-keyword-number">{value}</div>
-                                    </div>
-                                </div>
-                            );
-                        } else {
-                            return null;
-                        }
-                    })}
-                </div>
             </div>
         );
     };

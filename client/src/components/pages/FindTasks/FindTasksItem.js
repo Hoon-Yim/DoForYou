@@ -9,10 +9,10 @@ export default function FindTasksItem(props) {
     useEffect(() => {
         // fetch customer data when component mounts
         axios
-            .get(`http://localhost:8000/api/users/${props.task.uploadedUser._id}`)
+            .get(`http://localhost:8000/api/users/${props.task.uploadedUser}`)
             .then((response) => {
-                setFirstName(response.data.firstname);
-                setLastName(response.data.lastname);
+                setFirstName(response.data.user.firstname);
+                setLastName(response.data.user.lastname);
             })
             .catch((error) => console.error(error));
     }, [props.task.uploadedUser]);

@@ -3,6 +3,7 @@ const User = require("../models/userModel");
 const Room = require("../models/roomModel");
 
 const authController = require("./authController");
+const messageController = require("./messageController");
 
 const APIFeatures = require("../utils/apiFeatures");
 const AppError = require("../utils/appError");
@@ -62,6 +63,15 @@ exports.assignPerformer = catchAsync(async (req, res) => {
     const task = await Task.findByIdAndUpdate(room.task, {
         assignedUser: performer[0].user
     }, { new: true });
+
+    const perf = await User.findById(performer[0].user);
+
+    const data = {
+        roomId: room._id,
+        firstname: perf.firstname,
+        message: `${perf.firstname} has been assigned to the task!`,
+    }
+    messageController.insertMessageIntoDB(data);
 
     res.status(201).json({
         status: "success",

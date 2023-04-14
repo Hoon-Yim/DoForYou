@@ -40,7 +40,7 @@ function FindTasks() {
         const selectedCategories = Object.keys(categories).filter(key => categories[key] === true);
         let filterString = "";
         if (selectedCategories.length > 0) {
-            filterString = `category=${selectedCategories.join(',')}&search=${search}`; 
+            filterString = `category=${selectedCategories.join(',')}&search=${search}`;
         }
 
         setFilterString(filterString);
@@ -80,12 +80,14 @@ function FindTasks() {
                                             e.preventDefault();
 
                                             const selectedCategories = Object.keys(categories).filter(key => categories[key] === true);
-                                            let filterString = "";
+                                            let filterString = `search=${search}`;
                                             if (selectedCategories.length > 0) {
-                                                filterString = `category=${selectedCategories.join(',')}&search=${search}`;
+                                                filterString += `&category=${selectedCategories.join(',')}`;
                                             }
 
+                                            console.log(filterString);
                                             axios.get(`http://localhost:8000/api/tasks?${filterString}`).then((data) => {
+                                                console.log(filterString);
                                                 setTasks(data.data.tasks);
                                             });
                                         }}>

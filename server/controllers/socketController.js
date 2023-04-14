@@ -41,7 +41,6 @@ const handleDisconnection = socket => {
             roomController.exitRoom(chatInfo[socket.id]["roomId"], chatInfo[socket.id]["firstname"]);
 
             delete chatInfo[socket.id];
-            console.log(chatInfo, "disconnected");
         }
     });
 }

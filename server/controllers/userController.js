@@ -21,7 +21,7 @@ exports.getOneUser = catchAsync(async (req, res) => {
 });
 
 exports.updateUser = catchAsync(async (req, res) => {
-  const updatedUser = await User.findByIdAndUpdate(req.params.uid, req.body)
+  const updatedUser = await User.findByIdAndUpdate(req.params.uid, req.body, {new: true});
 
   res.status(200).json({
     user: updatedUser

@@ -11,4 +11,4 @@ Backend: Express.JS, MongoDB, Mongoose, Socket.io <br/>
 Frontend: React.JS <br/>
 Others: JWT, Morgan, Crypto, Axios, etc. <br/>
 ### Deployment
-Deployed using AWS EC2
+Deployed using AWS EC2 
